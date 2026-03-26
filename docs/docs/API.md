@@ -9,7 +9,7 @@
 
 ## Initialization
 
-First, you need to initialize the API for your style guide config.
+Во-первых, вам необходимо инициализировать API для конфигурации вашего руководства по стилю.
 
 Using a JavaScript object:
 
@@ -61,7 +61,7 @@ const styleguide = styleguidist()
 
 See all available [config options](/Configuration.md).
 
-> **Note:** console output is turned off by default, you may need to define your own [logger](/Configuration.md#logger).
+> **Примечание.** вывод консоли по умолчанию отключен. Возможно, вам придется определить свой собственный [logger](/Configuration.md#logger).
 
 ## Methods
 
@@ -127,7 +127,7 @@ styleguidist(require('../styleguide.config.js')).server(
 
 #### Arguments
 
-1.  \[`env`=`'production'`\] (_String_): `production` or `development`.
+1.  \[`env`=`'production'`\] (_String_): `production` или `development`.
 
 #### Returns
 

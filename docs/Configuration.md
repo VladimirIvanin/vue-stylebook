@@ -32,6 +32,16 @@ Type: `Object`, default: `{ objectAssign: 'Object.assign' }`
 
 Styleguidist uses `vue-inbrowser-compiler` to bundle typescript/ES6 modules code on the frontend. These options are passed to the compile function.
 
+## `mdxCompileOptions`
+
+Type: `Object`, default: `{}`
+
+Дополнительные опции компиляции, передаваемые в MDX-пайплайн.
+
+Используйте это поле, чтобы добавить свои `remark` / `rehype` плагины или переопределить `providerImportSource`.
+
+См. также: [MDX](/docs/MDX.md#конфигурация).
+
 ## `components`
 
 Type: `String`, `Function` or `Array`, default: `src/components/**/*.vue`
@@ -180,7 +190,7 @@ Source code editor options, see [CodeMirror docs](https://codemirror.net/doc/man
 
 ## `getExampleFilename`
 
-Type: `Function`, default: finds `Readme.md` or `ComponentName.md` in the component folder
+Type: `Function`, default: ищет `Readme.mdx`, `Readme.md`, `ComponentName.mdx` или `ComponentName.md` в папке компонента
 
 Function that returns examples file path for a given component path.
 
@@ -193,6 +203,26 @@ module.exports = {
   }
 }
 ```
+
+Можно возвращать и пути к `.mdx`:
+
+```javascript
+module.exports = {
+  getExampleFilename(componentPath) {
+    return componentPath.replace(/\.vue$/, '.examples.mdx')
+  }
+}
+```
+
+## `storybookBlocks`
+
+Type: `Boolean`, default: `true`
+
+Включает совместимый alias для `@storybook/blocks` в MDX-доках.
+
+Ставьте `false` только если предоставляете собственную реализацию/alias.
+
+См. также: [MDX](/docs/MDX.md#совместимость-с-storybook-blocks).
 
 ## `enhancePreviewApp`
 

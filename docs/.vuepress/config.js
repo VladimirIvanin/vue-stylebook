@@ -52,6 +52,7 @@ module.exports = () => {
 				'/docs/': [
 					['/docs/GettingStarted', 'Getting Started'],
 					'/docs/Documenting',
+					'/docs/MDX',
 					['/docs/Components', 'Locating Components'],
 					'/docs/CLI',
 					'/docs/Customize',

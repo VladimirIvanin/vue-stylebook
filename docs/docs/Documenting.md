@@ -12,6 +12,7 @@ Vue styleguidist generates documentation for your components based on the commen
 - [Slots](#slots)
 - [Include Mixins and Extends](#include-mixins-and-extends)
 - [Usage examples and Readme files](#usage-examples-and-readme-files)
+- [Документация в MDX](#документация-в-mdx)
 - [Public methods](#public-methods)
 - [Ignoring props](#ignoring-props)
 - [Methods](#methods)
@@ -374,6 +375,8 @@ If you import a [mixin](https://vuejs.org/v2/guide/mixins.html) or [extends](htt
 
 Vue styleguidist will look for any `Readme.md` or `ComponentName.md` files in the component's folder and display them. Any code block with a language tag of `vue`, `js`, `jsx`, `javascript` or `html` will be rendered as a Vue component with an interactive playground.
 
+Начиная с поддержки MDX, Vue Styleguidist по умолчанию также ищет `Readme.mdx` и `ComponentName.mdx`.
+
 If you want to ignore the readme file for one component, use the `@example [none]` doclet. Use this when multiple components in the same folder share a `ReadMe` file. This will prevent the examples from being rendered multiple times.
 
     Vue component example:
@@ -468,6 +471,16 @@ If you want to ignore the readme file for one component, use the `@example [none
     Any [Markdown](http://daringfireball.net/projects/markdown/) is **allowed** _here_.
 
 > **Note:** You can configure examples file name with the [getExampleFilename](/Configuration.md#getexamplefilename) option.
+
+## Документация в MDX
+
+Vue Styleguidist поддерживает `.mdx` для контента секций и примеров компонентов.
+
+- Используйте MDX, когда нужен markdown + JSX/ESM в одном документе.
+- Блоки Storybook (`Meta`, `Canvas`, `Story`, `Source`) поддерживаются через слой совместимости.
+- Существующие markdown-файлы остаются полностью рабочими.
+
+Полный гайд: [MDX](/docs/MDX.md).
 
 You can also add the [custom block](https://vue-loader.vuejs.org/en/configurations/custom-blocks.html) `<docs></docs>` inside `*.vue` files, so that vue styleguidist builds the readme. You can review the following [example](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/examples/basic/src/components/Radio/Radio.vue#L20)
 
