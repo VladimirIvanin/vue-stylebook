@@ -16,6 +16,7 @@ Markdown и более гибкие MDX-документы с JSX/ESM.
 - [Использование MDX в секциях](#использование-mdx-в-секциях)
 - [Использование MDX как примеров компонентов](#использование-mdx-как-примеров-компонентов)
 - [Использование `@example` с MDX](#использование-example-с-mdx)
+- [Готовые примеры MDX](#готовые-примеры-mdx)
 - [Ограничения и отличия от Storybook](#ограничения-и-отличия-от-storybook)
 - [Решение проблем](#решение-проблем)
 - [Миграция с Markdown на MDX](#миграция-с-markdown-на-mdx)
@@ -149,6 +150,150 @@ export default {
 ```
 
 `@example [none]` по-прежнему работает и скрывает связанный пример.
+
+## Готовые примеры MDX
+
+Ниже несколько рабочих шаблонов, которые можно копировать и адаптировать.
+
+### 1) Базовая страница секции
+
+```mdx
+import { Meta, Source } from '@vue-styleguidist/blocks'
+
+<Meta title="Гайды/Быстрый старт" />
+
+# Быстрый старт
+
+Описание раздела в markdown.
+
+<Source language="bash" code={`
+pnpm install
+pnpm styleguide
+`} />
+```
+
+### 2) Canvas с namespace-импортом (паттерн Storybook)
+
+```mdx
+import { Meta, Canvas } from '@vue-styleguidist/blocks'
+import * as Stories from './Button.stories'
+
+<Meta of={Stories} title="Компоненты/Button" />
+
+# Button
+
+<Canvas of={Stories.Base} />
+```
+
+### 3) Story с именованным импортом
+
+```mdx
+import { Meta, Story } from '@vue-styleguidist/blocks'
+import { Primary } from './Button.stories'
+
+<Meta title="Компоненты/Button/Primary" />
+<Story of={Primary} />
+```
+
+### 4) Таблица с данными из `export const`
+
+```mdx
+export const args = {
+  resize: {
+    examples: '`v-overflow`\\n`v-overflow:resize`',
+    description: 'Обновлять состояние при resize'
+  }
+}
+
+| Режим     | Пример                 | Описание                  |
+| --------- | ---------------------- | ------------------------- |
+| `:resize` | {args.resize.examples} | {args.resize.description} |
+```
+
+### 5) Source как справочный блок кода
+
+```mdx
+import { Source } from '@vue-styleguidist/blocks'
+
+<Source
+  language="ts"
+  code={`
+export interface Payload {
+  id: string
+  title: string
+}
+`}
+/>
+```
+
+### 6) MDX как `Readme.mdx` компонента
+
+Создайте рядом с компонентом файл `Readme.mdx`:
+
+```mdx
+import { Meta, Canvas } from '@vue-styleguidist/blocks'
+import * as Stories from './Button.stories'
+
+<Meta of={Stories} title="Компоненты/Button" />
+
+# Button
+
+Краткое описание компонента.
+<Canvas of={Stories.Base} />
+```
+
+Vue Styleguidist подхватит его автоматически.
+
+### 7) MDX через `@example`
+
+```js
+/**
+ * Кнопка формы
+ * @example ./Button.docs.mdx
+ */
+export default {
+  name: 'Button'
+}
+```
+
+### 8) Импорт в стиле Storybook (совместимость)
+
+```mdx
+import { Meta, Canvas, Story, Source } from '@storybook/blocks'
+```
+
+Для новых проектов рекомендуется:
+
+```mdx
+import { Meta, Canvas, Story, Source } from '@vue-styleguidist/blocks'
+```
+
+### 9) Section-конфиг с `.mdx`
+
+```js
+module.exports = {
+  sections: [
+    {
+      name: 'Документация',
+      content: 'docs/introduction.mdx'
+    },
+    {
+      name: 'Компоненты',
+      components: 'src/components/**/*.vue'
+    }
+  ]
+}
+```
+
+### 10) Кастомный `getExampleFilename` под `.examples.mdx`
+
+```js
+module.exports = {
+  getExampleFilename(componentPath) {
+    return componentPath.replace(/\.vue$/, '.examples.mdx')
+  }
+}
+```
 
 ## Ограничения и отличия от Storybook
 
