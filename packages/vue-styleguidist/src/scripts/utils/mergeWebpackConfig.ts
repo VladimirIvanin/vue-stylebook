@@ -1,4 +1,4 @@
-import { Configuration, Plugin } from 'webpack'
+import { Plugin } from 'webpack'
 import isFunction from 'lodash/isFunction'
 import omit from 'lodash/omit'
 import mergeBase from 'webpack-merge'
@@ -22,9 +22,9 @@ const IGNORE_PLUGINS = [
 	'HotModuleReplacementPlugin'
 ]
 
-const merge = mergeBase({
+const merge = (mergeBase as any)({
 	// Ignore user’s plugins to avoid duplicates and issues with our plugins
-	customizeArray: mergeBase.unique(
+	customizeArray: (mergeBase as any).unique(
 		'plugins',
 		IGNORE_PLUGINS,
 		(plugin: Plugin) => plugin.constructor && plugin.constructor.name
@@ -33,8 +33,8 @@ const merge = mergeBase({
 
 //make it a typeguard
 function isFunc(
-	conf: Configuration | ((env: string) => Configuration)
-): conf is (env: string) => Configuration {
+	conf: any | ((env: string) => any)
+): conf is (env: string) => any {
 	return isFunction(conf)
 }
 
@@ -51,10 +51,10 @@ function isFunc(
  * @return {object}
  */
 export default function mergeWebpackConfig(
-	baseConfig: Configuration,
-	userConfig: Configuration | ((env: string) => Configuration),
+	baseConfig: any,
+	userConfig: any | ((env: string) => any),
 	env_: string
-): Configuration {
+): any {
 	const userConfigObject = isFunc(userConfig) ? userConfig(env_) : userConfig
 	const safeUserConfig = omit(userConfigObject, IGNORE_SECTIONS.concat(IGNORE_SECTIONS_ENV[env_]))
 	return merge(baseConfig, safeUserConfig)

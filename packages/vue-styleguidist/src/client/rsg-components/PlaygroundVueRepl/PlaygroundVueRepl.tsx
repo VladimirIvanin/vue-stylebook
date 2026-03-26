@@ -6,6 +6,8 @@ import PlaygroundError from 'rsg-components/PlaygroundError'
 import { useStyleGuideContext } from 'rsg-components/Context'
 import { SanitizedStyleguidistConfig } from '../../../types/StyleGuide'
 
+const PlaygroundRendererAny = PlaygroundRenderer as any
+
 const styles = () => ({
 	root: {
 		width: '100%'
@@ -81,11 +83,12 @@ class PlaygroundVueReplInner extends Component<
 		const appVue = inputCode || '<template><div /> </template>'
 
 		try {
-			const [{ createApp, defineComponent, h, ref }, replModule, editorModule] = await Promise.all([
+			const [vueModule, replModule, editorModule] = await Promise.all([
 				import('vue'),
 				import('@vue/repl'),
 				import('@vue/repl/codemirror-editor')
 			])
+			const { createApp, defineComponent, h, ref } = vueModule as any
 			const { Repl, useStore, useVueImportMap, mergeImportMap } = replModule as any
 			const CodeMirror = (editorModule as any).default
 
@@ -96,7 +99,7 @@ class PlaygroundVueReplInner extends Component<
 			const rootComponent = defineComponent({
 				name: 'VsgVueReplRoot',
 				setup() {
-					const replRef = ref<any>(null)
+					const replRef = ref(null as any)
 					const { importMap: builtinImportMap, vueVersion } = useVueImportMap()
 					const store = useStore({ builtinImportMap, vueVersion })
 
@@ -149,7 +152,7 @@ class PlaygroundVueReplInner extends Component<
 		const { error } = this.state
 
 		return (
-			<PlaygroundRenderer
+			<PlaygroundRendererAny
 				exampleTab={
 					<div className={classes.root}>
 						<div ref={ref => (this.mountNode = ref)} />

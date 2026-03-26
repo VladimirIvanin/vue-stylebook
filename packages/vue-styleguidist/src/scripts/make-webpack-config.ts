@@ -1,6 +1,6 @@
 import * as path from 'path'
 import * as fs from 'fs'
-import webpackNormal, { Configuration } from 'webpack'
+import webpackNormal from 'webpack'
 import TerserPlugin from 'terser-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
@@ -8,7 +8,7 @@ import { MiniHtmlWebpackPlugin } from 'mini-html-webpack-plugin'
 // @ts-ignore
 import FilterWarningsPlugin from 'webpack-filter-warnings-plugin'
 import MiniHtmlWebpackTemplate from '@vxna/mini-html-webpack-template'
-import merge from 'webpack-merge'
+import mergeRaw from 'webpack-merge'
 import forEach from 'lodash/forEach'
 import isFunction from 'lodash/isFunction'
 import makeWebpackConfig from 'react-styleguidist/lib/scripts/make-webpack-config'
@@ -18,13 +18,14 @@ import mergeWebpackConfig from './utils/mergeWebpackConfig'
 import resolveVueRuntimeForSandbox from './utils/resolveVueRuntimeForSandbox'
 
 const RENDERER_REGEXP = /Renderer$/
+const merge: any = mergeRaw as any
 
 const sourceDir = path.resolve(__dirname, '../client')
 
 export default function (
 	config: SanitizedStyleguidistConfig,
 	env: 'development' | 'production' | 'none'
-): Configuration {
+): any {
 	/** this should be useful to test out webpack 5 when needed */
 	const webpack: typeof webpackNormal = process.env.VSG_WEBPACK_PATH
 		? require(process.env.VSG_WEBPACK_PATH)
@@ -50,7 +51,7 @@ export default function (
 		template
 	}
 
-	let webpackConfig: Configuration = {
+	let webpackConfig: any = {
 		output: {
 			path: config.styleguideDir,
 			filename: 'build/[name].bundle.js',
@@ -109,7 +110,7 @@ export default function (
 	webpackConfig.mode = env
 
 	if (config.webpackConfig) {
-		webpackConfig = mergeWebpackConfig(webpackConfig, config.webpackConfig, env)
+		webpackConfig = mergeWebpackConfig(webpackConfig as any, config.webpackConfig as any, env)
 	}
 
 	// check that the define variables are not set yet
@@ -119,7 +120,7 @@ export default function (
 			return acc.concat(Object.keys(plugin.definitions))
 		}, [])
 
-	webpackConfig = merge(webpackConfig, {
+	webpackConfig = merge(webpackConfig as any, {
 		// we need to follow our own entry point
 		entry:
 			config.require.concat([path.resolve(sourceDir, 'index')]) ?? path.resolve(sourceDir, 'index'),
@@ -185,7 +186,7 @@ export default function (
 					]
 			  }
 			: { minimize: false }
-		webpackConfig = merge(webpackConfig, {
+		webpackConfig = merge(webpackConfig as any, {
 			output: {
 				filename: 'build/bundle.[chunkhash:8].js',
 				chunkFilename: 'build/[name].[chunkhash:8].js',
@@ -233,7 +234,7 @@ export default function (
 				],
 				entry: [require.resolve('react-dev-utils/webpackHotDevClient')]
 			},
-			webpackConfig
+			webpackConfig as any
 		)
 	}
 

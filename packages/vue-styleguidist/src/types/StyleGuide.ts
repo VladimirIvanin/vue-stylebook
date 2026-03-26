@@ -11,7 +11,7 @@ import WebpackDevServer from 'webpack-dev-server'
 import { ComponentDoc, PropDescriptor } from 'vue-docgen-api'
 import { compile } from 'vue-inbrowser-compiler'
 import { Styles } from 'jss';
-import { Configuration, loader } from 'webpack'
+import { loader } from 'webpack'
 import * as Rsg from 'react-styleguidist'
 import { RecursivePartial } from 'react-styleguidist/lib/typings/RecursivePartial'
 import { ConfigSection, ProcessedSection } from './Section'
@@ -63,7 +63,7 @@ export interface BaseStyleguidistConfig
     /**
      * Allows you to modify webpack config without any restrictions 
      */
-    dangerouslyUpdateWebpackConfig: (server: Configuration, env: string) => Configuration;
+    dangerouslyUpdateWebpackConfig: (server: any, env: string) => any;
     /**
      * Display each component with a default example, regardless of if there's a README or <docs/> block written. 
      * @default false 
@@ -259,7 +259,7 @@ export interface BaseStyleguidistConfig
      * @deprecated Use renderRootJsx option instead 
      */
     vuex: any;
-    webpackConfig: Configuration;
+    webpackConfig: any;
 }
 
 export interface SanitizedStyleguidistConfig extends BaseStyleguidistConfig {
