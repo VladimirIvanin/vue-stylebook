@@ -14,6 +14,7 @@ jobs:
 
   release:
     needs: test
+    if: github.repository_owner == 'vue-styleguidist'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
