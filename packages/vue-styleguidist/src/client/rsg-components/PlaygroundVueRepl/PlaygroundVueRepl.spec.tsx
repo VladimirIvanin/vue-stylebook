@@ -1,4 +1,4 @@
-import { normalizeCode } from './PlaygroundVueRepl'
+import { normalizeCode } from './normalizeCode'
 
 describe('PlaygroundVueRepl', () => {
 	it('normalizes string code payload', () => {

@@ -5,6 +5,7 @@ import Styled, { JssInjectedProps } from 'rsg-components/Styled'
 import PlaygroundError from 'rsg-components/PlaygroundError'
 import { useStyleGuideContext } from 'rsg-components/Context'
 import { SanitizedStyleguidistConfig } from '../../../types/StyleGuide'
+import { normalizeCode } from './normalizeCode'
 
 const PlaygroundRendererAny = PlaygroundRenderer as any
 
@@ -13,9 +14,6 @@ const styles = () => ({
 		width: '100%'
 	}
 })
-
-export const normalizeCode = (code: string | { raw?: string }) =>
-	typeof code === 'string' ? code : code?.raw || ''
 
 type PlaygroundVueReplInnerProps = JssInjectedProps & {
 	code: string | { raw?: string }

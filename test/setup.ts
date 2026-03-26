@@ -4,12 +4,7 @@ import Vue from 'vue'
 Vue.config.productionTip = false
 Vue.config.devtools = false
 
-import { URL } from 'url'
-import { resolve } from 'path'
-
-const __dirname = new URL('.', import.meta.url).pathname
-
-const rootFolder = resolve(__dirname, '../')
+const rootFolder = process.cwd()
 
 expect.addSnapshotSerializer({
 	serialize(val) {
