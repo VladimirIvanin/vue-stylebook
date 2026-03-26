@@ -23,6 +23,7 @@
     "format": "prettier --write docs packages/**/*.{js,md,vue,ts,tsx} examples/**/*.{js,md,vue,ts}",
     "test:coverage": "vitest --coverage",
     "start": "./start.sh server",
+    "prebuild": "pnpm compile",
     "build": "./start.sh build",
     "lint": "eslint . --cache --fix --ext .ts,.tsx,.js --cache-location node_modules/.eslint_cache/",
     "compile": "turbo run compile",
