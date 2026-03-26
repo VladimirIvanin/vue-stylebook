@@ -1,6 +1,6 @@
 {
   "name": "@ivaninvladimir/vue-styleguidist",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "private": false,
   "bin": {
     "vue-styleguidist": "./bin/vue-styleguidist.js"
