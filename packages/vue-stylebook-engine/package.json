@@ -128,6 +128,7 @@
   "devDependencies": {
     "@babel/cli": "7.28.0",
     "@babel/core": "7.28.0",
+    "@vue/compiler-sfc": "^3.2.0",
     "@testing-library/react": "11.2.7",
     "@types/buble": "0.20.1",
     "@types/cli-progress": "1.8.1",
