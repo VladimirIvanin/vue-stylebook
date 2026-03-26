@@ -1,24 +1,24 @@
-# Configuring Webpack
+# Настройка Webpack
 
-Vue styleguidist uses [webpack](https://webpack.js.org/) under the hood and it needs to know how to load your project’s files.
+Vue Styleguidist использует [webpack](https://webpack.js.org/) под капотом и должен знать, как загружать файлы вашего проекта.
 
-_Webpack is required to run Vue styleguidist but your project doesn’t have to use it._
+_Webpack нужен для запуска Vue Styleguidist, но ваш проект не обязан использовать Webpack напрямую._
 
-> **Note:** See [cookbook](Cookbook.md) for more examples.
+> **Примечание.** Дополнительные примеры см. в разделе [cookbook](Cookbook.md).
 
-<!-- toc -->
+<!-- содержание -->
 
-- [Reusing your project’s webpack config](#reusing-your-projects-webpack-config)
-- [Custom webpack config](#custom-webpack-config)
-- [When nothing else works](#when-nothing-else-works)
+- [Повторное использование конфигурации Webpack вашего проекта](#reusing-your-projects-webpack-config)
+- [Пользовательская конфигурация Webpack](#custom-webpack-config)
+- [Когда ничего не работает](#когда-ничего-не-работает)
 
 <!-- tocstop -->
 
-## Reusing your project’s webpack config
+## Повторное использование конфигурации Webpack вашего проекта
 
-By default, Styleguidist will try to find `webpack.config.js` in your project’s root directory and use it.
+По умолчанию Styleguidist попытается найти `webpack.config.js` в корневом каталоге вашего проекта и его использовать.
 
-If your webpack config is located somewhere else, you need to load it manually from your `styleguide.config.js`:
+Если ваш конфиг Webpack лежит в другом месте, подключите его вручную из `styleguide.config.js`:
 
 ```javascript
 // ./styleguide.config.js
@@ -27,7 +27,7 @@ module.exports = {
 }
 ```
 
-Or if you want to merge it with other options:
+Или, если вы хотите объединить его с другими опциями:
 
 ```javascript
 // ./styleguide.config.js
@@ -38,19 +38,19 @@ module.exports = {
 }
 ```
 
-> **Note:** `entry`, `externals`, `output`, `watch`, and `stats` options will be ignored. For production builds, `devtool` will also be ignored.
+> **Примечание.** Параметры `entry`, `externals`, `output`, `watch` и `stats` будут находиться рядом. Для производственной сборки `devtool` также будет ограждение.
 
-> **Note:** `CommonsChunkPlugins`, `HtmlWebpackPlugin`, `UglifyJsPlugin`, `HotModuleReplacementPlugin` plugins will be ignored because Styleguidist already includes them or they may break Styleguidist.
+> **Примечание:** плагины `CommonsChunkPlugins`, `HtmlWebpackPlugin`, `UglifyJsPlugin`, `HotModuleReplacementPlugin` будут включены, поскольку Styleguidist уже включает их, иначе они могут нарушить работу Styleguidist.
 
-> **Note:** If your loaders don’t work with Styleguidist try to make `include` and `exclude` absolute paths.
+> **Примечание.** Если ваши загрузчики не работают со Styleguidist, создайте форму абсолютных путей `include` и `exclude`.
 
-> **Note:** Babelified webpack configs (like `webpack.config.babel.js`) are not supported. We recommend converting your config to native Node — Node 6 supports [many ES6 features](http://node.green/).
+> **Примечание.** Конфигурации веб-пакетов Babelified (например, `webpack.config.babel.js`) не показаны. Мы рекомендуем изменить вашу конфигурацию в саду Узел — опоры Узел 6 [многие функции ES6](http://node.green/).
 
-> **Note:** Use [webpack-merge](https://github.com/survivejs/webpack-merge) for easier config merging.
+> **Примечание.** Используйте [webpack-merge](https://github.com/survivejs/webpack-merge) для упрощения объединения конфигураций.
 
-## Custom webpack config
+## Пользовательская конфигурация веб-пакета
 
-Add a `webpackConfig` section to your `styleguide.config.js`:
+Добавьте раздел `webpackConfig` в свой `styleguide.config.js`:
 
 ```javascript
 // ./styleguide.config.js
@@ -86,16 +86,16 @@ module.exports = {
 }
 ```
 
-> **Warning:** This option disables config load from `webpack.config.js`, see above how to load your config manually.
+> **Внимание:** Эта опция отключает загрузку конфигурации из `webpack.config.js`, см. выше, как загрузить конфигурацию вручную.
 
-> **Note:** `entry`, `externals`, `output`, `watch`, and `stats` options will be ignored. For production builds, `devtool` will also be ignored.
+> **Примечание.** Параметры `entry`, `externals`, `output`, `watch` и `stats` будут находиться рядом. Для производственной сборки `devtool` также будет ограждение.
 
-> **Note:** `CommonsChunkPlugins`, `HtmlWebpackPlugin`, `UglifyJsPlugin`, `HotModuleReplacementPlugin` plugins will be ignored because Styleguidist already includes them or they may break Styleguidist.
+> **Примечание:** плагины `CommonsChunkPlugins`, `HtmlWebpackPlugin`, `UglifyJsPlugin`, `HotModuleReplacementPlugin` будут включены, поскольку Styleguidist уже включает их, иначе они могут нарушить работу Styleguidist.
 
-> **Note:** it's expected that you already have a `vue-loader` dependency in your project.
+> **Примечание**. Ожидается, что в вашем проекте уже есть зависимость `vue-loader`.
 
-## When nothing else works
+## Когда ничего больше не работает
 
-In very rare cases, like using legacy or third-party libraries, you may need to change webpack options that Styleguidist doesn’t allow you to change via `webpackConfig` options. In this case you can use [dangerouslyUpdateWebpackConfig](/Configuration.md#dangerouslyupdatewebpackconfig) option.
+В очень редких случаях, например, при использовании кондиционера или входе в библиотеку, вы можете изменить параметры веб-пакета, которые Styleguidist не позволяет изменять параметры с помощью `webpackConfig`. В этом случае вы можете использовать опцию [dangerousUpdateWebpackConfig](/Configuration.md#dangerousupdatewebpackconfig).
 
-> **Warning:** You are likely to break Vue styleguidist using these options, if you are not ready to spend the time, prefer the use of the `webpackConfig` option.
+> **Внимание:** с этими параметрами легко сломать Vue Styleguidist. Если нет явной необходимости, лучше использовать опцию `webpackConfig`.

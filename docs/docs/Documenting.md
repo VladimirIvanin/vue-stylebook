@@ -1,35 +1,35 @@
-# Documenting components
+# Документирование компонентов
 
-Vue styleguidist generates documentation for your components based on the comments in your source code declarations and Readme files.
+Vue Styleguidist генерирует документацию компонентов на основе комментариев в исходном коде и файлов Readme.
 
-> **Note:** [See examples](/Examples.md) of documented components in our demo style guide.
+> **Примечание**: [Посмотрите примеры](/Examples.md) задокументированных компонентов в демо Styleguidist.
 
-<!-- toc -->
+<!-- содержание -->
 
-- [Code comments](#code-comments)
-- [Available Tags](#available-tags)
-- [Events](#events)
-- [Slots](#slots)
-- [Include Mixins and Extends](#include-mixins-and-extends)
-- [Usage examples and Readme files](#usage-examples-and-readme-files)
+- [Комментарии к коду](#комментарии к коду)
+- [Доступные теги](#доступные-теги)
+- [События](#события)
+- [Слоты](#слоты)
+- [Миксины и extends](#миксины-и-extends)
+- [Примеры использования и файлы Readme](#примеры-использования-и-файлы-readme)
 - [Документация в MDX](#документация-в-mdx)
-- [Public methods](#public-methods)
-- [Ignoring props](#ignoring-props)
-- [Methods](#methods)
-- [Composable Components](#composable-components)
-- [TypeScript, Flow and Class-style Components](#typescript-flow-and-class-style-components)
+- [Публичные методы](#публичные-методы)
+- [Игнорирование пропсов](#игнорирование-пропсов)
+- [Методы](#методы)
+- [Составные компоненты](#составные-компоненты)
+- [Компоненты TypeScript, Flow и Class-style](#компоненты-typescript-flow-и-class-style)
 - [JSX](#jsx)
-- [Setup syntax](#setup-syntax)
-- [Writing code examples](#writing-code-examples)
-- [Importing examples](#importing-examples)
+- [Синтаксис setup](#синтаксис-setup)
+- [Написание примеров кода](#написание-примеров-кода)
+- [Импорт примеров](#импорт-примеров)
 
 <!-- tocstop -->
 
-## Code comments
+## Комментарии к коду
 
-Vue styleguidist will display the contents of your components' JSDoc comment blocks.
+Vue Styleguidist отобразит стандартные блоки комментариев JSDoc ваших компонентов.
 
-> **Note:** Components and documentation comments are parsed by default by the [vue-docgen-api](Docgen.md) library. You can change this behavior using [propsParser](/Configuration.md#propsparser) options.
+> **Примечание.** Компоненты и комментарии к документации по умолчанию анализируются библиотекой [vue-docgen-api](Docgen.md). Вы можете изменить это поведение, используя параметры [propsParser](/Configuration.md#propsparser).
 
 ```html
 <template>
@@ -74,9 +74,9 @@ Vue styleguidist will display the contents of your components' JSDoc comment blo
 </script>
 ```
 
-Note the use of the @displayName tag to change the displayed name of your component. This top-level comment block must come _before_ the `export default` in your script tag.
+Обратите внимание на использование тега @displayName для изменения отображаемого имени вашего компонента. Этот блок комментариев верхнего уровня должен располагаться _перед_ `export default` в теге скрипта.
 
-If you want to document a custom [v-model](https://vuejs.org/v2/guide/components.html#Customizing-Component-v-model), you have to add `model` tag in comment
+Если вы хотите задокументировать пользовательскую [v-model](https://vuejs.org/v2/guide/comComponents.html#Customizing-Component-v-model), вам необходимо добавить тег `model` в комментарий.
 
 ```html
 <script>
@@ -92,17 +92,17 @@ If you want to document a custom [v-model](https://vuejs.org/v2/guide/components
 </script>
 ```
 
-## Available Tags
+## Доступные теги
 
-You can use the following tags when documenting components, props and methods.
+Вы можете использовать следующие теги при документировании компонентов, пропсов и методов.
 
 ### @values
 
-A common pattern in VueJs components is to have a limited number of valid values for a prop.
+Распространенным шаблоном в компонентах Vue.js является наличие ограниченного набора допустимых значений пропса.
 
-For instance, `size` would only accept `small`, `medium` and `large`.
+Например, `size` будет принимать только `small`, `medium` и `large`.
 
-To document this in styleguidist, use the `@values` tag:
+Чтобы задокументировать это в Styleguidist, используйте тег `@values`:
 
 ```js
 export default = {
@@ -119,21 +119,21 @@ export default = {
 }
 ```
 
-See also:
+См. также:
 
-- [Live Example](https://vue-styleguidist.github.io/basic/#button)
+- [Живой пример](https://vue-styleguidist.github.io/basic/#button)
 
 ### @example
 
-Provide an example of how to use a documented item. The text that follows this tag will be displayed as highlighted code.
+Приведите пример того, как использовать документированный элемент. Текст, следующий за этим тегом, будет отображаться как выделенный код.
 
-See also:
+См. также:
 
-- This is a JSDoc tag: [@example](http://jsdoc.app/tags-example.html)
+- Это тег JSDoc: [@example](http://jsdoc.app/tags-example.html).
 
 ### @deprecated
 
-The @deprecated tag marks a symbol in your code as being deprecated:
+Тег `@deprecated` помечает сущность в коде как устаревшую:
 
 ```js
 /**
@@ -142,41 +142,41 @@ The @deprecated tag marks a symbol in your code as being deprecated:
  */
 ```
 
-See also:
+См. также:
 
-- [Live Example](https://vue-styleguidist.github.io/basic/#randombutton)
-- This is a JSDoc tag: [@deprecated](http://jsdoc.app/tags-deprecated.html)
+- [Живой пример](https://vue-styleguidist.github.io/basic/#randombutton)
+- Это тег JSDoc: [@deprecated](http://jsdoc.app/tags-deprecated.html).
 
 ### @see, @link
 
-- This is a JSDoc tag: [@see, @link](http://jsdoc.app/tags-see.html)
+- Это тег JSDoc: [@see, @link](http://jsdoc.app/tags-see.html).
 
 ### @author
 
-- This is a JSDoc tag: [@author](http://jsdoc.app/tags-author.html)
+- Это тег JSDoc: [@author](http://jsdoc.app/tags-author.html).
 
 ### @since
 
-- This is a JSDoc tag: [@since](http://jsdoc.app/tags-since.html)
+- Это тег JSDoc: [@since](http://jsdoc.app/tags-since.html).
 
 ### @version
 
-- This is a JSDoc tag: [@version](http://jsdoc.app/tags-version.html)
+- Это тег JSDoc: [@version](http://jsdoc.app/tags-version.html).
 
 ### @ignore
 
-By default, all props your components have are considered to be public and are published. In some rare cases, you might want to remove a prop from the documentation while keeping it in the code. The `@ignore` tag allows you to do this. See here for more:
+По умолчанию все свойства ваших компонентов считаются общедоступными и публикуются. В некоторых случаях вы можете удалить свойство из документации, сохранив его в коде. Тег `@ignore` позволяет это сделать. Подробнее см. здесь:
 
-- [Ignoring Props](#ignoring-props)
-- This is a JSDoc tag: [@ignore](http://jsdoc.app/tags-ignore.html)
+- [Игнорирование пропсов](#игнорирование-пропсов)
+- Это тег JSDoc: [@ignore](http://jsdoc.app/tags-ignore.html).
 
-## Events
+## События
 
-For events documentation, add a comment right above it. If your comment is at the start of the function, the event will not be picked up.
+Для документации о событиях добавьте комментарий прямо над ним. Если ваш комментарий находится в начале функции, событие не будет обнаружено.
 
-### In script block
+### В блоке скриптов
 
-If the event is explicitly specified, no need to tell styleguidist what it is.
+Если имя события указано явно, ничего дополнительно указывать не нужно.
 
 ```js
 /**
@@ -185,7 +185,7 @@ If the event is explicitly specified, no need to tell styleguidist what it is.
 this.$emit('success')
 ```
 
-Constants will be recognized too
+Константы также распознаются.
 
 ```js
 /**
@@ -195,7 +195,7 @@ const success = 'succ'
 this.$emit(success)
 ```
 
-If your event name comes from an object, precise the `@event` tag
+Если имя вашего события происходит от объекта, укажите тег `@event`.
 
 ```js
 /**
@@ -206,9 +206,9 @@ If your event name comes from an object, precise the `@event` tag
 this.$emit(EVENTS.success)
 ```
 
-If your event returns arguments/properties use the `@property` tag to describe them
+Если событие передает аргументы, используйте тег `@property` для их описания.
 
-> Use `@arg` or `@param` if you prefer
+> Используйте `@arg` или `@param`, если хотите.
 
 ```js
 /**
@@ -220,13 +220,13 @@ If your event returns arguments/properties use the `@property` tag to describe t
 this.$emit('change', newValue, oldValue)
 ```
 
-### In template
+### В шаблоне
 
-Events emitted directly in `v-on` expressions will be detected automatically. To document them further, in the template, add a comment above the line where the `$emit()` is called.
+События, созданные непосредственно в выражениях `v-on`, будут обнаружены автоматически. Чтобы документировать их дальше, в заголовке шаблона приводится над строкой, где появляется `$emit()`.
 
-The comment block containing the documentation needs to contain one line with `@event click`. The rest of the comment block will behave like the comment blocks described in the script.
+Блок комментариев, включенная документация, должен сохранять один текст с `@event click`. Остальная часть блока комментариев будет вести себя так же, как блоки комментариев, описанные в скрипте.
 
-`@property` to describe an argument and no tag at all to set the description of the event.
+`@property` для описания аргументов и вообще без тега для описания событий.
 
 ```html
 <div>
@@ -240,13 +240,13 @@ The comment block containing the documentation needs to contain one line with `@
 </div>
 ```
 
-## Slots
+## Слоты
 
-Static slots are automatically documented by styleguidist.
+Статические слоты автоматически документируются с помощью styleguidist.
 
-### In the template
+### В шаблоне
 
-To add a description, add a comment right before.
+Чтобы добавить описание, добавьте комментарий прямо перед этим.
 
 ```html
 <template>
@@ -265,9 +265,9 @@ To add a description, add a comment right before.
 </template>
 ```
 
-In addition to documenting the slots and giving them a description, you can document the bindings. They are documented like props or params using the keyword `@binding`,
+Помимо документирования слотов и их описания, вы можете документировать привязки. Они документируются как propы или параметры с использованием ключевого слова `@binding`,
 
-The format will then be
+Тогда формат будет
 
 ```html
 <!--
@@ -275,7 +275,7 @@ The format will then be
   -->
 ```
 
-example of a real documented slot
+пример реального задокументированного слота
 
 ```html
 <div slot-scope="row" class="list-item1">
@@ -289,22 +289,22 @@ example of a real documented slot
 </div>
 ```
 
-To get a bit deeper, check out the `ScopedSlot` component in the basic example. Read the [code](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/examples/basic/src/components/ScopedSlot/ScopedSlot.vue) and see how it is rendered in the [live example](https://vue-styleguidist.github.io/basic/#scopedslot)
+Чтобы углубиться, ознакомьтесь с компонентом `ScopedSlot` в базовом исходном коде. Прочтите [код](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/examples/basic/src/comComponents/ScopedSlot/ScopedSlot.vue) и прочтите, как он отображается в [живом примере](https://vue-styleguidist.github.io/basic/#scopedslot).
 
-> **Note:** The docblock must be part of the **same** comment block. Multiple individual comments do not get parsed together.
+> **Примечание.** Документационный блок должен быть частью **того же** блока комментариев. Несколько отдельных комментариев не анализируются вместе.
 
-> **Note 2:** From 4.44.0, you can use JS comments blocks if you choose to. The syntax is the same as in HTML. One constraint: the comment should be the only content of the interpolation:
+> **Примечание 2.** Начиная с версии 4.44.0 вы можете использовать блоки комментариев JS, если захотите. Синтаксис такой же, как в HTML. Одно ограничение: комментарий должен быть единственным содержимым интерполяции:
 >
-> - Valid comment: `{{/* @slot Menu Item footer */}}`
-> - Invalid comment: `{{ /* @slot Menu Item footer */ testVariable + 3 }}`.
+> - Действительный комментарий: `{{/* @slot Menu Item footer */}}`
+> - Неверный комментарий: `{{ /* @slot Menu Item footer */ testVariable + 3 }}`.
 
-### In a render function
+### В функции рендеринга
 
-If your component is rendered using jsx, tsx or is using the render function styleguidist will still try to detect your slots.
+Если ваш компонент визуализируется с использованием jsx, tsx или функции рендеринга, styleguidist все равно будет отображать ваши слоты.
 
-Here are two examples that are detected and documented:
+Вот два примера, которые были обнаружены и задокументированы:
 
-Detect a default slot
+Определить слот по умолчанию
 
 ```js
 export default {
@@ -322,7 +322,7 @@ export default {
 }
 ```
 
-In a functional component:
+В функциональном компоненте:
 
 ```js
 export default {
@@ -334,7 +334,7 @@ export default {
 }
 ```
 
-If vue-styleguidist does not detect your slots, you can explicitly tell it with a comment block before the render function:
+Если Vue Styleguidist не обнаруживает ваши слоты, вы можете явно сообщить об этом с помощью блока комментариев перед рендер-функцией:
 
 ```js
 export default {
@@ -351,7 +351,7 @@ export default {
 }
 ```
 
-If you have multiple slots, place multiple blocks one after another:
+Если у вас несколько слотов, размещайте несколько блоков один за другим:
 
 ```js
 export default {
@@ -367,45 +367,45 @@ export default {
 }
 ```
 
-## Include Mixins and Extends
+## Включить миксины и расширения
 
-If you import a [mixin](https://vuejs.org/v2/guide/mixins.html) or [extends](https://vuejs.org/v2/api/#extends) it will automatically be added to your main component
+Если вы импортируете [mixin](https://vuejs.org/v2/guide/mixins.html) или [extends](https://vuejs.org/v2/api/#extends), он будет автоматически добавлен в ваш основной компонент.
 
-## Usage examples and Readme files
+## Примеры использования и файлы Readme
 
-Vue styleguidist will look for any `Readme.md` or `ComponentName.md` files in the component's folder and display them. Any code block with a language tag of `vue`, `js`, `jsx`, `javascript` or `html` will be rendered as a Vue component with an interactive playground.
+Vue Styleguidist будет искать любые файлы `Readme.md` или `ComponentName.md` в компоненте компонента и отображать их. Любой блок кода с языковым тегом `vue`, `js`, `jsx`, `javascript` или `html` будет PHP как компонент Vue с интерактивной игровой площадкой.
 
-Начиная с поддержки MDX, Vue Styleguidist по умолчанию также ищет `Readme.mdx` и `ComponentName.mdx`.
+Благодаря поддержке MDX, Vue Styleguidist по умолчанию также ищет `Readme.mdx` и `ComponentName.mdx`.
 
-If you want to ignore the readme file for one component, use the `@example [none]` doclet. Use this when multiple components in the same folder share a `ReadMe` file. This will prevent the examples from being rendered multiple times.
+Если вам нужен файл readme для одного компонента, используйте документ `@example [none]`. Используйте это, когда несколько компонентов в одном экземпляре совместно используют файл `ReadMe`. Это собственное многократное применение.
 
-    Vue component example:
+Пример компонента Vue:
 
     ```jsx
         <Button size="large">Push Me</Button>
     ```
 
-    One more with generic code fence:
+    Еще один с общим забором кода:
 
     ```
     <Button size="large">Push Me</Button>
     ```
 
-    You can disable an editor by passing a `noeditor` modifier:
+Вы можете включить редактор, передав модификатор `noeditor`:
 
     ```jsx noeditor
     <Button>Push Me</Button>
     ```
 
-    To render an example as highlighted source code add a `static` modifier:
+Чтобы отобразить пример выделенного исходного кода, модификатора страниц `static`:
 
     ```jsx static
     <Button>Push Me</Button>
     ```
 
-    You can also initialize vue to construct more complex examples in two ways:
+Вы также можете реализовать идею vue для создания более сложных примеров двух методов:
 
-    1. Create a new Vue instance
+1. Создать новый экземпляр Vue
 
     ```js
     const names = require('dog-names').all;
@@ -424,7 +424,7 @@ If you want to ignore the readme file for one component, use the `@example [none
     })
     ```
 
-    2. Single-file components with a language tag of vue (supports <style scoped>)
+2. Однофайловые компоненты с языковым тегом vue (поддерживает <style sced>)
 
     ```vue
       <template>
@@ -462,33 +462,31 @@ If you want to ignore the readme file for one component, use the `@example [none
       </style>
     ```
 
-    Examples with all other languages are rendered only as highlighted source code, not an actual component:
+    Примеры на всех других языках отображаются только как выделенный исходный код, а не как реальный компонент:
 
     ```html
     <Button size="large">Push Me</Button>
     ```
 
-    Any [Markdown](http://daringfireball.net/projects/markdown/) is **allowed** _here_.
+Любой [Markdown](http://daringfireball.net/projects/markdown/) **разрешён** _здесь_.
 
-> **Note:** You can configure examples file name with the [getExampleFilename](/Configuration.md#getexamplefilename) option.
+> **Примечание.** Вы можете настроить пример имени файла с помощью параметра [getExampleFilename](/Configuration.md#getexamplefilename).
 
 ## Документация в MDX
 
-Vue Styleguidist поддерживает `.mdx` для контента секций и примеров компонентов.
+Vue Styleguidist поддерживает `.mdx` для разделения контента и примеров компонентов.
 
-- Используйте MDX, когда нужен markdown + JSX/ESM в одном документе.
-- Блоки Storybook (`Meta`, `Canvas`, `Story`, `Source`) поддерживаются через слой совместимости.
-- Существующие markdown-файлы остаются полностью рабочими.
+- Используйте MDX, когда нужен Markdown + JSX/ESM в одном документе. Блоки Storybook (`Meta`, `Canvas`, `Story`, `Source`) применяются через классы совместимости. Существующие Markdown-файлы продолжают работать без изменений.
 
 Полный гайд: [MDX](/docs/MDX.md).
 
-You can also add the [custom block](https://vue-loader.vuejs.org/en/configurations/custom-blocks.html) `<docs></docs>` inside `*.vue` files, so that vue styleguidist builds the readme. You can review the following [example](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/examples/basic/src/components/Radio/Radio.vue#L20)
+Вы также можете добавить [пользовательский блок](https://vue-loader.vuejs.org/en/configurations/custom-blocks.html) `<docs></docs>` внутренние файлы `*.vue`, чтобы Vue Styleguidist создал файл readme. Вы можете просмотреть следующий [пример] (https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/examples/basic/src/comComponents/Radio/Radio.vue#L20)
 
-### External examples using doclet tags
+### Внешние примеры с использованием тегов doclet
 
-Additional example files can be associated with components using `@example` doclet syntax.
+Дополнительные файлы можно использовать с компонентами с помощью синтаксиса doclet `@example`.
 
-The following component will also have an example loaded from the `extra.examples.md` file:
+Следующий компонент также будет иметь пример, загруженный из файла `extra.examples.md`:
 
 ```js
 /**
@@ -502,11 +500,11 @@ export default {
 }
 ```
 
-> **Note:** You’ll need a regular example file (like `Readme.md`) too when [skipComponentsWithoutExample](/Configuration.md#skipcomponentswithoutexample) is `true`.
+> **Примечание.** Вам также понадобится обычный файл (например, `Readme.md`), если [skipComponentsWithoutExample](/Configuration.md#skipcomComponentswithoutexample) имеет значение `true`.
 
-### Ignore examples files
+### Игнорировать файлы примеров
 
-The `@examples` doclet can also be used to ignore the connected `ReadMe` file. Use it to avoid rendering examples multiple times.
+Доклетку `@examples` также можно использовать для игнорирования подключенного файла `ReadMe`. Используйте его, чтобы избежать повторного рендеринга примеров.
 
 ```js
 /**
@@ -520,9 +518,9 @@ export default {
 }
 ```
 
-## Public methods
+## Публичные методы
 
-By default, any methods your components have are considered to be private and are not published. Mark your public methods with JSDoc [`@public`](http://jsdoc.app/tags-public.html) tag to get them published in the docs:
+По умолчанию любые методы ваших компонентов, включая частные, не публикуются. Порекомендуйте свои общедоступные методы тегом JSDoc [__IC_0__](http://jsdoc.app/tags-public.html), чтобы опубликовать их в документации:
 
 ```javascript
 /**
@@ -536,9 +534,9 @@ insertAtCursor(text) {
 }
 ```
 
-## Ignoring props
+## Игнорирование пропсов
 
-By default, all props your components have are considered to be public and are published. In some rare cases, you might want to remove a prop from the documentation while keeping it in the code. To do so, mark the prop with JSDoc [`@ignore`](http://jsdoc.app/tags-ignore.html) tag to remove it from the docs:
+По умолчанию все свойства ваших компонентов считаются общедоступными и публикуются. В некоторых случаях вы можете удалить свойство из документации, сохранив его в коде. Для этого из примера объектного тега JSDoc [__IC_0__](http://jsdoc.app/tags-ignore.html) удалите его из документации:
 
 ```javascript
   props: {
@@ -551,11 +549,11 @@ By default, all props your components have are considered to be public and are p
     }
 ```
 
-### displayName
+### отображаемое имя
 
-In addition to those tags, you can use `@displayName` to change the name displayed in your style guide. Know that since it's visual name has changed, it's calling name is now The letters of it, without space or punctuation.
+В дополнении к этим тегам вы можете использовать `@displayName`, чтобы изменить имя, отображаемое в вашем руководстве по стилю. Знайте, что, поскольку его визуальное имя изменилось, его имя теперь состоит из букв без пробелов и знаков препинания.
 
-For instance, if the display name is set as
+Например, если отображаемое имя установлено как
 
 ```js
 /**
@@ -563,27 +561,27 @@ For instance, if the display name is set as
  **/
 ```
 
-To reference it in examples, one has to call `<WonderfulButton/>`. See to [How to use component name in docs with a different displayName](./Cookbook.md#how-to-use-component-name-in-docs-with-a-different-displayname)
+Чтобы ссылаться на него в примерах, нужно вызвать `<WonderfulButton/>`. См. [Как использовать имя компонента в документах с другим отображаемым именем](./Cookbook.md#how-to-use-comComponent-name-in-docs-with-a- Different-displayname)
 
-## Methods
+## Методы
 
-When documenting methods you can also use:
+При документировании методов вы также можете использовать:
 
 - [@param, @arg, @argument](http://jsdoc.app/tags-param.html)
 
-Documenting events:
+Документирование событий:
 
 - [@event](http://jsdoc.app/tags-event.html)
 
-Documenting v-model:
+Документирование v-модели:
 
-- @model
+- @модель
 
-Tags can even render Markdown.
+Теги могут даже отображать Markdown.
 
 - [@public](http://jsdoc.app/tags-public.html)
 
-You can mark your public methods with JSDoc `@public` tag to get them published in the docs.
+Вы можете пометить свои общедоступные методы тегом JSDoc `@public`, чтобы опубликовать их в документации.
 
 ```html
 <template>
@@ -653,11 +651,11 @@ You can mark your public methods with JSDoc `@public` tag to get them published 
 </script>
 ```
 
-## Composable Components
+## Сборные компоненты
 
-When a component is a list or a table it is easier to write it using a composition API.
+Если компонент представляет собой список или таблицу, его проще написать с помощью API композиции.
 
-For example, a dropdown element would be easier to read this way
+Например, выпадающий элемент будет легче читать таким образом.
 
 ```html
 <DropDown>
@@ -666,7 +664,7 @@ For example, a dropdown element would be easier to read this way
 </DropDown>
 ```
 
-than with a prop
+чем с propом
 
 ```html
 <DropDown
@@ -674,11 +672,11 @@ than with a prop
 />
 ```
 
-Here is how Vue Styleguidist helps document this pattern: Add a `@requires` doclet to the main component to signify what components documentation to include in the same page. In every example, the extra component will be automatically registered the same way the main component already is.
+Вот как Vue Styleguidist помогает создать этот шаблон: В каждом документе, источник дополнительного компонента, будет автоматически зарегистрирован так же, как и основной компонент.
 
-### Example
+### Пример
 
-In the previous example we have a `DropDown` component that requires a `Choice` component to render properly. Here is what the component `DropDown.vue` should look like.
+В предыдущем примере у нас есть компонент `DropDown`, для логической визуализации которого требуется компонент `Choice`. Вот как должен выглядеть компонент `DropDown.vue`.
 
 ```vue
 <template>
@@ -697,11 +695,11 @@ export default {
 </script>
 ```
 
-> **NOTE:** Now `Choice` will be documented **only** as a part of `DropDown`. It will not have its own page or its own examples. Its props will be displayed with `DropDown`s, and it will be made available in `DropDown`s examples.
+> **ПРИМЕЧАНИЕ.** Теперь `Choice` будет документироваться **только** как часть `DropDown`. У него не будет ни своей страницы, ни приведенных примеров. Его propы будут использоваться с помощью `DropDown`s и будут доступны в примерах `DropDown`s.
 
-## TypeScript, Flow and Class-style Components
+## TypeScript, компоненты потока и класса
 
-Vue Styleguidist understands TypeScript & Flow annotations. Write components in a typed language, types are documented automatically. It is compatible with class style components as well, with or without TypeScript.
+Vue Styleguidist понимает аннотации TypeScript и Flow. Пишите компоненты на типизированном языке, типы автоматически документируются. Он также совместим с компонентами стиля, с TypeScript или без него.
 
 ```ts
 import { Component, Prop, Vue } from 'vue-property-decorator'
@@ -747,11 +745,11 @@ export default class MyComponent extends Vue {
 }
 ```
 
-Notice how `onClick` parameter `a` does not need type documentation.
+Обратите внимание, что параметр `onClick` `a` не требует документации типа.
 
 ## JSX
 
-vue styleguidist understands JSX component templates too. In this example, it will display the definition of the found slot.
+Vue Styleguidist также понимает шаблоны компонентов JSX. В этом примере будет преобразовано определение найденного слота.
 
 ```jsx
 export default {
@@ -767,17 +765,17 @@ export default {
 }
 ```
 
-## Setup syntax
+## Синтаксис настройки
 
-In vue 3, VueJs introduced the [setup syntax](https://v3.vuejs.org/api/sfc-script-setup.html). This greatly helps readability of components. It also makes a much more performant TypeScript type checking.
+В Vue 3 появился [синтаксис setup](https://v3.vuejs.org/api/sfc-script-setup.html). Он заметно повышает читаемость компонентов и улучшает типизацию в TypeScript.
 
-From version 4.44.0, Vue Styleguidist allows to document the props & events defined with this syntax.
+Начиная с версии 4.44.0, Vue Styleguidist позволяет документировать propы и события, настроенные с помощью этого синтаксиса.
 
-From version 4.56.2, Vue Styleguidist allows the exposed variables from your components
+Начиная с версии 4.56.2, Vue Styleguidist позволяет использовать открытые переменные из ваших компонентов.
 
-### Props
+### Реквизит
 
-In JavaScript, add a comment above the property in the object passed to `defineProps()`. In this comment, use the same principle as regular syntax Props.
+В статье JavaScript-комментарий к свойству объекта, переданному в `defineProps()`. В этих комментариях использовался тот же принцип, что и в обычном синтаксисе Props.
 
 ```js
 defineProps({
@@ -792,7 +790,7 @@ defineProps({
 })
 ```
 
-The same goes for TypeScript components:
+То же самое касается большинства компонентов TypeScript:
 
 ```ts
 defineProps<{
@@ -808,9 +806,9 @@ defineProps<{
 }>()
 ```
 
-### Events
+### События
 
-Events are all defined using the `defineEmits()` function. Document them in comments before your events entries.
+Все события развиваются с помощью функции `defineEmits()`. Документируйте их в комментариях перед записями о мероприятиях.
 
 ```js
 const emit = defineEmits({
@@ -829,7 +827,7 @@ const emit = defineEmits({
 })
 ```
 
-and in TypeScript
+и в TypeScript
 
 ```ts
 interface Format {
@@ -850,11 +848,11 @@ const emit = defineEmits<{
 }>()
 ```
 
-> **NOTE:** Remember to document complex argument types in the comment above the event. Docgen does not parse types and will only display their names.
+> **ПРИМЕЧАНИЕ.** Не забудьте привести сложные аргументы в комментариях к событию. Документ не анализирует типы и отображает только их имена.
 
-### Exposed properties
+### Открытые свойства
 
-properties are all exposed using the `defineExpose()` function. Document them in comments before your properties entries.
+все свойства реализуются с помощью функции `defineExpose()`. Документируйте их в комментариях перед записями свойств.
 
 ```js
 const emit = defineExpose({
@@ -868,9 +866,9 @@ const emit = defineExpose({
 })
 ```
 
-## Writing code examples
+## Написание примеров кода
 
-Code examples in Markdown use the ES6 syntax. They can access all the components of your style guide using global variables:
+Примеры кода в Markdown используют синтаксис ES6. Они могут получить доступ ко всем компонентам вашего управления по стилю, используя глобальные переменные:
 
 ```jsx
 <Panel>
@@ -881,35 +879,33 @@ Code examples in Markdown use the ES6 syntax. They can access all the components
 </Panel>
 ```
 
-> **Note:** Vue styleguidist uses [Bublé](https://buble.surge.sh/guide/) to run ES6 code on the frontend, it supports [most of the ES6 features](https://buble.surge.sh/guide/#unsupported-features).
+> **Примечание.** Vue Styleguidist использует [Bublé](https://buble.surge.sh/guide/) для запуска кода ES6 во внешнем интерфейсе. Он поддерживает [большинство функций ES6](https://buble.surge.sh/guide/#unsupported-features).
 
-You can also `import` other modules (e.g. mock data that you use in your unit tests) from examples in Markdown:
+Вы также можете `import` другие модули (например, макеты данных, которые вы используете в своих модульных тестах) из примеров в Markdown:
 
 ```jsx
 const mockData = require('./mocks');
 <Message :content="mockData.hello" />
 ```
 
-> **Note:** If you need a more complex demo, define it in a separate JavaScript file and `import` it in Markdown. If the component file is in the same folder as the markdown, write `import { myExample as exam } from './myExample';` You can then use this imported setup object in your examples. Note that the code for the setup will not appear in the documentation.
->
-> ```jsx
+> **Примечание.** Если вам нужна более сложная демонстрация, определите ее в отдельном файле JavaScript и `import` в Markdown. Если файл компонента находится рядом с Markdown-документацией, используйте `import { myExample as exam } from './myExample';`. Затем этот импорт можно использовать в примерах. Обратите внимание, что код инициализации не будет включен в документацию. >
+```jsx
 > import { myExample as Button } from './myExample'
 > ;<div>
 >   <Button />
 > </div>
 > ```
 
-> **Note** If you prefer to use JSX in your examples, use the [jsxInExample](/Configuration.md#jsxInExamples) option in your `styleguide.config.js`. Using this option will force you to use proper Vue format for your examples. No more pseudo-JSX code.
+> **Примечание** Если вы предпочитаете использовать JSX в своих примерах, воспользуйтесь параметром [jsxInExample](/Configuration.md#jsxInExamples) в вашем `styleguide.config.js`. Использование этой опции заставит вас использовать подходящий формат Vue для ваших примеров. Больше никакого псевдо-JSX-кода. >
+Это не будет работать с параметром [jsxInExample](Configuration.md#jsxInExamples).
 >
-> This would not work with the [jsxInExample](Configuration.md#jsxInExamples) option
->
-> ```jsx
+```jsx
 > <Button />
 > ```
 >
-> ...while this would be valid
+... хотя это было бы справедливо
 >
-> ```jsx
+```jsx
 > export default {
 >   render() {
 >     return <Button />
@@ -917,18 +913,18 @@ const mockData = require('./mocks');
 > }
 > ```
 
-## Importing examples
+## Импорт примеров
 
-To make autocomplete and syntax highlighting practical, one can as well import examples from external files. In the following example `./myExample.vue` will be used as an example.
+Чтобы сделать автозаполнение и подсветку синтаксиса практичными, можно также импортировать примеры из внешних файлов. В следующем примере `./myExample.vue` будет использоваться в аналогичном примере.
 
 ````markdown
 ```[import](./myExample.vue)
-Text typed here will be entirely ignored. You can use it to describe the example imported for maintenance purposes
+Набранный здесь текст будет полностью проигнорирован. Вы можете использовать его для описания примера, импортированного для целей обслуживания.
 ```
 ````
 
-> **Note** This option DOES NOT replace automatically examples code with `vue-docgen-cli`. Since the rendering engine is only copying the contents of the markdown without parsing it, the CLI can't know what content to replace.
+> **Примечание** Эта опция НЕ заменяет автоматически примеры кода в `vue-docgen-cli`. Поскольку механизм рендеринга просто копирует содержимое Markdown, CLI не может определить, какие примеры нужно заменять.
 
-> **Note** No need to specify the language as it will be inferred from the name of the file
+> **Примечание** Не нужно указывать язык, поскольку он будет указан из названия файла.
 
-> **Note** All flags described [here](#usage-examples-and-readme-files) can still be used
+> **Примечание** Все флаги, описанные [here](#usage-examples-and-readme-files), по-прежнему можно использовать.

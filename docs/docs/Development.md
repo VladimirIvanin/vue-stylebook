@@ -1,8 +1,8 @@
-# Developer Guide
+# Руководство разработчика
 
-> Vue Styleguidist created from [React Styleguidist](https://github.com/styleguidist/react-styleguidist), implement additional support to read and compile .vue files.
+> Vue Styleguidist, созданный на основе [React Styleguidist](https://github.com/styleguidist/react-styleguidist), обеспечивает дополнительную поддержку для чтения и компиляции файлов .vue.
 
-<!-- toc -->
+<!-- содержание -->
 
 - [How it works](#how-it-works)
 - [Webpack loaders and Webpack configuration](#webpack-loaders-and-webpack-configuration)
@@ -12,45 +12,45 @@
 
 <!-- tocstop -->
 
-Styleguidist isn’t an ordinary single-page app and some design decisions may look confusing to an outsider. In this guide, we’ll explain these decisions to un-confuse potential contributors.
+Styleguided — это не обычное одностраничное приложение, и некоторые дизайнерские решения могут показаться постороннему человеку запутанными. В этом руководстве мы объяснили эти решения, чтобы не запутать представителей.
 
-The main thing is that we’re running two apps at the same time: user’s components and Styleguidist UI. They share a Webpack configuration and have styles in the same scope (there’s only one scope in CSS). And we can control only one of these two apps: Styleguidist UI. That puts us under some restrictions:
+Главное приложение мы запускаем два раза одновременно: пользовательские компоненты и пользовательский интерфейс Styleguidist. Мы используем Webpack конфигурации и стили в одной области действия (в CSS только одну область действия). И мы можем управлять только одним из этих двух приложений: пользовательским интерфейсом Styleguidist. Это накладывает на нас некоторые ограничения:
 
-- Our styles should not affect user component styles.
-- User styles (especially global like Bootstrap) should not affect Styleguidist UI.
-- `body` styles (like `font-family`) should affect user components as the user expects but not Styleguidist UI.
+- Наши стили не должны влиять на основные компоненты стилей.
+- Пользовательские стили (особенно глобальные, такие как Bootstrap) не должны влиять на пользовательский интерфейс Styleguidist.
+- Стили `body` (например, `font-family`) должны влиять на пользовательские компоненты так, как ожидает пользователь, но не на пользовательский интерфейс Styleguidist.
 
-## How it works
+## Как это работает
 
-Vue Styleguidist uses [vue-docgen-api](Docgen.md) to parse _source_ files (not transpiled). vue-docgen-api finds exported Vue components and generates documentation.
+Vue Styleguidist использует [vue-docgen-api](Docgen.md) для анализа файлов _source_ (нетранспилируемых). vue-docgen-api находит экспортированные компоненты Vue и следующую документацию.
 
-Styleguidist uses Markdown for documentation: each JavaScript code block is rendered as an interactive playground with [CodeMirror](http://codemirror.net/). To do that we extract all these code blocks using [Remark](http://remark.js.org/).
+Styleguidist использует Markdown для документации: каждый блок кода JavaScript отображается как интерактивная игровая площадка с [CodeMirror](http://codemirror.net/). Для этого мы извлекаем все эти блоки кода, используя [Remark](http://remark.js.org/).
 
-Webpack loaders (see below) generate JavaScript modules. In each of these modules, each component specified by the user is parsed with their documentation and examples. The whole module is then passed to a React app which renders the style guide.
+Загрузчики Webpack (см. ниже) генерируют модули JavaScript. В каждом из этих модулей каждый компонент, указанный пользователем, анализируется вместе с его документацией и примерами. Затем весь модуль в приложении React, который отображает руководство по стилю.
 
-## Webpack loaders and Webpack configuration
+## Загрузчики Webpack и изменения Webpack
 
-We use Webpack loaders to hot reload the style guide on changes in user components, styles, and Markdown documentation. We have three loaders ([loaders](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-styleguidist/loaders) folder):
+Мы используем загрузчики Webpack для горячей перезагрузки в соответствии с изменениями стилей компонентов, стилей и документации Markdown. У нас есть три загрузчика (папка [loaders](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-styleguidist/loaders)):
 
-- `styleguide-loader`: loads components and sections;
-- `vuedoc-loader`: loads props documentation using [vue-docgen-api](Docgen.md);
-- `examples-loader`: loads examples from Markdown files;
+- `styleguide-loader`: загружает компоненты и разделы;
+- `vuedoc-loader`: загружает документацию по реквизитам, с помощью [vue-docgen-api](Docgen.md);
+- `examples-loader`: загружает файлы из файлов Markdown;
 
-There are two more loaders — `css-loader` and `styles-loader`. They are one-line aliases to corresponding Webpack loaders. We don’t want to rely on a Webpack loader resolver because its behavior can be changed by the user’s Webpack config (Create React App does that for example). This way we can bypass Webpack resolver and use Node resolver instead. These loaders are used like this:
+Есть еще два загрузчика — `css-loader` и `styles-loader`. Это однострочные псевдонимы соответствующих загрузчиков Webpack. Мы не надеемся на преобразователь загрузчика Webpack, поскольку его поведение может быть изменено пользовательской конфигурацией Webpack (например, это создаёт приложение React). Таким образом, мы можем обойти преобразователь Webpack и вместо этого использовать преобразователь Node. Эти загрузчики обращались следующим образом:
 
 ```js
 require('!!../../../loaders/style-loader!../../../loaders/css-loader!codemirror/lib/codemirror.css')
 ```
 
-`!!` prefix tells Webpack not to use any other loaders that may be listed in a Webpack configuration to load this module. This ensures that the user’s Webpack configuration won’t affect Styleguidist.
+Префикс `!!` сообщает, что Webpack не использует другие загрузчики, которые могут быть указаны в конфигурации Webpack, для загрузки этого модуля. Это означает, что изменение пользователя Webpack не влияет на Styleguidist.
 
-Styleguidist tries to load and reuse a user’s Webpack config (`webpack.config.js` in the project root folder). It works most of the time but has some restrictions: Styleguidist [ignores](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/scripts/utils/mergeWebpackConfig.js) some fields and plugins because they are already included (like `webpack.HotModuleReplacementPlugin`), don’t make sense for a style guide (like `output`) or may break Styleguidist (like `entry`).
+Styleguidist загрузите и повторно используйте конфигурацию пользователя Webpack (`webpack.config.js` в корневой папке проекта). В большинстве случаев он работает, но имеет некоторые ограничения: Styleguidist [игнорирует](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/scripts/utils/mergeWebpackConfig.js), некоторые поля и плагины, поскольку они уже включены (например, `webpack.HotModuleReplacementPlugin`), не имеют смысла для управления стилями (например, `output`) или могут сломать Styleguidist (например, `entry`).
 
-We’re trying to keep Styleguidist’s own [Webpack config](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/scripts/make-webpack-config.js) minimal to reduce clashes with user’s configuration.
+Мы сохраняем собственную [конфигурацию Webpack] Styleguidist (https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/scripts/make-webpack-config.js) минимально, чтобы уменьшить конфликты с конфигурацией пользователя.
 
-## React components
+## Компоненты реагирования
 
-Most of StyleGuidist UI components consist of two parts: `Foo/Foo.js` that contains all logic and `Foo/FooRenderer.js` that contains all markup and styles. This allows users to customize rendering by overriding `*Renderer` component using webpack aliases (or [styleguideComponents](/Configuration.md#styleguidecomponents) config option):
+Большинство компонентов пользовательского интерфейса StyleGuidist состоят из двух частей: `Foo/Foo.js`, который содержит всю логику, и `Foo/FooRenderer.js`, который содержит всю разметку и стили. Это позволяет пользователям настраивать рендеринг, переопределяя компонент `*Renderer` с псевдонимами веб-пакета (или с помощью параметра конфигурации [styleguideComponents](/Configuration.md#styleguidecomponents)):
 
 ```js
 // styleguide.config.js
@@ -69,22 +69,22 @@ module.exports = {
 }
 ```
 
-All Styleguidist components should be imported like this: `import Foo from 'rsg-components/Foo'` to make aliases work.
+Все компоненты Styleguidist должны быть импортированы следующим образом: `import Foo from 'rsg-components/Foo'`, чтобы псевдонимы работали.
 
-Each component folder usually has several files:
+В каждой папке компонента обычно имеется несколько файлов:
 
-- `Foo/Foo.js` (optional for litteral components);
+- `Foo/Foo.js` (необязательно для буквенных компонентов);
 - `Foo/FooRenderer.js`;
-- `Foo/Foo.spec.js` — tests;
-- `Foo/index.js` — reexport of `Foo.js` or `FooRenderer.js`.
+- `Foo/Foo.spec.js` — тесты;
+- `Foo/index.js` — реэкспорт `Foo.js` или `FooRenderer.js`.
 
-## Styles
+## Стили
 
-For styles we use [JSS](http://cssinjs.org/), it allows users to customize their style guide and allows us to ensure styles isolations (thanks to [jss-plugin-isolate](http://cssinjs.org/jss-plugin-isolate/)). No user styles should affect Styleguidist UI and no Styleguidist styles should affect user components.
+Для стиля, который мы используем [JSS](http://cssinjs.org/), он позволяет пользователям настраивать руководство по стилю и обеспечивает изоляцию стиля (спасибо [jss-plugin-isolate](http://cssinjs.org/jss-plugin-isolate/)). Никакие пользовательские стили не должны влиять на пользовательский интерфейс Styleguidist, а стили Styleguidist не должны влиять на пользовательские компоненты.
 
-Use [classnames](https://github.com/JedWatson/classnames) to merge several class names or for conditional class names, import it as `cx` (`import cx from 'classnames'`).
+Используйте [classnames](https://github.com/JedWatson/classnames), чтобы создать несколько имен классов или для условных имен классов, импортируйте их как `cx` (`import cx from 'classnames'`).
 
-We use `Styled` higher-order component to allow theming (see [theme](/Configuration.md#theme) and [style](/Configuration.md#style) style guide config options). Use it like this:
+Мы используем компонент более высокого порядка `Styled`, чтобы разрешить использование темы (см. параметры конфигурации управления по стилю [theme](/Configuration.md#theme) и [style](/Configuration.md#style)). Используйте это следующим образом:
 
 ```jsx
 import React from 'react'
@@ -109,34 +109,34 @@ export function ExamplePlaceholderRenderer({ classes }) {
 }
 ```
 
-Check available theme variables in [src/styles/theme.js](https://github.com/styleguidist/react-styleguidist/blob/master/src/styles/theme.js).
+Проверьте доступные переменные темы в [src/styles/theme.js](https://github.com/styleguidist/react-styleguidist/blob/master/src/styles/theme.js).
 
-Because of isolation and theme, you need to explicitly declare `fontFamily`, `fontSize` and `color`. Add `isolate: false` to your hover styles, otherwise, you’ll have to repeat base non-hover styles.
+Из-за открытия и темы вам необходимо явно объявить `fontFamily`, `fontSize` и `color`. Добавьте `isolate: false` в стили на выведения, иначе вам пригодятся базовые стили без наведения.
 
-## Render vue components
+## Рендеринг компонентов Vue
 
-To render vue components, styleguidist uses the [Preview.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/src/rsg-components/Preview/Preview.js) React component.
+Для рендеринга компонентов Vue Styleguidist использует компоненты React [Preview.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/src/rsg-comComponents/Preview/Preview.js).
 
-As soon as users open the page, Preview is mounted.
+Как только пользователи открывают страницу, монтируется предварительный просмотр.
 
-The function rendering examples when codemirror updates is `executeCode()`.
+Примеры функции рендеринга при обновлении codemirror — `executeCode()`.
 
-### Separate script from template
+### Отделить скрипт от шаблона
 
-First, we extract any JavaScript from it by doing this:
+Сначала мы извлекли из него весь JavaScript, выполнив следующие действия:
 
-- if it contains `new Vue` return the contents as a script
-- if it is a single file component extract template and script and compile the script
-- else look at the first line that starts with a `<` then everything that is before it is js and the rest will be HTML
+- если он содержит `new Vue`, преобразуйте традицию как скрипт
+- если это один файловый компонент, извлеките шаблон и скрипт и скомпилируйте скрипт.
+- еще прочтите первый текст, который начинается с `<`, тогда все, что перед ней, — js, а остальное — HTML.
 
-### Prepare code
+### Подготовьте код
 
-The scripts are transformed from es6 or jsx to es5 using buble. The names of the variables that are declared in the global scope are extracted since they cannot be used in an eval. The code is then wrapped in a `getConfig` function.
+Скрипты преобразуются из es6 или jsx в es5 с помощью Buble. Имена целей, объявленных в глобальном масштабе, извлекаются, поскольку их невозможно использовать при затратах. Затем код обрабатывается с понижением `getConfig`.
 
-### Render example
+### Пример рендеринга
 
-First, make sure that the mount point is ready and save it in a variable Second prepare the component by executing the function created above `exampleComponent()` And finally instantiate vue to mount our made up component in the mounting point
+Во-первых, убедитесь, что точка монтирования готова, и сохраните ее в переменном состоянии. Во-вторых, подготовьте компонент, выполнив функцию, созданную выше `exampleComponent()`. И, наконец, создайте экземпляр vue для монтирования нашего компонентного компонента в точку монтирования.
 
-### Hot Reload
+### Горячая перезагрузка
 
-To enable hot reloading even when the site is compiled, we need to keep the root of the `Preview` component unchanged. We instead will play with whatever is inside this root. At unmount, when the `Preview` component is Reloaded, we clear the vue instance to place a new one: `unmountPreview()`.
+Чтобы включить горячую перезагрузку даже при компиляции сайта, нам необходимо оставить основной компонент `Preview` неизменным. Вместо этого мы будем играть со всем, что находится внутри этого дома. При размонтировании, когда компонент `Preview` перезагружается, мы очищаем экземпляр vue, чтобы создать новую ссылку: `unmountPreview()`.

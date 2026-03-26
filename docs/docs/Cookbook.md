@@ -1,35 +1,35 @@
-# Cookbook
+# Практические сценарии
 
-<!-- toc -->
+<!-- содержание -->
 
-- [How to add third-party plugins to the style guide?](#how-to-add-third-party-plugins-to-the-style-guide)
-- [How to add vuex to the style guide?](#how-to-add-vuex-to-the-style-guide)
-- [How to add dummy data to the style guide?](#how-to-add-dummy-data-to-the-style-guide)
-- [How to exclude some components from the style guide?](#how-to-exclude-some-components-from-the-style-guide)
-- [How to hide some components in a style guide but make them available in examples?](#how-to-hide-some-components-in-a-style-guide-but-make-them-available-in-examples)
-- [How to add custom JavaScript and CSS or polyfills?](#how-to-add-custom-javascript-and-css-or-polyfills)
-- [How to change styles of a style guide?](#how-to-change-styles-of-a-style-guide)
-- [How to change style guide dev server logs output?](#how-to-change-style-guide-dev-server-logs-output)
-- [How to debug my components and examples?](#how-to-debug-my-components-and-examples)
-- [How to debug the exceptions thrown from my components?](#how-to-debug-the-exceptions-thrown-from-my-components)
-- [How to use Vagrant with Styleguidist?](#how-to-use-vagrant-with-styleguidist)
-- [How to document styled-components?](#how-to-document-styled-components)
-- [Use vue-styleguidist with components that contain routing](#use-vue-styleguidist-with-components-that-contain-routing)
-- [How to include FontAwesome (or other icon sets) in your style guide](#how-to-include-fontawesome-or-other-icon-sets-in-your-style-guide)
-- [How to use vue-styleguidist with multiple packages for components](#how-to-use-vue-styleguidist-with-multiple-packages-for-components)
-- [I have multiple components in the same folder what can I do?](#i-have-multiple-components-in-the-same-folder-what-can-i-do)
-- [How do I integrate Styleguidist into an existing Nuxtjs site?](#how-do-i-integrate-styleguidist-into-an-existing-nuxtjs-site)
-- [How to use component name in examples with a different displayName](#how-to-use-component-name-in-examples-with-a-different-displayname)
+- [Как добавить сторонние плагины в Styleguidist?](#как-добавить-сторонние-плагины-в-styleguidist)
+- [Как добавить Vuex в Styleguidist?](#как-добавить-vuex-в-styleguidist)
+- [Как добавить тестовые данные в Styleguidist?](#как-добавить-тестовые-данные-в-styleguidist)
+- [Как исключить некоторые компоненты из Styleguidist?](#как-исключить-некоторые-компоненты-из-styleguidist)
+- [Как скрыть некоторые компоненты в Styleguidist, но оставить их доступными в примерах?](#как-скрыть-некоторые-компоненты-в-styleguidist-но-оставить-их-доступными-в-примерах)
+- [Как добавить собственный JavaScript и CSS или полифилы?](#how-to-add-custom-javascript-and-css-or-polyfills)
+- [Как изменить стили Styleguidist?](#how-to-change-styles-of-a-style-guide)
+- [Как изменить вывод журналов сервера разработки Styleguidist?](#how-to-change-style-guide-dev-server-logs-output)
+- [Как отлаживать мои компоненты и примеры?](#как-отладить-мои-компоненты-и-примеры)
+- [Как отлаживать исключения, выбрасываемые моими компонентами?](#как-отлаживать-исключения-выбрасываемые-моими-компонентами)
+- [Как использовать Vagrant со Styleguidist?](#как-использовать-vagrant-со-styleguidist)
+- [Как документировать стилизованные компоненты?](#как-документировать-стилизованные-компоненты)
+- [Как использовать Vue Styleguidist с компонентами, содержащими маршрутизацию](#как-использовать-vue-styleguidist-с-компонентами-содержащими-маршрутизацию)
+- [Как включить FontAwesome (или другие наборы иконок) в Styleguidist](#как-включить-fontawesome-или-другие-наборы-иконок-в-styleguidist)
+- [Как использовать Vue Styleguidist с несколькими пакетами компонентов](#как-использовать-vue-styleguidist-с-несколькими-пакетами-компонентов)
+- [У меня есть несколько компонентов в одной папке, что мне делать?](#я-есть-несколько-компонентов-в-одной-папке-что-могу-я-сделать)
+- [Как интегрировать Styleguidist в существующий сайт Nuxtjs?](#как-интегрировать-styleguidist-в-существующий-сайт-nuxtjs)
+- [Как использовать имя компонента в примерах с другим отображаемым именем](#как-использовать-имя-компонента-в-примерах-с-другим-отображаемым именем)
 
 <!-- tocstop -->
 
-## How to add third-party plugins to the style guide?
+## Как добавить сторонние плагины в Styleguidist?
 
-Styleguidist does not load a `main.js` file. To install plugins and component libraries, you will need to require then somewhere else.
+Styleguidist не загружает файл `main.js`. Чтобы установить плагины и библиотеки компонентов, подключите их отдельно.
 
 ### Vue 3
 
-First create a `.js` file that installs the plugins into an existing Vue app. Then add it into the `styleguide.config.js` file [enhancePreviewApp](/Configuration.md#enhancePreviewApp) option:
+Сначала создайте файл `.js`, который установит плагины в существующее приложение Vue. Затем добавьте его в параметр [enhancePreviewApp](/Configuration.md#enhancePreviewApp) файла `styleguide.config.js`:
 
 `styleguide.config.js`
 
@@ -53,7 +53,7 @@ export default function (app) {
 
 ### Vue 2
 
-First create a `.js` file that installs the plugins. Then add it into the `styleguide.config.js` file [require](/Configuration.md#require) option:
+Сначала создайте файл `.js`, который устанавливает плагины. Затем добавьте его в параметр [require](/Configuration.md#require) файла `styleguide.config.js`:
 
 `styleguide.config.js`
 
@@ -79,11 +79,11 @@ Vue.use(VeeValidate)
 Vue.use(Vuetify, opts)
 ```
 
-### Changing the root component of preview examples
+### Изменение корневого компонента примеров предварительного просмотра
 
-If you need to change the root component of each preview example, you can change the root component of the preview. Creating a `.js` file that exports the root component as [jsx component](https://vuejs.org/v2/guide/render-function.html) and then adds it into the `styleguide.config.js` file
+Если вам нужно изменить корневой компонент каждого из вариантов предварительного просмотра, вы можете изменить корневой компонент предварительного просмотра. Создание файла `.js`, который экспортирует корневой компонент как [компонент jsx](https://vuejs.org/v2/guide/render-function.html), а затем добавляет его в файл `styleguide.config.js`.
 
-Use [renderRootJsx](/Configuration.md#renderrootjsx) option:
+Используйте опцию [renderRootJsx](/Configuration.md#renderrootjsx):
 
 ```javascript
 // config/styleguide.root.js
@@ -118,13 +118,13 @@ module.exports = {
 }
 ```
 
-See an example of [style guide with vuetify and vue-i18n](https://github.com/vue-styleguidist/vue-styleguidist/tree/delivery/examples/vuetify).
+См. пример [style guide with vuetify and vue-i18n](https://github.com/vue-styleguidist/vue-styleguidist/tree/delivery/examples/vuetify).
 
-**NOTE** Since Styleguidist creates one root per example (for isolation), installing Vuetify with the default optimized way will not work. Instead, you should prefer installing it globally by following the setup above.
+**Примечание:** поскольку Styleguidist использует отдельный корневой инстанс для каждого примера, стандартная установка Vuetify может не сработать. Рекомендуется глобальная регистрация, как показано выше.
 
-## How to add vuex to the style guide?
+## Как добавить Vuex в Styleguidist?
 
-You can add it, creating a .js file that installs the plugins and then adds it into the `styleguide.config.js` file
+Создайте `.js`-файл, подключите Vuex и укажите его в `styleguide.config.js`.
 
 ```javascript
 // config/styleguide.root.js
@@ -151,7 +151,7 @@ export default previewComponent => {
 }
 ```
 
-Use [require](/Configuration.md#require) option:
+Используйте опцию [require](/Configuration.md#require):
 
 ```javascript
 // styleguide.config.js
@@ -160,13 +160,13 @@ module.exports = {
 }
 ```
 
-See an example of [style guide with vuex](https://github.com/vue-styleguidist/vue-styleguidist/tree/delivery/examples/vuex).
+См. пример [style guide with vuex](https://github.com/vue-styleguidist/vue-styleguidist/tree/delivery/examples/vuex).
 
-## How to add dummy data to the style guide?
+## Как добавить тестовые данные в Styleguidist?
 
-You can use [global mixins](https://vuejs.org/v2/guide/mixins.html#Global-Mixin) to add dummy data:
+Можно использовать [global mixins](https://vuejs.org/v2/guide/mixins.html#Global-Mixin) для добавления тестовых данных:
 
-Use [require](/Configuration.md#require) option:
+Используйте опцию [require](/Configuration.md#require):
 
 ```javascript
 // styleguide/global.requires.js
@@ -197,11 +197,11 @@ module.exports = {
 </Button>
 ```
 
-## How to exclude some components from the style guide?
+## Как исключить некоторые компоненты из Styleguidist?
 
-Vue Styleguidist will ignore tests (`__tests__` folder) by default.
+Vue Styleguidist по умолчанию игнорирует тесты (папка `__tests__`).
 
-Use [ignore](/Configuration.md#ignore) option to customize this behavior:
+Используйте опцию [ignore](/Configuration.md#ignore), чтобы настроить такое поведение:
 
 ```javascript
 module.exports = {
@@ -209,17 +209,15 @@ module.exports = {
 }
 ```
 
-> **Note:** You should pass glob patterns, for example, use `**/components/Button.vue` instead of `components/Button.vue`.
+> **Примечание.** Используйте glob-шаблоны, например `**/components/Button.vue` вместо `components/Button.vue`.
 
-## How to hide some components in a style guide but make them available in examples?
+## Как скрыть некоторые компоненты в Styleguidist, но оставить их доступными в примерах?
 
-- Unless we use [locallyRegisterComponents](/Configuration.md#locallyregistercomponents) all documented components are available in every example.
-- If we exclude components from the sidebar and documentation, using the [ignore](/Configuration.md#ignore) configuration they become unavailable for examples.
-- Use the [require](/Configuration.md#require) option to load a file where we will register our hidden components.
+- Если мы не используем [locallyRegisterComponents](/Configuration.md#locallyregistercomComponents), все документированные компоненты доступны в каждом примере. Если мы создадим компоненты из боковой панели и документации, используя конфигурацию [ignore](/Configuration.md#ignore), они получатся для примера. Используйте опцию [require](/Configuration.md#require), чтобы загрузить файл, в котором мы будем регистрировать наши скрытые компоненты.
 
-### A concrete example:
+### Конкретный пример:
 
-**Problem:** I do not want to document any component whose filename starts with an underscore (`_`).
+**Проблема:** Я не хочу документировать ни один компонент, имя файла которого начинается с подчеркивания (`_`).
 
 ```js
 module.exports = {
@@ -232,15 +230,15 @@ module.exports = {
 }
 ```
 
-If you started with a vue-cli install, or just installed styleguidist, `docs/install.components.js` the file metionned in the [require](/Configuration.md#require) option does not exist in your codebase.
+Если вы начали с `vue-cli` или только что установили Styleguidist, файла `docs/install.components.js` в проекте может не быть.
 
-> **NOTE** `docs/install.components.js` above is a file name we chose. It matters not to styleguidist what name you choose so choose one that makes sense to you.
+> **ПРИМЕЧАНИЕ** `docs/install.components.js` выше — это имя файла, который мы выбрали. Не важно, какое имя вы выберете, поэтому выберите то, которое имеет для вас смысл.
 
-First we create `docs/install.components.js`. Then, we will use the node 6 function require (or require.context since we are in webpack context) to gather the components we want to use in examples.
+Сначала мы создаем `docs/install.components.js`. Затем мы будем использовать функцию узла 6 require (или require.context, поскольку мы находимся в двадцатом веб-пакете), чтобы собрать компоненты, которые мы хотим использовать в примерах.
 
-Finally, we will register them using the `Vue.component()` function.
+Наконец, мы регистрируем их с помощью функции `Vue.component()`.
 
-The components starting with an underscore are now available in every example (without the underscore).
+Компоненты, начинающиеся с подчеркивания, теперь доступны в каждом примере (без подчеркивания).
 
 ```js
 import Vue from 'vue'
@@ -274,9 +272,9 @@ registerAllComponents(
 )
 ```
 
-## How to add custom JavaScript and CSS or polyfills?
+## Как добавить собственный JavaScript, CSS или полифилы?
 
-In your style guide config:
+В вашей конфигурации Styleguidist:
 
 ```javascript
 const path = require('path')
@@ -289,15 +287,15 @@ module.exports = {
 }
 ```
 
-## How to change styles of a style guide?
+## Как изменить стили Styleguidist?
 
-There are two config options to change your style guide UI: [theme](/Configuration.md#theme) and [styles](/Configuration.md#styles).
+Для настройки интерфейса Styleguidist используйте две опции: [theme](/Configuration.md#theme) и [styles](/Configuration.md#styles).
 
-Use [theme](/Configuration.md#theme) to change fonts, colors, etc.
+Используйте [theme](/Configuration.md#theme), чтобы изменить шрифты, цвета и т. д. д. д. д.
 
-Use [styles](/Configuration.md#styles) to tweak the style of any particular Styleguidist component.
+Используйте [styles](/Configuration.md#styles) для настройки стиля любого компонента Styleguidist.
 
-As an example:
+В качестве примера:
 
 ```javascript
 module.exports = {
@@ -325,13 +323,13 @@ module.exports = {
 }
 ```
 
-> **Note:** See available [theme variables](https://github.com/styleguidist/react-styleguidist/blob/master/src/client/styles/theme.ts).
+> **Примечание:** См. доступный [theme variables](https://github.com/Styleguidist/react-Styleguidist/blob/master/src/client/styles/theme.ts).
 
-> **Note:** Styles use [JSS](https://github.com/cssinjs/jss/blob/master/docs/jss-syntax.md) with these plugins: [jss-isolate](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-isolate), [jss-nested](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-nested), [jss-camel-case](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-camel-case), [jss-default-unit](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-default-unit), [jss-compose](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-compose) and [jss-global](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-global).
+> **Примечание.** В стилях используется [JSS](https://github.com/cssinjs/jss/blob/master/docs/jss-syntax.md) с учетом плагинов: [jss-isolate](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-isolate), [jss-nested](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-nested), [jss-camel-case](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-camel-case), [jss-default-unit](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-default-unit), [jss-compose](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-compose) и [jss-global](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-global).
 
-> **Note:** Use [React Developer Tools](https://github.com/facebook/react) to find component and style names. For example a component `<LogoRenderer><h1 className="rsg--logo-53">` corresponds to an example above.
+> **Примечание.** Используйте [React Developer Tools](https://github.com/facebook/react) для поиска названных компонентов и стилей. Например, компонент `<LogoRenderer><h1 className="rsg--logo-53">` соответствует приведенному выше примеру.
 
-> **Note:** Use a function instead of an object for [styles](/Configuration.md#styles) to access all theme variables in your custom styles.
+> **Примечание.** Используйте функцию вместо объекта для [styles](/Configuration.md#styles), чтобы получить доступ ко всем переменным темам в ваших обычных стилях.
 
 ```javascript
 module.exports = {
@@ -348,7 +346,7 @@ module.exports = {
 }
 ```
 
-> NOTA: If you need to reference the original component, you can do so by importing the `rsg-components-default` version. Check out the [customized](https://github.com/vue-styleguidist/vue-styleguidist/tree/delivery/examples/customised) example, it uses the following:
+> ПРИМЕЧАНИЕ. Если нужно сослаться на исходный компонент, импортируйте версию `rsg-components-default`. Например, [customized](https://github.com/vue-styleguidist/vue-styleguidist/tree/delivery/examples/customized) использует следующий подход:
 
 ```jsx
 // SectionsRenderer.js
@@ -395,9 +393,9 @@ SectionsRenderer.propTypes = {
 export default Styled(styles)(SectionsRenderer)
 ```
 
-## How to change style guide dev server logs output?
+## Как изменить вывод логов dev-сервера Styleguidist?
 
-You can modify webpack dev server logs format changing `stats` option of webpack config:
+Вы можете изменить формат журналов сервера разработки веб-пакета, изменив параметр `stats` конфигурации веб-пакета:
 
 ```javascript
 module.exports = {
@@ -416,20 +414,18 @@ module.exports = {
 }
 ```
 
-## How to debug my components and examples?
+## Как отлаживать мои компоненты и примеры?
 
-1.  Open your browser’s developer tools
-2.  Write `debugger;` statement wherever you want: in a component source, a Markdown example or even in an editor in a browser.
+1. Откройте инструменты разработчика вашего браузера.
+2. Напишите оператору `debugger;`, где вы хотите: в исходном коде компонента, в формате Markdown или даже в редакторе браузера.
 
-## How to debug the exceptions thrown from my components?
+## Как отладить исключения, возникающие из моих компонентов?
 
-1.  Put `debugger;` statement at the beginning of your code.
-2.  Press the ![Debugger](https://d3vv6lp55qjaqc.cloudfront.net/items/2h2q3N123N3G3R252o41/debugger.png) button in your browser’s developer tools.
-3.  Press the ![Continue](https://d3vv6lp55qjaqc.cloudfront.net/items/3b3c1P3g3O1h3q111I2l/continue.png) button and the debugger will stop the browser from running JavaScript at the next exception.
+1. Поместите оператора `debugger;` в начало вашего кода. Нажмите кнопку ![Отладчик](https://d3vv6lp55qjaqc.cloudfront.net/items/2h2q3N123N3G3R252o41/debugger.png) в инструментах разработчика вашего браузера. Нажмите кнопку ![Продолжить](https://d3vv6lp55qjaqc.cloudfront.net/items/3b3c1P3g3O1h3q111I2l/continue.png) и отладчик заблокирует запуск JavaScript в браузере при следующем отключении.
 
-## How to use Vagrant with Styleguidist?
+## Как использовать Vagrant со Styleguidist?
 
-First read [Vagrant guide](https://webpack.js.org/guides/development-vagrant/) from the webpack documentation. Then enable polling in your webpack config:
+Сначала прочитайте [Vagrant guide](https://webpack.js.org/guides/development-vagrant/) из документации веб-пакета. Затем опрос в конфигурации вашего веб-пакета:
 
 ```js
 devServer: {
@@ -439,9 +435,9 @@ devServer: {
 }
 ```
 
-## How to document styled-components?
+## Как документировать стилизованные компоненты?
 
-To document styled-components you need to get them recognized by vue-docgen-api. The simplest way is to use extends:
+Чтобы документировать стилизованные компоненты, вам необходимо, чтобы они распознавали vue-docgen-api. Самый простой способ — использовать расширения:
 
 ```js
 import styled from 'vue-styled-components'
@@ -457,7 +453,7 @@ export default {
 }
 ```
 
-or if you are using with the class component syntax
+или если вы используете синтаксис компонента класса
 
 ```js
 import styled from 'vue-styled-components'
@@ -472,9 +468,13 @@ const _StyledTitle = styled.h1`
 export default class StyledTitle extends Vue {}
 ```
 
-## Use vue-styleguidist with components that contain routing
+## Как использовать Vue Styleguidist с компонентами, содержащими маршрутизацию?
 
-If your components contain `<router-link>` the best way is, in your styleguide to mock it. In the `styelguide.config,js` file add `styleguide.global.required.js` (see below) to the [require](/Configuration.md#require) parameter. Styleguidist will render `router-link` as an anchor or tag of your choosing. Don't use `vue-router` inside vue-styleguidist. It will conflict with its internal router.
+Если ваши компоненты содержат `<router-link>`, в примерах Styleguidist лучше
+подменить его упрощенным компонентом. Для этого добавьте файл
+`styleguide.global.requires.js` (пример ниже) и подключите его через опцию
+[require](/Configuration.md#require). Не подключайте `vue-router` напрямую
+внутри Styleguidist.
 
 ```js
 // styleguide.global.requires.js
@@ -489,33 +489,31 @@ Vue.component('RouterLink', {
 })
 ```
 
-See [this example](/Examples#router) for a concrete implementation.
+См. [этот пример](/Examples#router) для полной реализации.
 
-> PRO TIP: If your styleguide has `.resolve` issues in the browser console, it still seems to be using vue-router. Check if you are requiring the `router.js` file in any of the showcased components and remove the dependency. If you still can't find the culprit, follow these steps and you will find it.
+> **Совет:** если в браузерной консоли видны ошибки `.resolve`, скорее всего,
+> где-то все еще подключается `vue-router`.
 >
-> 1.  Find all mentions of `Vue.use(Router)` in your codebase
-> 1.  Add `console.trace()` on the line before it to get the stack trace of the way they are called
-> 1.  open styleguidist and look at the console of your browser
+> 1. Найдите все вхождения `Vue.use(Router)` в кодовой базе.
+> 2. Добавьте перед ними `console.trace()`, чтобы увидеть стек вызовов.
+> 3. Уберите лишнее подключение роутера из кода, используемого в примерах.
 >
-> Somewhere in your stack should be one of the displayed components. Find a way to avoid this require. If you can't find a way around this require, use a context variable to only load the router when not in styleguidist.
->
-> 1.  Install `cross-env` package
-> 1.  Set a context variable before you launch styleguidist: `cross-env MYSTYLE=true styleguide serve`
-> 1.  Use the variable in your code as follows
->
-> ```js
+> Если полностью убрать подключение нельзя, можно включать его условно:
+> установите пакет `cross-env`, запускайте Styleguidist как
+> `cross-env MYSTYLE=true styleguide serve` и проверяйте переменную в коде.
+```js
 > if (!process.env.MYSTYLE) {
 >   Vue.use(Router)
 > }
 > ```
 
-## How to include FontAwesome (or other icon sets) in your style guide
+## Как включить FontAwesome (или другие наборы иконок) в Styleguidist?
 
-If your components rely on an icon set such as FontAwesome, you can edit `styleguide.config.js` to import it:
+Если ваши компоненты используют набор значков, например FontAwesome, вы можете отредактировать `styleguide.config.js`, чтобы импортировать его:
 
 ```js
 module.exports = {
-  title: 'My Style Guide',
+  title: "Мой Styleguidist",
   template: {
     head: {
       links: [
@@ -532,20 +530,20 @@ module.exports = {
 }
 ```
 
-See [`template`](/Configuration.md#template) for more details.
+Дополнительную информацию см. в [template](/Configuration.md#template).
 
-## How to use vue-styleguidist with multiple packages for components
+## Как использовать Vue Styleguidist с несколькими пакетами компонентов?
 
-If your base components are in one package and the derived components are in another, you will want the documentation to reflect extended components props in the exposed ones.
+Если ваши базовые компоненты находятся в одном пакете, а производные компоненты — в другом, вам нужно, чтобы документация отражала реквизиты расширенных компонентов в открытых.
 
-Say you have a `BaseButton.vue` in a `@scoped/core` package that you extend into `IconButton.vue` in the `@scoped/extended` package, the `BaseButton.vue` props are not going to be documented with `IconButton.vue`. This can be what you want, or you could be missing a lot of props.
+Допустим, у вас есть `BaseButton.vue` в пакете `@scoped/core`, который расширяется до `IconButton.vue` в пакете `@scoped/extended`, реквизиты `BaseButton.vue` не будут документироваться с помощью `IconButton.vue`. Это может быть то, что вы хотите, или вам может не хватать большого количества реквизитов.
 
-Use the [validExtends](/Configuration.md#validExtends) option to allow parsing of extended components in other packages.
+Используйте опцию [validExtends](/Configuration.md#validExtends), чтобы разрешить анализ расширенных компонентов в других пакетах.
 
 ```javascript
 module.exports = {
-  // Add the following function to your styleguide.config.js
-  validExtends(fullFilePath) {
+  // Добавьте следующую функцию в ваш styleguide.config.js
+  validExtends (fullFilePath) {
     return (
       /[\\/]@scoped[\\/]core[\\/]/.test(fullFilePath) ||
       !/[\\/]node_modules[\\/]/.test(fullFilePath)
@@ -554,90 +552,96 @@ module.exports = {
 }
 ```
 
-## I have multiple components in the same folder what can I do?
+## У меня есть несколько компонентов в одной папке, что мне делать?
 
-If multiple documented components live in the same folder, and you are using a `ReadMe` file to document them, the content of the readme is going to show for every component.
+Если несколько документированных компонентов находятся в одной системе и вы используете файл `ReadMe` для их документирования, для каждого компонента будет использоваться основной файл readme.
 
-Three solutions are available depending on taste and context.
+Доступны три решения в зависимости от вкуса и контекста.
 
-### the docs block
+### Блок `<docs>`
 
-The simplest solution is to use the `<docs>` block instead. It works well with Vetur syntax highlighting and allows you to never forget to update the documentation.
+Самое простое решение — использовать блок `<docs>`. Он хорошо работает
+с подсветкой синтаксиса в Vetur и помогает держать документацию рядом с кодом.
 
-Trade-off: Markdown files can be read without rendering, in Github for example while coding the component itself. Vue files cannot.
+Компромисс: Markdown-файлы удобно читать без рендеринга (например, на GitHub),
+а Vue-файлы — нет.
 
-### Named readmes
+### Именованные файлы Readme
 
-Use the name of the component file switching `.vue` with `.md` and you can have one documentation file per component in the folder.
+Используйте имя компонента и меняйте расширение `.vue` на `.md`, чтобы иметь
+отдельный файл документации для каждого компонента.
 
-Trade-off: When you enter a folder, Github automatically displays the readme file if it exists. The files you would be writing would not be readmes. No automated file would be loaded.
+Компромисс: GitHub автоматически показывает именно `readme`-файл. Именованные
+файлы документации для отдельных компонентов не будут подхватываться автоматически.
 
-### Remove unwanted documentations
+### Удаление ненужной документации
 
-[Documentation](/docs/Documenting.html#ignore-examples-files)
+[Documenting](/docs/Documenting.html#ignore-examples-files)
 
-In the tags of a component, an `@example` doclet can be specified. It is usually used to tell styleguidist where to find more documentation.
+В тегах компонента можно указать doclet `@example`. Обычно он используется, чтобы показать, где находится дополнительная документация.
 
-It can also be used with the special value `[none]`. It will then hide the example file that would normally be associated with the component.
+Также можно использовать специальное значение `[none]`. В этом случае связанный
+файл примера будет скрыт.
 
-If you hide with `@examples [none]` all non-main components, the only remaining readme displayed will the main one. We get our `readme` file back.
+Если для внутренних компонентов указать `@example [none]`, останется только
+основной `readme` целевого компонента.
 
-## How do I integrate Styleguidist into an existing Nuxtjs site?
+## Как интегрировать Styleguidist в существующий сайт Nuxtjs?
 
-Suppose you have an existing Nuxtjs site or are using Nuxtjs as your development environment for your component library. While you could also encourage users to clone your repo and build the docs, it would be nice to integrate them into your existing Nuxtjs site. This is possible (with some caveats).
+Предполагается, что у вас есть существующий сайт Nuxtjs или вы используете Nuxtjs в качестве среды разработки для своих компонентов библиотеки. Хотя вы также можете побудить пользователей клонировать ваши репозитории и создавать документы, было бы неплохо интегрировать их в существующий сайт Nuxtjs. Это возможно (с некоторыми оговорками).
 
-First you need to determine the route you want your styleguist docs to be at. For example you may want your docs to be at `www.mysite.com/docs`. If styleguidist was a pure nuxt page, under the Nuxtjs convention, it would be the file `pages/docs.vue`. So wherever you want your styleguidist documentation to reside you can **not** have a `pages/<dest>.vue` file there!
+Сначала определите маршрут, где должна быть документация Styleguidist. Например, `www.mysite.com/docs`. Если бы это была обычная страница Nuxt, это был бы файл `pages/docs.vue`. Поэтому в целевом пути нельзя иметь страницу `pages/<dest>.vue`.
 
-Next you need to set up the generate properties of the `nuxt.config.js`. If you are deploying on GitLab, it might be something like this:
+Далее настройте параметры генерации в `nuxt.config.js`. Если вы делаете
+deployment на GitLab, это может выглядеть так:
 
 ```js
 // nuxt.config.js
 export default {
   // ...
-  generate: {
-    dir: 'public'
+  генерировать: {
+    реж: 'публичный'
   }
   // ...
 }
 ```
 
-If you have generated a nuxtjs site before and looked at the output (here under a dir call `public`) you will see that each `pages/<dest>.vue` is a sub directory. This is why you can not have your desired location for styleguidest also be a `dest.vue` file.
+Если вы уже генерировали Nuxt-сайт и смотрели результат (например, в каталоге `public`), то знаете, что каждый `pages/<dest>.vue` становится подкаталогом. Поэтому путь для Styleguidist не должен совпадать с `dest.vue`.
 
-Now you will want to update your `styleguide.config.js` file to point `styleguidDir` to the `nuxt.config.js`'s `generate.dir`, e.g. if you wanted the `/docs` to be where the styleguideist documentation to be and `generate.dir='public'` then `styleguidDir=public/docs`.
+Теперь обновите `styleguide.config.js`, чтобы `styleguideDir` соответствовал `generate.dir` из `nuxt.config.js`. Например, если документация должна быть по пути `/docs`, а `generate.dir = "public"`, то используйте `styleguideDir = "public/docs"`.
 
-Then the last thing is to remember the order of operations. First you generate nuxt (`npm run generate`) and then `build` your styleguidist docs.
+Далее соблюдайте порядок: сначала сгенерируйте Nuxt (`npm run generate`), затем соберите документацию Styleguidist.
 
-## How to use component name in examples with a different displayName
+## Как использовать имя компонента в примерах с другим displayName
 
-When using `displayName`, components in the `<docs>` block must be imported with their `displayName` instead of their `name`.  
-This is not ideal as your examples are not using the real component name.
+При использовании `displayName` компоненты в блоке `<docs>` должны быть импортированы с их `displayName` вместо `name`. Это не идеально, поскольку в ваших примерах не используется настоящее имя компонента.
 
-A way to get around the problem is to create an alias component, with its original name.
+Способ обойти эту проблему — создать компонент-псевдоним с его оригинальным именем.
 
-Modify the [root element](/Configuration.md#renderrootjsx) as follow:
+Изменить [root element](/Configuration.md#renderrootjsx) следующим образом:
 
 ```js
-// config/styleguide.root.js
+// конфигурация/styleguide.root.js
 import Vue from 'vue';
 
 export default previewComponent => {
-  return {
-    render(createElement) {
-      return createElement(previewComponent);
+  возвращаться {
+    рендер (createElement) {
+      вернуть createElement (previewComponent);
     },
-    created() {
-      // For each globally registered component,
-      // create an alias if its name doesn't match its displayName
-      Object.entries(Vue.options.components).forEach(c => {
+    созданный() {
+      // Для каждого глобально зарегистрированного компонента
+      // создаем псевдоним, если его имя не соответствует его displayName
+      Object.entries(Vue.options.comComponents).forEach(c => {
         const displayName = c[0];
         const component = c[1];
         const { name } = component.extendOptions;
 
-        // If display name is different than name, create an alias of the component
-        // Ex: AcAlert component displayName is Alert
-        //     We then create AcAlert, an alias of Alert, to be used in <docs> block
-        if (displayName !== name) {
-          Vue.component(name, component);
+        // Если отображаемое имя отличается от имени, создайте псевдоним компонента
+        // Пример: displayName компонента AcAlert — Alert
+        // Затем мы создаем AcAlert, псевдоним Alert, который будет использоваться в блоке <docs>.
+        if (displayName !== имя) {
+          Vue.comComponent(имя, компонент);
         }
       });
     },
@@ -650,16 +654,16 @@ module.exports = {
 }
 ```
 
-You can now use `<AcAlert />` in `<docs>` while the left menu displays `Alert`.  
-Example:
+Теперь вы можете использовать `<AcAlert />` в `<docs>`, пока в левом меню отображается `Alert`.  
+Пример:
 
 ````vue
 <script>
 /**
- * @displayName Alert
+ * Оповещение @displayName
  */
 export default {
-  name: 'AcAlert'
+  название: «АкАлерт»
 }
 </script>
 
@@ -668,11 +672,11 @@ export default {
 </template>
 
 <docs>
-  # Usage ```js
-  <AcAlert />
-  <Alert
-/></docs>
+  # Использование ```js
+  <АкАлерт />
+  <Оповещение
+/></документы>
 ````
 
 
-> :warning: The search menu won't be able to find `AcAlert` anymore, as it searches through the page names, thus `Alert`.
+> :предупреждение: В меню поиска больше не удается найти `AcAlert`, так как оно ищет по именам страниц, то есть `Alert`.

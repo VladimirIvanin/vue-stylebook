@@ -1,17 +1,17 @@
-# Node.js API
+# API Node.js
 
-<!-- toc -->
+<!-- содержание -->
 
 - [Initialization](#initialization)
 - [Methods](#methods)
 
 <!-- tocstop -->
 
-## Initialization
+## Инициализация
 
-Во-первых, вам необходимо инициализировать API для конфигурации вашего руководства по стилю.
+Во-первых, вам необходимо создать API для конфигурации вашего управления по стилю.
 
-Using a JavaScript object:
+Использование объекта JavaScript:
 
 ```javascript
 const styleguidist = require('vue-styleguidist')
@@ -45,41 +45,41 @@ const styleguide = styleguidist({
 })
 ```
 
-Using a config file:
+Использование файла конфигурации:
 
 ```javascript
 const styleguidist = require('vue-styleguidist')
 const styleguide = styleguidist(require('../styleguide.config.js'))
 ```
 
-Or auto searching a config file:
+Или автоматический поиск файла конфигурации:
 
 ```javascript
 const styleguidist = require('vue-styleguidist')
 const styleguide = styleguidist()
 ```
 
-See all available [config options](/Configuration.md).
+Посмотреть все доступные [config options](/Configuration.md).
 
-> **Примечание.** вывод консоли по умолчанию отключен. Возможно, вам придется определить свой собственный [logger](/Configuration.md#logger).
+> **Примечание.** вывод консоли по умолчанию отключен. Возможно, вам удастся определить свой участок [logger](/Configuration.md#logger).
 
-## Methods
+## Методы
 
 ### `build(callback)`
 
-#### Arguments
+#### Аргументы
 
-1.  `callback(err, config, stats)` (_Function_): A callback to be invoked when style guide is built:
+1. `callback(err, config, stats)` (_Function_): обратный вызов, который будет сохраняться при построении управления по стилю:
 
-    1.  `err` (_Object_): error details.
-    2.  `config` (_Object_): normalized style guide config.
-    3.  `stats` (_Object_): webpack build stats.
+1. `err` (_Объект_): сведения о деньгах.
+    2. `config` (_Объект_): нормализованная конфигурация управления по стилю.
+    3. `stats` (_Объект_): статистика сборки веб-пакета.
 
-#### Returns
+#### Возврат
 
-(_Compiler_): webpack `Compiler` instance.
+(_Компилятор_): пример веб-пакета `Compiler`.
 
-#### Example
+#### Пример
 
 ```javascript
 const styleguidist = require('vue-styleguidist')
@@ -96,18 +96,18 @@ styleguidist(require('../styleguide.config.js')).build(
 
 ### `server(callback)`
 
-#### Arguments
+#### Аргументы
 
-1.  `callback(err, config)` (_Function_): A callback to be invoked when style guide is built:
+1. `callback(err, config)` (_Function_): обратный вызов, который будет сохраняться при построении управления по стилю:
 
-    1.  `err` (_Object_): error details.
-    2.  `config` (_Object_): normalized style guide config.
+1. `err` (_Объект_): сведения о деньгах.
+    2. `config` (_Объект_): нормализованная конфигурация управления по стилю.
 
-#### Returns
+#### Возврат
 
-(_Object_): Object containing a webpack `Compiler` instance and the vue-styleguidist `Server`
+(_Object_): объект, состоящий из экземпляра веб-пакета `Compiler` и vue-styleguidist `Server`.
 
-#### Example
+#### Пример
 
 ```javascript
 const styleguidist = require('vue-styleguidist')
@@ -125,15 +125,15 @@ styleguidist(require('../styleguide.config.js')).server(
 
 ### `makeWebpackConfig([env])`
 
-#### Arguments
+#### Аргументы
 
-1.  \[`env`=`'production'`\] (_String_): `production` или `development`.
+1. \[`env`=`'production'`\] (_String_): `production` или `development`.
 
-#### Returns
+#### Возврат
 
-(_Object_): webpack config.
+(_Object_): внешний вид веб-пакета.
 
-#### Example
+#### Пример
 
 ```javascript
 // webpack.config.js

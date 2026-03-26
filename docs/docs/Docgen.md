@@ -1,8 +1,8 @@
 # vue-docgen-api
 
-`vue-docgen-api` turns VueJs components into documentation objects.
+`vue-docgen-api` преобразует компоненты VueJs в документацию объектов.
 
-<!-- toc -->
+<!-- содержание -->
 
 - [API](#api)
 - [Architecture](#architecture)
@@ -12,9 +12,9 @@
 
 ## API
 
-### Type `ComponentDoc`
+### Введите `ComponentDoc`
 
-Every parser in docgen-api returns an instance of `ComponentDoc` or a `ComponentDoc[]`.
+Каждый анализатор в docgen-api возвращает экземпляр `ComponentDoc` или `ComponentDoc[]`.
 
 ```ts
 interface ComponentDoc {
@@ -76,7 +76,7 @@ interface ComponentDoc {
 
 ### `parse(filePath:string, options?: DocGenOptions):ComponentDoc`
 
-Parses the file at filePath. Returns and objects containing all documented and undocumented properties of the component.
+Анализирует файл по адресу filePath. Возвращаемые данные и объекты, содержащие все документированные и недокументированные свойства компонента.
 
 ```ts
 import { parse } from 'vue-docgen-api'
@@ -84,7 +84,7 @@ import { parse } from 'vue-docgen-api'
 var componentInfoSimple = parse(filePath)
 ```
 
-In the options, specify the changes you made to node resolution through your Webpack config. Write additional script and template handlers and push them in the options object to parse non-standard elements.
+В параметрах указаны изменения, которые вы вносите в определения узлов через конфигурацию Webpack. Напишите дополнительные разработчики скриптов и шаблонов и поместите их в параметры параметров для анализа нестандартных элементов.
 
 ```ts
 import * as bt from '@babel/types'
@@ -148,82 +148,82 @@ var componentInfoConfigured = parse(filePath, {
 
 ### `parseSource(code: string, filePath:string, options?: DocGenOptions):ComponentDoc`
 
-Same as `parse`, but this way you can force the content of the code. The `filePath` parameter will then only be used for dependency resolution.
+То же самое и `parse`, но таким образом вы можете изменить критерии качества. Параметр `filePath` будет использоваться только для зависимостей разрешения.
 
 ### `parseMulti(code: string, filePath:string, options?: DocGenOptions):ComponentDoc[]`
 
-Same as `parse`, but allows for multiple exported components in one file.
+То же самое, что и `parse`, но позволяет экспортировать несколько компонентов в один файл.
 
-**NOTE** Return type is `Array<ComponentDoc>` instead of `ComponentDoc`. Use `exportName` to differentiate the exports.
+**ПРИМЕЧАНИЕ** Тип возвращаемого значения — `Array<ComponentDoc>` вместо `ComponentDoc`. Используйте `exportName`, чтобы различать экспорт.
 
-### options `DocGenOptions`
+### опции `DocGenOptions`
 
 #### `alias`
 
-This is a mirror to the [webpack alias](https://webpack.js.org/configuration/resolve/#resolvealias) options. If you are using [alias in Webpack](https://webpack.js.org/configuration/resolve/#resolvealias) or paths in TypeScript, you should reflect this here.
+Это зеркало параметров [псевдоним веб-пакета](https://webpack.js.org/configuration/resolve/#resolvealias). Если вы используете [псевдоним в Webpack](https://webpack.js.org/configuration/resolve/#resolvealias) или путь в TypeScript, вам следует разразить его здесь.
 
 #### `resolve`
 
-`resolve` mirrors the [webpack option](https://webpack.js.org/configuration/resolve/#resolve) too. If you have it in Webpack or use `baseDir` in TypeScript, you should probably see how this one works.
+`resolve` также отражает [опцию веб-пакета](https://webpack.js.org/configuration/resolve/#resolve). Если он у вас есть в Webpack или вы используете `baseDir` в TypeScript, вам, вероятно, стоит посмотреть, как он работает.
 
-#### `addScriptHandlers` and `addTemplateHandlers`
+#### `addScriptHandlers` и `addTemplateHandlers`
 
-The additional custom handlers allow you to add custom handlers to the parser. A handler can navigate and see custom objects that the standard parser would ignore.
+Дополнительные пользовательские обработчики позволяют добавлять в анализатор собственные обработчики. Обработчик может перемещаться и видеть пользовательские объекты, которые стандартный анализатор проигнорировал бы.
 
-#### `preScriptHandlers`, `scriptHandlers` and `templateHandlers`
+#### `preScriptHandlers`, `scriptHandlers` и `templateHandlers`
 
-Replaces all of the handlers by those specified. If each of those 3 `handlers` are set to [], the library will only parse the given component. It will not run any standard handlers anymore.
+Заменяет данные всех обработчиков. Если для каждого из этих трёх `handlers` определено значение [], библиотека будет анализировать только данный компонент. Он больше не будет запускать стандартные рабочие процессы.
 
-> **NOTE** Standard handlers are available as namespaces. Import and use them this way:
+> **ПРИМЕЧАНИЕ** Стандартные обработчики доступны в виде пространств имен. Импортируйте и используйте их следующим образом:
 >
 > ```js
-> import {
->   parse,
->   ScriptHandlers,
->   TemplateHandlers
-> } from 'vue-docgen-api'
+> импортировать {
+>   анализировать,
+>   Обработчики сценариев,
+>   Обработчики шаблонов
+> } из «vue-docgen-api»
 >
-> parse('myComp', {
->   scriptHandlers: [ScriptHandlers.componentHandler],
+> синтаксический анализ('myComp', {
+>   scriptHandlers: [ScriptHandlers.comComponentHandler],
 >   templateHandlers: [TemplateHandlers.slotHandler]
 > })
 > ```
 
 #### `validExtends`
 
-Function - Returns if an extended component should be parsed by docgen.
+Функция — возвращает значение, если расширенный компонент должен быть проанализирован docgen.
 
-> **NOTE** If docgen fails to parse the targeted component, it will log a warning. It is non-blocking but annoying.
+> **ПРИМЕЧАНИЕ** Если документ не позволит обратить внимание на включение компонента, он зарегистрирует предупреждение. Это не блокирует, но раздражает.
 
-> **NOTE** If you allow all of `node_modules` to try to be parsed, you might degrade performance. Use it responsibly.
+> **ПРИМЕЧАНИЕ**. Если вы разрешите анализ всего `node_modules`, это может привести к снижению производительности. Используйте его ответственно.
 
-## Architecture
+## Архитектура
 
-### Documentation Object
+### Объект документации
 
-The `Documentation` class is the container of information before getting compiled. To be used and exported, use the `toObject()` function to make a neutral serializable object.
+Класс `Documentation` является контейнером информации перед компиляцией. Для использования и экспорта используйте функцию `toObject()`, чтобы создать нейтральный сериализуемый объект.
 
-The object has functions to get descriptors for props, events, methods, and slots. All those functions follow the same principle. If you call it twice with the same argument, it will return twice the same reference to the prop. This way if your prop is decorated in multiple places, it simplifies its documentation.
+Объект имеет функции для получения дескрипторов реквизитов, событий, методов и слотов. Все эти функции следуют одному и тому же принципу. Если вы вызовете его дважды с одним и тем же аргументом, он дважды вернет одну и ту же ссылку на свойство. Таким образом, если ваш реквизит оформлен в нескольких местах, это упрощает его документацию.
 
 ```ts
 function getPropDescriptor(propName: string): PropDescriptor
 ```
 
-### Parsers
+### Парсеры
 
-First, we use babel to parse the comments in the code.
+Сначала мы используем Babel для анализа комментариев в коде.
 
-Then we use `vue-template-compiler` to parse the HTML template.
+Затем мы используем `vue-template-compiler` для анализа HTML-шаблона.
 
-These parsers give us Abstract Syntax Trees (AST). We then traverse them with handlers to extract the info we need from components and their JSdoc.
+Эти парсеры дают нам абстрактные синтаксические деревья (AST). Затем мы обрабатываем их с помощью обработчиков, чтобы включить информацию из компонентов и их JSdoc.
 
-### Handlers
+### Обработчики
 
-Script and template have 2 different AST structure. It makes sense that they have different handlers. There are a few standard handlers in docgen. You can add your own using the `addScriptHandler` or `addTemplateHandler` options.
+Скрипт и шаблон имеют две разные структуры AST. Имеет смысл, что у них разные обработчики. В документе есть несколько стандартных обработчиков. Вы можете добавить свои собственные, используя опции `addScriptHandler` или `addTemplateHandler`.
 
-### Script Handlers
+### Обработчики сценариев
 
-To handle scripts, we can register them this way. Each handler is a JavaScript function following this prototype.
+Для обработки скриптов мы можем зарегистрировать их таким образом. Каждый обработчик представляет собой функцию JavaScript, соответствующую этому прототипу.
 
 ```ts
 export default function handler(
@@ -236,7 +236,7 @@ export default function handler(
 }
 ```
 
-In the example next, we extract the functional flag of a Vue component object.
+В следующем материале мы используем функциональный флаг объекта Vue.
 
 ```ts
 import * as bt from '@babel/types'
@@ -270,9 +270,9 @@ export default function handler(
 }
 ```
 
-### Template Handlers
+### Обработчики шаблонов
 
-Template handlers have the following prototype.
+Обработчики шаблонов имеют следующий прототип.
 
 ```ts
 export default function handler(
@@ -284,7 +284,7 @@ export default function handler(
 }
 ```
 
-The following example stores all buttons name attributes in the template in a `buttons` key.
+В следующем примере все атрибуты имен кнопок в шаблоне указаны в ключе `buttons`.
 
 ```ts
 import { ASTElement } from 'vue-template-compiler'
@@ -303,9 +303,9 @@ export default function slotHandler(
 }
 ```
 
-## Custom Tags
+## Пользовательские теги
 
-The API collects any custom doclets your code blocks contain. For a given slot, prop or root component documentation (the comment block before `export default`), any unrecognized doclet tags will get pushed to a separate `tags` object. For example, imagine that in your documentation, you wanted to give your documentation readers a textbox that had a two-way binding to your slot so they could preview their slot content in the actual component. You would want some mock data available for when the user hasn't entered anything. You could provide that mock data like so:
+API собирает все пользовательские документы, которые содержатся в коде ваших блоков. Для настройки слота, опоры или корневого компонента (блок комментариев перед `export default`) любые нераспознанные теги доклетки преобразуются в отдельный объект `tags`. Например, представьте, что в вашей документации вы хотите указать читателям текстовое поле с двусторонней привязкой к вашему слоту, чтобы они могли просмотреть рейтинг вашего слота в первом компоненте. Вам потребовались некоторые вымышленные данные, когда пользователь ничего не ввел. Вы можете передать эти вымышленные данные следующим образом:
 
 ```html
 <template>
@@ -319,7 +319,7 @@ The API collects any custom doclets your code blocks contain. For a given slot, 
 </template>
 ```
 
-The output object for this component would show something like this:
+Выходной объект для этого компонента будет выглядеть примерно так:
 
 ```js
 {
