@@ -1,21 +1,22 @@
 ---
 home: true
 heroImage: /assets/logo.png
-actionText: Get Started →
+actionText: Начать →
 actionLink: /docs/GettingStarted.html
 features:
-  - title: Development environment
+  - title: Среда разработки
     details: >-
-      Focus on one component at a time, see all its variants and work faster
-      with hot reload
-  - title: Style guide
-    details: 'Share components with your team, including designers and developers'
-  - title: Interactive playground
-    details: See how components behave to different props and data right in the browser
-footer: MIT Licensed
+      Фокусируйтесь на одном компоненте, смотрите все его варианты и работайте
+      быстрее благодаря hot reload
+  - title: Стайлгайд
+    details: Делитесь компонентами с командой, включая дизайнеров и разработчиков
+  - title: Интерактивная песочница
+    details: Сразу в браузере проверяйте, как компоненты ведут себя с разными props и данными
+footer: Лицензия MIT
 ---
 
-> This documentation website is built from a fork of `vue-styleguidist/vue-styleguidist` and is published via GitHub Pages.
+> Этот сайт документации собран из форка `vue-styleguidist/vue-styleguidist`
+> и публикуется через GitHub Pages.
 
 
 

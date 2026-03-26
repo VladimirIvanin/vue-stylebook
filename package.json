@@ -1,13 +1,14 @@
 {
-  "name": "vue-styleguidist-repository",
-  "private": true,
-  "homepage": "https://github.com/vue-styleguidist/vue-styleguidist",
+  "name": "@ivaninvladimir/vue-styleguidist-repository",
+  "version": "0.0.1",
+  "private": false,
+  "homepage": "https://github.com/ivaninvladimir/vue-styleguidist",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-styleguidist/vue-styleguidist.git"
+    "url": "git+https://github.com/ivaninvladimir/vue-styleguidist.git"
   },
   "bugs": {
-    "url": "https://github.com/vue-styleguidist/vue-styleguidist/issues"
+    "url": "https://github.com/ivaninvladimir/vue-styleguidist/issues"
   },
   "scripts": {
     "changeset": "changeset",

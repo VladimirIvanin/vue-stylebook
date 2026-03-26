@@ -1,18 +1,18 @@
-# Locating your components and organizing your style guide
+# Поиск компонентов и организация стайлгайда
 
 <!-- toc -->
 
-- [Finding components](#finding-components)
-- [Loading and exposing components](#loading-and-exposing-components)
-- [Sections](#sections)
+- [Поиск компонентов](#finding-components)
+- [Загрузка и экспорт компонентов](#loading-and-exposing-components)
+- [Секции](#sections)
 
 <!-- tocstop -->
 
-## Finding components
+## Поиск компонентов
 
-By default Styleguidist will search components using this [glob pattern](https://github.com/isaacs/node-glob#glob-primer): `src/components/**/*.vue`.
+По умолчанию Styleguidist ищет компоненты по [glob-шаблону](https://github.com/isaacs/node-glob#glob-primer): `src/components/**/*.vue`.
 
-For example, if your components look like `components/Button/Button.vue`:
+Например, если ваши компоненты выглядят так: `components/Button/Button.vue`:
 
 ```javascript
 module.exports = {
@@ -20,40 +20,43 @@ module.exports = {
 }
 ```
 
-But will ignore tests:
+При этом тесты игнорируются:
 
 - `__tests__` folder
 
-> **Note:** All paths are relative to the folder where the config file is.
+> **Note:** Все пути указываются относительно папки с конфигом.
 
-> **Pro Tip:** Use [ignore](/Configuration.md#ignore) option to exclude some files from the style guide.
+> **Совет:** Используйте опцию [ignore](/Configuration.md#ignore), чтобы исключить файлы из стайлгайда.
 
-> **Note:** Use [getComponentPathLine](/Configuration.md#getcomponentpathline) option to change a path you see below a component name.
+> **Note:** Опция [getComponentPathLine](/Configuration.md#getcomponentpathline) меняет строку пути под именем компонента.
 
-## Loading and exposing components
+## Загрузка и экспорт компонентов
 
-Styleguidist, by default, _loads_ your components and _exposes_ them globally for your examples to consume. You can use [locallyRegisterComponents](/Configuration.md#locallyregistercomponents) to avoid global registration. This loads a documented component only in the examples that are in its attached `ReadMe.md` file or `<docs>` block.
+По умолчанию Styleguidist _загружает_ ваши компоненты и _регистрирует_ их
+глобально для примеров. Чтобы избежать глобальной регистрации, используйте
+[locallyRegisterComponents](/Configuration.md#locallyregistercomponents).
+Тогда компонент будет доступен только в примерах его `ReadMe.md` или блока `<docs>`.
 
-## Sections
+## Секции
 
-Group components into sections or add extra Markdown documents to your style guide.
+Группируйте компоненты по секциям или добавляйте отдельные Markdown-документы.
 
-Each section consists of (all fields are optional):
+Каждая секция может содержать (все поля опциональны):
 
-- `name` — section title.
-- `content` — location of a Markdown file containing the overview content.
-- `components` — a glob pattern string, an array of component paths or glob pattern strings, or a function returning a list of components or glob pattern strings. The same rules apply as for the root `components` option.
-- `sections` — an array of subsections (can be nested).
-- `description` — A small description of this section.
-- `sectionDepth` — Number of subsections with single pages, only available with [pagePerSection](/Configuration.md#pagepersection) is enabled.
-- `componentPagePerSection` — When `true` (and [pagePerSection](/Configuration.md#pagepersection) is enabled), component links inside this section are generated as dedicated routes instead of `?id=` anchors.
-- `exampleMode` — Initial state of the code example tab, uses [exampleMode](/Configuration.md#examplemode).
-- `usageMode` — Initial state of the props and methods tab, uses [usageMode](/Configuration.md#usagemode).
-- `ignore` — string/array of globs that should not be included in the section.
-- `href` - an URL to navigate to instead of navigating to the section content
-- `external` - if set, the link will open in a new window
+- `name` — заголовок секции.
+- `content` — путь к Markdown-файлу с описанием.
+- `components` — glob-строка, массив путей/шаблонов или функция, возвращающая список компонентов/шаблонов.
+- `sections` — массив вложенных секций.
+- `description` — краткое описание секции.
+- `sectionDepth` — глубина вложенности с отдельными страницами (при [pagePerSection](/Configuration.md#pagepersection)).
+- `componentPagePerSection` — если `true` (и включен [pagePerSection](/Configuration.md#pagepersection)), ссылки на компоненты в секции будут отдельными маршрутами, а не `?id=`.
+- `exampleMode` — начальное состояние вкладки примера кода, см. [exampleMode](/Configuration.md#examplemode).
+- `usageMode` — начальное состояние вкладки props и methods, см. [usageMode](/Configuration.md#usagemode).
+- `ignore` — строка/массив glob-шаблонов, исключаемых из секции.
+- `href` — URL для перехода вместо содержимого секции.
+- `external` — если задано, ссылка откроется в новом окне.
 
-Configuring a style guide with textual documentation section and a list of components would look like:
+Пример конфигурации стайлгайда с текстовой документацией и списком компонентов:
 
 ```javascript
 module.exports = {
@@ -90,7 +93,8 @@ module.exports = {
 }
 ```
 
-If you want components in a section to open as dedicated routes from the menu (instead of scrolling inside the section page), enable `componentPagePerSection` on that section:
+Если нужно, чтобы компоненты в секции открывались отдельными маршрутами из меню
+(а не прокручивались внутри страницы секции), включите `componentPagePerSection`:
 
 ```javascript
 module.exports = {

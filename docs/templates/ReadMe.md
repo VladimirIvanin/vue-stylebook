@@ -1,9 +1,10 @@
-# What this folder `docs/templates` is for
+# Для чего нужна папка `docs/templates`
 
-Each ejs template in this folder will be rendered. To render the template use the following command:
+Каждый EJS-шаблон в этой папке рендерится в итоговые файлы документации.
+Чтобы запустить рендеринг, выполните команду:
 
 ```sh
 node ./docs/scripts/review_templates.js
 ```
 
-The result is going to be files created in the docs folder.
+В результате файлы будут созданы в папке `docs`.

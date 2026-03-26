@@ -1,21 +1,21 @@
-# CLI commands and options
+# Команды и опции CLI
 
-## Commands
+## Команды
 
-- `vue-styleguidist server`: Run dev server.
-- `vue-styleguidist build`: Generate a static HTML style guide.
+- `vue-styleguidist server`: запустить dev-сервер.
+- `vue-styleguidist build`: собрать статический HTML-стайлгайд.
 
-## Options
+## Опции
 
-| Option            | Description                              |
+| Опция             | Описание                                 |
 | ----------------- | ---------------------------------------- |
-| `--config <file>` | Specify path to a config file            |
-| `--open`          | Open Styleguidist in the default browser |
-| `--verbose`       | Print debug information                  |
+| `--config <file>` | Указать путь к конфигурационному файлу   |
+| `--open`          | Открыть Styleguidist в браузере по умолчанию |
+| `--verbose`       | Выводить отладочную информацию           |
 
-## Usage
+## Использование
 
-Add these commands into your `package.json`’s `scripts` section:
+Добавьте эти команды в раздел `scripts` вашего `package.json`:
 
 ```json
 {

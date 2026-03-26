@@ -1,27 +1,36 @@
-# Use with the cli 3
+# Использование с Vue CLI 3
 
-With Vue CLI 3, developers can now create a working environment in minutes. Use `vue create myProject` and you are ready to code VueJs. Better, it can help you get started with styleguidist.
+С Vue CLI 3 разработчик может подготовить рабочее окружение за минуты.
+Выполните `vue create myProject` и можно начинать писать на Vue.js.
+Также это упрощает старт со styleguidist.
 
-## Install
+## Установка
 
-To add `styleguidist` to the mix set a terminal in your app's directory and type
+Чтобы добавить `styleguidist`, откройте терминал в папке приложения и выполните:
 
 ```sh
 vue add styleguidist
 ```
 
-Vue Styleguidist will configure itself and add a couple examples to get you started. It will immediately set up the webpack config, Hot Module Reloading and a sample styleguide for you to browse. You can modify the `styleguide.config.js` to make the styleguide look like what's needed.
+Vue Styleguidist автоматически настроится и добавит несколько примеров для
+старта. Будут подготовлены webpack-конфиг, Hot Module Reloading и пример
+стайлгайда. При необходимости измените `styleguide.config.js` под свой проект.
 
-> **Note** If you wish to use `styleguidist` with the CLI but without the plugin, it is not impossible. Install `styleguidist` normally. It is not officially supported though.
+> **Note** Если хотите использовать `styleguidist` с CLI без плагина,
+> это возможно: установите `styleguidist` обычным способом.
+> Но официальной поддержки такого сценария нет.
 >
-> You might have to remove the HMR from the CLI yourself as it conflicts with styleguidists HMR. You might end up on an infinite HMR loop. See [issue 290](https://github.com/vue-styleguidist/vue-styleguidist/issues/290)
+> Возможно, потребуется вручную убрать HMR из CLI, так как он может
+> конфликтовать с HMR styleguidist и вызывать бесконечный цикл обновлений.
+> См. [issue 290](https://github.com/vue-styleguidist/vue-styleguidist/issues/290)
 
 ## Vue UI
 
-Vue Styleguidist is compatible with the Vue UI so if you want to configure `styleguidist` through a graphical interface, open a console and run the following command.
+Vue Styleguidist совместим с Vue UI. Если хотите настраивать `styleguidist`
+через графический интерфейс, откройте консоль и выполните:
 
 ```sh
 vue ui
 ```
 
-In the plugins configuration, you will find switches to configure your styleguide.
+В настройках плагинов будут доступны переключатели для конфигурации стайлгайда.

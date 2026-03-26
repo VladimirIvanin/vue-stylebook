@@ -1,44 +1,48 @@
-# Deployment
+# Деплой
 
-Vue-Styleguidist can generate a static website. This fork is configured to publish documentation with GitHub Pages.
+Vue-Styleguidist может генерировать статический сайт. Этот форк настроен
+на публикацию документации через GitHub Pages.
 
-## Pre-requisites
+## Подготовка
 
-First, specify the location where the styleguide site is going to be built using the [styleguideDir](/Configuration.md#styleguidedir) option. It will default to a `styleguide` folder beside your `styleguide.config.js`.
+Сначала укажите, куда будет собираться сайт стайлгайда, через опцию
+[styleguideDir](/Configuration.md#styleguidedir). По умолчанию используется
+папка `styleguide` рядом с `styleguide.config.js`.
 
-Check out the results of running the following command
-
-```sh
-pnpm predocs
-pnpm docs:build
-```
-
-Now, you should have static files in `docs/dist`.
-
-## Deploy on GitHub Pages
-
-Use a GitHub Actions workflow that:
-
-1. Checks out the repository.
-2. Installs dependencies with `pnpm install`.
-3. Builds docs with:
+Выполните команды:
 
 ```sh
 pnpm predocs
 pnpm docs:build
 ```
 
-4. Publishes `docs/dist` to GitHub Pages.
+После этого статические файлы будут лежать в `docs/dist`.
 
-If you also build example styleguides, copy their generated output into `docs/dist` before publish (this repository does this in CI).
+## Деплой в GitHub Pages
 
-## Manual publish fallback
+Используйте workflow GitHub Actions, который:
 
-If needed, you can still build and publish manually:
+1. Клонирует репозиторий.
+2. Устанавливает зависимости через `pnpm install`.
+3. Собирает docs командами:
 
 ```sh
 pnpm predocs
 pnpm docs:build
 ```
 
-Then upload/publish `docs/dist` to your GitHub Pages target branch.
+4. Публикует `docs/dist` в GitHub Pages.
+
+Если вы также собираете примерные стайлгайды, скопируйте их артефакты
+в `docs/dist` перед публикацией (в этом репозитории так и сделано в CI).
+
+## Ручная публикация (резервный вариант)
+
+При необходимости можно собрать и опубликовать вручную:
+
+```sh
+pnpm predocs
+pnpm docs:build
+```
+
+Затем загрузите/опубликуйте `docs/dist` в целевую ветку GitHub Pages.
