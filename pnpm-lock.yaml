@@ -1466,7 +1466,7 @@ importers:
   packages/npm-bridge:
     dependencies:
       vue-styleguidist:
-        specifier: ^4.72.4
+        specifier: workspace:*
         version: link:../vue-styleguidist
 
   packages/vue-cli-plugin-docgen:

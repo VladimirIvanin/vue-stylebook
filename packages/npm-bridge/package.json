@@ -1,6 +1,6 @@
 {
   "name": "@ivaninvladimir/vue-styleguidist",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Тонкая обёртка над vue-styleguidist: bin для npx / npm exec без монорепозитория",
   "private": false,
   "license": "MIT",
@@ -33,7 +33,7 @@
     "bin"
   ],
   "dependencies": {
-    "vue-styleguidist": "^4.72.4"
+    "vue-styleguidist": "workspace:*"
   },
   "publishConfig": {
     "access": "public"
