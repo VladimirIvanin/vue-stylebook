@@ -1,5 +1,11 @@
 # Команды и опции CLI
 
+Для проектов на этом форке устанавливайте пакет так:
+
+```bash
+pnpm add -D @ivaninvladimir/vue-styleguidist
+```
+
 ## Команды
 
 - `vue-styleguidist server`: запустить dev-сервер.

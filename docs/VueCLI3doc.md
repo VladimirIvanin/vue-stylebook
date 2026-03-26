@@ -12,6 +12,25 @@
 vue add styleguidist
 ```
 
+Для форка эта команда ставит upstream-плагин `vue-cli-plugin-styleguidist`,
+который тянет `vue-styleguidist`, а не `@ivaninvladimir/vue-styleguidist`.
+Если нужен именно форк, установите его напрямую:
+
+```sh
+pnpm add -D @ivaninvladimir/vue-styleguidist
+```
+
+и добавьте скрипты вручную:
+
+```json
+{
+  "scripts": {
+    "styleguide": "vue-styleguidist server",
+    "styleguide:build": "vue-styleguidist build"
+  }
+}
+```
+
 Vue Styleguidist автоматически настроится и добавит несколько примеров для
 старта. Будут подготовлены webpack-конфиг, Hot Module Reloading и пример
 стайлгайда. При необходимости измените `styleguide.config.js` под свой проект.

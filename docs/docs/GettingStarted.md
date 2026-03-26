@@ -12,10 +12,10 @@
 pnpm add -D webpack
 ```
 
-Установите Styleguidist:
+Установите пакет форка:
 
 ```bash
-pnpm add -D vue-styleguidist
+pnpm add -D @ivaninvladimir/vue-styleguidist
 ```
 
 Если вы используете Vue CLI 3 ([@vue/cli](https://cli.vuejs.org/)),
@@ -25,7 +25,12 @@ pnpm add -D vue-styleguidist
 vue add styleguidist
 ```
 
-и использовать [документацию для Vue CLI](/VueCLI3doc.md)
+Для форка эта команда устанавливает upstream-версию плагина и пакета
+`vue-styleguidist`, а не `@ivaninvladimir/vue-styleguidist`.
+Если важны изменения именно форка, используйте ручную настройку через
+`styleguide.config.js` и npm-скрипты ниже.
+
+Детали по интеграции смотрите в [документации для Vue CLI](/VueCLI3doc.md).
 
 ## 2. Настройка стайлгайда
 
