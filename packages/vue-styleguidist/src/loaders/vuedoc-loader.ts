@@ -108,7 +108,9 @@ export async function vuedocLoader(this: StyleguidistContext, source: string): P
 	} else if (vsgDocs.tags) {
 		const examples = vsgDocs.tags.examples
 		if (examples) {
-			const examplePaths = examples.map((a: Tag) => a.content)
+			const examplePaths = examples
+				.map((a: Tag) => a.content)
+				.filter((p): p is string => typeof p === 'string')
 			if (examplePaths[0] === '[none]') {
 				ignoreExamplesInFile = true
 			} else {

@@ -122,12 +122,11 @@ export async function processSection(
 		sectionDepth = parentDepth === 0 ? 0 : parentDepth - 1
 	}
 
-	return {
+	const loaderSection: Rsg.LoaderSection = {
 		name: section.name || '',
 		exampleMode: section.exampleMode || config.exampleMode,
 		usageMode: section.usageMode || config.usageMode,
 		sectionDepth,
-		componentPagePerSection: Boolean(section.componentPagePerSection),
 		description: section.description,
 		slug: slugger.slug(section.name || ''),
 		sections: await getSections(section.sections || [], { ...opts, parentDepth: sectionDepth }),
@@ -136,6 +135,9 @@ export async function processSection(
 		content,
 		external: section.external
 	}
+
+	;(loaderSection as any).componentPagePerSection = Boolean(section.componentPagePerSection)
+	return loaderSection
 }
 
 const getSectionComponents = (
