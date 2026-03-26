@@ -23,7 +23,9 @@ function getVuePackageVersion() {
 			const pkgPath = require.resolve('vue/package.json', { paths: [initCwd] })
 			const pkg = require(pkgPath)
 			return pkg.version
-		} catch (error) {}
+		} catch (error) {
+			// Ignore and fallback to local resolution.
+		}
 	}
 
 	try {
