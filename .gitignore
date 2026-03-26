@@ -33,3 +33,6 @@ test/cypress/videos/
 !/test/cli-packages/.gitkeep
 
 .turbo
+
+# npm pack / локальные tarball перед publish
+*.tgz

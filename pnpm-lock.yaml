@@ -195,7 +195,7 @@ importers:
         version: 3.4.1
       react-styleguidist:
         specifier: 11.2.0
-        version: 11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@5.74.0)
+        version: 11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(webpack@5.74.0)
       react-test-renderer:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
@@ -246,13 +246,13 @@ importers:
         version: 2.7.14
       vue-styleguidist:
         specifier: '*'
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@17.0.0(webpack@5.74.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@5.74.0)
+        version: link:packages/vue-styleguidist
       vuepress:
         specifier: 1.9.10
-        version: 1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       vuepress-plugin-fulltext-search:
         specifier: ^2.2.1
-        version: 2.2.1(vuepress@1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        version: 2.2.1(vuepress@1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       webpack-dev-server:
         specifier: 3.11.2
         version: 3.11.2(webpack@5.74.0)
@@ -317,7 +317,7 @@ importers:
         version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       vue-template-compiler:
         specifier: ^2.7.14
         version: 2.7.14
@@ -393,10 +393,10 @@ importers:
         version: link:../../packages/vue-docgen-cli
       vue-loader:
         specifier: ^15.9.8
-        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(vue-template-compiler@2.7.14)(webpack@4.46.0)
+        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.8)(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
@@ -442,10 +442,10 @@ importers:
         version: 0.19.1
       vue-loader:
         specifier: ^15.9.8
-        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
+        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
@@ -657,10 +657,10 @@ importers:
         version: 2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)
       vue-loader:
         specifier: ^15.9.8
-        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(vue-template-compiler@2.7.14)(webpack@4.46.0)
+        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
@@ -715,10 +715,10 @@ importers:
         version: 2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)
       vue-loader:
         specifier: ^15.9.8
-        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
+        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
@@ -773,7 +773,7 @@ importers:
         version: 2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@17.0.0(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
@@ -852,7 +852,7 @@ importers:
         version: 4.1.3
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@6.8.0)(pug@3.0.3)(vue-loader@15.9.3(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.8)(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       vue-template-compiler:
         specifier: ^2.7.14
         version: 2.7.14
@@ -898,10 +898,10 @@ importers:
         version: 0.19.1
       vue-loader:
         specifier: ^15.9.8
-        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
+        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
@@ -947,7 +947,7 @@ importers:
         version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
@@ -1000,7 +1000,7 @@ importers:
         version: 5.0.8(@babel/core@7.28.0)(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(prettier@2.8.3)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack-sources@3.2.3)
       vue-styleguidist:
         specifier: ^4.46.1
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@17.0.0(webpack@5.74.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@5.74.0)
+        version: link:../../packages/vue-styleguidist
 
   examples/vuecli3:
     dependencies:
@@ -1260,10 +1260,10 @@ importers:
         version: 2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)
       vue-loader:
         specifier: ^15.9.8
-        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(vue-template-compiler@2.7.14)(webpack@4.46.0)
+        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
@@ -1321,10 +1321,10 @@ importers:
         version: 0.19.1
       vue-loader:
         specifier: ^15.9.8
-        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
+        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
@@ -1367,10 +1367,10 @@ importers:
         version: 0.19.1
       vue-loader:
         specifier: ^15.9.8
-        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
+        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
@@ -1410,10 +1410,10 @@ importers:
         version: 0.19.1
       vue-loader:
         specifier: ^15.9.8
-        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
+        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@3.2.37)(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
@@ -1453,15 +1453,21 @@ importers:
         version: 0.19.1
       vue-loader:
         specifier: ^15.9.8
-        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
+        version: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@4.46.0)
       vue-styleguidist:
         specifier: ^4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@3.2.37)(webpack@4.46.0)
+        version: link:../../packages/vue-styleguidist
       webpack:
         specifier: ^4.46.0
         version: 4.46.0
 
   packages/docgen-tests: {}
+
+  packages/npm-bridge:
+    dependencies:
+      vue-styleguidist:
+        specifier: ^4.72.4
+        version: link:../vue-styleguidist
 
   packages/vue-cli-plugin-docgen:
     dependencies:
@@ -1489,7 +1495,7 @@ importers:
     dependencies:
       vue-styleguidist:
         specifier: ^4.72.4
-        version: 4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@17.0.0(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@3.2.37)(webpack@4.46.0)
+        version: link:../vue-styleguidist
       webpack-merge:
         specifier: ^4.2.2
         version: 4.2.2
@@ -3786,10 +3792,6 @@ packages:
 
   '@babel/runtime-corejs3@7.13.10':
     resolution: {integrity: sha512-x/XYVQ1h684pp1mJwOV4CyvqZXqbc8CMsMGUnAbuc82ZCdv1U63w5RSUzgDSXQHG5Rps/kiksH6g2D5BuaKyXg==}
-
-  '@babel/runtime@7.20.13':
-    resolution: {integrity: sha512-gt3PKXs0DBoL9xCvOIIZ2NEqAGZqHjAnmVbfQtB620V0uReIQutpel14KcneZuer7UioY8ALKZ7iocavvzTNFA==}
-    engines: {node: '>=6.9.0'}
 
   '@babel/runtime@7.24.7':
     resolution: {integrity: sha512-UwgBRMjJP+xv857DCngvqXI3Iq6J4v0wXmwc6sapg+zyhbwmQX67LUEFrkK5tbyJ30jGuG3ZvWpBiB9LCy1kWw==}
@@ -13284,10 +13286,6 @@ packages:
     resolution: {integrity: sha512-OtVsCpS5jth8jQPonGGmRpYpUfATBudt0kHkehri7h9jg9WsayPDCD6mneknVluZRfiMMlSS98Z99pl8zJLYtw==}
     hasBin: true
 
-  prismjs@1.29.0:
-    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
-    engines: {node: '>=6'}
-
   prismjs@1.30.0:
     resolution: {integrity: sha512-DEvV2ZF2r2/63V+tK8hQvrR2ZGn10srHbXviTlcv7Kpzw8jWiNTqbVgjO3IY8RxrrOUF8VPMQQFysYYYv0YZxw==}
     engines: {node: '>=6'}
@@ -16008,11 +16006,6 @@ packages:
       '@vue/composition-api':
         optional: true
 
-  vue-docgen-api@4.79.2:
-    resolution: {integrity: sha512-n9ENAcs+40awPZMsas7STqjkZiVlIjxIKgiJr5rSohDP0/JCrD9VtlzNojafsA1MChm/hz2h3PDtUedx3lbgfA==}
-    peerDependencies:
-      vue: '>=2'
-
   vue-eslint-parser@7.11.0:
     resolution: {integrity: sha512-qh3VhDLeh773wjgNTl7ss0VejY9bMMa0GoDG2fQVyDzRFdiU3L7fw74tWZDHNQXdZqxO3EveQroa9ct39D2nqg==}
     engines: {node: '>=8.10'}
@@ -16065,9 +16058,6 @@ packages:
     resolution: {integrity: sha512-3uhtgUm85HY3ma1lue5vZvziEsycj7Lzm7DIl21z+kPlfOKm4/zIlszwya9/JW7bsJnm0gQnWzyEa4v64mwQVg==}
     peerDependencies:
       vue: '>=2'
-
-  vue-inbrowser-prismjs-highlighter@4.69.1:
-    resolution: {integrity: sha512-3bms6QpaP7hNCuxtoypRS9Soy+rM8hxjfY7xahS5rUfjq+ddfvUKGEFiapCp6/jRj4Fy3m6RuezR4xi3cZAZXw==}
 
   vue-live@1.17.2:
     resolution: {integrity: sha512-sy3fxQy57UQ5/p8bDGuGA82zHFO8UOJDESYBggWsjVwW9Yt1gixOO2KJrhJ0E0B4OznsXCY4P180Vm+o04mX1Q==}
@@ -16172,25 +16162,6 @@ packages:
 
   vue-style-loader@4.1.3:
     resolution: {integrity: sha512-sFuh0xfbtpRlKfm39ss/ikqs9AbKCoXZBpHeVZ8Tx650o0k0q/YCM7FRvigtxpACezfq6af+a7JeqVTWvncqDg==}
-
-  vue-styleguidist@4.72.4:
-    resolution: {integrity: sha512-b0FFKdoBSeNPQCgzysEli+rG4kTX9uK2Ll0R4PpoJwc4iz0D5YgMAEx3X3PB1/wQG4ln1WQBSctNGnVzIBh6ng==}
-    engines: {node: '>=10', npm: '>=6'}
-    hasBin: true
-    peerDependencies:
-      '@vue/compiler-sfc': '>=3.0.0'
-      pug: '>=3.0.0'
-      vue: '>=2.0.0'
-      vue-loader: '>=14.0.0'
-      vue-template-compiler: '>=2.0.0'
-      webpack: '>=4'
-    peerDependenciesMeta:
-      '@vue/compiler-sfc':
-        optional: true
-      pug:
-        optional: true
-      vue-template-compiler:
-        optional: true
 
   vue-svg-loader@0.16.0:
     resolution: {integrity: sha512-2RtFXlTCYWm8YAEO2qAOZ2SuIF2NvLutB5muc3KDYoZq5ZeCHf8ggzSan3ksbbca7CJ/Aw57ZnDF4B7W/AkGtw==}
@@ -19078,10 +19049,6 @@ snapshots:
   '@babel/runtime-corejs3@7.13.10':
     dependencies:
       core-js-pure: 3.9.1
-      regenerator-runtime: 0.13.11
-
-  '@babel/runtime@7.20.13':
-    dependencies:
       regenerator-runtime: 0.13.11
 
   '@babel/runtime@7.24.7':
@@ -22841,7 +22808,7 @@ snapshots:
 
   '@vue/web-component-wrapper@1.3.0': {}
 
-  '@vuepress/core@1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+  '@vuepress/core@1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@babel/core': 7.28.0
       '@vue/babel-preset-app': 4.5.12(@babel/core@7.28.0)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
@@ -22873,7 +22840,7 @@ snapshots:
       toml: 3.0.0
       url-loader: 1.1.2(webpack@4.46.0)
       vue: 2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)
-      vue-loader: 15.9.8(@vue/compiler-sfc@3.2.47)(cache-loader@3.0.1(webpack@4.46.0))(css-loader@2.1.1(webpack@4.46.0))(ejs@3.1.10)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
+      vue-loader: 15.9.8(@vue/compiler-sfc@3.2.47)(cache-loader@3.0.1(webpack@4.46.0))(css-loader@2.1.1(webpack@4.46.0))(ejs@3.1.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
       vue-router: 3.5.1(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
       vue-server-renderer: 2.7.14
       vue-template-compiler: 2.7.14
@@ -25354,22 +25321,6 @@ snapshots:
       webpack: 4.46.0
       webpack-log: 2.0.0
 
-  copy-webpack-plugin@5.1.2(webpack@5.74.0):
-    dependencies:
-      cacache: 12.0.4
-      find-cache-dir: 2.1.0
-      glob-parent: 3.1.0
-      globby: 7.1.1
-      is-glob: 4.0.3
-      loader-utils: 1.4.2
-      minimatch: 3.0.4
-      normalize-path: 3.0.0
-      p-limit: 2.3.0
-      schema-utils: 1.0.0
-      serialize-javascript: 4.0.0
-      webpack: 5.74.0
-      webpack-log: 2.0.0
-
   copy-webpack-plugin@6.4.1(webpack@4.46.0):
     dependencies:
       cacache: 15.0.6
@@ -25618,21 +25569,6 @@ snapshots:
       postcss-value-parser: 3.3.1
       schema-utils: 1.0.0
       webpack: 4.46.0
-
-  css-loader@2.1.1(webpack@5.74.0):
-    dependencies:
-      camelcase: 5.3.1
-      icss-utils: 4.1.1
-      loader-utils: 1.4.2
-      normalize-path: 3.0.0
-      postcss: 7.0.35
-      postcss-modules-extract-imports: 2.0.0
-      postcss-modules-local-by-default: 2.0.6
-      postcss-modules-scope: 2.2.0
-      postcss-modules-values: 2.0.0
-      postcss-value-parser: 3.3.1
-      schema-utils: 1.0.0
-      webpack: 5.74.0
 
   css-loader@3.6.0(webpack@4.46.0(webpack-cli@4.5.0(webpack-bundle-analyzer@3.3.2)(webpack-dev-server@3.11.2)(webpack@4.46.0))):
     dependencies:
@@ -27840,49 +27776,7 @@ snapshots:
 
   forever-agent@0.6.1: {}
 
-  fork-ts-checker-webpack-plugin@6.5.0(eslint@6.8.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0):
-    dependencies:
-      '@babel/code-frame': 7.24.7
-      '@types/json-schema': 7.0.11
-      chalk: 4.1.2
-      chokidar: 3.5.3
-      cosmiconfig: 6.0.0
-      deepmerge: 4.2.2
-      fs-extra: 9.1.0
-      glob: 7.2.3
-      memfs: 3.4.1
-      minimatch: 3.1.2
-      schema-utils: 2.7.0
-      semver: 7.6.0
-      tapable: 1.1.3
-      typescript: 4.9.5
-      webpack: 4.46.0
-    optionalDependencies:
-      eslint: 6.8.0
-      vue-template-compiler: 2.7.14
-
-  fork-ts-checker-webpack-plugin@6.5.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0):
-    dependencies:
-      '@babel/code-frame': 7.24.7
-      '@types/json-schema': 7.0.11
-      chalk: 4.1.2
-      chokidar: 3.5.3
-      cosmiconfig: 6.0.0
-      deepmerge: 4.2.2
-      fs-extra: 9.1.0
-      glob: 7.2.3
-      memfs: 3.4.1
-      minimatch: 3.1.2
-      schema-utils: 2.7.0
-      semver: 7.6.0
-      tapable: 1.1.3
-      typescript: 4.9.5
-      webpack: 4.46.0
-    optionalDependencies:
-      eslint: 7.32.0
-      vue-template-compiler: 2.7.14
-
-  fork-ts-checker-webpack-plugin@6.5.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@5.74.0):
+  fork-ts-checker-webpack-plugin@6.5.0(eslint@7.32.0)(typescript@4.9.5)(webpack@5.74.0):
     dependencies:
       '@babel/code-frame': 7.24.7
       '@types/json-schema': 7.0.11
@@ -27901,7 +27795,6 @@ snapshots:
       webpack: 5.74.0
     optionalDependencies:
       eslint: 7.32.0
-      vue-template-compiler: 2.7.14
 
   fork-ts-checker-webpack-plugin@6.5.0(eslint@8.21.0)(typescript@4.2.3)(vue-template-compiler@2.7.14)(webpack@5.74.0):
     dependencies:
@@ -28869,7 +28762,7 @@ snapshots:
   http-proxy-middleware@1.0.6:
     dependencies:
       '@types/http-proxy': 1.17.9
-      http-proxy: 1.18.1(debug@4.3.4)
+      http-proxy: 1.18.1(debug@4.4.1(supports-color@6.1.0))
       is-glob: 4.0.3
       lodash: 4.17.21
       micromatch: 4.0.5
@@ -28923,7 +28816,7 @@ snapshots:
       corser: 2.0.1
       he: 1.2.0
       html-encoding-sniffer: 3.0.0
-      http-proxy: 1.18.1(debug@4.3.4)
+      http-proxy: 1.18.1(debug@4.4.1(supports-color@6.1.0))
       mime: 1.6.0
       minimist: 1.2.8
       opener: 1.5.2
@@ -32862,8 +32755,6 @@ snapshots:
       colors: 1.4.0
       minimist: 1.2.8
 
-  prismjs@1.29.0: {}
-
   prismjs@1.30.0: {}
 
   private@0.1.8: {}
@@ -33323,7 +33214,7 @@ snapshots:
       codemirror: 5.60.0
       react: 18.2.0
 
-  react-dev-utils@12.0.0(eslint@6.8.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0):
+  react-dev-utils@12.0.0(eslint@7.32.0)(typescript@4.9.5)(webpack@5.74.0):
     dependencies:
       '@babel/code-frame': 7.16.7
       address: 1.1.2
@@ -33334,75 +33225,7 @@ snapshots:
       escape-string-regexp: 4.0.0
       filesize: 8.0.7
       find-up: 5.0.0
-      fork-ts-checker-webpack-plugin: 6.5.0(eslint@6.8.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      global-modules: 2.0.0
-      globby: 11.1.0
-      gzip-size: 6.0.0
-      immer: 9.0.12
-      is-root: 2.1.0
-      loader-utils: 3.2.1
-      open: 8.4.0
-      pkg-up: 3.1.0
-      prompts: 2.4.2
-      react-error-overlay: 6.0.10
-      recursive-readdir: 2.2.2
-      shell-quote: 1.7.3
-      strip-ansi: 6.0.1
-      text-table: 0.2.0
-      webpack: 4.46.0
-    optionalDependencies:
-      typescript: 4.9.5
-    transitivePeerDependencies:
-      - eslint
-      - supports-color
-      - vue-template-compiler
-
-  react-dev-utils@12.0.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0):
-    dependencies:
-      '@babel/code-frame': 7.16.7
-      address: 1.1.2
-      browserslist: 4.19.1
-      chalk: 4.1.2
-      cross-spawn: 7.0.3
-      detect-port-alt: 1.1.6
-      escape-string-regexp: 4.0.0
-      filesize: 8.0.7
-      find-up: 5.0.0
-      fork-ts-checker-webpack-plugin: 6.5.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      global-modules: 2.0.0
-      globby: 11.1.0
-      gzip-size: 6.0.0
-      immer: 9.0.12
-      is-root: 2.1.0
-      loader-utils: 3.2.1
-      open: 8.4.0
-      pkg-up: 3.1.0
-      prompts: 2.4.2
-      react-error-overlay: 6.0.10
-      recursive-readdir: 2.2.2
-      shell-quote: 1.7.3
-      strip-ansi: 6.0.1
-      text-table: 0.2.0
-      webpack: 4.46.0
-    optionalDependencies:
-      typescript: 4.9.5
-    transitivePeerDependencies:
-      - eslint
-      - supports-color
-      - vue-template-compiler
-
-  react-dev-utils@12.0.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@5.74.0):
-    dependencies:
-      '@babel/code-frame': 7.16.7
-      address: 1.1.2
-      browserslist: 4.19.1
-      chalk: 4.1.2
-      cross-spawn: 7.0.3
-      detect-port-alt: 1.1.6
-      escape-string-regexp: 4.0.0
-      filesize: 8.0.7
-      find-up: 5.0.0
-      fork-ts-checker-webpack-plugin: 6.5.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@5.74.0)
+      fork-ts-checker-webpack-plugin: 6.5.0(eslint@7.32.0)(typescript@4.9.5)(webpack@5.74.0)
       global-modules: 2.0.0
       globby: 11.1.0
       gzip-size: 6.0.0
@@ -33521,161 +33344,7 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  react-styleguidist@11.2.0(eslint@6.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0):
-    dependencies:
-      '@tippyjs/react': 4.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@vxna/mini-html-webpack-template': 2.0.0
-      acorn: 6.4.2
-      acorn-jsx: 5.3.2(acorn@6.4.2)
-      assert: 1.5.0
-      ast-types: 0.14.2
-      buble: 0.20.0
-      clean-webpack-plugin: 3.0.0(webpack@4.46.0)
-      clipboard-copy: 3.2.0
-      clsx: 1.1.1
-      common-dir: 3.0.1
-      copy-webpack-plugin: 6.4.1(webpack@4.46.0)
-      core-js: 3.27.2
-      doctrine: 3.0.0
-      es6-object-assign: 1.1.0
-      es6-promise: 4.2.8
-      escodegen: 1.14.3
-      estree-walker: 0.9.0
-      fastest-levenshtein: 1.0.12
-      findup: 0.1.5
-      function.name-polyfill: 1.0.6
-      github-slugger: 1.3.0
-      glob: 7.2.3
-      glogg: 1.0.2
-      hash-sum: 2.0.0
-      javascript-stringify: 2.0.1
-      jss: 10.9.2
-      jss-plugin-camel-case: 10.9.2
-      jss-plugin-compose: 10.9.2
-      jss-plugin-default-unit: 10.9.2
-      jss-plugin-global: 10.9.2
-      jss-plugin-isolate: 10.9.2
-      jss-plugin-nested: 10.9.2
-      kleur: 3.0.3
-      listify: 1.0.3
-      loader-utils: 2.0.4
-      lodash: 4.17.21
-      lowercase-keys: 2.0.0
-      markdown-to-jsx: 6.11.4(react@18.2.0)
-      mini-html-webpack-plugin: 3.1.3(webpack@4.46.0)
-      mri: 1.1.6
-      ora: 4.1.1
-      prismjs: 1.30.0
-      prop-types: 15.8.1
-      q-i: 2.0.1
-      qss: 2.0.3
-      react: 18.2.0
-      react-dev-utils: 12.0.0(eslint@6.8.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      react-docgen: 5.3.1
-      react-docgen-annotation-resolver: 2.0.0
-      react-docgen-displayname-handler: 3.0.2(react-docgen@5.3.1)
-      react-dom: 18.2.0(react@18.2.0)
-      react-group: 3.0.2(react@18.2.0)
-      react-icons: 3.11.0(react@18.2.0)
-      react-simple-code-editor: 0.10.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      recast: 0.18.10
-      remark: 13.0.0
-      strip-html-comments: 1.0.0
-      terser-webpack-plugin: 4.2.3(webpack@4.46.0)
-      to-ast: 1.0.0
-      type-detect: 4.0.8
-      unist-util-visit: 2.0.3
-      webpack-dev-server: 3.11.3(webpack@4.46.0)
-      webpack-merge: 4.2.2
-    transitivePeerDependencies:
-      - bluebird
-      - bufferutil
-      - eslint
-      - supports-color
-      - typescript
-      - utf-8-validate
-      - vue-template-compiler
-      - webpack
-      - webpack-cli
-
-  react-styleguidist@11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0):
-    dependencies:
-      '@tippyjs/react': 4.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@vxna/mini-html-webpack-template': 2.0.0
-      acorn: 6.4.2
-      acorn-jsx: 5.3.2(acorn@6.4.2)
-      assert: 1.5.0
-      ast-types: 0.14.2
-      buble: 0.20.0
-      clean-webpack-plugin: 3.0.0(webpack@4.46.0)
-      clipboard-copy: 3.2.0
-      clsx: 1.1.1
-      common-dir: 3.0.1
-      copy-webpack-plugin: 6.4.1(webpack@4.46.0)
-      core-js: 3.27.2
-      doctrine: 3.0.0
-      es6-object-assign: 1.1.0
-      es6-promise: 4.2.8
-      escodegen: 1.14.3
-      estree-walker: 0.9.0
-      fastest-levenshtein: 1.0.12
-      findup: 0.1.5
-      function.name-polyfill: 1.0.6
-      github-slugger: 1.3.0
-      glob: 7.2.3
-      glogg: 1.0.2
-      hash-sum: 2.0.0
-      javascript-stringify: 2.0.1
-      jss: 10.9.2
-      jss-plugin-camel-case: 10.9.2
-      jss-plugin-compose: 10.9.2
-      jss-plugin-default-unit: 10.9.2
-      jss-plugin-global: 10.9.2
-      jss-plugin-isolate: 10.9.2
-      jss-plugin-nested: 10.9.2
-      kleur: 3.0.3
-      listify: 1.0.3
-      loader-utils: 2.0.4
-      lodash: 4.17.21
-      lowercase-keys: 2.0.0
-      markdown-to-jsx: 6.11.4(react@18.2.0)
-      mini-html-webpack-plugin: 3.1.3(webpack@4.46.0)
-      mri: 1.1.6
-      ora: 4.1.1
-      prismjs: 1.30.0
-      prop-types: 15.8.1
-      q-i: 2.0.1
-      qss: 2.0.3
-      react: 18.2.0
-      react-dev-utils: 12.0.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      react-docgen: 5.3.1
-      react-docgen-annotation-resolver: 2.0.0
-      react-docgen-displayname-handler: 3.0.2(react-docgen@5.3.1)
-      react-dom: 18.2.0(react@18.2.0)
-      react-group: 3.0.2(react@18.2.0)
-      react-icons: 3.11.0(react@18.2.0)
-      react-simple-code-editor: 0.10.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      recast: 0.18.10
-      remark: 13.0.0
-      strip-html-comments: 1.0.0
-      terser-webpack-plugin: 4.2.3(webpack@4.46.0)
-      to-ast: 1.0.0
-      type-detect: 4.0.8
-      unist-util-visit: 2.0.3
-      webpack-dev-server: 3.11.3(webpack@4.46.0)
-      webpack-merge: 4.2.2
-    transitivePeerDependencies:
-      - bluebird
-      - bufferutil
-      - eslint
-      - supports-color
-      - typescript
-      - utf-8-validate
-      - vue-template-compiler
-      - webpack
-      - webpack-cli
-
-  react-styleguidist@11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@5.74.0):
+  react-styleguidist@11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(webpack@5.74.0):
     dependencies:
       '@tippyjs/react': 4.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@vxna/mini-html-webpack-template': 2.0.0
@@ -33724,7 +33393,7 @@ snapshots:
       q-i: 2.0.1
       qss: 2.0.3
       react: 18.2.0
-      react-dev-utils: 12.0.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@5.74.0)
+      react-dev-utils: 12.0.0(eslint@7.32.0)(typescript@4.9.5)(webpack@5.74.0)
       react-docgen: 5.3.1
       react-docgen-annotation-resolver: 2.0.0
       react-docgen-displayname-handler: 3.0.2(react-docgen@5.3.1)
@@ -35256,12 +34925,6 @@ snapshots:
       schema-utils: 2.7.1
       webpack: 4.46.0
 
-  style-loader@1.3.0(webpack@5.74.0):
-    dependencies:
-      loader-utils: 2.0.4
-      schema-utils: 2.7.1
-      webpack: 5.74.0
-
   style-resources-loader@1.4.1(webpack@4.46.0):
     dependencies:
       glob: 7.2.3
@@ -36545,54 +36208,6 @@ snapshots:
     dependencies:
       vue: 3.2.33
 
-  vue-docgen-api@4.79.2(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)):
-    dependencies:
-      '@babel/parser': 7.28.0
-      '@babel/types': 7.28.1
-      '@vue/compiler-dom': 3.2.47
-      '@vue/compiler-sfc': 3.2.47
-      ast-types: 0.16.1
-      esm-resolve: 1.0.8
-      hash-sum: 2.0.0
-      lru-cache: 8.0.3
-      pug: 3.0.3
-      recast: 0.23.1
-      ts-map: 1.0.3
-      vue: 2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)
-      vue-inbrowser-compiler-independent-utils: 4.71.1(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-
-  vue-docgen-api@4.79.2(vue@2.7.8):
-    dependencies:
-      '@babel/parser': 7.28.0
-      '@babel/types': 7.28.1
-      '@vue/compiler-dom': 3.2.47
-      '@vue/compiler-sfc': 3.2.47
-      ast-types: 0.16.1
-      esm-resolve: 1.0.8
-      hash-sum: 2.0.0
-      lru-cache: 8.0.3
-      pug: 3.0.3
-      recast: 0.23.1
-      ts-map: 1.0.3
-      vue: 2.7.8
-      vue-inbrowser-compiler-independent-utils: 4.71.1(vue@2.7.8)
-
-  vue-docgen-api@4.79.2(vue@3.2.37):
-    dependencies:
-      '@babel/parser': 7.28.0
-      '@babel/types': 7.28.1
-      '@vue/compiler-dom': 3.2.47
-      '@vue/compiler-sfc': 3.2.47
-      ast-types: 0.16.1
-      esm-resolve: 1.0.8
-      hash-sum: 2.0.0
-      lru-cache: 8.0.3
-      pug: 3.0.3
-      recast: 0.23.1
-      ts-map: 1.0.3
-      vue: 3.2.37
-      vue-inbrowser-compiler-independent-utils: 4.71.1(vue@3.2.37)
-
   vue-eslint-parser@7.11.0(eslint@7.32.0):
     dependencies:
       debug: 4.4.1(supports-color@8.1.1)
@@ -36630,27 +36245,9 @@ snapshots:
       '@vue/compiler-sfc': 3.2.47
       vue-template-compiler: 2.7.14
 
-  vue-inbrowser-compiler-demi@4.71.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8):
-    dependencies:
-      vue: 2.7.8
-    optionalDependencies:
-      '@vue/compiler-sfc': 3.2.47
-      vue-template-compiler: 2.7.14
-
-  vue-inbrowser-compiler-demi@4.71.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37):
-    dependencies:
-      vue: 3.2.37
-    optionalDependencies:
-      '@vue/compiler-sfc': 3.2.47
-      vue-template-compiler: 2.7.14
-
   vue-inbrowser-compiler-independent-utils@4.71.1(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)):
     dependencies:
       vue: 2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)
-
-  vue-inbrowser-compiler-independent-utils@4.71.1(vue@2.7.8):
-    dependencies:
-      vue: 2.7.8
 
   vue-inbrowser-compiler-independent-utils@4.71.1(vue@3.2.37):
     dependencies:
@@ -36689,26 +36286,6 @@ snapshots:
       - '@vue/compiler-sfc'
       - vue-template-compiler
 
-  vue-inbrowser-compiler-utils@4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8):
-    dependencies:
-      camelcase: 5.3.1
-      vue: 2.7.8
-      vue-inbrowser-compiler-demi: 4.71.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8)
-      vue-inbrowser-compiler-independent-utils: 4.71.1(vue@2.7.8)
-    transitivePeerDependencies:
-      - '@vue/compiler-sfc'
-      - vue-template-compiler
-
-  vue-inbrowser-compiler-utils@4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37):
-    dependencies:
-      camelcase: 5.3.1
-      vue: 3.2.37
-      vue-inbrowser-compiler-demi: 4.71.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37)
-      vue-inbrowser-compiler-independent-utils: 4.71.1(vue@3.2.37)
-    transitivePeerDependencies:
-      - '@vue/compiler-sfc'
-      - vue-template-compiler
-
   vue-inbrowser-compiler@4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)):
     dependencies:
       acorn: 6.4.2
@@ -36721,61 +36298,6 @@ snapshots:
       walkes: 0.2.1
     transitivePeerDependencies:
       - '@vue/compiler-sfc'
-      - vue-template-compiler
-
-  vue-inbrowser-compiler@4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8):
-    dependencies:
-      acorn: 6.4.2
-      acorn-jsx: 5.3.2(acorn@6.4.2)
-      buble: 0.20.0
-      camelcase: 5.3.1
-      detect-browser: 5.2.0
-      vue: 2.7.8
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8)
-      walkes: 0.2.1
-    transitivePeerDependencies:
-      - '@vue/compiler-sfc'
-      - vue-template-compiler
-
-  vue-inbrowser-compiler@4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37):
-    dependencies:
-      acorn: 6.4.2
-      acorn-jsx: 5.3.2(acorn@6.4.2)
-      buble: 0.20.0
-      camelcase: 5.3.1
-      detect-browser: 5.2.0
-      vue: 3.2.37
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37)
-      walkes: 0.2.1
-    transitivePeerDependencies:
-      - '@vue/compiler-sfc'
-      - vue-template-compiler
-
-  vue-inbrowser-prismjs-highlighter@4.69.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)):
-    dependencies:
-      prismjs: 1.29.0
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-    transitivePeerDependencies:
-      - '@vue/compiler-sfc'
-      - vue
-      - vue-template-compiler
-
-  vue-inbrowser-prismjs-highlighter@4.69.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8):
-    dependencies:
-      prismjs: 1.29.0
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8)
-    transitivePeerDependencies:
-      - '@vue/compiler-sfc'
-      - vue
-      - vue-template-compiler
-
-  vue-inbrowser-prismjs-highlighter@4.69.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37):
-    dependencies:
-      prismjs: 1.29.0
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37)
-    transitivePeerDependencies:
-      - '@vue/compiler-sfc'
-      - vue
       - vue-template-compiler
 
   vue-live@1.17.2(@vue/compiler-sfc@3.2.47)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)):
@@ -37152,9 +36674,9 @@ snapshots:
       - walrus
       - whiskers
 
-  vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(cache-loader@3.0.1(webpack@4.46.0))(css-loader@2.1.1(webpack@4.46.0))(ejs@3.1.10)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0):
+  vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(cache-loader@3.0.1(webpack@4.46.0))(css-loader@2.1.1(webpack@4.46.0))(ejs@3.1.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0):
     dependencies:
-      '@vue/component-compiler-utils': 3.3.0(coffee-script@1.12.7)(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@vue/component-compiler-utils': 3.3.0(coffee-script@1.12.7)(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       css-loader: 2.1.1(webpack@4.46.0)
       hash-sum: 1.0.2
       loader-utils: 1.4.0
@@ -37355,7 +36877,7 @@ snapshots:
       - walrus
       - whiskers
 
-  vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(vue-template-compiler@2.7.14)(webpack@4.46.0):
+  vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(webpack@4.46.0):
     dependencies:
       '@vue/component-compiler-utils': 3.3.0(coffee-script@1.12.7)(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)
       css-loader: 3.6.0(webpack@4.46.0)
@@ -37366,7 +36888,6 @@ snapshots:
       webpack: 4.46.0
     optionalDependencies:
       '@vue/compiler-sfc': 3.2.47
-      vue-template-compiler: 2.7.14
     transitivePeerDependencies:
       - arc-templates
       - atpl
@@ -37489,12 +37010,71 @@ snapshots:
       - walrus
       - whiskers
 
-  vue-loader@17.0.0(webpack@4.46.0):
+  vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(webpack@4.46.0):
     dependencies:
-      chalk: 4.1.2
-      hash-sum: 2.0.0
-      loader-utils: 2.0.4
+      '@vue/component-compiler-utils': 3.3.0(coffee-script@1.12.7)(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      css-loader: 3.6.0(webpack@4.46.0)
+      hash-sum: 1.0.2
+      loader-utils: 1.4.0
+      vue-hot-reload-api: 2.3.4
+      vue-style-loader: 4.1.3
       webpack: 4.46.0
+    optionalDependencies:
+      '@vue/compiler-sfc': 3.2.47
+    transitivePeerDependencies:
+      - arc-templates
+      - atpl
+      - babel-core
+      - bracket-template
+      - coffee-script
+      - dot
+      - dust
+      - dustjs-helpers
+      - dustjs-linkedin
+      - eco
+      - ect
+      - ejs
+      - haml-coffee
+      - hamlet
+      - hamljs
+      - handlebars
+      - hogan.js
+      - htmling
+      - jade
+      - jazz
+      - jqtpl
+      - just
+      - liquid-node
+      - liquor
+      - lodash
+      - marko
+      - mote
+      - mustache
+      - nunjucks
+      - plates
+      - pug
+      - qejs
+      - ractive
+      - razor-tmpl
+      - react
+      - react-dom
+      - slm
+      - squirrelly
+      - swig
+      - swig-templates
+      - teacup
+      - templayed
+      - then-jade
+      - then-pug
+      - tinyliquid
+      - toffee
+      - twig
+      - twing
+      - underscore
+      - vash
+      - velocityjs
+      - walrus
+      - whiskers
 
   vue-loader@17.0.0(webpack@5.74.0):
     dependencies:
@@ -37545,614 +37125,6 @@ snapshots:
     dependencies:
       hash-sum: 1.0.2
       loader-utils: 1.4.0
-
-  vue-styleguidist@4.72.4(@vue/compiler-sfc@3.2.47)(eslint@6.8.0)(pug@3.0.3)(vue-loader@15.9.3(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.8)(webpack@4.46.0):
-    dependencies:
-      '@babel/runtime': 7.20.13
-      '@vxna/mini-html-webpack-template': 1.0.0
-      ast-types: 0.16.1
-      classnames: 2.3.1
-      clean-webpack-plugin: 3.0.0(webpack@4.46.0)
-      cli-progress: 3.9.0
-      clipboard-copy: 3.2.0
-      clsx: 1.1.1
-      codemirror: 5.60.0
-      common-dir: 2.0.2
-      copy-webpack-plugin: 5.1.2(webpack@4.46.0)
-      core-js: 3.27.2
-      css-loader: 2.1.1(webpack@4.46.0)
-      es6-object-assign: 1.1.0
-      es6-promise: 4.2.8
-      escodegen: 1.14.3
-      findup: 0.1.5
-      function.name-polyfill: 1.0.6
-      github-slugger: 1.3.0
-      glob: 7.2.3
-      glogg: 1.0.2
-      hash-sum: 2.0.0
-      is-directory: 0.3.1
-      javascript-stringify: 1.6.0
-      jss: 10.9.2
-      kleur: 4.1.5
-      leven: 2.1.0
-      loader-utils: 1.4.2
-      lodash: 4.17.21
-      lru-cache: 8.0.3
-      mini-html-webpack-plugin: 3.1.3(webpack@4.46.0)
-      minimist: 1.2.8
-      prismjs: 1.29.0
-      process: 0.11.10
-      prop-types: 15.8.1
-      q-i: 2.0.1
-      qss: 2.0.3
-      react: 18.2.0
-      react-codemirror2: 7.2.1(codemirror@5.60.0)(react@18.2.0)
-      react-dev-utils: 12.0.0(eslint@6.8.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      react-dom: 18.2.0(react@18.2.0)
-      react-group: 3.0.2(react@18.2.0)
-      react-icons: 3.11.0(react@18.2.0)
-      react-lifecycles-compat: 3.0.4
-      react-simple-code-editor: 0.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react-styleguidist: 11.2.0(eslint@6.8.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      rewrite-imports: 2.0.3
-      source-map: 0.7.4
-      style-loader: 1.3.0(webpack@4.46.0)
-      terser-webpack-plugin: 4.2.3(webpack@4.46.0)
-      to-ast: 1.0.0
-      typescript: 4.9.5
-      vue: 2.7.8
-      vue-docgen-api: 4.79.2(vue@2.7.8)
-      vue-inbrowser-compiler: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8)
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8)
-      vue-inbrowser-prismjs-highlighter: 4.69.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8)
-      vue-loader: 15.9.3(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      webpack: 4.46.0
-      webpack-dev-server: 3.11.2(webpack@4.46.0)
-      webpack-filter-warnings-plugin: 1.2.1(webpack@4.46.0)
-      webpack-merge: 4.2.2
-    optionalDependencies:
-      '@vue/compiler-sfc': 3.2.47
-      pug: 3.0.3
-      vue-template-compiler: 2.7.14
-    transitivePeerDependencies:
-      - bluebird
-      - bufferutil
-      - eslint
-      - supports-color
-      - utf-8-validate
-      - webpack-cli
-
-  vue-styleguidist@4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0):
-    dependencies:
-      '@babel/runtime': 7.20.13
-      '@vxna/mini-html-webpack-template': 1.0.0
-      ast-types: 0.16.1
-      classnames: 2.3.1
-      clean-webpack-plugin: 3.0.0(webpack@4.46.0)
-      cli-progress: 3.9.0
-      clipboard-copy: 3.2.0
-      clsx: 1.1.1
-      codemirror: 5.60.0
-      common-dir: 2.0.2
-      copy-webpack-plugin: 5.1.2(webpack@4.46.0)
-      core-js: 3.27.2
-      css-loader: 2.1.1(webpack@4.46.0)
-      es6-object-assign: 1.1.0
-      es6-promise: 4.2.8
-      escodegen: 1.14.3
-      findup: 0.1.5
-      function.name-polyfill: 1.0.6
-      github-slugger: 1.3.0
-      glob: 7.2.3
-      glogg: 1.0.2
-      hash-sum: 2.0.0
-      is-directory: 0.3.1
-      javascript-stringify: 1.6.0
-      jss: 10.9.2
-      kleur: 4.1.5
-      leven: 2.1.0
-      loader-utils: 1.4.2
-      lodash: 4.17.21
-      lru-cache: 8.0.3
-      mini-html-webpack-plugin: 3.1.3(webpack@4.46.0)
-      minimist: 1.2.8
-      prismjs: 1.29.0
-      process: 0.11.10
-      prop-types: 15.8.1
-      q-i: 2.0.1
-      qss: 2.0.3
-      react: 18.2.0
-      react-codemirror2: 7.2.1(codemirror@5.60.0)(react@18.2.0)
-      react-dev-utils: 12.0.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      react-dom: 18.2.0(react@18.2.0)
-      react-group: 3.0.2(react@18.2.0)
-      react-icons: 3.11.0(react@18.2.0)
-      react-lifecycles-compat: 3.0.4
-      react-simple-code-editor: 0.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react-styleguidist: 11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      rewrite-imports: 2.0.3
-      source-map: 0.7.4
-      style-loader: 1.3.0(webpack@4.46.0)
-      terser-webpack-plugin: 4.2.3(webpack@4.46.0)
-      to-ast: 1.0.0
-      typescript: 4.9.5
-      vue: 2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)
-      vue-docgen-api: 4.79.2(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-compiler: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-prismjs-highlighter: 4.69.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-loader: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      webpack: 4.46.0
-      webpack-dev-server: 3.11.2(webpack@4.46.0)
-      webpack-filter-warnings-plugin: 1.2.1(webpack@4.46.0)
-      webpack-merge: 4.2.2
-    optionalDependencies:
-      '@vue/compiler-sfc': 3.2.47
-      pug: 3.0.3
-      vue-template-compiler: 2.7.14
-    transitivePeerDependencies:
-      - bluebird
-      - bufferutil
-      - eslint
-      - supports-color
-      - utf-8-validate
-      - webpack-cli
-
-  vue-styleguidist@4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.8)(webpack@4.46.0):
-    dependencies:
-      '@babel/runtime': 7.20.13
-      '@vxna/mini-html-webpack-template': 1.0.0
-      ast-types: 0.16.1
-      classnames: 2.3.1
-      clean-webpack-plugin: 3.0.0(webpack@4.46.0)
-      cli-progress: 3.9.0
-      clipboard-copy: 3.2.0
-      clsx: 1.1.1
-      codemirror: 5.60.0
-      common-dir: 2.0.2
-      copy-webpack-plugin: 5.1.2(webpack@4.46.0)
-      core-js: 3.27.2
-      css-loader: 2.1.1(webpack@4.46.0)
-      es6-object-assign: 1.1.0
-      es6-promise: 4.2.8
-      escodegen: 1.14.3
-      findup: 0.1.5
-      function.name-polyfill: 1.0.6
-      github-slugger: 1.3.0
-      glob: 7.2.3
-      glogg: 1.0.2
-      hash-sum: 2.0.0
-      is-directory: 0.3.1
-      javascript-stringify: 1.6.0
-      jss: 10.9.2
-      kleur: 4.1.5
-      leven: 2.1.0
-      loader-utils: 1.4.2
-      lodash: 4.17.21
-      lru-cache: 8.0.3
-      mini-html-webpack-plugin: 3.1.3(webpack@4.46.0)
-      minimist: 1.2.8
-      prismjs: 1.29.0
-      process: 0.11.10
-      prop-types: 15.8.1
-      q-i: 2.0.1
-      qss: 2.0.3
-      react: 18.2.0
-      react-codemirror2: 7.2.1(codemirror@5.60.0)(react@18.2.0)
-      react-dev-utils: 12.0.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      react-dom: 18.2.0(react@18.2.0)
-      react-group: 3.0.2(react@18.2.0)
-      react-icons: 3.11.0(react@18.2.0)
-      react-lifecycles-compat: 3.0.4
-      react-simple-code-editor: 0.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react-styleguidist: 11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      rewrite-imports: 2.0.3
-      source-map: 0.7.4
-      style-loader: 1.3.0(webpack@4.46.0)
-      terser-webpack-plugin: 4.2.3(webpack@4.46.0)
-      to-ast: 1.0.0
-      typescript: 4.9.5
-      vue: 2.7.8
-      vue-docgen-api: 4.79.2(vue@2.7.8)
-      vue-inbrowser-compiler: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8)
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8)
-      vue-inbrowser-prismjs-highlighter: 4.69.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.8)
-      vue-loader: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@17.0.2)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      webpack: 4.46.0
-      webpack-dev-server: 3.11.2(webpack@4.46.0)
-      webpack-filter-warnings-plugin: 1.2.1(webpack@4.46.0)
-      webpack-merge: 4.2.2
-    optionalDependencies:
-      '@vue/compiler-sfc': 3.2.47
-      pug: 3.0.3
-      vue-template-compiler: 2.7.14
-    transitivePeerDependencies:
-      - bluebird
-      - bufferutil
-      - eslint
-      - supports-color
-      - utf-8-validate
-      - webpack-cli
-
-  vue-styleguidist@4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0):
-    dependencies:
-      '@babel/runtime': 7.20.13
-      '@vxna/mini-html-webpack-template': 1.0.0
-      ast-types: 0.16.1
-      classnames: 2.3.1
-      clean-webpack-plugin: 3.0.0(webpack@4.46.0)
-      cli-progress: 3.9.0
-      clipboard-copy: 3.2.0
-      clsx: 1.1.1
-      codemirror: 5.60.0
-      common-dir: 2.0.2
-      copy-webpack-plugin: 5.1.2(webpack@4.46.0)
-      core-js: 3.27.2
-      css-loader: 2.1.1(webpack@4.46.0)
-      es6-object-assign: 1.1.0
-      es6-promise: 4.2.8
-      escodegen: 1.14.3
-      findup: 0.1.5
-      function.name-polyfill: 1.0.6
-      github-slugger: 1.3.0
-      glob: 7.2.3
-      glogg: 1.0.2
-      hash-sum: 2.0.0
-      is-directory: 0.3.1
-      javascript-stringify: 1.6.0
-      jss: 10.9.2
-      kleur: 4.1.5
-      leven: 2.1.0
-      loader-utils: 1.4.2
-      lodash: 4.17.21
-      lru-cache: 8.0.3
-      mini-html-webpack-plugin: 3.1.3(webpack@4.46.0)
-      minimist: 1.2.8
-      prismjs: 1.29.0
-      process: 0.11.10
-      prop-types: 15.8.1
-      q-i: 2.0.1
-      qss: 2.0.3
-      react: 18.2.0
-      react-codemirror2: 7.2.1(codemirror@5.60.0)(react@18.2.0)
-      react-dev-utils: 12.0.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      react-dom: 18.2.0(react@18.2.0)
-      react-group: 3.0.2(react@18.2.0)
-      react-icons: 3.11.0(react@18.2.0)
-      react-lifecycles-compat: 3.0.4
-      react-simple-code-editor: 0.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react-styleguidist: 11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      rewrite-imports: 2.0.3
-      source-map: 0.7.4
-      style-loader: 1.3.0(webpack@4.46.0)
-      terser-webpack-plugin: 4.2.3(webpack@4.46.0)
-      to-ast: 1.0.0
-      typescript: 4.9.5
-      vue: 2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)
-      vue-docgen-api: 4.79.2(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-compiler: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-prismjs-highlighter: 4.69.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-loader: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      webpack: 4.46.0
-      webpack-dev-server: 3.11.2(webpack@4.46.0)
-      webpack-filter-warnings-plugin: 1.2.1(webpack@4.46.0)
-      webpack-merge: 4.2.2
-    optionalDependencies:
-      '@vue/compiler-sfc': 3.2.47
-      pug: 3.0.3
-      vue-template-compiler: 2.7.14
-    transitivePeerDependencies:
-      - bluebird
-      - bufferutil
-      - eslint
-      - supports-color
-      - utf-8-validate
-      - webpack-cli
-
-  vue-styleguidist@4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@3.2.37)(webpack@4.46.0):
-    dependencies:
-      '@babel/runtime': 7.20.13
-      '@vxna/mini-html-webpack-template': 1.0.0
-      ast-types: 0.16.1
-      classnames: 2.3.1
-      clean-webpack-plugin: 3.0.0(webpack@4.46.0)
-      cli-progress: 3.9.0
-      clipboard-copy: 3.2.0
-      clsx: 1.1.1
-      codemirror: 5.60.0
-      common-dir: 2.0.2
-      copy-webpack-plugin: 5.1.2(webpack@4.46.0)
-      core-js: 3.27.2
-      css-loader: 2.1.1(webpack@4.46.0)
-      es6-object-assign: 1.1.0
-      es6-promise: 4.2.8
-      escodegen: 1.14.3
-      findup: 0.1.5
-      function.name-polyfill: 1.0.6
-      github-slugger: 1.3.0
-      glob: 7.2.3
-      glogg: 1.0.2
-      hash-sum: 2.0.0
-      is-directory: 0.3.1
-      javascript-stringify: 1.6.0
-      jss: 10.9.2
-      kleur: 4.1.5
-      leven: 2.1.0
-      loader-utils: 1.4.2
-      lodash: 4.17.21
-      lru-cache: 8.0.3
-      mini-html-webpack-plugin: 3.1.3(webpack@4.46.0)
-      minimist: 1.2.8
-      prismjs: 1.29.0
-      process: 0.11.10
-      prop-types: 15.8.1
-      q-i: 2.0.1
-      qss: 2.0.3
-      react: 18.2.0
-      react-codemirror2: 7.2.1(codemirror@5.60.0)(react@18.2.0)
-      react-dev-utils: 12.0.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      react-dom: 18.2.0(react@18.2.0)
-      react-group: 3.0.2(react@18.2.0)
-      react-icons: 3.11.0(react@18.2.0)
-      react-lifecycles-compat: 3.0.4
-      react-simple-code-editor: 0.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react-styleguidist: 11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      rewrite-imports: 2.0.3
-      source-map: 0.7.4
-      style-loader: 1.3.0(webpack@4.46.0)
-      terser-webpack-plugin: 4.2.3(webpack@4.46.0)
-      to-ast: 1.0.0
-      typescript: 4.9.5
-      vue: 3.2.37
-      vue-docgen-api: 4.79.2(vue@3.2.37)
-      vue-inbrowser-compiler: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37)
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37)
-      vue-inbrowser-prismjs-highlighter: 4.69.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37)
-      vue-loader: 15.9.8(@vue/compiler-sfc@3.2.47)(coffee-script@1.12.7)(css-loader@3.6.0(webpack@4.46.0))(ejs@3.1.10)(hogan.js@3.0.2)(lodash@4.17.21)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      webpack: 4.46.0
-      webpack-dev-server: 3.11.2(webpack@4.46.0)
-      webpack-filter-warnings-plugin: 1.2.1(webpack@4.46.0)
-      webpack-merge: 4.2.2
-    optionalDependencies:
-      '@vue/compiler-sfc': 3.2.47
-      pug: 3.0.3
-      vue-template-compiler: 2.7.14
-    transitivePeerDependencies:
-      - bluebird
-      - bufferutil
-      - eslint
-      - supports-color
-      - utf-8-validate
-      - webpack-cli
-
-  vue-styleguidist@4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@17.0.0(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@4.46.0):
-    dependencies:
-      '@babel/runtime': 7.20.13
-      '@vxna/mini-html-webpack-template': 1.0.0
-      ast-types: 0.16.1
-      classnames: 2.3.1
-      clean-webpack-plugin: 3.0.0(webpack@4.46.0)
-      cli-progress: 3.9.0
-      clipboard-copy: 3.2.0
-      clsx: 1.1.1
-      codemirror: 5.60.0
-      common-dir: 2.0.2
-      copy-webpack-plugin: 5.1.2(webpack@4.46.0)
-      core-js: 3.27.2
-      css-loader: 2.1.1(webpack@4.46.0)
-      es6-object-assign: 1.1.0
-      es6-promise: 4.2.8
-      escodegen: 1.14.3
-      findup: 0.1.5
-      function.name-polyfill: 1.0.6
-      github-slugger: 1.3.0
-      glob: 7.2.3
-      glogg: 1.0.2
-      hash-sum: 2.0.0
-      is-directory: 0.3.1
-      javascript-stringify: 1.6.0
-      jss: 10.9.2
-      kleur: 4.1.5
-      leven: 2.1.0
-      loader-utils: 1.4.2
-      lodash: 4.17.21
-      lru-cache: 8.0.3
-      mini-html-webpack-plugin: 3.1.3(webpack@4.46.0)
-      minimist: 1.2.8
-      prismjs: 1.29.0
-      process: 0.11.10
-      prop-types: 15.8.1
-      q-i: 2.0.1
-      qss: 2.0.3
-      react: 18.2.0
-      react-codemirror2: 7.2.1(codemirror@5.60.0)(react@18.2.0)
-      react-dev-utils: 12.0.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      react-dom: 18.2.0(react@18.2.0)
-      react-group: 3.0.2(react@18.2.0)
-      react-icons: 3.11.0(react@18.2.0)
-      react-lifecycles-compat: 3.0.4
-      react-simple-code-editor: 0.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react-styleguidist: 11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      rewrite-imports: 2.0.3
-      source-map: 0.7.4
-      style-loader: 1.3.0(webpack@4.46.0)
-      terser-webpack-plugin: 4.2.3(webpack@4.46.0)
-      to-ast: 1.0.0
-      typescript: 4.9.5
-      vue: 2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)
-      vue-docgen-api: 4.79.2(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-compiler: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-prismjs-highlighter: 4.69.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-loader: 17.0.0(webpack@4.46.0)
-      webpack: 4.46.0
-      webpack-dev-server: 3.11.2(webpack@4.46.0)
-      webpack-filter-warnings-plugin: 1.2.1(webpack@4.46.0)
-      webpack-merge: 4.2.2
-    optionalDependencies:
-      '@vue/compiler-sfc': 3.2.47
-      pug: 3.0.3
-      vue-template-compiler: 2.7.14
-    transitivePeerDependencies:
-      - bluebird
-      - bufferutil
-      - eslint
-      - supports-color
-      - utf-8-validate
-      - webpack-cli
-
-  vue-styleguidist@4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@17.0.0(webpack@4.46.0))(vue-template-compiler@2.7.14)(vue@3.2.37)(webpack@4.46.0):
-    dependencies:
-      '@babel/runtime': 7.20.13
-      '@vxna/mini-html-webpack-template': 1.0.0
-      ast-types: 0.16.1
-      classnames: 2.3.1
-      clean-webpack-plugin: 3.0.0(webpack@4.46.0)
-      cli-progress: 3.9.0
-      clipboard-copy: 3.2.0
-      clsx: 1.1.1
-      codemirror: 5.60.0
-      common-dir: 2.0.2
-      copy-webpack-plugin: 5.1.2(webpack@4.46.0)
-      core-js: 3.27.2
-      css-loader: 2.1.1(webpack@4.46.0)
-      es6-object-assign: 1.1.0
-      es6-promise: 4.2.8
-      escodegen: 1.14.3
-      findup: 0.1.5
-      function.name-polyfill: 1.0.6
-      github-slugger: 1.3.0
-      glob: 7.2.3
-      glogg: 1.0.2
-      hash-sum: 2.0.0
-      is-directory: 0.3.1
-      javascript-stringify: 1.6.0
-      jss: 10.9.2
-      kleur: 4.1.5
-      leven: 2.1.0
-      loader-utils: 1.4.2
-      lodash: 4.17.21
-      lru-cache: 8.0.3
-      mini-html-webpack-plugin: 3.1.3(webpack@4.46.0)
-      minimist: 1.2.8
-      prismjs: 1.29.0
-      process: 0.11.10
-      prop-types: 15.8.1
-      q-i: 2.0.1
-      qss: 2.0.3
-      react: 18.2.0
-      react-codemirror2: 7.2.1(codemirror@5.60.0)(react@18.2.0)
-      react-dev-utils: 12.0.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      react-dom: 18.2.0(react@18.2.0)
-      react-group: 3.0.2(react@18.2.0)
-      react-icons: 3.11.0(react@18.2.0)
-      react-lifecycles-compat: 3.0.4
-      react-simple-code-editor: 0.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react-styleguidist: 11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@4.46.0)
-      rewrite-imports: 2.0.3
-      source-map: 0.7.4
-      style-loader: 1.3.0(webpack@4.46.0)
-      terser-webpack-plugin: 4.2.3(webpack@4.46.0)
-      to-ast: 1.0.0
-      typescript: 4.9.5
-      vue: 3.2.37
-      vue-docgen-api: 4.79.2(vue@3.2.37)
-      vue-inbrowser-compiler: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37)
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37)
-      vue-inbrowser-prismjs-highlighter: 4.69.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@3.2.37)
-      vue-loader: 17.0.0(webpack@4.46.0)
-      webpack: 4.46.0
-      webpack-dev-server: 3.11.2(webpack@4.46.0)
-      webpack-filter-warnings-plugin: 1.2.1(webpack@4.46.0)
-      webpack-merge: 4.2.2
-    optionalDependencies:
-      '@vue/compiler-sfc': 3.2.47
-      pug: 3.0.3
-      vue-template-compiler: 2.7.14
-    transitivePeerDependencies:
-      - bluebird
-      - bufferutil
-      - eslint
-      - supports-color
-      - utf-8-validate
-      - webpack-cli
-
-  vue-styleguidist@4.72.4(@vue/compiler-sfc@3.2.47)(eslint@7.32.0)(pug@3.0.3)(vue-loader@17.0.0(webpack@5.74.0))(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))(webpack@5.74.0):
-    dependencies:
-      '@babel/runtime': 7.20.13
-      '@vxna/mini-html-webpack-template': 1.0.0
-      ast-types: 0.16.1
-      classnames: 2.3.1
-      clean-webpack-plugin: 3.0.0(webpack@5.74.0)
-      cli-progress: 3.9.0
-      clipboard-copy: 3.2.0
-      clsx: 1.1.1
-      codemirror: 5.60.0
-      common-dir: 2.0.2
-      copy-webpack-plugin: 5.1.2(webpack@5.74.0)
-      core-js: 3.27.2
-      css-loader: 2.1.1(webpack@5.74.0)
-      es6-object-assign: 1.1.0
-      es6-promise: 4.2.8
-      escodegen: 1.14.3
-      findup: 0.1.5
-      function.name-polyfill: 1.0.6
-      github-slugger: 1.3.0
-      glob: 7.2.3
-      glogg: 1.0.2
-      hash-sum: 2.0.0
-      is-directory: 0.3.1
-      javascript-stringify: 1.6.0
-      jss: 10.9.2
-      kleur: 4.1.5
-      leven: 2.1.0
-      loader-utils: 1.4.2
-      lodash: 4.17.21
-      lru-cache: 8.0.3
-      mini-html-webpack-plugin: 3.1.3(webpack@5.74.0)
-      minimist: 1.2.8
-      prismjs: 1.29.0
-      process: 0.11.10
-      prop-types: 15.8.1
-      q-i: 2.0.1
-      qss: 2.0.3
-      react: 18.2.0
-      react-codemirror2: 7.2.1(codemirror@5.60.0)(react@18.2.0)
-      react-dev-utils: 12.0.0(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@5.74.0)
-      react-dom: 18.2.0(react@18.2.0)
-      react-group: 3.0.2(react@18.2.0)
-      react-icons: 3.11.0(react@18.2.0)
-      react-lifecycles-compat: 3.0.4
-      react-simple-code-editor: 0.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react-styleguidist: 11.2.0(eslint@7.32.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@4.9.5)(vue-template-compiler@2.7.14)(webpack@5.74.0)
-      rewrite-imports: 2.0.3
-      source-map: 0.7.4
-      style-loader: 1.3.0(webpack@5.74.0)
-      terser-webpack-plugin: 4.2.3(webpack@5.74.0)
-      to-ast: 1.0.0
-      typescript: 4.9.5
-      vue: 2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)
-      vue-docgen-api: 4.79.2(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-compiler: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-inbrowser-prismjs-highlighter: 4.69.1(@vue/compiler-sfc@3.2.47)(vue-template-compiler@2.7.14)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24))
-      vue-loader: 17.0.0(webpack@5.74.0)
-      webpack: 5.74.0
-      webpack-dev-server: 3.11.2(webpack@5.74.0)
-      webpack-filter-warnings-plugin: 1.2.1(webpack@5.74.0)
-      webpack-merge: 4.2.2
-    optionalDependencies:
-      '@vue/compiler-sfc': 3.2.47
-      pug: 3.0.3
-      vue-template-compiler: 2.7.14
-    transitivePeerDependencies:
-      - bluebird
-      - bufferutil
-      - eslint
-      - supports-color
-      - utf-8-validate
-      - webpack-cli
 
   vue-svg-loader@0.16.0(vue-template-compiler@2.7.14):
     dependencies:
@@ -38232,12 +37204,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vuepress-plugin-fulltext-search@2.2.1(vuepress@1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
+  vuepress-plugin-fulltext-search@2.2.1(vuepress@1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
     dependencies:
       flexsearch: 0.6.32
       html-to-text: 7.1.3
       lodash: 4.17.21
-      vuepress: 1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      vuepress: 1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
 
   vuepress-plugin-live@1.6.2(@vue/compiler-sfc@3.2.47)(vue@2.7.14(patch_hash=26fyyf7iv7yfd4w3hhy5cm2p24)):
     dependencies:
@@ -38253,9 +37225,9 @@ snapshots:
     dependencies:
       smoothscroll-polyfill: 0.4.4
 
-  vuepress@1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  vuepress@1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@vuepress/core': 1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(pug@3.0.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@vuepress/core': 1.9.10(@vue/compiler-sfc@3.2.47)(ejs@3.1.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@vuepress/theme-default': 1.9.10
       '@vuepress/types': 1.9.10
       cac: 6.7.14
@@ -38847,10 +37819,6 @@ snapshots:
   webpack-filter-warnings-plugin@1.2.1(webpack@4.46.0):
     dependencies:
       webpack: 4.46.0
-
-  webpack-filter-warnings-plugin@1.2.1(webpack@5.74.0):
-    dependencies:
-      webpack: 5.74.0
 
   webpack-hot-middleware@2.25.0:
     dependencies:

@@ -1,10 +1,7 @@
 {
-  "name": "@ivaninvladimir/vue-styleguidist",
-  "version": "0.2.7",
-  "private": false,
-  "bin": {
-    "vue-styleguidist": "./bin/vue-styleguidist.js"
-  },
+  "name": "@ivaninvladimir/vue-styleguidist-workspace",
+  "version": "0.2.8",
+  "private": true,
   "homepage": "https://github.com/ivaninvladimir/vue-styleguidist",
   "repository": {
     "type": "git",
@@ -45,7 +42,9 @@
     "predocs": "node ./docs/.vuepress/preprocess.js",
     "docs": "vuepress dev docs",
     "docs:build": "node ./docs/.vuepress/preprocess.js && vuepress build docs",
-    "maketypes": "babel packages/vue-styleguidist/src/scripts/schemas/config.ts --out-file packages/vue-styleguidist/lib/scripts/schemas/config.js && node packages/vue-styleguidist/maketypes.js"
+    "maketypes": "babel packages/vue-styleguidist/src/scripts/schemas/config.ts --out-file packages/vue-styleguidist/lib/scripts/schemas/config.js && node packages/vue-styleguidist/maketypes.js",
+    "publish:npm": "pnpm publish packages/npm-bridge --access public",
+    "publish:npm:dry": "pnpm publish packages/npm-bridge --dry-run --access public --no-git-checks"
   },
   "license": "MIT",
   "engines": {

@@ -1,0 +1,41 @@
+{
+  "name": "@ivaninvladimir/vue-styleguidist",
+  "version": "0.2.8",
+  "description": "Тонкая обёртка над vue-styleguidist: bin для npx / npm exec без монорепозитория",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/ivaninvladimir/vue-styleguidist",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivaninvladimir/vue-styleguidist.git",
+    "directory": "packages/npm-bridge"
+  },
+  "bugs": {
+    "url": "https://github.com/ivaninvladimir/vue-styleguidist/issues"
+  },
+  "keywords": [
+    "vue",
+    "styleguide",
+    "style guide",
+    "documentation",
+    "docs",
+    "generator",
+    "component",
+    "components"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "bin": {
+    "vue-styleguidist": "./bin/vue-styleguidist.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "dependencies": {
+    "vue-styleguidist": "^4.72.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
