@@ -36,10 +36,6 @@ module.exports = () => {
 			docsBranch: 'dev',
 			editLinks: true,
 			docsDir: 'docs',
-			algolia: {
-				apiKey: '27d4fa7b11db706f186d098352d5ae3e',
-				indexName: 'vue-styleguidist'
-			},
 			nav: [
 				{ text: 'Docs', link: '/docs/GettingStarted' },
 				...(fs.existsSync(path.resolve(__dirname, '../Examples.md'))
@@ -69,6 +65,7 @@ module.exports = () => {
 				'/Configuration': ['/Configuration'],
 				'/Examples': ['/Examples']
 			}
-		}
+		},
+		plugins: ['fulltext-search']
 	}
 }

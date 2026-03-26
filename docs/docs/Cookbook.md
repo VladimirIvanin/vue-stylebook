@@ -21,6 +21,26 @@
 - [Как интегрировать Styleguidist в существующий сайт Nuxtjs?](#как-интегрировать-styleguidist-в-существующий-сайт-nuxtjs)
 - [Как использовать имя компонента в примерах с другим отображаемым именем](#как-использовать-имя-компонента-в-примерах-с-другим-отображаемым именем)
 
+<!-- toc -->
+
+- [Как добавить сторонние плагины в Styleguidist?](#%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B8%D0%B5-%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D1%8B-%D0%B2-styleguidist)
+- [Как добавить Vuex в Styleguidist?](#%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-vuex-%D0%B2-styleguidist)
+- [Как добавить тестовые данные в Styleguidist?](#%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B2-styleguidist)
+- [Как исключить некоторые компоненты из Styleguidist?](#%D0%BA%D0%B0%D0%BA-%D0%B8%D1%81%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C-%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D1%8B-%D0%B8%D0%B7-styleguidist)
+- [Как скрыть некоторые компоненты в Styleguidist, но оставить их доступными в примерах?](#%D0%BA%D0%B0%D0%BA-%D1%81%D0%BA%D1%80%D1%8B%D1%82%D1%8C-%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D1%8B-%D0%B2-styleguidist-%D0%BD%D0%BE-%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D0%B8%D1%85-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D1%8B%D0%BC%D0%B8-%D0%B2-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%B0%D1%85)
+- [Как добавить собственный JavaScript, CSS или полифилы?](#%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C-%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-javascript-css-%D0%B8%D0%BB%D0%B8-%D0%BF%D0%BE%D0%BB%D0%B8%D1%84%D0%B8%D0%BB%D1%8B)
+- [Как изменить стили Styleguidist?](#%D0%BA%D0%B0%D0%BA-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C-%D1%81%D1%82%D0%B8%D0%BB%D0%B8-styleguidist)
+- [Как изменить вывод логов dev-сервера Styleguidist?](#%D0%BA%D0%B0%D0%BA-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4-%D0%BB%D0%BE%D0%B3%D0%BE%D0%B2-dev-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0-styleguidist)
+- [Как отлаживать мои компоненты и примеры?](#%D0%BA%D0%B0%D0%BA-%D0%BE%D1%82%D0%BB%D0%B0%D0%B6%D0%B8%D0%B2%D0%B0%D1%82%D1%8C-%D0%BC%D0%BE%D0%B8-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D1%8B-%D0%B8-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B)
+- [Как отладить исключения, возникающие из моих компонентов?](#%D0%BA%D0%B0%D0%BA-%D0%BE%D1%82%D0%BB%D0%B0%D0%B4%D0%B8%D1%82%D1%8C-%D0%B8%D1%81%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2%D0%BE%D0%B7%D0%BD%D0%B8%D0%BA%D0%B0%D1%8E%D1%89%D0%B8%D0%B5-%D0%B8%D0%B7-%D0%BC%D0%BE%D0%B8%D1%85-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%BE%D0%B2)
+- [Как использовать Vagrant со Styleguidist?](#%D0%BA%D0%B0%D0%BA-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-vagrant-%D1%81%D0%BE-styleguidist)
+- [Как документировать стилизованные компоненты?](#%D0%BA%D0%B0%D0%BA-%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%81%D1%82%D0%B8%D0%BB%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D1%8B)
+- [Как использовать Vue Styleguidist с компонентами, содержащими маршрутизацию?](#%D0%BA%D0%B0%D0%BA-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-vue-styleguidist-%D1%81-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%B0%D0%BC%D0%B8-%D1%81%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%89%D0%B8%D0%BC%D0%B8-%D0%BC%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8E)
+- [Как использовать Vue Styleguidist с несколькими пакетами компонентов?](#%D0%BA%D0%B0%D0%BA-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-vue-styleguidist-%D1%81-%D0%BD%D0%B5%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%B8%D0%BC%D0%B8-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D0%B0%D0%BC%D0%B8-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%BE%D0%B2)
+- [У меня есть несколько компонентов в одной папке, что мне делать?](#%D1%83-%D0%BC%D0%B5%D0%BD%D1%8F-%D0%B5%D1%81%D1%82%D1%8C-%D0%BD%D0%B5%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%BE%D0%B2-%D0%B2-%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%BF%D0%B0%D0%BF%D0%BA%D0%B5-%D1%87%D1%82%D0%BE-%D0%BC%D0%BD%D0%B5-%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C)
+- [Как интегрировать Styleguidist в существующий сайт Nuxtjs?](#%D0%BA%D0%B0%D0%BA-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-styleguidist-%D0%B2-%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83%D1%8E%D1%89%D0%B8%D0%B9-%D1%81%D0%B0%D0%B9%D1%82-nuxtjs)
+- [Как использовать имя компонента в примерах с другим displayName](#%D0%BA%D0%B0%D0%BA-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B8%D0%BC%D1%8F-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%B0-%D0%B2-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%B0%D1%85-%D1%81-%D0%B4%D1%80%D1%83%D0%B3%D0%B8%D0%BC-displayname)
+
 <!-- tocstop -->
 
 ## Как добавить сторонние плагины в Styleguidist?
@@ -679,4 +699,35 @@ export default {
 ````
 
 
-> :предупреждение: В меню поиска больше не удается найти `AcAlert`, так как оно ищет по именам страниц, то есть `Alert`.
+> :warning: В меню компонентов имя `AcAlert` может не находиться, если в навигации страница называется `Alert`.
+
+## Как работает поиск в документации
+
+В этом репозитории поиск на сайте документации работает через `vuepress-plugin-fulltext-search`.
+Он отличается от поиска компонентов в самом Styleguidist (по меню/именам компонентов).
+
+Что индексируется:
+
+- заголовок страницы;
+- заголовки внутри страницы (`##`, `###` и т.д.);
+- текстовое содержимое Markdown-файла (`.md`), включая обычные абзацы.
+
+Как формируется индекс:
+
+1. При сборке VuePress рендерит Markdown в HTML.
+2. Плагин извлекает из HTML обычный текст и нормализует его.
+3. Для каждой страницы сохраняются поля заголовка, секций и контента.
+4. Поиск в интерфейсе выполняется по этому индексу, поэтому совпадения
+   находятся не только по названию пункта меню, но и по тексту страницы.
+
+Что важно учитывать:
+
+- индекс пересобирается при `vuepress dev`/`vuepress build`;
+- динамический контент, который появляется только в рантайме браузера,
+  в индекс не попадет;
+- результаты зависят от текста, который реально находится в Markdown.
+
+Где настраивается:
+
+- подключение плагина: `docs/.vuepress/config.js` (`plugins: ['fulltext-search']`);
+- зависимость плагина: `package.json` (`vuepress-plugin-fulltext-search`).

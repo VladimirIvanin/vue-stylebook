@@ -129,6 +129,7 @@
     "vue-server-renderer": "2.7.14",
     "vue-styleguidist": "*",
     "vuepress": "1.9.10",
+    "vuepress-plugin-fulltext-search": "^2.2.1",
     "webpack-dev-server": "3.11.2",
     "yorkie": "2.0.0"
   },
