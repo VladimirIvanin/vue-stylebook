@@ -1,7 +1,5 @@
 import React from 'react'
 
-type AnyObject = Record<string, any>
-
 const asReactElement = (story: any): React.ReactNode => {
 	if (!story) {
 		return null
@@ -31,7 +29,7 @@ const asReactElement = (story: any): React.ReactNode => {
 	return null
 }
 
-export function Meta(_props: AnyObject) {
+export function Meta() {
 	return null
 }
 

@@ -7,6 +7,9 @@
 	},
 	"plugins": ["compat", "import"],
 	"settings": {
+		"react": {
+			"version": "detect"
+		},
 		"import/resolver": {
 			"node": {
 				"paths": [
