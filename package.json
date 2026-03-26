@@ -1,7 +1,10 @@
 {
   "name": "@ivaninvladimir/vue-styleguidist",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "private": false,
+  "bin": {
+    "vue-styleguidist": "./bin/vue-styleguidist.js"
+  },
   "homepage": "https://github.com/ivaninvladimir/vue-styleguidist",
   "repository": {
     "type": "git",
