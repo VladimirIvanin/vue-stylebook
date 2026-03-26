@@ -3,6 +3,7 @@
 exports[`getSections > should return an array 1`] = `
 [
   {
+    "componentPagePerSection": false,
     "components": [],
     "content": {
       "require": "!!~/packages/vue-styleguidist/src/loaders/examples-loader.js?customLangs=vue|js|jsx!~/test/components/ReadMe.md",
@@ -18,6 +19,7 @@ exports[`getSections > should return an array 1`] = `
     "usageMode": "collapse",
   },
   {
+    "componentPagePerSection": false,
     "components": [
       {
         "filepath": "components/Button.vue",
@@ -46,6 +48,7 @@ exports[`getSections > should return an array 1`] = `
     "usageMode": "collapse",
   },
   {
+    "componentPagePerSection": false,
     "components": [
       {
         "filepath": "components/Button.vue",
@@ -78,6 +81,7 @@ exports[`getSections > should return an array 1`] = `
 
 exports[`processSection > should return an object for section with components 1`] = `
 {
+  "componentPagePerSection": false,
   "components": [
     {
       "filepath": "components/Button.vue",
@@ -109,6 +113,7 @@ exports[`processSection > should return an object for section with components 1`
 
 exports[`processSection > should return an object for section with content 1`] = `
 {
+  "componentPagePerSection": false,
   "components": [],
   "content": {
     "require": "!!~/packages/vue-styleguidist/src/loaders/examples-loader.js?customLangs=vue|js|jsx!~/test/components/ReadMe.md",
@@ -127,6 +132,7 @@ exports[`processSection > should return an object for section with content 1`] =
 
 exports[`processSection > should return an object for section without ignored components 1`] = `
 {
+  "componentPagePerSection": false,
   "components": [
     {
       "filepath": "components/Button.vue",
