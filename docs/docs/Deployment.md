@@ -1,6 +1,6 @@
 # Deployment
 
-Vue-Styleguidist can generate a static website. To deploy it, follow this short intro and choose one of the providers.
+Vue-Styleguidist can generate a static website. This fork is configured to publish documentation with GitHub Pages.
 
 ## Pre-requisites
 
@@ -9,100 +9,36 @@ First, specify the location where the styleguide site is going to be built using
 Check out the results of running the following command
 
 ```sh
-yarn styleguide:build
+pnpm predocs
+pnpm docs:build
 ```
 
-Now, you should have a directory containing HTML and javascript. Let's deploy it.
-
-## Deploy on [Netlify](https://www.netlify.com/)
-
-1.  Connect Netlify to your GitHub account
-1.  Select the repo to deploy
-1.  Set the build command as `vue-styleguidist build`
-1.  The build folder will be `styleguide` if you have `styleguide.config.js` at the root of your repository and left out the option. If you changed the `styleguideDir` option, pick the new path chosen.
-
-## Deploy on [Zeit Now](https://zeit.co/)
-
-Connect your GitHub account with Zeit.
-
-Create a `now.json` file at the root of your repository containing
-
-```json
-{
-  "name": "vsg-example",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@now/static-build",
-      "config": { "distDir": "styleguide" }
-    }
-  ]
-}
-```
-
-And make sure to prepare a `"build-now"` script in your `package.json` that builds the styleguide
-
-```json
-{
-  "scripts": {
-    "build-now": "styleguidist build"
-  }
-}
-```
-
-Adjust the `distDir` config according to your [styledguideDir](/Configuration.md#styleguidedir) option.
+Now, you should have static files in `docs/dist`.
 
 ## Deploy on GitHub Pages
 
-[Github Pages](https://pages.github.com/) can be very useful to serve static websites. It needs a little more effort than Netlify. It uses your repository files as the static pages themselves.
+Use a GitHub Actions workflow that:
 
-1.  Create a repo called `yourgithubid.github.io`. Replace yourgithubid by your github id.
-1.  Enable GitHub pages on it. `Settings > Options > Github Pages`
-1.  Add an index.html in it. Whatever the content is, it does not matter.
-1.  Check that you can access the created page at https://yourgithubid.github.io/
-1.  Next, back on your library, run `styleguidist build`.
-1.  Upload (commit) in the `yourgithubid.github.io` repository the contents of your `styleguide` folder.
-1.  Go to the URL and see the styleguide live.
-
-## Automate deployment on Travis-CI
-
-Zeit and Netlify simplify your website deployment automation. If you are going with GitHub pages though, because it is free for instance, you might want to build automation yourself.
-
-This is how the very documentation you are reading is deployed automatically
-
-```yml
-deploy:
-  provider: pages
-  skip-cleanup: true
-  local-dir: styleguide
-  target-branch: docs
-  repo: yourgithubid/yourgithubid.github.io
-  github-token: $GITHUB_TOKEN # Set in the settings page of your repository, as a secure variable
-  keep-history: true
-  on:
-    branch: delivery # only deploy when a commit or a merge is pushed to delivery
-```
-
-[Read More](https://docs.travis-ci.com/user/deployment/pages/)
-
-## Deploy on surge.sh
-
-1. Install surge CLI
+1. Checks out the repository.
+2. Installs dependencies with `pnpm install`.
+3. Builds docs with:
 
 ```sh
-npm install --global surge
+pnpm predocs
+pnpm docs:build
 ```
 
-2. Build your styleguide
+4. Publishes `docs/dist` to GitHub Pages.
+
+If you also build example styleguides, copy their generated output into `docs/dist` before publish (this repository does this in CI).
+
+## Manual publish fallback
+
+If needed, you can still build and publish manually:
 
 ```sh
-npm run styleguide:build
+pnpm predocs
+pnpm docs:build
 ```
 
-3. Deploy it on surge
-
-```sh
-surge styleguide my-styleguide-on-surge.surge.sh
-```
-
-4. Follow the instructions
+Then upload/publish `docs/dist` to your GitHub Pages target branch.

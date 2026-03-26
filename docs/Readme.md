@@ -15,6 +15,7 @@ features:
 footer: MIT Licensed
 ---
 
+> This documentation website is built from a fork of `vue-styleguidist/vue-styleguidist` and is published via GitHub Pages.
 
 
 

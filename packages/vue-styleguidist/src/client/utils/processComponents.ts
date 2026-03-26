@@ -12,6 +12,7 @@ export interface HrefOptions {
 	hashPath?: string[]
 	useRouterLinks: boolean
 	useHashId?: boolean
+	useHashIdForComponents?: boolean
 }
 
 /**
@@ -23,8 +24,11 @@ export interface HrefOptions {
  */
 export default function processComponents(
 	{ exampleFileNames, components }: ComponentsAndFiles,
-	{ useRouterLinks, useHashId, hashPath }: HrefOptions
+	{ useRouterLinks, useHashId, useHashIdForComponents, hashPath }: HrefOptions
 ): Component[] {
+	const componentUseHashId =
+		useHashIdForComponents === undefined ? useHashId : useHashIdForComponents
+
 	return components.map(component => {
 		const { props } = component
 		const newComponent: Component = {
@@ -40,7 +44,7 @@ export default function processComponents(
 					slug: component.slug,
 					anchor: !useRouterLinks,
 					hashPath: useRouterLinks ? hashPath : false,
-					useSlugAsIdParam: useRouterLinks ? useHashId : false
+					useSlugAsIdParam: useRouterLinks ? componentUseHashId : false
 				}),
 			props: {
 				...props,

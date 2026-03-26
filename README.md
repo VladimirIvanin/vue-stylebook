@@ -31,6 +31,10 @@ alt="Chat on Discord">
 </a>
 </div>
 
+## Fork notice
+
+This repository is a fork of the original [vue-styleguidist/vue-styleguidist](https://github.com/vue-styleguidist/vue-styleguidist) project and may contain custom behavior and documentation updates for this fork.
+
 ## Sponsors
 
 A big thank you to our sponsors. 
@@ -69,13 +73,21 @@ A big thank you to our sponsors.
 
 ## Documentation
 
-Docs are available at https://vue-styleguidist.github.io/ - we are still working on refining it and contributions are welcome!
+This fork is intended to be published with GitHub Pages. To build docs locally run:
+
+```sh
+pnpm predocs && pnpm docs:build
+```
+
+Generated static files are written to `docs/dist` and can be published as a Pages artifact.
+
+Original upstream docs are available at https://vue-styleguidist.github.io/.
 
 ## Contributing
 
 Please see [contributing guide](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/.github/CONTRIBUTING.md).
 
-Note that the current monorepo relies on `yarn` workspaces. Don't forget to install yarn, `npm i --global yarn`, before cloning.
+This monorepo uses `pnpm` workspaces.
 
 ## Authors and license
 

@@ -2,6 +2,11 @@ import * as Rsg from 'react-styleguidist'
 import { Component } from './Component'
 import { CodeExample } from './Example'
 
+export interface ConfigSection extends Rsg.ConfigSection {
+	componentPagePerSection?: boolean
+	sections?: ConfigSection[]
+}
+
 export interface ProcessedSection extends Rsg.BaseSection {
 	name: string
 	href: string
@@ -10,5 +15,6 @@ export interface ProcessedSection extends Rsg.BaseSection {
 	content?: (CodeExample | Rsg.MarkdownExample)[]
 	sections: ProcessedSection[]
 	sectionDepth: number
+	componentPagePerSection?: boolean
 	slug?: string
 }

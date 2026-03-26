@@ -19,9 +19,14 @@ export default function processSections(
 	{ useRouterLinks, useHashId = false, hashPath = [] }: HrefOptions
 ): ProcessedSection[] {
 	return sections.map(section => {
+		const useHashIdForSection = section.sectionDepth === 0
+		const useHashIdForComponents = section.componentPagePerSection
+			? false
+			: useHashIdForSection
 		const options = {
 			useRouterLinks: Boolean(useRouterLinks && section.name),
-			useHashId: section.sectionDepth === 0,
+			useHashId: useHashIdForSection,
+			useHashIdForComponents,
 			hashPath: [...hashPath, section.name ? section.name : '-']
 		}
 		compileExamples(section.content || [])

@@ -46,6 +46,7 @@ Each section consists of (all fields are optional):
 - `sections` — an array of subsections (can be nested).
 - `description` — A small description of this section.
 - `sectionDepth` — Number of subsections with single pages, only available with [pagePerSection](/Configuration.md#pagepersection) is enabled.
+- `componentPagePerSection` — When `true` (and [pagePerSection](/Configuration.md#pagepersection) is enabled), component links inside this section are generated as dedicated routes instead of `?id=` anchors.
 - `exampleMode` — Initial state of the code example tab, uses [exampleMode](/Configuration.md#examplemode).
 - `usageMode` — Initial state of the props and methods tab, uses [usageMode](/Configuration.md#usagemode).
 - `ignore` — string/array of globs that should not be included in the section.
@@ -84,6 +85,22 @@ module.exports = {
       name: 'UI Components',
       content: 'docs/ui.md',
       components: 'lib/components/ui/*.vue'
+    }
+  ]
+}
+```
+
+If you want components in a section to open as dedicated routes from the menu (instead of scrolling inside the section page), enable `componentPagePerSection` on that section:
+
+```javascript
+module.exports = {
+  pagePerSection: true,
+  sections: [
+    {
+      name: 'Components',
+      sectionDepth: 0,
+      componentPagePerSection: true,
+      components: 'src/components/**/*.vue'
     }
   ]
 }

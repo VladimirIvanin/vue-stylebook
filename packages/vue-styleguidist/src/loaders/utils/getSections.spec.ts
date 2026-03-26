@@ -71,6 +71,18 @@ const sectionsWithBadDepth = [
 	}
 ]
 
+const sectionsWithComponentPagePerSection = [
+	{
+		name: 'Components',
+		componentPagePerSection: true,
+		sections: [
+			{
+				name: 'Buttons'
+			}
+		]
+	}
+]
+
 function filterSectionDepth(section: Rsg.LoaderSection): Rsg.ConfigSection {
 	if (section.sections && section.sections.length) {
 		return {
@@ -80,6 +92,13 @@ function filterSectionDepth(section: Rsg.LoaderSection): Rsg.ConfigSection {
 	}
 	return {
 		sectionDepth: section.sectionDepth
+	}
+}
+
+function filterComponentRouteOptions(section: Rsg.LoaderSection): Record<string, unknown> {
+	return {
+		componentPagePerSection: (section as any).componentPagePerSection,
+		sections: (section.sections || []).map(filterComponentRouteOptions)
 	}
 }
 
@@ -152,6 +171,25 @@ describe('getSections', () => {
 								sectionDepth: 0
 							}
 						]
+					}
+				]
+			}
+		])
+	})
+
+	it('should keep componentPagePerSection flag on loader sections', async () => {
+		const result = await getSections(sectionsWithComponentPagePerSection, {
+			config,
+			componentFiles: []
+		})
+
+		expect(result.map(filterComponentRouteOptions)).toEqual([
+			{
+				componentPagePerSection: true,
+				sections: [
+					{
+						componentPagePerSection: false,
+						sections: []
 					}
 				]
 			}

@@ -396,6 +396,8 @@ module.exports = {
 
 To isolate section’s children as single pages (subroutes), add `sectionDepth` into each section with the number of subroutes (depth) to render as single pages.
 
+To open components inside a section as dedicated routes from the sidebar, use `componentPagePerSection: true` on that section. This option is opt-in and keeps existing behavior unchanged unless explicitly enabled.
+
 For example:
 
 ```javascript
@@ -449,6 +451,22 @@ module.exports = {
       ]
       // There is no subroutes, "Examples" will show all its children on a page
       sectionDepth: 0,
+    }
+  ]
+}
+```
+
+With `componentPagePerSection`, components inside that section use their own route instead of an `?id=` anchor:
+
+```javascript
+module.exports = {
+  pagePerSection: true,
+  sections: [
+    {
+      name: 'Components',
+      sectionDepth: 0,
+      componentPagePerSection: true,
+      components: 'src/components/**/*.vue'
     }
   ]
 }

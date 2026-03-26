@@ -14,7 +14,7 @@ import { Styles } from 'jss';
 import { Configuration, loader } from 'webpack'
 import * as Rsg from 'react-styleguidist'
 import { RecursivePartial } from 'react-styleguidist/lib/typings/RecursivePartial'
-import { ProcessedSection } from './Section'
+import { ConfigSection, ProcessedSection } from './Section'
 import { LoaderComponentProps } from './Component'
 
 type TransformOptions = Required<Parameters<typeof compile>>[1]
@@ -256,7 +256,7 @@ export interface BaseStyleguidistConfig
 }
 
 export interface SanitizedStyleguidistConfig extends BaseStyleguidistConfig {
-	sections: Rsg.ConfigSection[];
+	sections: ConfigSection[];
 }
 
 /**

@@ -9,6 +9,7 @@ import requireIt from 'react-styleguidist/lib/loaders/utils/requireIt'
 import getComponentFiles from 'react-styleguidist/lib/loaders/utils/getComponentFiles'
 import slugger from 'react-styleguidist/lib/loaders/utils/slugger'
 import { SanitizedStyleguidistConfig } from '../../types/StyleGuide'
+import { ConfigSection } from '../../types/Section'
 import getComponents from './getComponents'
 
 const examplesLoader = path.resolve(__dirname, '../examples-loader.js')
@@ -30,7 +31,7 @@ export interface SectionFunctionOptions {
  * @returns {Array}
  */
 export default async function getSections(
-	sections: Rsg.ConfigSection[],
+	sections: ConfigSection[],
 	opts: SectionFunctionOptions
 ): Promise<Rsg.LoaderSection[]> {
 	const { config, componentFiles } = opts
@@ -97,7 +98,7 @@ export async function getRequiredComponents(
  * @returns {object}
  */
 export async function processSection(
-	section: Rsg.ConfigSection,
+	section: ConfigSection,
 	opts: SectionFunctionOptions
 ): Promise<Rsg.LoaderSection> {
 	const { config, parentDepth } = opts
@@ -126,6 +127,7 @@ export async function processSection(
 		exampleMode: section.exampleMode || config.exampleMode,
 		usageMode: section.usageMode || config.usageMode,
 		sectionDepth,
+		componentPagePerSection: Boolean(section.componentPagePerSection),
 		description: section.description,
 		slug: slugger.slug(section.name || ''),
 		sections: await getSections(section.sections || [], { ...opts, parentDepth: sectionDepth }),
@@ -137,7 +139,7 @@ export async function processSection(
 }
 
 const getSectionComponents = (
-	section: Rsg.ConfigSection,
+	section: ConfigSection,
 	opts: SectionFunctionOptions
 ): Rsg.LoaderComponent[] => {
 	const { config, requiredComponentsList, requiredComponents } = opts
