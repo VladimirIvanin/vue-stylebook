@@ -15,6 +15,17 @@ function getVuePackageVersion() {
 	} else if (process.argv.indexOf('--vue3') !== -1) {
 		return '3.x'
 	}
+
+	// Prefer consumer project version when available (npm/yarn/pnpm set INIT_CWD).
+	const initCwd = process.env.INIT_CWD
+	if (initCwd) {
+		try {
+			const pkgPath = require.resolve('vue/package.json', { paths: [initCwd] })
+			const pkg = require(pkgPath)
+			return pkg.version
+		} catch (error) {}
+	}
+
 	try {
 		const pkg = require('vue/package.json')
 		return pkg.version
