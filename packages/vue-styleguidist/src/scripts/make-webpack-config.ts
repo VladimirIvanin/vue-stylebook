@@ -63,7 +63,8 @@ export default function (
 				...(config as any).storybookBlocks === false
 					? {}
 					: {
-							'@storybook/blocks': path.resolve(sourceDir, 'rsg-components/StorybookBlocks')
+							'@storybook/blocks': path.resolve(sourceDir, 'rsg-components/StorybookBlocks'),
+							'@vue-styleguidist/blocks': path.resolve(sourceDir, 'rsg-components/StorybookBlocks')
 					  }
 			}
 		},

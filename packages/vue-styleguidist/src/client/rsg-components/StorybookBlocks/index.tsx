@@ -36,11 +36,17 @@ export function Meta(_props: AnyObject) {
 }
 
 export function Canvas(props: { of?: any; children?: React.ReactNode }) {
+	if ('of' in props && props.of === undefined) {
+		throw new Error('Unexpected `of={undefined}`, did you mistype a CSF file reference?')
+	}
 	const rendered = props.children || asReactElement(props.of)
 	return React.createElement('div', { 'data-vsg-mdx-canvas': true }, rendered)
 }
 
 export function Story(props: { of?: any; children?: React.ReactNode }) {
+	if ('of' in props && props.of === undefined) {
+		throw new Error('Unexpected `of={undefined}`, did you mistype a CSF file reference?')
+	}
 	const rendered = props.children || asReactElement(props.of)
 	return React.createElement('div', { 'data-vsg-mdx-story': true }, rendered)
 }
