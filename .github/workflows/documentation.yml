@@ -8,13 +8,18 @@ concurrency:
   group: doc-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build-docs:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Init & Build
         uses: ./.github/actions/build
@@ -33,13 +38,23 @@ jobs:
       - name: Move examples to docs
         run: cd examples; for D in *; do mv "${D}"/dist ../docs/dist/"${D}"; done || exit 1
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: master # The branch the action should deploy to.
-          folder: docs/dist # The folder the action should deploy.
-          repository-name: vue-styleguidist/vue-styleguidist.github.io # The repository name.
-          git-config-name: 'Vue Styleguidist Bot' # The name of the user.
-          git-config-email: ${{ secrets.BOT_EMAIL }} # The email address to use for the git config.
-          token: ${{ secrets.WEBSITE_TOKEN }} # The GitHub token.
+          path: docs/dist
+
+  deploy-docs:
+    needs: build-docs
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
