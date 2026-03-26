@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@2.0.0/schema.json",
   "changelog": [
     "@changesets/changelog-github",
-    { "repo": "vue-styleguidist/vue-styleguidist" }
+    { "repo": "VladimirIvanin/vue-stylebook" }
   ],
   "commit": false,
   "fixed": [],
@@ -10,5 +10,5 @@
   "access": "public",
   "baseBranch": "dev",
   "updateInternalDependencies": "patch",
-  "ignore": ["@ivaninvladimir/vue-styleguidist"]
+  "ignore": ["@ivaninvladimir/vue-stylebook"]
 }

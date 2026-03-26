@@ -1,17 +1,17 @@
 {
-  "name": "@ivaninvladimir/vue-styleguidist",
-  "version": "0.2.9",
-  "description": "Тонкая обёртка над vue-styleguidist: bin для npx / npm exec без монорепозитория",
+  "name": "@ivaninvladimir/vue-stylebook",
+  "version": "0.3.0",
+  "description": "CLI vue-stylebook: обёртка над движком документации компонентов (npx / npm exec)",
   "private": false,
   "license": "MIT",
-  "homepage": "https://github.com/ivaninvladimir/vue-styleguidist",
+  "homepage": "https://github.com/VladimirIvanin/vue-stylebook",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ivaninvladimir/vue-styleguidist.git",
+    "url": "git+https://github.com/VladimirIvanin/vue-stylebook.git",
     "directory": "packages/npm-bridge"
   },
   "bugs": {
-    "url": "https://github.com/ivaninvladimir/vue-styleguidist/issues"
+    "url": "https://github.com/VladimirIvanin/vue-stylebook/issues"
   },
   "keywords": [
     "vue",
@@ -27,13 +27,13 @@
     "node": ">=14"
   },
   "bin": {
-    "vue-styleguidist": "./bin/vue-styleguidist.js"
+    "vue-stylebook": "./bin/vue-stylebook.js"
   },
   "files": [
     "bin"
   ],
   "dependencies": {
-    "vue-styleguidist": "workspace:*"
+    "vue-styleguidist": "4.72.4"
   },
   "publishConfig": {
     "access": "public"

@@ -33,7 +33,7 @@ alt="Chat on Discord">
 
 ## Fork notice
 
-This repository is a fork of the original [vue-styleguidist/vue-styleguidist](https://github.com/vue-styleguidist/vue-styleguidist) project and may contain custom behavior and documentation updates for this fork.
+This repository is a fork of the original [vue-styleguidist/vue-styleguidist](https://github.com/vue-styleguidist/vue-styleguidist) project and may contain custom behavior and documentation updates for this fork. The canonical remote for this line of work is **[github.com/VladimirIvanin/vue-stylebook](https://github.com/VladimirIvanin/vue-stylebook)**.
 
 ## Sponsors
 

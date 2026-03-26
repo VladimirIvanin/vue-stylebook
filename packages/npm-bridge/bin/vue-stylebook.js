@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
 
-function resolveVueStyleguidistCli() {
+function resolveEngineCli() {
   let dir = path.dirname(require.resolve("vue-styleguidist"));
   for (;;) {
     const pkgPath = path.join(dir, "package.json");
@@ -26,11 +26,11 @@ function resolveVueStyleguidistCli() {
     dir = parent;
   }
   throw new Error(
-    'Could not find vue-styleguidist CLI (install dependency "vue-styleguidist").'
+    "Could not find the component stylebook engine CLI. Reinstall dependencies."
   );
 }
 
-const cli = resolveVueStyleguidistCli();
+const cli = resolveEngineCli();
 const result = spawnSync(process.execPath, [cli, ...process.argv.slice(2)], {
   stdio: "inherit",
   env: process.env,

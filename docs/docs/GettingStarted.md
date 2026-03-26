@@ -15,7 +15,7 @@ pnpm add -D webpack
 Установите пакет из этого форка:
 
 ```bash
-pnpm add -D @ivaninvladimir/vue-styleguidist
+pnpm add -D @ivaninvladimir/vue-stylebook
 ```
 
 Если вы используете Vue CLI 3 ([`@vue/cli`](https://cli.vuejs.org/)),
@@ -26,7 +26,7 @@ vue add styleguidist
 ```
 
 Для этого форка команда `vue add styleguidist` устанавливает плагин и пакет
-из upstream-версии `vue-styleguidist`, а не `@ivaninvladimir/vue-styleguidist`.
+из upstream-версии `vue-styleguidist`, а не `@ivaninvladimir/vue-stylebook`.
 Если вам важны изменения именно этого форка, настройте подключение вручную через
 `styleguide.config.js` и npm-скрипты ниже.
 
@@ -52,8 +52,8 @@ vue add styleguidist
 ```diff
 {
   "scripts": {
-+    "styleguide": "vue-styleguidist server",
-+    "styleguide:build": "vue-styleguidist build"
++    "styleguide": "vue-stylebook server",
++    "styleguide:build": "vue-stylebook build"
   }
 }
 ```

@@ -3,12 +3,12 @@
 Для проектов на этом форке установите пакет так:
 
 ```bash
-pnpm add -D @ivaninvladimir/vue-styleguidist
+pnpm add -D @ivaninvladimir/vue-stylebook
 ```
 
 ## Команды
 
-- `vue-styleguidist server`: запустить dev-сервер. `vue-styleguidist build`: сборный статический HTML-стайлгайд.
+- `vue-stylebook server`: запустить dev-сервер. `vue-stylebook build`: сборный статический HTML-стайлгайд.
 
 ## Опции
 
@@ -25,8 +25,8 @@ pnpm add -D @ivaninvladimir/vue-styleguidist
 ```json
 {
   "scripts": {
-    "styleguide": "vue-styleguidist server",
-    "styleguide:build": "vue-styleguidist build"
+    "styleguide": "vue-stylebook server",
+    "styleguide:build": "vue-stylebook build"
   }
 }
 ```

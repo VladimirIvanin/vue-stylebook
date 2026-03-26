@@ -13,11 +13,11 @@ vue add styleguidist
 ```
 
 Для форка эта команда ставит upstream-плагин `vue-cli-plugin-styleguidist`,
-который тянет `vue-styleguidist`, а не `@ivaninvladimir/vue-styleguidist`.
+который тянет `vue-styleguidist`, а не `@ivaninvladimir/vue-stylebook`.
 Если нужен именно форк, установите его напрямую:
 
 ```sh
-pnpm add -D @ivaninvladimir/vue-styleguidist
+pnpm add -D @ivaninvladimir/vue-stylebook
 ```
 
 и добавьте скрипты вручную:
@@ -25,8 +25,8 @@ pnpm add -D @ivaninvladimir/vue-styleguidist
 ```json
 {
   "scripts": {
-    "styleguide": "vue-styleguidist server",
-    "styleguide:build": "vue-styleguidist build"
+    "styleguide": "vue-stylebook server",
+    "styleguide:build": "vue-stylebook build"
   }
 }
 ```

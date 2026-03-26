@@ -2,13 +2,13 @@
   "name": "@ivaninvladimir/vue-styleguidist-workspace",
   "version": "0.2.9",
   "private": true,
-  "homepage": "https://github.com/ivaninvladimir/vue-styleguidist",
+  "homepage": "https://github.com/VladimirIvanin/vue-stylebook",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ivaninvladimir/vue-styleguidist.git"
+    "url": "git+https://github.com/VladimirIvanin/vue-stylebook.git"
   },
   "bugs": {
-    "url": "https://github.com/ivaninvladimir/vue-styleguidist/issues"
+    "url": "https://github.com/VladimirIvanin/vue-stylebook/issues"
   },
   "scripts": {
     "changeset": "changeset",
