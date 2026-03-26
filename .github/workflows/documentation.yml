@@ -1,5 +1,8 @@
 name: Documentation
 on:
+  push:
+    branches:
+      - dev
   release:
     types: [created]
   workflow_dispatch:
