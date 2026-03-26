@@ -95,5 +95,4 @@ pnpm docs:build
 ## Вопросы
 
 - [Посмотрите практические сценарии](Cookbook.md)
-- [Спросите в Discord](https://discordapp.com/channels/325477692906536972/538786416092512278) (нужен аккаунт [Vue Land](https://vue.land/))
-- [Создайте вопрос на GitHub](https://github.com/vue-styleguidist/vue-styleguidist/issues/new?template=Question.md)
+- [Создайте вопрос на GitHub](https://github.com/vue-styleguidist/vue-styleguidist/issues/new/choose)
