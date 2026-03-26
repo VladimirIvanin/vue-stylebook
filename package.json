@@ -25,6 +25,7 @@
     "start": "./start.sh server",
     "prebuild": "pnpm compile",
     "build": "./start.sh build",
+    "prelint": "pnpm compile",
     "lint": "eslint . --cache --fix --ext .ts,.tsx,.js --cache-location node_modules/.eslint_cache/",
     "compile": "turbo run compile",
     "prepack": "pnpm compile",
