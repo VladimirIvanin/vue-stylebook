@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.79.3
+
+### Patch Changes
+
+- [#1709](https://github.com/vue-styleguidist/vue-styleguidist/pull/1709) [`ef9da531`](https://github.com/vue-styleguidist/vue-styleguidist/commit/ef9da5312a5664e8e2221c7d5271ea2a43ac2d78) Thanks [@nilennoct](https://github.com/nilennoct)! - feat: extract defaults from reactive props destructure
+
 ## 4.79.2
 
 ### Patch Changes
