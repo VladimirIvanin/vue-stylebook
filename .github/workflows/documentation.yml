@@ -48,11 +48,29 @@ jobs:
 
       # Build all examples (except for docgen-nuxt which needs to be sent to surge)
       - name: Build examples
-        run: cd examples; for D in *; do cd ..; pnpm build "${D}" -- --ci; cd examples; done; cd .. || exit 1
+        run: |
+          cd examples
+          for D in *; do
+            if [ "$D" = "vuecli-noplugin" ]; then
+              echo "Skipping $D in docs workflow due to index.html asset conflict"
+              continue
+            fi
+            cd ..
+            pnpm build "${D}" -- --ci
+            cd examples
+          done
+          cd .. || exit 1
 
       # Move them to the docs (except for docgen-nuxt which needs to be sent to surge)
       - name: Move examples to docs
-        run: cd examples; for D in *; do mv "${D}"/dist ../docs/dist/"${D}"; done || exit 1
+        run: |
+          cd examples
+          for D in *; do
+            if [ "$D" = "vuecli-noplugin" ]; then
+              continue
+            fi
+            mv "${D}"/dist ../docs/dist/"${D}"
+          done || exit 1
 
       - name: Debug final Pages payload
         run: |
