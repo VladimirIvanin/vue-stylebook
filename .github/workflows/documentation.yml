@@ -32,20 +32,6 @@ jobs:
       - name: Build vuepress docs
         run: pnpm docs:build
 
-      - name: Debug vuepress output
-        run: |
-          echo "GITHUB_REPOSITORY=${GITHUB_REPOSITORY}"
-          echo "GITHUB_REF=${GITHUB_REF}"
-          echo "Listing docs/dist root:"
-          ls -la docs/dist
-          if [ -f docs/dist/index.html ]; then
-            echo "index.html exists in docs/dist"
-          else
-            echo "index.html is missing in docs/dist"
-            exit 1
-          fi
-          node -e "const fs=require('fs');const path='docs/dist/index.html';const payload={sessionId:'9eed6c',runId:process.env.GITHUB_RUN_ID||'ci',hypothesisId:'H3',location:'.github/workflows/documentation.yml:35',message:'CI docs artifact inspection',data:{githubRepository:process.env.GITHUB_REPOSITORY||null,githubRef:process.env.GITHUB_REF||null,indexExists:fs.existsSync(path),baseHrefMatch:(fs.existsSync(path)?(fs.readFileSync(path,'utf8').match(/<base href=\"([^\"]+)\"/i)||[])[1]||null:null)},timestamp:Date.now()};fetch('http://127.0.0.1:7509/ingest/43d6e5ca-e642-460a-92cd-46bcc8ddc3bf',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'9eed6c'},body:JSON.stringify(payload)}).catch(()=>{});"
-
       # Build all examples (except for docgen-nuxt which needs to be sent to surge)
       - name: Build examples
         run: |
@@ -71,12 +57,6 @@ jobs:
             fi
             mv "${D}"/dist ../docs/dist/"${D}"
           done || exit 1
-
-      - name: Debug final Pages payload
-        run: |
-          echo "Listing final docs/dist root:"
-          ls -la docs/dist
-          node -e "const fs=require('fs');const payload={sessionId:'9eed6c',runId:process.env.GITHUB_RUN_ID||'ci',hypothesisId:'H4',location:'.github/workflows/documentation.yml:48',message:'Final docs payload before upload',data:{indexExists:fs.existsSync('docs/dist/index.html'),examplesCount:fs.existsSync('docs/dist')?fs.readdirSync('docs/dist').filter((f)=>{try{return fs.statSync('docs/dist/'+f).isDirectory()}catch{return false}}).length:0},timestamp:Date.now()};fetch('http://127.0.0.1:7509/ingest/43d6e5ca-e642-460a-92cd-46bcc8ddc3bf',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'9eed6c'},body:JSON.stringify(payload)}).catch(()=>{});"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

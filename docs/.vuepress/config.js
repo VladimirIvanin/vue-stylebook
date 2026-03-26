@@ -9,50 +9,8 @@ const repoName = process.env.GITHUB_REPOSITORY
 	? process.env.GITHUB_REPOSITORY.split('/')[1]
 	: ''
 const base = repoName ? `/${repoName}/` : '/'
-const debugEndpoint =
-	'http://127.0.0.1:7509/ingest/43d6e5ca-e642-460a-92cd-46bcc8ddc3bf'
-
-function sendDebugLog(payload) {
-	// #region agent log
-	fetch(debugEndpoint, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			'X-Debug-Session-Id': '9eed6c'
-		},
-		body: JSON.stringify({
-			sessionId: '9eed6c',
-			runId: process.env.GITHUB_RUN_ID || 'local',
-			timestamp: Date.now(),
-			...payload
-		})
-	}).catch(() => {})
-	// #endregion
-}
-
-sendDebugLog({
-	hypothesisId: 'H1',
-	location: 'docs/.vuepress/config.js:11',
-	message: 'Computed VuePress base value',
-	data: {
-		githubRepository: process.env.GITHUB_REPOSITORY || null,
-		repoName,
-		base
-	}
-})
 
 module.exports = () => {
-	sendDebugLog({
-		hypothesisId: 'H2',
-		location: 'docs/.vuepress/config.js:34',
-		message: 'VuePress config factory invoked',
-		data: {
-			nodeEnv: process.env.NODE_ENV || null,
-			githubRef: process.env.GITHUB_REF || null,
-			githubSha: process.env.GITHUB_SHA || null
-		}
-	})
-
 	return {
 		base,
 		dest: 'docs/dist',
