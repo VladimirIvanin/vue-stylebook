@@ -1,6 +1,5 @@
 import hash from 'hash-sum'
-import type { SFCDescriptor } from '@vue/compiler-sfc'
-import { parse } from '@vue/compiler-sfc'
+import { parse, type SFCDescriptor } from '@vue/compiler-sfc'
 import LRUCache from 'lru-cache'
 
 const cache = new LRUCache({ max: 100 })
