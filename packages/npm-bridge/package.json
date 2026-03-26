@@ -1,6 +1,6 @@
 {
   "name": "@ivaninvladimir/vue-stylebook",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "CLI vue-stylebook: обёртка над движком документации компонентов (npx / npm exec)",
   "private": false,
   "license": "MIT",
@@ -34,6 +34,18 @@
   ],
   "dependencies": {
     "@ivaninvladimir/vue-stylebook-engine": "workspace:*"
+  },
+  "peerDependencies": {
+    "@vue/compiler-sfc": "^3.2.0",
+    "pug": ">=3.0.0",
+    "vue": "^3.2.0",
+    "vue-loader": ">=16.0.0",
+    "webpack": ">=4"
+  },
+  "peerDependenciesMeta": {
+    "pug": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"

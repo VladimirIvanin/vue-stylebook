@@ -1,7 +1,7 @@
 {
   "name": "@ivaninvladimir/vue-stylebook-engine",
   "description": "Vue Stylebook — движок living style guide (на базе vue-styleguidist)",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "homepage": "https://github.com/VladimirIvanin/vue-stylebook",
   "scripts": {
     "compile": "pnpm run compile:babel && pnpm run typings",
@@ -114,21 +114,14 @@
     "webpack-merge": "^4.2.2"
   },
   "peerDependencies": {
-    "@vue/compiler-sfc": ">=3.0.0",
+    "@vue/compiler-sfc": "^3.2.0",
     "pug": ">=3.0.0",
-    "vue": ">=2.0.0",
-    "vue-loader": ">=14.0.0",
-    "vue-template-compiler": ">=2.0.0",
+    "vue": "^3.2.0",
+    "vue-loader": ">=16.0.0",
     "webpack": ">=4"
   },
   "peerDependenciesMeta": {
     "pug": {
-      "optional": true
-    },
-    "vue-template-compiler": {
-      "optional": true
-    },
-    "@vue/compiler-sfc": {
       "optional": true
     }
   },

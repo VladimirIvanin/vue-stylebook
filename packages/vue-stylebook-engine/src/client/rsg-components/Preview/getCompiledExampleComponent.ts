@@ -1,9 +1,8 @@
+import { h } from 'vue'
 import {
 	cleanName,
 	compileTemplateForEval,
-	EvaluableComponent,
-	h,
-	isVue3
+	EvaluableComponent
 } from 'vue-inbrowser-compiler-utils'
 import { getVueAppFactory } from './getVueApp'
 
@@ -85,11 +84,7 @@ export function getCompiledExampleComponent({
 		extendsComponent = { store: vuex.default }
 	}
 
-	if (isVue3) {
-		previewComponent.__scopeId = 'data-' + moduleId
-	} else {
-		previewComponent._scopeId = 'data-' + moduleId
-	}
+	previewComponent.__scopeId = 'data-' + moduleId
 
 	// if we are in local component registration, register current component
 	// NOTA: on independent md files, component.module is undefined
@@ -119,8 +114,7 @@ export function getCompiledExampleComponent({
 		typeof renderRootJsx?.default === 'function'
 			? renderRootJsx.default(previewComponent)
 			: {
-					render: (createElement: (comp: any) => any) =>
-						(isVue3 ? h : createElement)(previewComponent)
+					render: () => h(previewComponent)
 			  }
 	try {
 		destroyVueInstance()
