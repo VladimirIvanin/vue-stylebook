@@ -3,8 +3,8 @@
 * /!\ WARNING /!\
 * Do not edit manually.
 * This file is the compilation of 
-* Template: packages/vue-styleguidist/templates/StyleGuide.ts.ejs
-* Config Data: packages/vue-styleguidist/src/scripts/schemas/config.ts
+* Template: packages/vue-stylebook-engine/templates/StyleGuide.ts.ejs
+* Config Data: packages/vue-stylebook-engine/src/scripts/schemas/config.ts
 */
 import React from 'react'
 import WebpackDevServer from 'webpack-dev-server'

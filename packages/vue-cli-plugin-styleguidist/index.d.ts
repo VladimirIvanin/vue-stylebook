@@ -1,4 +1,4 @@
-import { defineConfig } from 'vue-styleguidist'
+import { defineConfig } from '@ivaninvladimir/vue-stylebook-engine'
 
 declare const plugin: {
 	(api: any, options: any): void

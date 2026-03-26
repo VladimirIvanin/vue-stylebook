@@ -18,7 +18,7 @@ export default defineConfig({
 		devServer: () => {
 			if (process.cwd()) {
 				throw new Error(
-					'Use the project `packages/vue-styleguidist/cypress.config.ts` instead of the top one for Component Testing'
+					'Use the project `packages/vue-stylebook-engine/cypress.config.ts` instead of the top one for Component Testing'
 				)
 			}
 			return {

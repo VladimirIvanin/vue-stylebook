@@ -53,7 +53,7 @@ export default [{
         "import/resolver": {
             node: {
                 paths: [
-                    "packages/vue-styleguidist/src/client",
+                    "packages/vue-stylebook-engine/src/client",
                     "node_modules/react-styleguidist/lib/client",
                 ],
 
@@ -83,9 +83,9 @@ export default [{
     },
 }, ...fixupConfigRules(compat.extends("plugin:react/recommended")).map(config => ({
     ...config,
-    files: ["packages/vue-styleguidist/src/client/**/*.*"],
+    files: ["packages/vue-stylebook-engine/src/client/**/*.*"],
 })), {
-    files: ["packages/vue-styleguidist/src/client/**/*.*"],
+    files: ["packages/vue-stylebook-engine/src/client/**/*.*"],
 
     plugins: {
         compat,
@@ -96,7 +96,7 @@ export default [{
         "import/resolver": {
             node: {
                 paths: [
-                    "packages/vue-styleguidist/src/client",
+                    "packages/vue-stylebook-engine/src/client",
                     "node_modules/react-styleguidist/lib/client",
                 ],
 
@@ -118,9 +118,9 @@ export default [{
     },
 }, ...compat.extends("tamia/typescript-react").map(config => ({
     ...config,
-    files: ["packages/vue-styleguidist/**/*.{ts,tsx}"],
+    files: ["packages/vue-stylebook-engine/**/*.{ts,tsx}"],
 })), {
-    files: ["packages/vue-styleguidist/**/*.{ts,tsx}"],
+    files: ["packages/vue-stylebook-engine/**/*.{ts,tsx}"],
 
     plugins: {
         "@typescript-eslint": typescriptEslint,

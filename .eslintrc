@@ -13,7 +13,7 @@
 		"import/resolver": {
 			"node": {
 				"paths": [
-					"packages/vue-styleguidist/src/client",
+					"packages/vue-stylebook-engine/src/client",
 					"node_modules/react-styleguidist/lib/client"
 				],
 				"extensions": [".ts", ".tsx", ".js", ".d.ts"]
@@ -43,14 +43,14 @@
 	},
 	"overrides": [
 		{
-			"files": ["packages/vue-styleguidist/src/client/**/*.*"],
+			"files": ["packages/vue-stylebook-engine/src/client/**/*.*"],
 			"extends": ["plugin:react/recommended"],
 			"plugins": ["compat", "import"],
 			"settings": {
 				"import/resolver": {
 					"node": {
 						"paths": [
-							"packages/vue-styleguidist/src/client",
+							"packages/vue-stylebook-engine/src/client",
 							"node_modules/react-styleguidist/lib/client"
 						],
 						"extensions": [".ts", ".tsx", ".js", ".d.ts"]
@@ -70,7 +70,7 @@
 			}
 		},
 		{
-			"files": ["packages/vue-styleguidist/**/*.{ts,tsx}"],
+			"files": ["packages/vue-stylebook-engine/**/*.{ts,tsx}"],
 			"parserOptions": {
 				"ecmaVersion": 2018,
 				"sourceType": "module"

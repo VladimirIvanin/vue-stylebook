@@ -36,7 +36,7 @@
 			"path": "./packages/vue-inbrowser-prismjs-highlighter/tsconfig.json"
 		},
 		{
-			"path": "./packages/vue-styleguidist/tsconfig.json"
+			"path": "./packages/vue-stylebook-engine/tsconfig.json"
 		}
 	]
 }

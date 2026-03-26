@@ -1,6 +1,6 @@
 {
   "name": "@ivaninvladimir/vue-stylebook-workspace",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "private": true,
   "homepage": "https://github.com/VladimirIvanin/vue-stylebook",
   "repository": {
@@ -32,8 +32,8 @@
     "test:browser": "node test/browser.mjs",
     "precommit": "lint-staged",
     "cy:open": "cypress open",
-    "cy:ct": "cypress open --component -C packages/vue-styleguidist/cypress.config.ts",
-    "cy:ct:vue3": "pnpm install:vue3 && cypress open --component -C packages/vue-styleguidist/cypress.config.vue3.ts",
+    "cy:ct": "cypress open --component -C packages/vue-stylebook-engine/cypress.config.ts",
+    "cy:ct:vue3": "pnpm install:vue3 && cypress open --component -C packages/vue-stylebook-engine/cypress.config.vue3.ts",
     "cy:ct:prismjs": "node ./packages/vue-inbrowser-compiler-demi/postinstall.js && cypress open --component -C packages/vue-inbrowser-prismjs-highlighter/cypress.config.ts",
     "cy:ct:prismjs:vue3": "pnpm install:vue3 && cypress open --component -C packages/vue-inbrowser-prismjs-highlighter/cypress.config.vue3.ts",
     "cy:serve": "node test/run.server.js",
@@ -42,9 +42,9 @@
     "predocs": "node ./docs/.vuepress/preprocess.js",
     "docs": "vuepress dev docs",
     "docs:build": "node ./docs/.vuepress/preprocess.js && vuepress build docs",
-    "maketypes": "babel packages/vue-styleguidist/src/scripts/schemas/config.ts --out-file packages/vue-styleguidist/lib/scripts/schemas/config.js && node packages/vue-styleguidist/maketypes.js",
-    "publish:npm": "pnpm publish packages/npm-bridge --access public --no-git-checks",
-    "publish:npm:dry": "pnpm publish packages/npm-bridge --dry-run --access public --no-git-checks"
+    "maketypes": "babel packages/vue-stylebook-engine/src/scripts/schemas/config.ts --out-file packages/vue-stylebook-engine/lib/scripts/schemas/config.js && node packages/vue-stylebook-engine/maketypes.js",
+    "publish:npm": "pnpm compile && pnpm publish packages/vue-stylebook-engine --access public --no-git-checks && pnpm publish packages/npm-bridge --access public --no-git-checks",
+    "publish:npm:dry": "pnpm compile && pnpm publish packages/vue-stylebook-engine --dry-run --access public --no-git-checks && pnpm publish packages/npm-bridge --dry-run --access public --no-git-checks"
   },
   "license": "MIT",
   "engines": {
@@ -129,7 +129,7 @@
     "vue-inbrowser-compiler-sucrase": "*",
     "vue-property-decorator": "9.1.2",
     "vue-server-renderer": "2.7.14",
-    "vue-styleguidist": "*",
+    "@ivaninvladimir/vue-stylebook-engine": "*",
     "vuepress": "1.9.10",
     "vuepress-plugin-fulltext-search": "^2.2.1",
     "webpack-dev-server": "3.11.2",
@@ -159,9 +159,9 @@
       "prettier --write",
       "git add"
     ],
-    "packages/vue-styleguidist/src/scripts/schemas/config.ts": [
+    "packages/vue-stylebook-engine/src/scripts/schemas/config.ts": [
       "pnpm run maketypes",
-      "git add ./packages/vue-styleguidist/src/types/StyleGuide.ts"
+      "git add ./packages/vue-stylebook-engine/src/types/StyleGuide.ts"
     ]
   },
   "gitHooks": {

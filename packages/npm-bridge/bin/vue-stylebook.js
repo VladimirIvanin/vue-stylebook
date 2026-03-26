@@ -6,12 +6,12 @@ const path = require("path");
 const { spawnSync } = require("child_process");
 
 function resolveEngineCli() {
-  let dir = path.dirname(require.resolve("vue-styleguidist"));
+  let dir = path.dirname(require.resolve("@ivaninvladimir/vue-stylebook-engine"));
   for (;;) {
     const pkgPath = path.join(dir, "package.json");
     if (fs.existsSync(pkgPath)) {
       const pkg = require(pkgPath);
-      const bin = pkg.bin && pkg.bin["vue-styleguidist"];
+      const bin = pkg.bin && pkg.bin["vue-stylebook-engine"];
       if (typeof bin === "string") {
         const cli = path.join(dir, bin);
         if (fs.existsSync(cli)) {

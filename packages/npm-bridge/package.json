@@ -33,7 +33,7 @@
     "bin"
   ],
   "dependencies": {
-    "vue-styleguidist": "4.72.4"
+    "@ivaninvladimir/vue-stylebook-engine": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

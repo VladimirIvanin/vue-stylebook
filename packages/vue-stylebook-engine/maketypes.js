@@ -21,8 +21,8 @@ function render(filename) {
 * /!\\ WARNING /!\\
 * Do not edit manually.
 * This file is the compilation of 
-* Template: packages/vue-styleguidist/templates/StyleGuide.ts.ejs
-* Config Data: packages/vue-styleguidist/src/scripts/schemas/config.ts
+* Template: packages/vue-stylebook-engine/templates/StyleGuide.ts.ejs
+* Config Data: packages/vue-stylebook-engine/src/scripts/schemas/config.ts
 */
 ${str}`,
 				'utf8',

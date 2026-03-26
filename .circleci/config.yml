@@ -152,7 +152,7 @@ jobs:
       # run cypress vue-styleguidist component tests
       - run:
           command: pnpm exec cypress run --component --record --group ct
-          working_directory: packages/vue-styleguidist
+          working_directory: packages/vue-stylebook-engine
 
       # run cypress prismjs-highlighter component tests
       - run:
@@ -179,7 +179,7 @@ jobs:
       # run cypress component tests vue3
       - run:
           name: Run Vue 3 component tests for vue-styleguidist
-          command: pnpm install:vue3 && pnpm exec cypress run --component --record --group ct-vue3 --config-file packages/vue-styleguidist/cypress.config.vue3.ts
+          command: pnpm install:vue3 && pnpm exec cypress run --component --record --group ct-vue3 --config-file packages/vue-stylebook-engine/cypress.config.vue3.ts
 
       # run cypress component tests vue3
       - run:

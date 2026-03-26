@@ -23,8 +23,8 @@
 Тип: `String`, опционально
 
 Путь или имя модуля, который экспортирует функции `compile` и `getImports`. Этот модуль используется для компиляции live examples. Внутри vue-styleguidist вызывается `require(config.compilerPackage)`, чтобы получить `compile`.
-- Реализацию на стороне Node можно посмотреть в [examples-loader.ts](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/src/loaders/examples-loader.ts).
-- Использование на frontend можно посмотреть в [Preview.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/src/client/rsg-components/Preview/Preview.js).
+- Реализацию на стороне Node можно посмотреть в [examples-loader.ts](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-stylebook-engine/src/loaders/examples-loader.ts).
+- Использование на frontend можно посмотреть в [Preview.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-stylebook-engine/src/client/rsg-components/Preview/Preview.js).
 
 ## `compilerConfig`
 
@@ -139,7 +139,7 @@ module.exports = {
 
 Тип: `Boolean` или `String`, по умолчанию: `false`
 
-Для компонентов без example можно подставлять example по умолчанию. Если поставить `true`, используется [DefaultExample.md](https://github.com/vue-styleguidist/vue-styleguidist/blob/delivery/packages/vue-styleguidist/scripts/templates/DefaultExample.md), либо можно указать путь к собственному Markdown-файлу.
+Для компонентов без example можно подставлять example по умолчанию. Если поставить `true`, используется [DefaultExample.md](https://github.com/vue-styleguidist/vue-styleguidist/blob/delivery/packages/vue-stylebook-engine/scripts/templates/DefaultExample.md), либо можно указать путь к собственному Markdown-файлу.
 
 В кастомном default example плейсхолдер `__COMPONENT__` во время компиляции заменяется на имя компонента.
 
@@ -172,7 +172,7 @@ module.exports = {
 
 ## `editorConfig`
 
-Тип: `Object`, по умолчанию: [scripts/schemas/config.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/delivery/packages/vue-styleguidist/src/scripts/schemas/config.ts#L103-L112)
+Тип: `Object`, по умолчанию: [scripts/schemas/config.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/delivery/packages/vue-stylebook-engine/src/scripts/schemas/config.ts#L103-L112)
 
 Опции source code editor. Полный список — в [документации CodeMirror](https://codemirror.net/doc/manual.html#config).
 

@@ -1,6 +1,6 @@
-const vsg = require('vue-styleguidist')
+const vsg = require('@ivaninvladimir/vue-stylebook-engine')
 const merge = require('webpack-merge')
-const configSchemaImport = require('vue-styleguidist/lib/scripts/schemas/config')
+const configSchemaImport = require('@ivaninvladimir/vue-stylebook-engine/lib/scripts/schemas/config')
 
 const configSchema = configSchemaImport.default || configSchemaImport
 const styleguidist = vsg.default || vsg

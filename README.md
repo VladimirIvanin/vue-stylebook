@@ -43,7 +43,7 @@ A big thank you to our sponsors.
 
 ## Packages
 
-[vue-styleguidist](packages/vue-styleguidist) takes the results of [vue-docgen-api](packages/vue-docgen-api) and creates a website to showcase and develop components.
+[vue-stylebook-engine](packages/vue-stylebook-engine) takes the results of [vue-docgen-api](packages/vue-docgen-api) and creates a website to showcase and develop components.
 
 [![](https://img.shields.io/npm/v/vue-styleguidist.svg)](https://www.npmjs.com/package/vue-styleguidist) [![](https://img.shields.io/npm/dw/vue-styleguidist.svg)](https://www.npmjs.com/package/vue-styleguidist)
 

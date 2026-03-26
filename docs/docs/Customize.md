@@ -39,7 +39,7 @@ Vue Styleguidist создан на основе React-Styleguidist. Чтобы �
 
 ### Посмотрите в vue-styleguidist
 
-Чтобы найти исходный кодовый компонент, который мы хотим настроить, мы сначала ищем в [vue-styleguidist](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-styleguidist/src/client/rsg-comComponents). Здесь вебпак также будет искать его в первую очередь.
+Чтобы найти исходный кодовый компонент, который мы хотим настроить, мы сначала ищем в [vue-styleguidist](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-stylebook-engine/src/client/rsg-comComponents). Здесь вебпак также будет искать его в первую очередь.
 
 > **ПРИМЕЧАНИЕ.** В этом списке нет компонентов `...Renderer` или `Styled`. Если компонент, который мы хотим настроить, заканчивается на `renderer`, мы будем искать компоненты без суффикса. Идея та же, что и с `Styled`, хотя стилизованные компоненты часто можно встретить.
 

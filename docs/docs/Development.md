@@ -38,7 +38,7 @@ Styleguidist использует Markdown для документации: ка
 
 ## Загрузчики Webpack и изменения Webpack
 
-Мы используем загрузчики Webpack для горячей перезагрузки в соответствии с изменениями стилей компонентов, стилей и документации Markdown. У нас есть три загрузчика (папка [loaders](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-styleguidist/loaders)):
+Мы используем загрузчики Webpack для горячей перезагрузки в соответствии с изменениями стилей компонентов, стилей и документации Markdown. У нас есть три загрузчика (папка [loaders](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-stylebook-engine/loaders)):
 
 - `styleguide-loader`: загружает компоненты и разделы;
 - `vuedoc-loader`: загружает документацию по реквизитам, с помощью [vue-docgen-api](Docgen.md);
@@ -52,9 +52,9 @@ require('!!../../../loaders/style-loader!../../../loaders/css-loader!codemirror/
 
 Префикс `!!` сообщает, что Webpack не использует другие загрузчики, которые могут быть указаны в конфигурации Webpack, для загрузки этого модуля. Это означает, что изменение пользователя Webpack не влияет на Styleguidist.
 
-Styleguidist загрузите и повторно используйте конфигурацию пользователя Webpack (`webpack.config.js` в корневой папке проекта). В большинстве случаев он работает, но имеет некоторые ограничения: Styleguidist [игнорирует](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/scripts/utils/mergeWebpackConfig.js), некоторые поля и плагины, поскольку они уже включены (например, `webpack.HotModuleReplacementPlugin`), не имеют смысла для управления стилями (например, `output`) или могут сломать Styleguidist (например, `entry`).
+Styleguidist загрузите и повторно используйте конфигурацию пользователя Webpack (`webpack.config.js` в корневой папке проекта). В большинстве случаев он работает, но имеет некоторые ограничения: Styleguidist [игнорирует](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-stylebook-engine/scripts/utils/mergeWebpackConfig.js), некоторые поля и плагины, поскольку они уже включены (например, `webpack.HotModuleReplacementPlugin`), не имеют смысла для управления стилями (например, `output`) или могут сломать Styleguidist (например, `entry`).
 
-Мы сохраняем собственную [конфигурацию Webpack] Styleguidist (https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/scripts/make-webpack-config.js) минимально, чтобы уменьшить конфликты с конфигурацией пользователя.
+Мы сохраняем собственную [конфигурацию Webpack] Styleguidist (https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-stylebook-engine/scripts/make-webpack-config.js) минимально, чтобы уменьшить конфликты с конфигурацией пользователя.
 
 ## Компоненты реагирования
 
@@ -123,7 +123,7 @@ export function ExamplePlaceholderRenderer({ classes }) {
 
 ## Рендеринг компонентов Vue
 
-Для рендеринга компонентов Vue Styleguidist использует компоненты React [Preview.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/src/rsg-comComponents/Preview/Preview.js).
+Для рендеринга компонентов Vue Styleguidist использует компоненты React [Preview.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-stylebook-engine/src/rsg-comComponents/Preview/Preview.js).
 
 Как только пользователи открывают страницу, монтируется предварительный просмотр.
 

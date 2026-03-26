@@ -1,5 +1,5 @@
 const path = require('path')
-const { default: styleguidist } = require('../packages/vue-styleguidist/lib/scripts/index')
+const { default: styleguidist } = require('../packages/vue-stylebook-engine/lib/scripts/index')
 
 /* eslint-disable no-console */
 
