@@ -17,6 +17,7 @@ import stripOutOrigins from './utils/stripOutOrigins'
 import getParser from './utils/getParser'
 import consts from '../scripts/consts'
 import alreadyLoadedExamplesCache from './utils/already-loaded-examples-cache'
+import getDocsLoader from './utils/getDocsLoader'
 
 const exists = promisify(fs.exists)
 
@@ -112,7 +113,7 @@ export async function vuedocLoader(this: StyleguidistContext, source: string): P
 				ignoreExamplesInFile = true
 			} else {
 				vsgDocs.example = examplePaths.map(p =>
-					requireIt(`!!${examplesLoader}?customLangs=vue|js|jsx!${p}`)
+					requireIt(`!!${getDocsLoader(p)}?customLangs=vue|js|jsx!${p}`)
 				)
 			}
 		}

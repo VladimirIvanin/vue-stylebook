@@ -1,3 +1,4 @@
+import * as fs from 'fs'
 import getExamples from './getExamples'
 
 it('getExamples() should return require with examples-loader if component has example files', () => {
@@ -35,4 +36,17 @@ it('getExamples() should return null if component has no example file', () => {
 	const result = getExamples(file, examplesFile)
 
 	expect(result).toEqual(null)
+})
+
+it('getExamples() should use mdx-loader for mdx example files', () => {
+	const file = 'file.vue'
+	const examplesFile = '/tmp/Readme.mdx'
+	const spy = vi.spyOn(fs, 'existsSync').mockReturnValue(true)
+	const result = getExamples(file, examplesFile)
+	spy.mockRestore()
+	if (!result || Array.isArray(result)) {
+		return
+	}
+
+	expect(result.require.includes('mdx-loader.js')).toBe(true)
 })

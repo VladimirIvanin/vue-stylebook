@@ -9,7 +9,7 @@ import {
 	BlockTag
 } from 'vue-docgen-api'
 import * as Rsg from 'react-styleguidist'
-import { CodeExample } from './Example'
+import { CodeExample, MdxExample } from './Example'
 
 interface BaseComponentProps {
 	displayName: string
@@ -36,8 +36,10 @@ export interface LoaderComponent extends Omit<Rsg.LoaderComponent, 'props'> {
 }
 
 export interface ComponentProps extends BaseComponentProps {
-	examples?: (CodeExample | Rsg.MarkdownExample)[]
-	example?: (CodeExample | Rsg.MarkdownExample)[] | (CodeExample | Rsg.MarkdownExample)[][]
+	examples?: (CodeExample | Rsg.MarkdownExample | MdxExample)[]
+	example?:
+		| (CodeExample | Rsg.MarkdownExample | MdxExample)[]
+		| (CodeExample | Rsg.MarkdownExample | MdxExample)[][]
 }
 
 export interface Component extends Omit<Rsg.Component, 'props' | 'module'> {

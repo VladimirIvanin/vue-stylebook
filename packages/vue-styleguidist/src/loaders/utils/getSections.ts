@@ -11,8 +11,7 @@ import slugger from 'react-styleguidist/lib/loaders/utils/slugger'
 import { SanitizedStyleguidistConfig } from '../../types/StyleGuide'
 import { ConfigSection } from '../../types/Section'
 import getComponents from './getComponents'
-
-const examplesLoader = path.resolve(__dirname, '../examples-loader.js')
+import getDocsLoader from './getDocsLoader'
 
 export interface SectionFunctionOptions {
 	config: SanitizedStyleguidistConfig
@@ -111,7 +110,8 @@ export async function processSection(
 		if (!fs.existsSync(contentAbsolutePath)) {
 			throw new Error(`Styleguidist: Section content file not found: ${contentAbsolutePath}`)
 		}
-		content = requireIt(`!!${examplesLoader}?customLangs=vue|js|jsx!${contentAbsolutePath}`)
+		const docsLoader = getDocsLoader(contentAbsolutePath)
+		content = requireIt(`!!${docsLoader}?customLangs=vue|js|jsx!${contentAbsolutePath}`)
 	}
 
 	let sectionDepth

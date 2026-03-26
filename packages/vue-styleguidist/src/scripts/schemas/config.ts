@@ -50,6 +50,14 @@ export default {
 			objectAssign: 'Object.assign'
 		}
 	},
+	mdxCompileOptions: {
+		type: 'object',
+		default: {}
+	},
+	storybookBlocks: {
+		type: 'boolean',
+		default: true
+	},
 	// `components` is a shortcut for { sections: [{ components }] },
 	// see `sections` below
 	components: {
@@ -172,7 +180,9 @@ https://vue-styleguidist.github.io/Configuration.html#editorconfig `,
 		type: 'function',
 		default: (componentPath: string) => {
 			const files = [
+				path.join(path.dirname(componentPath), 'Readme.mdx'),
 				path.join(path.dirname(componentPath), 'Readme.md'),
+				componentPath.replace(path.extname(componentPath), '.mdx'),
 				componentPath.replace(path.extname(componentPath), '.md')
 			]
 

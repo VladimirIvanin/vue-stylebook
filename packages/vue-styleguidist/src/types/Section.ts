@@ -1,6 +1,6 @@
 import * as Rsg from 'react-styleguidist'
 import { Component } from './Component'
-import { CodeExample } from './Example'
+import { CodeExample, MdxExample } from './Example'
 
 export interface ConfigSection extends Rsg.ConfigSection {
 	componentPagePerSection?: boolean
@@ -12,7 +12,7 @@ export interface ProcessedSection extends Rsg.BaseSection {
 	href: string
 	components?: Component[]
 	filepath?: string
-	content?: (CodeExample | Rsg.MarkdownExample)[]
+	content?: (CodeExample | Rsg.MarkdownExample | MdxExample)[]
 	sections: ProcessedSection[]
 	sectionDepth: number
 	componentPagePerSection?: boolean

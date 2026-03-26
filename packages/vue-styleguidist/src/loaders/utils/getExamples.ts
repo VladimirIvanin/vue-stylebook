@@ -3,8 +3,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import qss from 'qss'
 import requireIt from 'react-styleguidist/lib/loaders/utils/requireIt'
-
-const examplesLoader = path.resolve(__dirname, '../examples-loader.js')
+import getDocsLoader from './getDocsLoader'
 
 /**
  * Get require statement for examples file if it exists, or for default examples if it was defined.
@@ -38,11 +37,13 @@ export default function getExamples(
 	}
 
 	if (examplesFile && fs.existsSync(examplesFile)) {
-		return requireIt(`!!${examplesLoader}?${qss.encode(query)}!${examplesFile}`)
+		const docsLoader = getDocsLoader(examplesFile)
+		return requireIt(`!!${docsLoader}?${qss.encode(query)}!${examplesFile}`)
 	}
 
 	if (defaultExample && !isComponentDocInVueFile) {
-		return requireIt(`!!${examplesLoader}?${qss.encode(query)}!${defaultExample}`)
+		const docsLoader = getDocsLoader(defaultExample)
+		return requireIt(`!!${docsLoader}?${qss.encode(query)}!${defaultExample}`)
 	}
 
 	return null

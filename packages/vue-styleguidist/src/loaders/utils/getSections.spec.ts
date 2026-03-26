@@ -120,6 +120,17 @@ describe('processSection', () => {
 
 		expect(cleanFilePathSnapshot(result as any)).toMatchSnapshot()
 	})
+
+	it('should use mdx-loader for mdx section content', async () => {
+		const result = await processSection(
+			{
+				name: 'Readme MDX',
+				content: 'components/ReadMe.mdx'
+			},
+			{ config, componentFiles: [] }
+		)
+		expect((result.content as any).require).toContain('mdx-loader.js')
+	})
 })
 
 describe('getSections', () => {

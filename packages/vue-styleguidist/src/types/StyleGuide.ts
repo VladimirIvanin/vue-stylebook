@@ -45,6 +45,8 @@ export interface BaseStyleguidistConfig
      */
     compilerPackage: string;
     compilerConfig: TransformOptions;
+    mdxCompileOptions: Record<string, any>;
+    storybookBlocks: boolean;
     /**
      * Where to find the components. Takes in a String or an Array of glob paths. Comma separated. 
      */

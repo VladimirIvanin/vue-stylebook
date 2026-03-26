@@ -4,3 +4,8 @@ export interface CodeExample extends Omit<Rsg.CodeExample, 'content'> {
 	content: { raw: string; compiled: string } | string
 	compiled?: string
 }
+
+export interface MdxExample {
+	type: 'mdx'
+	component: any
+}

@@ -55,15 +55,24 @@ export default function (
 			chunkFilename: 'build/[name].js'
 		},
 		resolve: {
-			extensions: ['.vue', '.js', '.jsx', '.json'],
+			extensions: ['.vue', '.js', '.jsx', '.json', '.mdx'],
 			alias: {
 				'rsg-codemirror-theme.css': `codemirror/theme/${
 					config.editorConfig?.theme?.split(' ')[0] ?? 'default'
-				}.css`
+				}.css`,
+				...(config as any).storybookBlocks === false
+					? {}
+					: {
+							'@storybook/blocks': path.resolve(sourceDir, 'rsg-components/StorybookBlocks')
+					  }
 			}
 		},
 		module: {
 			rules: [
+				{
+					test: /\.mdx$/,
+					loader: require.resolve('../../lib/loaders/mdx-loader.js')
+				},
 				{
 					type: 'javascript/auto',
 					resourceQuery: /blockType=docs/,
