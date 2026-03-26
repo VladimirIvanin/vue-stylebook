@@ -18,7 +18,7 @@ export interface UsageTabButtonProps {
 
 const UsageTabButton = (props: UsageTabButtonProps) => {
 	const component = props.props
-	const words = []
+	const words: string[] = []
 	if (!isEmpty(component.props)) {
 		words.push('props')
 	}
