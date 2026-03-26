@@ -31,14 +31,14 @@ class PlaygroundVueReplInner extends Component<
 	PlaygroundVueReplInnerProps,
 	PlaygroundVueReplInnerState
 > {
-	static propTypes = {
+	public static propTypes = {
 		classes: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
 		code: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
 		settings: PropTypes.object,
 		config: PropTypes.object.isRequired
 	}
 
-	state: PlaygroundVueReplInnerState = {
+	public state: PlaygroundVueReplInnerState = {
 		error: null
 	}
 
@@ -46,19 +46,19 @@ class PlaygroundVueReplInner extends Component<
 	private vueApp: any = null
 	private distRebuiltListener: (() => void) | null = null
 
-	componentDidMount() {
+	public componentDidMount() {
 		this.distRebuiltListener = () => this.mountRepl()
 		window.addEventListener('vsg:dist-rebuilt', this.distRebuiltListener)
 		this.mountRepl()
 	}
 
-	componentDidUpdate(prevProps: PlaygroundVueReplInnerProps) {
+	public componentDidUpdate(prevProps: PlaygroundVueReplInnerProps) {
 		if (normalizeCode(prevProps.code) !== normalizeCode(this.props.code)) {
 			this.mountRepl()
 		}
 	}
 
-	componentWillUnmount() {
+	public componentWillUnmount() {
 		if (this.distRebuiltListener) {
 			window.removeEventListener('vsg:dist-rebuilt', this.distRebuiltListener)
 			this.distRebuiltListener = null
@@ -74,7 +74,7 @@ class PlaygroundVueReplInner extends Component<
 	}
 
 	private mountRepl = async () => {
-		if (!this.mountNode) return
+		if (!this.mountNode) {return}
 
 		this.unmountRepl()
 		this.setState({ error: null })
@@ -83,11 +83,11 @@ class PlaygroundVueReplInner extends Component<
 		const appVue = inputCode || '<template><div /> </template>'
 
 		try {
-			const [vueModule, replModule, editorModule] = await Promise.all([
-				import('vue'),
-				import('@vue/repl'),
-				import('@vue/repl/codemirror-editor')
-			])
+			const vueModule = await import('vue')
+			// eslint-disable-next-line import/no-unresolved
+			const replModule = await import('@vue/repl')
+			// eslint-disable-next-line import/no-unresolved
+			const editorModule = await import('@vue/repl/codemirror-editor')
 			const { createApp, defineComponent, h, ref } = vueModule as any
 			const { Repl, useStore, useVueImportMap, mergeImportMap } = replModule as any
 			const CodeMirror = (editorModule as any).default
@@ -147,7 +147,7 @@ class PlaygroundVueReplInner extends Component<
 		}
 	}
 
-	render() {
+	public render() {
 		const { classes } = this.props
 		const { error } = this.state
 

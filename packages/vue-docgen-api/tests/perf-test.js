@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 const glob = require('globby')
 const path = require('path')
-const { parse } = require('../')
+// eslint-disable-next-line import/extensions
+const { parse } = require('../index')
 
 async function testPerformanceOfParse(componentFiles) {
 	const start = process.hrtime.bigint()

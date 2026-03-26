@@ -14,8 +14,8 @@ function getLatestStorybookCacheDir(cacheRoot: string): string | null {
 
 	let latest: { path: string; mtime: number } | null = null
 	for (const dirent of fs.readdirSync(cacheRoot, { withFileTypes: true })) {
-		if (!dirent.isDirectory()) continue
-		if (dirent.name === 'default') continue
+		if (!dirent.isDirectory()) {continue}
+		if (dirent.name === 'default') {continue}
 
 		const fullPath = path.join(cacheRoot, dirent.name)
 		const stats = fs.statSync(fullPath)

@@ -132,6 +132,12 @@ export default [{
     },
 
     settings: {
+        "import/core-modules": [
+            "vue-docgen-api",
+            "vue-inbrowser-compiler",
+            "vue-inbrowser-compiler-utils",
+            "vue-inbrowser-prismjs-highlighter",
+        ],
         "import/resolver": {
             typescript: {},
 

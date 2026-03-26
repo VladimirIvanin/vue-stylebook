@@ -48,7 +48,7 @@ export default function createServer(
 	const resolvedVueRuntime = resolveVueRuntimeForSandbox(config.configDir)
 
 	if (resolvedVueRuntime.runtimeDevPath || resolvedVueRuntime.serverRendererPath) {
-		;(devServer as any).app.get('/__vsg-runtime/vue', (_req: any, res: any) => {
+		(devServer as any).app.get('/__vsg-runtime/vue', (_req: any, res: any) => {
 			if (!resolvedVueRuntime.runtimeDevPath) {
 				res.status(404).send('Vue runtime for REPL is not resolved')
 				return
