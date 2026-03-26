@@ -39,7 +39,8 @@ const CLIENT_CONFIG_OPTIONS = [
 	'mountPointId',
 	'jsxInExamples',
 	'jssThemedEditor',
-	'locallyRegisterComponents'
+	'locallyRegisterComponents',
+	'playgroundEngine'
 ]
 
 // const emptyFunctionAst = {}

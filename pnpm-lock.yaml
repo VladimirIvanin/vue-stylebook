@@ -1883,6 +1883,9 @@ importers:
       '@mdx-js/react':
         specifier: ^3.1.1
         version: 3.1.1(@types/react@18.2.63)(react@18.2.0)
+      '@vue/repl':
+        specifier: ^4.7.1
+        version: 4.7.1
       '@vxna/mini-html-webpack-template':
         specifier: ^1.0.0
         version: 1.0.0
@@ -5389,6 +5392,9 @@ packages:
 
   '@vue/ref-transform@3.2.20':
     resolution: {integrity: sha512-Y42d3PGlYZ1lXcF3dbd3+qU/C/a3wYEZ949fyOI5ptzkjDWlkfU6vn74fmOjsLjEcjs10BXK2qO99FqQIK2r1Q==}
+
+  '@vue/repl@4.7.1':
+    resolution: {integrity: sha512-8w5Z3cyqBJ5ufzXO2eut2stzb7aX/ZnSva2d3ee8eEINEB7FG2JYwc14eAHHHGGuoXOGN5v4cyb5ti/YZGcwlg==}
 
   '@vue/runtime-core@3.2.33':
     resolution: {integrity: sha512-N2D2vfaXsBPhzCV3JsXQa2NECjxP3eXgZlFqKh4tgakp3iX6LCGv76DLlc+IfFZq+TW10Y8QUfeihXOupJ1dGw==}
@@ -22768,6 +22774,8 @@ snapshots:
       '@vue/shared': 3.2.20
       estree-walker: 2.0.2
       magic-string: 0.25.7
+
+  '@vue/repl@4.7.1': {}
 
   '@vue/runtime-core@3.2.33':
     dependencies:

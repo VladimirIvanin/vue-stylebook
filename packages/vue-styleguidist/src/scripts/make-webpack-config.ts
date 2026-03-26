@@ -15,6 +15,7 @@ import makeWebpackConfig from 'react-styleguidist/lib/scripts/make-webpack-confi
 import StyleguidistOptionsPlugin from 'react-styleguidist/lib/scripts/utils/StyleguidistOptionsPlugin'
 import { SanitizedStyleguidistConfig } from '../types/StyleGuide'
 import mergeWebpackConfig from './utils/mergeWebpackConfig'
+import resolveVueRuntimeForSandbox from './utils/resolveVueRuntimeForSandbox'
 
 const RENDERER_REGEXP = /Renderer$/
 
@@ -36,6 +37,7 @@ export default function (
 
 	process.env.NODE_ENV = process.env.NODE_ENV || env
 	const isProd = env === 'production'
+	const resolvedVueRuntime = resolveVueRuntimeForSandbox(config.configDir)
 
 	const template = isFunction(config.template) ? config.template : MiniHtmlWebpackTemplate
 	const templateContext = isFunction(config.template) ? {} : config.template
@@ -131,6 +133,11 @@ export default function (
 				'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
 
 				'process.env.STYLEGUIDIST_ENV': JSON.stringify(env),
+				'process.env.VSG_VUE_REPL_RUNTIME_DEV_URL': JSON.stringify('/__vsg-runtime/vue'),
+				'process.env.VSG_VUE_REPL_SERVER_RENDERER_URL': JSON.stringify(
+					'/__vsg-runtime/vue-server-renderer'
+				),
+				'process.env.VSG_VUE_REPL_RUNTIME_SOURCE': JSON.stringify(resolvedVueRuntime.source),
 				...(definePluginsVariables?.includes('__VUE_OPTIONS_API__') || false
 					? {}
 					: {
@@ -286,6 +293,9 @@ export default function (
 
 	if (config.codeSplit) {
 		customComponents['Playground/Playground'] = 'PlaygroundAsync/PlaygroundAsync'
+	}
+	if ((config as any).playgroundEngine === 'vueRepl') {
+		customComponents['Playground/Playground'] = 'PlaygroundVueRepl/PlaygroundVueRepl'
 	}
 
 	customComponents.Preview = path.join('Preview', config.codeSplit ? 'PreviewAsync' : 'Preview')

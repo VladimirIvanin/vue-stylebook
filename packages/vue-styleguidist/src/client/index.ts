@@ -54,6 +54,7 @@ if (module.hot) {
 	// @ts-expect-error hot module replacement
 	module.hot.accept('!!../loaders/styleguide-loader!./index.js', () => {
 		codeRevision += 1
+		window.dispatchEvent(new CustomEvent('vsg:dist-rebuilt'))
 		render()
 	})
 }

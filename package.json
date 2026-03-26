@@ -1,6 +1,6 @@
 {
   "name": "@ivaninvladimir/vue-styleguidist",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "homepage": "https://github.com/ivaninvladimir/vue-styleguidist",
   "repository": {
@@ -26,6 +26,7 @@
     "build": "./start.sh build",
     "lint": "eslint . --cache --fix --ext .ts,.tsx,.js --cache-location node_modules/.eslint_cache/",
     "compile": "turbo run compile",
+    "prepack": "pnpm compile",
     "test:browser": "node test/browser.mjs",
     "precommit": "lint-staged",
     "cy:open": "cypress open",
@@ -39,8 +40,7 @@
     "predocs": "node ./docs/.vuepress/preprocess.js",
     "docs": "vuepress dev docs",
     "docs:build": "node ./docs/.vuepress/preprocess.js && vuepress build docs",
-    "maketypes": "babel packages/vue-styleguidist/src/scripts/schemas/config.ts --out-file packages/vue-styleguidist/lib/scripts/schemas/config.js && node packages/vue-styleguidist/maketypes.js",
-    "postinstall": "pnpm compile"
+    "maketypes": "babel packages/vue-styleguidist/src/scripts/schemas/config.ts --out-file packages/vue-styleguidist/lib/scripts/schemas/config.js && node packages/vue-styleguidist/maketypes.js"
   },
   "license": "MIT",
   "engines": {

@@ -53,6 +53,7 @@ module.exports = () => {
 					'/docs/CLI',
 					'/docs/Customize',
 					'/docs/Webpack',
+					'/docs/VueRepl',
 					'/docs/Cookbook',
 					'/docs/API',
 					'/docs/Deployment',

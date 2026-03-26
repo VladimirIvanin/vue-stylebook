@@ -1,64 +1,64 @@
-# Configuration
+# Конфигурация
 
-By default, Vue styleguidist will look for `styleguide.config.js` file in your project’s root folder. You can change the location of the config file using `--config` [CLI](/docs/CLI.md) option.
+По умолчанию Vue Styleguidist ищет файл `styleguide.config.js` в корне проекта. Путь к файлу конфигурации можно изменить через параметр `--config` в [CLI](/docs/CLI.md).
 
 ## `assetsDir`
 
-Type: `String`, optional
+Тип: `String`, опционально
 
-Your application static assets folder, will be accessible as `/` in the style guide dev server.
+Папка со статическими ассетами приложения. В dev server style guide она будет доступна по пути `/`.
 
 ## `codeSplit`
 
-Type: `Boolean`, default: true
+Тип: `Boolean`, по умолчанию: `true`
 
-By default vue-styleguidist will build one single bundle for all your javascript. When this flag is on, the editor (CodeMirror) is loaded as a separate bundle and so is the compiler. Each of those 2 bundles are about 400Kb. It allows for a faster initial load.
+По умолчанию vue-styleguidist собирает весь JavaScript в один bundle. Если включить этот флаг, editor (CodeMirror) и compiler будут загружаться отдельными bundle. Каждый из них примерно по 400 KB, что ускоряет первый рендер страницы.
 
-> **Note**: When you use this option and have a babel-loader in your webpack config, make sure that you either ignore `node_modules` in your babel loader or that you have the [proper plugin](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import) for code splitting with babel. If not, you might get the following error:
+> **Примечание**: Если вы используете эту опцию и у вас в webpack-конфиге есть `babel-loader`, убедитесь, что для него либо исключены `node_modules`, либо подключен [нужный plugin](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import) для code splitting в Babel. Иначе возможна ошибка:
 >
 > `SyntaxError: Support for the experimental syntax 'dynamicImport' isn't currently enabled`
 
 ## `compilerPackage`
 
-Type: `String`, optional
+Тип: `String`, опционально
 
-Path or name of a module that exports a `compile` and a `getImports` function. It will be used to compile your live examples. vue-styleguidist will do `require(config.compilerPackage)` to get the `compile` function. 
-- Checkout [examples-loader.ts](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/src/loaders/examples-loader.ts) to see the implementation on the node side. 
-- See [Preview.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/src/client/rsg-components/Preview/Preview.js) to see how it is used in the frontend.
+Путь или имя модуля, который экспортирует функции `compile` и `getImports`. Этот модуль используется для компиляции live examples. Внутри vue-styleguidist вызывается `require(config.compilerPackage)`, чтобы получить `compile`.
+- Реализацию на стороне Node можно посмотреть в [examples-loader.ts](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/src/loaders/examples-loader.ts).
+- Использование на frontend можно посмотреть в [Preview.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-styleguidist/src/client/rsg-components/Preview/Preview.js).
 
 ## `compilerConfig`
 
-Type: `Object`, default: `{ objectAssign: 'Object.assign' }`
+Тип: `Object`, по умолчанию: `{ objectAssign: 'Object.assign' }`
 
-Styleguidist uses `vue-inbrowser-compiler` to bundle typescript/ES6 modules code on the frontend. These options are passed to the compile function.
+Styleguidist использует `vue-inbrowser-compiler` для сборки TypeScript/ES6 модулей на frontend. Эти опции передаются в функцию `compile`.
 
 ## `mdxCompileOptions`
 
-Type: `Object`, default: `{}`
+Тип: `Object`, по умолчанию: `{}`
 
-Дополнительные опции компиляции, передаваемые в MDX-пайплайн.
+Дополнительные опции компиляции, передаваемые в MDX pipeline.
 
-Используйте это поле, чтобы добавить свои `remark` / `rehype` плагины или переопределить `providerImportSource`.
+Используйте это поле, чтобы добавить свои `remark` / `rehype` plugins или переопределить `providerImportSource`.
 
 См. также: [MDX](/docs/MDX.md#конфигурация).
 
 ## `components`
 
-Type: `String`, `Function` or `Array`, default: `src/components/**/*.vue`
+Тип: `String`, `Function` или `Array`, по умолчанию: `src/components/**/*.vue`
 
-- when `String`: a [glob pattern](https://github.com/isaacs/node-glob#glob-primer) that matches all your component modules.
-- when `Function`: a function that returns an array of module paths.
-- when `Array`: an array of module paths.
+- если `String`: [glob pattern](https://github.com/isaacs/node-glob#glob-primer), который матчится на файлы компонентов;
+- если `Function`: функция, возвращающая массив путей модулей;
+- если `Array`: массив путей модулей.
 
-All paths are relative to config folder.
+Все пути считаются относительно папки с конфигом.
 
-See examples in the [Components section](/docs/Components.md#components).
+Примеры см. в разделе [Components](/docs/Components.md#components).
 
 ## `context`
 
-Type: `Object`, optional
+Тип: `Object`, опционально
 
-Modules that will be available for examples. You can use it for utility functions like Lodash or for data fixtures.
+Модули, доступные внутри examples. Подходит для утилит (например, Lodash) или тестовых fixture-данных.
 
 ```javascript
 module.exports = {
@@ -69,7 +69,7 @@ module.exports = {
 }
 ```
 
-Then you can use them in any example:
+После этого их можно использовать в любом example:
 
 ```jsx
 <Message>{map(users, 'name').join(', ')}</Message>
@@ -77,11 +77,11 @@ Then you can use them in any example:
 
 ## `contextDependencies`
 
-Type: `String[]`, optional
+Тип: `String[]`, опционально
 
-Array of absolute paths that allow you to specify absolute paths of directories to watch for additions or removals of components.
+Массив абсолютных путей к директориям, за которыми нужно следить на добавление/удаление компонентов.
 
-By default Styleguidist uses common parent directory of your components.
+По умолчанию Styleguidist использует общую родительскую директорию для всех ваших компонентов.
 
 ```javascript
 module.exports = {
@@ -91,14 +91,14 @@ module.exports = {
 
 ## `configureServer`
 
-Type: `Function`, optional
+Тип: `Function`, опционально
 
-Function that allows you to add endpoints to the underlying Express server:
+Функция для добавления endpoint-ов в базовый Express server:
 
 ```javascript
 module.exports = {
   configureServer(app) {
-    // `app` is the instance of the express server running Styleguidist
+    // `app` — экземпляр express server, на котором запущен Styleguidist
     app.get('/custom-endpoint', (req, res) => {
       res.status(200).send({ response: 'Server invoked' })
     })
@@ -106,26 +106,26 @@ module.exports = {
 }
 ```
 
-Your components will be able to invoke the URL `http://localhost:6060/custom-endpoint` from their examples.
+После этого ваши компоненты смогут обращаться к URL `http://localhost:6060/custom-endpoint` из examples.
 
 ## `copyCodeButton`
 
-Type: `Boolean`, default: `false`
+Тип: `Boolean`, по умолчанию: `false`
 
-Adds a little button on the top right hand corner of the editor to copy the contents of the editor into the clipboard.
+Добавляет небольшую кнопку в правом верхнем углу editor, чтобы копировать содержимое кода в clipboard.
 
 ## `dangerouslyUpdateWebpackConfig`
 
-Type: `Function`, optional
+Тип: `Function`, опционально
 
-> **Warning:** You are likely to break Vue styleguidist using this options, try to use [webpackConfig](#webpackconfig) option instead.
+> **Предупреждение:** этой опцией легко сломать Vue Styleguidist. По возможности используйте `webpackConfig`.
 
-Allows you to modify webpack config without any restrictions.
+Позволяет менять webpack-конфиг без ограничений.
 
 ```javascript
 module.exports = {
   dangerouslyUpdateWebpackConfig(webpackConfig, env) {
-    // WARNING: inspect Vue styleguidist Webpack config before modifying it, otherwise you may break Vue styleguidist
+    // WARNING: сначала изучите webpack config Vue styleguidist, иначе можно сломать сборку
     console.log(webpackConfig)
     webpackConfig.externals = {
       jquery: 'jQuery'
@@ -137,27 +137,27 @@ module.exports = {
 
 ## `defaultExample`
 
-Type: `Boolean` or `String`, default: `false`
+Тип: `Boolean` или `String`, по умолчанию: `false`
 
-For components that do not have an example, a default one can be used. When set to `true`, the [DefaultExample.md](https://github.com/vue-styleguidist/vue-styleguidist/blob/delivery/packages/vue-styleguidist/scripts/templates/DefaultExample.md) is used, or you can provide the path to your own example Markdown file.
+Для компонентов без example можно подставлять example по умолчанию. Если поставить `true`, используется [DefaultExample.md](https://github.com/vue-styleguidist/vue-styleguidist/blob/delivery/packages/vue-styleguidist/scripts/templates/DefaultExample.md), либо можно указать путь к собственному Markdown-файлу.
 
-When writing your own default example file, `__COMPONENT__` will be replaced by the actual component name at compile time.
+В кастомном default example плейсхолдер `__COMPONENT__` во время компиляции заменяется на имя компонента.
 
 ## `displayOrigins`
 
-Type: `Boolean`, default: `false`
+Тип: `Boolean`, по умолчанию: `false`
 
-When turned on, displays if a prop, event, slot or methods is from the current file or is configured in a mixin or an extended component.
+Если включено, в таблицах будет видно, где определены `prop`, `event`, `slot` и `method`: в текущем файле или во внешнем mixin/extended component.
 
-If it is external, it displays the name of the component and on hover displays the relative path to the file.
+Для внешних источников показывается имя компонента, а при наведении — относительный путь к файлу.
 
 ## `getComponentPathLine`
 
-Type: `Function`, default: component file name
+Тип: `Function`, по умолчанию: имя файла компонента
 
-Function that returns a component path line (displayed under the component name).
+Функция, которая возвращает строку пути к компоненту (показывается под названием компонента).
 
-For example, instead of `components/Button/Button.vue` you can print `import Button from 'components/Button';`:
+Например, вместо `components/Button/Button.vue` можно выводить `import Button from 'components/Button';`:
 
 ```javascript
 const path = require('path')
@@ -172,11 +172,11 @@ module.exports = {
 
 ## `editorConfig`
 
-Type: `Object`, default: [scripts/schemas/config.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/delivery/packages/vue-styleguidist/src/scripts/schemas/config.ts#L103-L112)
+Тип: `Object`, по умолчанию: [scripts/schemas/config.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/delivery/packages/vue-styleguidist/src/scripts/schemas/config.ts#L103-L112)
 
-Source code editor options, see [CodeMirror docs](https://codemirror.net/doc/manual.html#config) for all available options.
+Опции source code editor. Полный список — в [документации CodeMirror](https://codemirror.net/doc/manual.html#config).
 
-> **NOTE :** From version 4.0.0, Prism is the editor by default as it is much lighter. Turn off [simpleEditor](#simpleEditor) to use CodeMirror and leverage this config.
+> **Примечание:** начиная с версии 4.0.0 editor по умолчанию — Prism, потому что он значительно легче. Чтобы использовать CodeMirror и эту конфигурацию, отключите [simpleEditor](#simpleEditor).
 >
 > ```js
 > module.exports = {
@@ -190,11 +190,11 @@ Source code editor options, see [CodeMirror docs](https://codemirror.net/doc/man
 
 ## `getExampleFilename`
 
-Type: `Function`, default: ищет `Readme.mdx`, `Readme.md`, `ComponentName.mdx` или `ComponentName.md` в папке компонента
+Тип: `Function`, по умолчанию: ищет `Readme.mdx`, `Readme.md`, `ComponentName.mdx` или `ComponentName.md` в папке компонента
 
-Function that returns examples file path for a given component path.
+Функция, возвращающая путь к файлу examples для указанного пути компонента.
 
-For example, instead of `Readme.md` you can use `ComponentName.examples.md`:
+Например, вместо `Readme.md` можно использовать `ComponentName.examples.md`:
 
 ```javascript
 module.exports = {
@@ -204,7 +204,7 @@ module.exports = {
 }
 ```
 
-Можно возвращать и пути к `.mdx`:
+Можно возвращать и путь к `.mdx`:
 
 ```javascript
 module.exports = {
@@ -216,23 +216,23 @@ module.exports = {
 
 ## `storybookBlocks`
 
-Type: `Boolean`, default: `true`
+Тип: `Boolean`, по умолчанию: `true`
 
 Включает совместимый alias для `@storybook/blocks` в MDX-доках.
 
-Ставьте `false` только если предоставляете собственную реализацию/alias.
+Ставьте `false` только если вы предоставляете собственную реализацию/alias.
 
 См. также: [MDX](/docs/MDX.md#совместимость-с-storybook-blocks).
 
 ## `enhancePreviewApp`
 
-Type `String`, optional
+Тип: `String`, опционально
 
-Allows to register **global plugins** and **global directives** in the examples preview or **Vue 3** style guides.
+Позволяет зарегистрировать **global plugins** и **global directives** в preview examples для style guide на **Vue 3**.
 
-For example:
+Например:
 
-Reference the preview file path in the `styleguide.config.js`
+Укажите путь к preview-файлу в `styleguide.config.js`:
 
 ```js
 // styleguide.config.js
@@ -242,51 +242,51 @@ export default {
 }
 ```
 
-Then update your app in it with whatever you want.
+Затем настройте app в этом файле:
 
 ```js
 // styleguide/preview.js
 import { defineEnhanceApp } from 'vue-styleguidist/helpers'
 import focusDirective from '../src/directives/v-focus';
 
-// The export here MUST be default or module.export
-// this is what is imported by the styleguide
+// Здесь export ОБЯЗАТЕЛЬНО должен быть default или module.export
+// Именно это импортирует styleguide
 export default defineEnhanceApp((app) => {
   app.directive('focus', focusDirective)
 })
 ```
 
-> NOTE: If you use TypeScript, this file can be TypeScript as well
+> Примечание: если вы используете TypeScript, этот файл тоже может быть на TypeScript.
 
 ## `exampleMode`
 
-Type: `'collapse' | 'hide' | 'expand'`, default: `collapse`
+Тип: `'collapse' | 'hide' | 'expand'`, по умолчанию: `collapse`
 
-Defines the initial state of the example code tab:
+Определяет начальное состояние вкладки с кодом example:
 
-- `collapse`: collapses the tab by default.
-- `hide`: hide the tab and it can´t be toggled in the UI.
-- `expand`: expand the tab by default.
+- `collapse`: вкладка свернута по умолчанию;
+- `hide`: вкладка скрыта и не переключается в UI;
+- `expand`: вкладка развернута по умолчанию.
 
 ## `ignore`
 
-Type: `String[]`, default: `['**/__tests__/**']`
+Тип: `String[]`, по умолчанию: `['**/__tests__/**']`
 
-Array of [glob pattern](https://github.com/isaacs/node-glob#glob-primer) that should not be included in the style guide.
+Массив [glob pattern](https://github.com/isaacs/node-glob#glob-primer), которые не должны попадать в style guide.
 
-> **Note:** You should pass glob patterns, for example, use `**/components/Button.vue` instead of `components/Button.vue`.
+> **Примечание:** передавайте именно glob pattern. Например, `**/components/Button.vue`, а не `components/Button.vue`.
 
 ## `jssThemedEditor`
 
-Type: `Boolean`, default: `true`
+Тип: `Boolean`, по умолчанию: `true`
 
-Should integrated PrismJs editors be themed using JSS in the theme option.
+Определяет, должен ли встроенный PrismJS editor стилизоваться через JSS-тему.
 
-If you want to use a theme defined in CSS, set this to false and require the CSS file in the `require` config.
+Если вы используете CSS-тему, отключите эту опцию и подключите CSS в `require`.
 
-[prism themes repo](https://github.com/PrismJS/prism-themes/)
+[Репозиторий тем Prism](https://github.com/PrismJS/prism-themes/)
 
-> **Note:** There is [a bug in prism editor](https://github.com/satya164/react-simple-code-editor/issues/56) that prevents us from changing the editor's background and font-color easily. Workaround: If you get a theme with
+> **Примечание:** у Prism editor есть [известный баг](https://github.com/satya164/react-simple-code-editor/issues/56), из-за которого сложно менять фон и цвет текста напрямую. Обходной путь: если в теме есть
 >
 > ```css
 > pre[class*='language-'] {
@@ -297,7 +297,7 @@ If you want to use a theme defined in CSS, set this to false and require the CSS
 > }
 > ```
 >
-> Use the `div.prism-editor` class to change the background instead
+> используйте `div.prism-editor` для задания фона:
 >
 > ```css
 > pre[class*='language-'] {
@@ -311,18 +311,18 @@ If you want to use a theme defined in CSS, set this to false and require the CSS
 > }
 > ```
 >
-> checkout [examples/customised](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/examples/customised/styleguide/vsc-prism.css) for an example of implementation
+> Пример см. в [examples/customised](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/examples/customised/styleguide/vsc-prism.css).
 
 ## `jsxInComponents`
 
-Type: `Boolean`, default: `true`
+Тип: `Boolean`, по умолчанию: `true`
 
-Do your components contain JSX syntax? Since some TypeScript syntax can sometimes conflict with JSX, it ca be useful to disble it when needed. The following TypeScript code would fail parsing if this flag is not set to false.
+Содержат ли ваши компоненты JSX-синтаксис. Иногда синтаксис TypeScript конфликтует с JSX, поэтому бывает полезно отключить опцию. Например, код ниже не распарсится, если флаг не выключен:
 
 ```typescript
 function initDatepicker() {
   ;(<any>window).$.datetimepicker({
-    // babel parser will think that `<any>` is actually jsx
+    // babel parser примет `<any>` за jsx
     //...
   })
 }
@@ -330,9 +330,9 @@ function initDatepicker() {
 
 ## `jsxInExamples`
 
-Type: `Boolean`, default: `false`
+Тип: `Boolean`, по умолчанию: `false`
 
-If your examples are written in JSX, you will need this flag on.
+Если examples написаны на JSX, эту опцию нужно включить.
 
 ```jsx
 export default {
@@ -342,21 +342,21 @@ export default {
 }
 ```
 
-> **Note:** When this flag is on, the pseudo-jsx examples will not work anymore. Example should be written with proper vue syntax.
+> **Примечание:** при включении этой опции «псевдо-jsx» examples перестанут работать. Examples должны быть написаны в корректном Vue-синтаксисе.
 
 ## `logger`
 
-Type: `Object`, by default will use `console.*` in CLI or nothing in Node.js API
+Тип: `Object`, по умолчанию используется `console.*` в CLI или ничего в Node.js API
 
-Custom logger functions:
+Кастомные функции логирования:
 
 ```javascript
 module.exports = {
   logger: {
-    // One of: info, debug, warn
-    // Suppress messages
+    // Одно из: info, debug, warn
+    // Подавить сообщения
     info: () => {},
-    // Override display function
+    // Переопределить вывод
     warn: message => console.warn(`NOOOOOO: ${message}`)
   }
 }
@@ -364,20 +364,20 @@ module.exports = {
 
 ## `locallyRegisterComponents`
 
-Type: `Boolean`, default: `false`
+Тип: `Boolean`, по умолчанию: `false`
 
-By default, `vue-styleguidist` registers all components globally. This can be an issue when:
+По умолчанию `vue-styleguidist` регистрирует все компоненты глобально. Это может быть проблемой, когда:
 
-- Multiple components are sharing the same name OR
-- Components are changing behaviour if another component is registered
+- несколько компонентов имеют одинаковое имя;
+- поведение компонента меняется, если зарегистрирован другой компонент.
 
-In this case, set `locallyRegisterComponents` to `true`. It will register components only in the examples of their documentation.
+В этом случае включите `locallyRegisterComponents: true`. Тогда компоненты будут регистрироваться только в examples своей документации.
 
-Though if you need to register an additionl component and you are forced to use this behaviour, proceed like this:
+Если при этом вам все же нужно подключить дополнительный компонент, действуйте так:
 
-1.  Write examples using SFC format
-1.  Explicitly require or import all needed components
-1.  Register them in your example
+1. Пишите examples в формате SFC.
+1. Явно `require`/`import` все нужные компоненты.
+1. Регистрируйте их внутри example.
 
 ```vue
 <script>
@@ -394,29 +394,29 @@ export default {
 </template>
 ```
 
-> **Note** This can be done as well using a `new Vue()` script
+> **Примечание:** то же самое можно сделать через скрипт с `new Vue()`.
 
 ## `minimize`
 
-Type: `boolean`, default: `true`
+Тип: `Boolean`, по умолчанию: `true`
 
-If you wish to remove minimization from the build process to help with debugging or to accelate netlify build time on PR, turn this one off.
+Если хотите отключить минификацию в build (например, для дебага или ускорения сборок на PR в Netlify), выключите эту опцию.
 
 ## `mountPointId`
 
-Type: `string`, default: `rsg-root`
+Тип: `String`, по умолчанию: `rsg-root`
 
-The ID of a DOM element where Styleguidist mounts.
+`id` DOM-элемента, в который монтируется Styleguidist.
 
 ## `pagePerSection`
 
-Type: `Boolean`, default: `false`
+Тип: `Boolean`, по умолчанию: `false`
 
-Render one section or component per page.
+Рендерит одну section или один component на страницу.
 
-If `true`, each section will be a single page.
+Если `true`, каждая section отображается отдельной страницей.
 
-The value may depends on a current environment:
+Значение может зависеть от окружения:
 
 ```javascript
 module.exports = {
@@ -424,11 +424,11 @@ module.exports = {
 }
 ```
 
-To isolate section’s children as single pages (subroutes), add `sectionDepth` into each section with the number of subroutes (depth) to render as single pages.
+Чтобы children section рендерились как отдельные страницы (subroutes), задайте для section параметр `sectionDepth` — глубину subroutes.
 
-To open components inside a section as dedicated routes from the sidebar, use `componentPagePerSection: true` on that section. This option is opt-in and keeps existing behavior unchanged unless explicitly enabled.
+Чтобы компоненты внутри section открывались отдельными route из sidebar, используйте `componentPagePerSection: true` у этой section. Опция включается явно и не меняет текущее поведение, пока вы ее не активируете.
 
-For example:
+Например:
 
 ```javascript
 module.exports = {
@@ -449,7 +449,7 @@ module.exports = {
           ]
         }
       ],
-      // Will show "Documentation" and "Files" as single pages, filtering its children
+      // Покажет "Documentation" и "Files" как отдельные страницы, фильтруя children
       sectionDepth: 2
     },
     {
@@ -464,7 +464,7 @@ module.exports = {
           ]
         }
       ]
-      // Will show "Components" as single page, filtering its children
+      // Покажет "Components" как отдельную страницу, фильтруя children
       sectionDepth: 1,
     },
     {
@@ -479,14 +479,14 @@ module.exports = {
           ]
         }
       ]
-      // There is no subroutes, "Examples" will show all its children on a page
+      // Subroutes нет, "Examples" покажет всех children на одной странице
       sectionDepth: 0,
     }
   ]
 }
 ```
 
-With `componentPagePerSection`, components inside that section use their own route instead of an `?id=` anchor:
+С `componentPagePerSection` компоненты внутри такой section открываются по собственному route, а не через `?id=`:
 
 ```javascript
 module.exports = {
@@ -504,9 +504,9 @@ module.exports = {
 
 ## `printBuildInstructions`
 
-Type: `Function`, optional
+Тип: `Function`, опционально
 
-Function that allows you to override the printing of build messages to console.log.
+Функция для переопределения сообщений о build в `console.log`.
 
 ```javascript
 module.exports = {
@@ -520,9 +520,9 @@ module.exports = {
 
 ## `printServerInstructions`
 
-Type: `Function`, optional
+Тип: `Function`, опционально
 
-Function that allows you to override the printing of local dev server messages to console.log.
+Функция для переопределения сообщений локального dev server в `console.log`.
 
 ```javascript
 module.exports = {
@@ -535,15 +535,35 @@ module.exports = {
 
 ## `previewDelay`
 
-Type: `Number`, default: 500
+Тип: `Number`, по умолчанию: `500`
 
-Debounce time in milliseconds used before render the changes from the editor. While typing code the preview will not be updated.
+Задержка (debounce) в миллисекундах перед рендером изменений из editor. Пока вы печатаете код, preview не обновляется.
+
+## `playgroundEngine`
+
+Тип: `'legacy' | 'vueRepl'`, по умолчанию: `'legacy'`
+
+Выбор реализации playground:
+
+- `legacy`: текущий playground на базе `vue-inbrowser-compiler`;
+- `vueRepl`: playground для Vue 3 на базе `@vue/repl`.
+
+Режим `vueRepl` работает без дополнительных отдельных серверов.
+Он использует внутренние endpoint-ы Styleguidist для runtime-файлов Vue и не влияет на legacy-поведение, пока вы явно его не включите.
+
+```js
+module.exports = {
+  playgroundEngine: 'vueRepl'
+}
+```
+
+Полная настройка и troubleshooting: [Vue REPL engine](/docs/VueRepl.md).
 
 ## `propsParser`
 
-Type: `Function`, optional
+Тип: `Function`, опционально
 
-Function that allows you to override the mechanism used to parse props from a source file. Default mechanism is using [vue-docgen-api](https://github.com/vue-styleguidist/vue-docgen-api) to parse props.
+Функция, которая позволяет переопределить механизм парсинга `props` из исходного файла. По умолчанию используется [vue-docgen-api](https://github.com/vue-styleguidist/vue-docgen-api).
 
 ```javascript
 module.exports = {
@@ -555,17 +575,17 @@ module.exports = {
 
 ## `progressBar`
 
-Type: `Boolean`, default: true
+Тип: `Boolean`, по умолчанию: `true`
 
-Should styleguidist show a progress bar using `webpack.ProgressPlugin` while building.
+Показывать ли progress bar на базе `webpack.ProgressPlugin` во время build.
 
-> **Note:**: Builds on CI might be slower when this is active. You might want to make this parameter dependent on CI environement variables.
+> **Примечание:** в CI сборки могут быть медленнее с включенным progress bar. При необходимости сделайте параметр зависимым от переменных окружения CI.
 
 ## `require`
 
-Type: `String[]`, optional
+Тип: `String[]`, опционально
 
-Modules that are required for your style guide. Useful for third-party styles or polyfills.
+Модули, которые нужно подключить для style guide. Полезно для сторонних стилей и polyfill.
 
 ```javascript
 module.exports = {
@@ -576,9 +596,9 @@ module.exports = {
 }
 ```
 
-> **Note:** This will add a separate webpack entry for each array item.
+> **Примечание:** для каждого элемента массива будет добавлен отдельный webpack `entry`.
 
-Don’t forget to add webpack loaders for each file you add here. For example, to require a CSS file you’ll need:
+Не забудьте добавить webpack loaders для каждого подключаемого файла. Например, для CSS:
 
 ```javascript
 module.exports = {
@@ -595,17 +615,17 @@ module.exports = {
 }
 ```
 
-See [Configuring webpack](/docs/Webpack.md) for mode details.
+Подробности см. в [Configuring webpack](/docs/Webpack.md).
 
 ## `renderRootJsx`
 
-Type: `String`, optional
+Тип: `String`, опционально
 
-Modifies the root component of the previews of the examples, receives as a parameter the preview component, must return a [component jsx](https://vuejs.org/v2/guide/render-function.html). It is useful when you want to create a container to all your examples by default, especially when you use a third library.
+Позволяет изменить root component для preview examples. Получает в параметрах preview component и должен вернуть [component jsx](https://vuejs.org/v2/guide/render-function.html). Удобно, когда нужно по умолчанию обернуть все examples в общий контейнер (например, для UI library).
 
-> NOTE: if you are using styleguidist with Vue 3, you should use the [enhancePreviewApp](#enhancePreviewApp) option instead of `renderRootJsx` because the latter is not compatible with Vue 3.
+> Примечание: если вы используете styleguidist с Vue 3, вместо `renderRootJsx` используйте [enhancePreviewApp](#enhancePreviewApp), так как `renderRootJsx` не совместим с Vue 3.
 
-An example
+Пример:
 
 ```javascript
 // config/styleguide.root.js
@@ -626,9 +646,9 @@ module.exports = {
 
 ## `ribbon`
 
-Type: `Object`, optional
+Тип: `Object`, опционально
 
-Shows 'Fork Me' ribbon in the top-right corner. If `ribbon` key is present, then it's required to add `url` property; `text` property is optional. If you want to change styling of the ribbon, please, refer to the [theme section](#theme).
+Показывает ribbon «Fork Me» в правом верхнем углу. Если указан ключ `ribbon`, поле `url` обязательно, `text` — опционально. Для изменения стилей ribbon см. раздел [theme](#theme).
 
 ```javascript
 module.exports = {
@@ -641,47 +661,47 @@ module.exports = {
 
 ## `sections`
 
-Type: `Array`, optional
+Тип: `Array`, опционально
 
-Allows components to be grouped into sections with a title and overview content. Sections can also be content only, with no associated components (for example, a textual introduction). Sections can be nested.
+Позволяет группировать компоненты по section с заголовком и overview-контентом. Section может быть и только контентной, без компонентов (например, вводная текстовая страница). Section поддерживают вложенность.
 
-See examples of [sections configuration](/docs/Components.md#sections).
+Примеры конфигурации см. в [sections](/docs/Components.md#sections).
 
 ## `serverHost`
 
-Type: `String`, default: `0.0.0.0`
+Тип: `String`, по умолчанию: `0.0.0.0`
 
-Dev server name.
+Имя dev server.
 
 ## `serverPort`
 
-Type: `Number`, default: `6060`
+Тип: `Number`, по умолчанию: `6060`
 
-Dev server port.
+Порт dev server.
 
 ## `showSidebar`
 
-Type: `Boolean`, default: `true`
+Тип: `Boolean`, по умолчанию: `true`
 
-Toggle sidebar visibility. Sidebar will be hidden when opening components or examples in isolation mode even if this value is set to `true`. When set to `false`, sidebar will always be hidden.
+Переключает видимость sidebar. В режиме изоляции examples/components sidebar скрывается даже если здесь стоит `true`. Если `false`, sidebar всегда скрыт.
 
 ## `simpleEditor`
 
-Type: `Boolean`, default: `false`
+Тип: `Boolean`, по умолчанию: `false`
 
-Avoid loading CodeMirror and reduce bundle size significantly, use [prism.js](https://prismjs.com/) for code highlighting. Warning: editor options will not be mapped over.
+Позволяет не загружать CodeMirror и существенно уменьшить размер bundle, используя [prism.js](https://prismjs.com/) для подсветки. Важно: `editorConfig` в этом режиме не применяется.
 
 ## `skipComponentsWithoutExample`
 
-Type: `Boolean`, default: `false`
+Тип: `Boolean`, по умолчанию: `false`
 
-Ignore components that don’t have an example file (as determined by [getExampleFilename](#getexamplefilename)). These components won’t be accessible from other examples unless you [manually `require` them](/docs/Cookbook.md#how-to-hide-some-components-in-style-guide-but-make-them-available-in-examples).
+Игнорирует компоненты без файла examples (определяется через [getExampleFilename](#getexamplefilename)). Такие компоненты не будут доступны из других examples, если вы не [подключите их вручную через `require`](/docs/Cookbook.md#how-to-hide-some-components-in-style-guide-but-make-them-available-in-examples).
 
 ## `styleguideComponents`
 
-Type: `Object`, optional
+Тип: `Object`, опционально
 
-Override React components used to render the style guide.
+Позволяет переопределить React components, используемые для рендера style guide.
 
 ```javascript
 module.exports = {
@@ -695,35 +715,35 @@ module.exports = {
 }
 ```
 
-See an example of [customized style guide](https://github.com/vue-styleguidist/vue-styleguidist/tree/delivery/examples/customised).
+Пример см. в [customized style guide](https://github.com/vue-styleguidist/vue-styleguidist/tree/delivery/examples/customised).
 
-If you want to wrap, rather than replace a component, make sure to import the default implementation using the full path to `vue-styleguidist`. See an example of [wrapping a Styleguidist component](https://github.com/vue-styleguidist/vue-styleguidist/blob/delivery/examples/customised/styleguide/components/SectionsRenderer.js).
+Если нужно не заменить, а обернуть компонент, импортируйте default-реализацию по полному пути к `vue-styleguidist`. Пример: [wrapping a Styleguidist component](https://github.com/vue-styleguidist/vue-styleguidist/blob/delivery/examples/customised/styleguide/components/SectionsRenderer.js).
 
-**Note**: these components are not guaranteed to be safe from breaking changes in vue-styleguidist updates.
+**Примечание:** для этих компонентов не гарантируется полная обратная совместимость между версиями vue-styleguidist.
 
 ## `styleguideDir`
 
-Type: `String`, default: `styleguide`
+Тип: `String`, по умолчанию: `styleguide`
 
-Folder for static HTML style guide generated with `styleguidist build` command.
+Папка для статического HTML style guide, который создается командой `styleguidist build`.
 
 ## `styleguidePublicPath`
 
-Type: `String`, optional
+Тип: `String`, опционально
 
-Configures the prefix of the build and server urls.
+Задает префикс URL для build и dev server.
 
-Example: If set to `/mystyleguide` the url for dev server will be `htp://localhost:6060/mystyleguide`
+Пример: если указать `/mystyleguide`, dev server будет доступен по адресу `http://localhost:6060/mystyleguide`.
 
 ## `styles`
 
-Type: `Object`, `String` or `Function`, optional
+Тип: `Object`, `String` или `Function`, опционально
 
-Customize styles of any Styleguidist’s component using an object, a function returning said object or a file path to a file exporting said styles.
+Позволяет кастомизировать стили любого компонента Styleguidist: через объект, функцию (возвращающую объект) или путь к файлу, экспортирующему этот объект.
 
-See example in the [cookbook](/docs/Cookbook.md#how-to-change-styles-of-a-style-guide).
+Пример см. в [cookbook](/docs/Cookbook.md#how-to-change-styles-of-a-style-guide).
 
-> **Note:** Using a function allows access to theme variables as seen in the example below. See available [theme variables](https://github.com/styleguidist/react-styleguidist/blob/master/src/client/styles/theme.ts). The returned object folows the same format as when configured as a litteral.
+> **Примечание:** функция дает доступ к переменным темы, как в примере ниже. Доступные переменные: [theme variables](https://github.com/styleguidist/react-styleguidist/blob/master/src/client/styles/theme.ts). Возвращаемый объект должен иметь ту же структуру, что и при передаче литерала.
 
 ```javascript
 module.exports = {
@@ -731,7 +751,7 @@ module.exports = {
     return {
       Logo: {
         logo: {
-          // we can now change the color used in the logo item to use the theme's `link` color
+          // здесь меняем цвет логотипа на цвет `link` из темы
           color: theme.color.link
         }
       }
@@ -740,15 +760,15 @@ module.exports = {
 }
 ```
 
-**Note:** If using a file path, it has to be absolute or relative to the config file.
+**Примечание:** если указан путь к файлу, он должен быть абсолютным или относительным от файла конфигурации.
 
 ## `template`
 
-Type: `Object` or `Function`, optional.
+Тип: `Object` или `Function`, опционально
 
-Change HTML for the style guide app.
+Позволяет изменить HTML-шаблон приложения style guide.
 
-An object with options to add a favicon, meta tags, inline JavaScript or CSS, etc. See [@vxna/mini-html-webpack-template docs](https://www.npmjs.com/package/@vxna/mini-html-webpack-template).
+Можно передать объект с опциями (favicon, meta tags, inline JavaScript/CSS и т. п.). Подробности: [документация @vxna/mini-html-webpack-template](https://www.npmjs.com/package/@vxna/mini-html-webpack-template).
 
 ```javascript
 module.exports = {
@@ -758,39 +778,39 @@ module.exports = {
 }
 ```
 
-A function that returns an HTML string, see [mini-html-webpack-plugin docs](https://github.com/styleguidist/mini-html-webpack-plugin#custom-templates).
+Также можно передать функцию, которая возвращает HTML-строку. См. [mini-html-webpack-plugin docs](https://github.com/styleguidist/mini-html-webpack-plugin#custom-templates).
 
 ## `theme`
 
-Type: `Object` or `String`, optional
+Тип: `Object` или `String`, опционально
 
-Customize style guide UI fonts, colors, etc. using a theme object or the path to a file exporting such object.
+Кастомизирует UI style guide (шрифты, цвета и т. д.) через объект темы или через путь к файлу, который экспортирует такой объект.
 
-The path is relative to the config file or absolute.
+Путь может быть абсолютным или относительным от файла конфигурации.
 
-See example in the [cookbook](/docs/Cookbook.md#how-to-change-styles-of-a-style-guide).
+Пример см. в [cookbook](/docs/Cookbook.md#how-to-change-styles-of-a-style-guide).
 
-> **Note:** See available [theme variables](https://github.com/styleguidist/react-styleguidist/blob/master/src/client/styles/theme.ts).
+> **Примечание:** список доступных переменных темы — [theme variables](https://github.com/styleguidist/react-styleguidist/blob/master/src/client/styles/theme.ts).
 >
-> **Note:** Styles use [JSS](https://github.com/cssinjs/jss/blob/master/docs/jss-syntax.md) with these plugins: [jss-plugin-isolate](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-isolate), [jss-plugin-nested](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-nested), [jss-plugin-camel-case](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-camel-case), [jss-plugin-default-unit](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-default-unit), [jss-plugin-compose](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-compose) and [jss-plugin-global](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-global).
+> **Примечание:** стили используют [JSS](https://github.com/cssinjs/jss/blob/master/docs/jss-syntax.md) с plugins: [jss-plugin-isolate](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-isolate), [jss-plugin-nested](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-nested), [jss-plugin-camel-case](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-camel-case), [jss-plugin-default-unit](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-default-unit), [jss-plugin-compose](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-compose), [jss-plugin-global](https://github.com/cssinjs/jss/tree/master/packages/jss-plugin-global).
 >
-> **Note:** Use [React Developer Tools](https://github.com/facebook/react) to find component and style names. For example a component `<LogoRenderer><h1 className="rsg--logo-53">` corresponds to an example above.
+> **Примечание:** используйте [React Developer Tools](https://github.com/facebook/react), чтобы находить имена компонентов и классов стилей. Например, компонент `<LogoRenderer><h1 className="rsg--logo-53">` соответствует примеру выше.
 
-> **Note:** This theme will only apply to styleguidist components. The side menu, the section titles, the prop definitions. The components you showcase will not be affected.
+> **Примечание:** тема влияет только на компоненты styleguidist (sidebar, заголовки section, таблицы props и т. п.). На ваши демонстрируемые компоненты она не влияет.
 
 ## `title`
 
-Type: `String`, default: `<app name from package.json> Style Guide`
+Тип: `String`, по умолчанию: `<app name from package.json> Style Guide`
 
-Style guide title.
+Заголовок style guide.
 
 ## `sortProps`
 
-Type: `Function`, optional
+Тип: `Function`, опционально
 
-Function that sorts component props. By default props are sorted such that required props come first, optional props come second. Props in both groups are sorted by their property names.
+Функция сортировки `props` компонента. По умолчанию сначала идут обязательные `props`, затем опциональные. Внутри каждой группы сортировка по имени.
 
-To disable sorting, use the identity function:
+Чтобы отключить сортировку, используйте identity-функцию:
 
 ```javascript
 module.exports = {
@@ -800,20 +820,20 @@ module.exports = {
 
 ## `tocMode`
 
-Type: `String` default: `expand`
+Тип: `String`, по умолчанию: `expand`
 
-Defines if the table of contents sections will behave like an accordion:
+Определяет поведение section в table of contents (как accordion):
 
-- `collapse`: All sections are collapsed by default
-- `expand`: Sections cannot be collapsed in the Table Of Contents
+- `collapse`: все section свернуты по умолчанию;
+- `expand`: section нельзя свернуть в Table Of Contents.
 
-Collapse the sections created in the sidebar to reduce the height of the sidebar. This can be useful in large codebases with lots of components to avoid having to scroll too far.
+Сворачивание section в sidebar уменьшает его высоту. Это полезно в больших проектах с большим количеством компонентов.
 
 ## `updateDocs`
 
-Type: `Function`, optional
+Тип: `Function`, опционально
 
-Function that modifies props, methods, and metadata after parsing a source file. For example, load a component version from a JSON file:
+Функция, изменяющая `props`, `methods` и метаданные после парсинга source-файла. Например, можно подгружать версию компонента из JSON:
 
 ```javascript
 module.exports = {
@@ -836,9 +856,9 @@ module.exports = {
 
 ## `updateExample`
 
-Type: `Function`, optional
+Тип: `Function`, опционально
 
-Function that modifies code example (Markdown fenced code block). For example you can use it to load examples from files:
+Функция, изменяющая code example (Markdown fenced code block). Например, через нее можно загружать examples из файлов:
 
 ```javascript
 module.exports = {
@@ -858,14 +878,14 @@ module.exports = {
 }
 ```
 
-Use it like this in your Markdown files:
+Использование в Markdown:
 
 ````md
 ```js { "file": "./some/file.js" }
 ```
 ````
 
-You can also use this function to dynamically update some of your fenced code blocks that you do not want to be interpreted as Vue components by using the [static modifier](/docs/Documenting.md#usage-examples-and-readme-files).
+Также можно динамически менять fenced code blocks, которые не должны интерпретироваться как Vue components, используя [модификатор static](/docs/Documenting.md#usage-examples-and-readme-files).
 
 ```javascript
 module.exports = {
@@ -881,21 +901,21 @@ module.exports = {
 
 ## `usageMode`
 
-Type: `'collapse' | 'hide' | 'expand'`, default: `collapse`
+Тип: `'collapse' | 'hide' | 'expand'`, по умолчанию: `collapse`
 
-Defines the initial state of the props and methods tab:
+Определяет начальное состояние вкладки с `props` и `methods`:
 
-- `collapse`: collapses the tab by default.
-- `hide`: hide the tab and it can´t be toggled in the UI.
-- `expand`: expand the tab by default.
+- `collapse`: вкладка свернута по умолчанию;
+- `hide`: вкладка скрыта и не переключается в UI;
+- `expand`: вкладка развернута по умолчанию.
 
 ## `validExtends`
 
-Type: `Function`, default: `fileFullPath => !/[\\/]node_modules[\\/]/.test(fileFullPath)`
+Тип: `Function`, по умолчанию: `fileFullPath => !/[\\/]node_modules[\\/]/.test(fileFullPath)`
 
-Function directly passed to `vue-docgen-api` to determine if a component that extends another should be parsed.
+Функция, напрямую передаваемая в `vue-docgen-api`, чтобы определить, нужно ли парсить компонент, который расширяет другой.
 
-The following lines will allow parsing extended components from node package `@my-library/components`.
+Пример ниже разрешает парсинг extended components из пакета `@my-library/components`:
 
 ```javascript
 module.exports = {
@@ -908,29 +928,29 @@ module.exports = {
 }
 ```
 
-**NOTE** If `vue-docgen-api` fails to parse the targetted component, it will log a warning. It is not blocking but it is annoying.
+**Примечание:** если `vue-docgen-api` не сможет распарсить целевой компонент, будет warning в логах. Это не блокирует сборку, но может мешать.
 
-**NOTE** If you allow all of `node_modules` to try to be parsed, you might hurt performance. Use it responsibly.
+**Примечание:** если разрешить парсинг всего `node_modules`, это может ухудшить производительность. Используйте аккуратно.
 
 ## `verbose`
 
-Type: `Boolean`, default: `false`
+Тип: `Boolean`, по умолчанию: `false`
 
-Print debug information. Same as `--verbose` command line switch.
+Включает подробные отладочные сообщения. Аналог флага командной строки `--verbose`.
 
 ## `version`
 
-Type: `String`, optional
+Тип: `String`, опционально
 
-Style guide version, displayed under the title in the sidebar.
+Версия style guide, показывается под заголовком в sidebar.
 
 ## `webpackConfig`
 
-Type: `Object` or `Function`, optional
+Тип: `Object` или `Function`, опционально
 
-Custom webpack config options: loaders, extensions, plugins, etc. required for your project.
+Кастомные опции webpack-конфига, необходимые вашему проекту: loaders, extensions, plugins и т. д.
 
-Can be an object:
+Можно передать объект:
 
 ```javascript
 module.exports = {
@@ -964,7 +984,7 @@ module.exports = {
 }
 ```
 
-Or a function:
+Или функцию:
 
 ```javascript
 module.exports = {
@@ -979,12 +999,12 @@ module.exports = {
 }
 ```
 
-> **Warning:** This option disables config load from `webpack.config.js`, load your config [manually](/docs/Webpack.md#reusing-your-projects-webpack-config).
+> **Предупреждение:** эта опция отключает загрузку конфига из `webpack.config.js`. Подключайте ваш конфиг [вручную](/docs/Webpack.md#reusing-your-projects-webpack-config).
+>
+> **Примечание:** опции `entry`, `externals`, `output`, `watch` и `stats` будут проигнорированы. Для production build также игнорируется `devtool`.
+>
+> **Примечание:** plugins `CommonsChunkPlugins`, `HtmlWebpackPlugin`, `UglifyJsPlugin`, `HotModuleReplacementPlugin` будут проигнорированы, потому что Styleguidist уже добавляет их сам, либо они могут сломать работу Styleguidist.
+>
+> **Примечание:** чтобы увидеть фактический webpack-конфиг, с которым запускается vue-styleguidist, запустите style guide в verbose-режиме: `npx vue-styleguidist server --verbose`.
 
-> **Note:** `entry`, `externals`, `output`, `watch`, and `stats` options will be ignored. For production builds, `devtool` will also be ignored.
-
-> **Note:** `CommonsChunkPlugins`, `HtmlWebpackPlugin`, `UglifyJsPlugin`, `HotModuleReplacementPlugin` plugins will be ignored because Styleguidist already includes them or they may break Styleguidist.
-
-> **Note:** Run style guide in verbose mode to see the actual webpack config used by vue-styleguidist: `npx vue-styleguidist server --verbose`.
-
-See [Configuring webpack](/docs/Webpack.md) for examples.
+Примеры см. в [Configuring webpack](/docs/Webpack.md).

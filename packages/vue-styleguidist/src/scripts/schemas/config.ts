@@ -282,6 +282,13 @@ https://vue-styleguidist.github.io/Configuration.html#editorconfig `,
 		type: 'number',
 		default: 500
 	},
+	playgroundEngine: {
+		tstype: `'legacy' | 'vueRepl'`,
+		type: 'string',
+		default: 'legacy',
+		description:
+			'Select playground implementation engine. "legacy" uses vue-inbrowser-compiler, "vueRepl" uses @vue/repl (Vue 3).'
+	},
 	printBuildInstructions: {
 		type: 'function'
 	},

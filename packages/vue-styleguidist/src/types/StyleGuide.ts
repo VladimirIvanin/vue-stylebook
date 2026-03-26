@@ -150,6 +150,11 @@ export interface BaseStyleguidistConfig
      * @default 500 
      */
     previewDelay: number;
+    /**
+     * Select playground implementation engine. "legacy" uses vue-inbrowser-compiler, "vueRepl" uses @vue/repl (Vue 3). 
+     * @default "legacy" 
+     */
+    playgroundEngine: 'legacy' | 'vueRepl';
     printBuildInstructions: any;
     printServerInstructions: any;
     /**
