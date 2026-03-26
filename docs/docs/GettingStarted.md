@@ -1,17 +1,19 @@
 # Getting Started
 
+> This documentation reflects the fork of `vue-styleguidist/vue-styleguidist` maintained in this repository, with deployment targeted to GitHub Pages.
+
 ## 1. Install
 
 Install Webpack if you don’t have it already, this is how we determine if your version of Webpack is compatible with styleguidist.
 
 ```bash
-npm install --save-dev webpack
+pnpm add -D webpack
 ```
 
 Install Styleguidist:
 
 ```bash
-npm install --save-dev vue-styleguidist
+pnpm add -D vue-styleguidist
 ```
 
 If you use Vue CLI 3 ([@vue/cli](https://cli.vuejs.org/)), you should probably use the plugin
@@ -31,7 +33,7 @@ Create a `styleguide.config.js` file in the same directory that your `package.js
 
 If you’re using [Vue-CLI 3](https://github.com/vuejs/vue-cli) you can skip the webpack step. When you install [vue-cli-plugin-styleguidist](/VueCLI3doc.md), styleguidist picks up what it needs from the CLI. Then tell it where to find the components
 
-## 3. Add npm scripts for convenience
+## 3. Add scripts for convenience
 
 Add these scripts to your `package.json`:
 
@@ -59,11 +61,22 @@ For Vue-CLI 3 use this instead:
 
 ## 4. Start your style guide
 
-Run **`npm run styleguide`** to start style a guide dev server.
+Run **`pnpm styleguide`** to start a style guide dev server.
 
-Run **`npm run styleguide:build`** to build a static version.
+Run **`pnpm styleguide:build`** to build a static version.
 
-## 5. Start documenting your components
+## 5. Build docs for GitHub Pages
+
+For this fork, documentation is published to GitHub Pages. Build docs with:
+
+```bash
+pnpm predocs
+pnpm docs:build
+```
+
+The static output is generated in `docs/dist`.
+
+## 6. Start documenting your components
 
 See how to [document your components](Documenting.md)
 
