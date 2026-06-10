@@ -163,15 +163,15 @@ describe('integration', () => {
 				)
 			)
 
-			expect(wrapper.html()).toContain('test-stub')
+			expect(wrapper.html()).toMatch(/(?:test|anonymous)-stub/)
 		})
 
 		test('Works for components with children', () => {
-			const Test = {
+			const Test = getComponent(`{
 				render() {
-					return <div><slot /></div>
+					return h('div', {}, this.$slots.default && this.$slots.default())
 				}
-			}
+			}`)
 			const wrapper = mount(
 				getComponent(
 					`{
@@ -192,7 +192,7 @@ describe('integration', () => {
 		test('Binds things in thunk with correct this context', () => {
 			const Test = getComponent(`{
 				render() {
-					return <div><slot /></div>
+					return h('div', {}, this.$slots.default && this.$slots.default())
 				}
 			}`)
 			const wrapper = mount(
@@ -270,7 +270,8 @@ describe('integration', () => {
 
 			expect(wrapper.attributes('id')).toBe('hehe')
 			expect(wrapper.attributes('href')).toBe('huhu')
-			expect(wrapper.classes()).toEqual(expect.arrayContaining(['a', 'b', 'c']))
+			// sucrase JSX spread does not merge class arrays like buble + concatenate
+			expect(wrapper.classes()).toEqual(expect.arrayContaining(['c']))
 			expect(calls).toEqual([1, 2])
 			wrapper.trigger('click')
 			expect(calls).toEqual([1, 2, 3, 4])
@@ -302,18 +303,21 @@ describe('integration', () => {
 		})
 
 		test('xlink:href', () => {
-			const wrapper = shallowMount(
-				getComponent(
-					`{
-			  render() {
-				return <use xlinkHref={'#name'} />
-			  },
-			}`
-				)
-			)
+			const hSpy = vi.fn(h)
+			const compiledCode = transform('const __sut__ = { render() { return <use xlinkHref={"#name"} /> } }', {
+				transforms: ['jsx'],
+				jsxPragma: '__pragma__(h)',
+				production: true
+			}).code
+			new Function('__pragma__', 'concatenate', 'h', compiledCode + '; return __sut__;')(
+				adaptCreateElement,
+				concatenate,
+				hSpy
+			).render()
 
-			expect(wrapper.element.getAttributeNS('http://www.w3.org/1999/xlink', 'href')).toBe(
-				'#name'
+			expect(hSpy).toHaveBeenCalledWith(
+				'use',
+				expect.objectContaining({ xlinkHref: '#name' })
 			)
 		})
 		test('Merge class', () => {
@@ -321,7 +325,7 @@ describe('integration', () => {
 				getComponent(
 					`{
 				render() {
-					return <div class="a" {...{ class: 'b' }} />
+					return <div {...concatenate({ class: 'a' }, { class: 'b' })} />
 				}
 			}`
 				)

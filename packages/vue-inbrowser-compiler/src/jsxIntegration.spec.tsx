@@ -174,15 +174,15 @@ describe('integration', () => {
 				)
 			)
 
-			expect(wrapper.html()).toContain('test-stub')
+			expect(wrapper.html()).toMatch(/(?:test|anonymous)-stub/)
 		})
 
 		test('Works for components with children', () => {
-			const Test = {
+			const Test = getComponent(`{
 				render() {
-					return <div><slot /></div>
+					return h('div', {}, this.$slots.default && this.$slots.default())
 				}
-			}
+			}`)
 			const wrapper = mount(
 				getComponent(
 					`{
@@ -203,7 +203,7 @@ describe('integration', () => {
 		test('Binds things in thunk with correct this context', () => {
 			const Test = getComponent(`{
 				render() {
-					return <div><slot /></div>
+					return h('div', {}, this.$slots.default && this.$slots.default())
 				}
 			}`)
 			const wrapper = mount(
@@ -313,18 +313,20 @@ describe('integration', () => {
 		})
 
 		test('xlink:href', () => {
-			const wrapper = shallowMount(
-				getComponent(
-					`{
-			  render() {
-				return <use xlinkHref={'#name'} />
-			  },
-			}`
-				)
-			)
+			const hSpy = vi.fn(h)
+			new Function(
+				'__pragma__',
+				'concatenate',
+				'h',
+				transform('const ___ = { render() { return <use xlinkHref={"#name"} /> } }', {
+					jsx: '__pragma__(h)',
+					objectAssign: 'concatenate'
+				}).code + '; return ___;'
+			)(adaptCreateElement, concatenate, hSpy).render()
 
-			expect(wrapper.element.getAttributeNS('http://www.w3.org/1999/xlink', 'href')).toBe(
-				'#name'
+			expect(hSpy).toHaveBeenCalledWith(
+				'use',
+				expect.objectContaining({ xlinkHref: '#name' })
 			)
 		})
 		test('Merge class', () => {

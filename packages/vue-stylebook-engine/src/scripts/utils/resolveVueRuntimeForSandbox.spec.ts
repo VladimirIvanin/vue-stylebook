@@ -9,9 +9,9 @@ vi.mock('fs', () => ({
 }))
 
 describe('resolveVueRuntimeForSandbox', () => {
-	const rootDir = path.join(path.sep, 'tmp', 'project')
-	const cacheRoot = path.join(rootDir, 'node_modules', '.cache', 'storybook')
-	const runtimePath = path.join(
+	const rootDir = path.resolve(path.sep, 'tmp', 'project')
+	const cacheRoot = path.resolve(rootDir, 'node_modules', '.cache', 'storybook')
+	const runtimePath = path.resolve(
 		rootDir,
 		'node_modules',
 		'@vue',
@@ -19,7 +19,7 @@ describe('resolveVueRuntimeForSandbox', () => {
 		'dist',
 		'runtime-dom.esm-browser.js'
 	)
-	const serverRendererPath = path.join(
+	const serverRendererPath = path.resolve(
 		rootDir,
 		'node_modules',
 		'@vue',
@@ -36,7 +36,7 @@ describe('resolveVueRuntimeForSandbox', () => {
 		vi.mocked(fs.existsSync).mockImplementation((target: fs.PathLike) => {
 			return [
 				cacheRoot,
-				path.join(cacheRoot, 'v1', 'sb-vite', 'deps', 'vue.js'),
+				path.resolve(cacheRoot, 'v1', 'sb-vite', 'deps', 'vue.js'),
 				serverRendererPath
 			].includes(String(target))
 		})
@@ -48,7 +48,7 @@ describe('resolveVueRuntimeForSandbox', () => {
 		} as fs.Stats)
 
 		expect(resolveVueRuntimeForSandbox(rootDir)).toEqual({
-			runtimeDevPath: path.join(cacheRoot, 'v1', 'sb-vite', 'deps', 'vue.js'),
+			runtimeDevPath: path.resolve(cacheRoot, 'v1', 'sb-vite', 'deps', 'vue.js'),
 			serverRendererPath,
 			source: 'storybook-cache'
 		})
@@ -80,7 +80,7 @@ describe('resolveVueRuntimeForSandbox', () => {
 		vi.mocked(fs.existsSync).mockImplementation((target: fs.PathLike) => {
 			return [
 				cacheRoot,
-				path.join(cacheRoot, 'new', 'sb-vite', 'deps', 'vue.js'),
+				path.resolve(cacheRoot, 'new', 'sb-vite', 'deps', 'vue.js'),
 				serverRendererPath
 			].includes(String(target))
 		})
@@ -98,7 +98,7 @@ describe('resolveVueRuntimeForSandbox', () => {
 		})
 
 		expect(resolveVueRuntimeForSandbox(rootDir)).toEqual({
-			runtimeDevPath: path.join(cacheRoot, 'new', 'sb-vite', 'deps', 'vue.js'),
+			runtimeDevPath: path.resolve(cacheRoot, 'new', 'sb-vite', 'deps', 'vue.js'),
 			serverRendererPath,
 			source: 'storybook-cache'
 		})

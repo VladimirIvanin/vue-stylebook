@@ -3,8 +3,8 @@ import resolveAliases from './resolveAliases'
 
 vi.mock('fs', () => {
 	return {
-		existsSync: vi.fn((path: string) =>
-			path === '/replacementPath/src/mixins/somethingNice/mixinFile.js'
+		existsSync: vi.fn((filePath: string) =>
+			filePath === path.resolve('/replacementPath/src/mixins', 'somethingNice/mixinFile.js')
 		)
 	}
 })

@@ -24,10 +24,10 @@ vi.mock('./compileTemplates', () => {
 		methods: () => '',
 		defaultExample: () => '',
 		functionalTag: '',
-		default: vi.fn((event, filePath) => {
-			return filePath === 'here/two'
-				? Promise.resolve({ content: FAKE_MD_CONTENT_2, dependencies: [] })
-				: Promise.resolve({ content: FAKE_MD_CONTENT_1, dependencies: [] })
+		default: vi.fn((_event, _absolutePath, _config, componentRelativePath) => {
+			return componentRelativePath === 'two'
+				? Promise.resolve({ content: FAKE_MD_CONTENT_2, dependencies: [], docs: [] })
+				: Promise.resolve({ content: FAKE_MD_CONTENT_1, dependencies: [], docs: [] })
 		})
 	}
 })

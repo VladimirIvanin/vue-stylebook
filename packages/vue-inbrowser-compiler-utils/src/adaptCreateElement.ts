@@ -1,5 +1,5 @@
 import camelCase from 'camelcase'
-import { isVue3 } from 'vue-inbrowser-compiler-demi'
+import { withDirectives, resolveDirective } from 'vue'
 
 export type CreateElementFunction = (
 	component: string | object,
@@ -8,18 +8,39 @@ export type CreateElementFunction = (
 ) => any[] | any
 
 /**
- * Groups attributes passed to a React pragma to the VueJS fashion
+ * Groups attributes passed to a React pragma to the Vue 3 h() fashion
  * @param h the VueJS createElement function passed in render functions
  * @returns pragma usable in buble rendered JSX for VueJS
  */
 export default function adaptCreateElement(h: CreateElementFunction): CreateElementFunction {
 	return (comp, attr, ...children: any[]) => {
+		const grouped = groupAttr(attr)
+		const directives = grouped?.directives as { name: string; value: any }[] | undefined
+		const props = grouped && directives ? (({ directives: _d, ...rest }) => rest)(grouped) : grouped
+
+		let vnode
 		if (attr === undefined) {
-			return h(comp)
+			vnode = h(comp)
 		} else if (!children.length) {
-			return h(comp, groupAttr(attr))
+			vnode = h(comp, props)
+		} else {
+			vnode = h(comp, props, children)
 		}
-		return h(comp, groupAttr(attr), children)
+
+		if (directives?.length) {
+			const resolved = directives
+				.map(d => {
+					const dir = resolveDirective(d.name)
+					return dir ? ([dir, d.value] as const) : null
+				})
+				.filter((entry): entry is [object, any] => entry !== null)
+
+			if (resolved.length) {
+				return withDirectives(vnode, resolved)
+			}
+		}
+
+		return vnode
 	}
 }
 
@@ -41,20 +62,10 @@ const getRawName = (name: string): string => {
 	return name.replace(/^(on|native(On|-on)|props|dom(Props|-props)|hook|v)-?/, '')
 }
 
-/**
- * Make sure an object is an array
- * and if it is not wrap it inside one
- * @param a
- */
 const makeArray = (a: any): any[] => {
 	return Array.isArray(a) ? a : [a]
 }
 
-/**
- * Create a function out of two other
- * @param fn1
- * @param fn2
- */
 const mergeFn = (
 	fn1: (...argz1: any[]) => void,
 	fn2: (...argz2: any[]) => void
@@ -64,21 +75,13 @@ const mergeFn = (
 		fn2 && fn2.apply(this, argzMain)
 	}
 
-/**
- * Merge two members of the spread
- * @param a
- * @param b
- */
 const merge = (a: any, b: any): any => {
-	// initialization case
 	if (a === undefined) {
 		return b
 	}
-	// merge of functions
 	if (typeof a === 'function' && typeof b === 'function') {
 		return mergeFn(a, b)
 	}
-	// merge of other options (like class)
 	return makeArray(a).concat(b)
 }
 
@@ -95,28 +98,23 @@ export const concatenate = (
 	return src
 }
 
-const groupAttr = (attrsIn: { [key: string]: any }): { [key: string]: any } | undefined => {
-	if (!attrsIn) {
-		return undefined
-	}
+const handleVModel = (attrsIn: { [key: string]: any }): void => {
+	Object.keys(attrsIn)
+		.filter(key => key.startsWith('vModel') || key.startsWith('v-model'))
+		.forEach(key => {
+			const valueRef = attrsIn[key]
+			const rootKey = key.startsWith('vModel:')
+				? key.slice(7)
+				: key.startsWith('v-model')
+				? key.slice(8)
+				: 'modelValue'
+			attrsIn[rootKey] = valueRef
+			attrsIn[`onUpdate:${rootKey}`] = ($event: any) => (valueRef = $event)
+			delete attrsIn[key]
+		})
+}
 
-	if (isVue3) {
-		Object.keys(attrsIn)
-			.filter(key => key.startsWith('vModel') || key.startsWith('v-model'))
-			.forEach(key => {
-				let valueRef = attrsIn[key]
-				const rootKey = key.startsWith('vModel:')
-					? key.slice(7)
-					: key.startsWith('v-model')
-					? key.slice(8)
-					: 'modelValue'
-				attrsIn[rootKey] = valueRef
-				attrsIn[`onUpdate:${rootKey}`] = ($event: any) => (valueRef = $event)
-				delete attrsIn[key]
-			})
-		return attrsIn
-	}
-
+const groupBubleAttrs = (attrsIn: { [key: string]: any }): { [key: string]: any } => {
 	const attrsOut: { [key: string]: any } = {}
 	Object.keys(attrsIn).forEach(name => {
 		const value = attrsIn[name]
@@ -144,19 +142,72 @@ const groupAttr = (attrsIn: { [key: string]: any }): { [key: string]: any } | un
 						attrsOut[prefix] = {}
 					}
 					if (camelCasedName.length) {
-						// if it is a literal prefixed attribute
 						attrsOut[prefix][camelCasedName] = merge(attrsOut[prefix][camelCasedName], value)
 					} else {
-						// if it is a spread
 						concatenate(attrsOut[prefix], value)
 					}
 				}
 			}
 		} else {
 			attrsOut.attrs = attrsOut.attrs || {}
-			const finalName = /^data-/.test(name) ? name : ccName === 'xlinkHref' ? 'xlink:href' : ccName
+			const finalName = /^data-/.test(name) ? name : ccName
 			attrsOut.attrs[finalName] = value
 		}
 	})
 	return attrsOut
+}
+
+const toVue3EventName = (eventName: string): string =>
+	`on${eventName[0].toUpperCase()}${eventName.slice(1)}`
+
+const flattenForVue3 = (grouped: { [key: string]: any }): { [key: string]: any } => {
+	const attrsOut: { [key: string]: any } = {}
+
+	rootAttributes.forEach(key => {
+		if (grouped[key] !== undefined) {
+			attrsOut[key] = grouped[key]
+		}
+	})
+
+	;['attrs', 'domProps', 'props'].forEach(key => {
+		if (grouped[key]) {
+			Object.assign(attrsOut, grouped[key])
+		}
+	})
+
+	;['on', 'nativeOn'].forEach(prefix => {
+		if (grouped[prefix]) {
+			Object.keys(grouped[prefix]).forEach(eventName => {
+				attrsOut[toVue3EventName(eventName)] = grouped[prefix][eventName]
+			})
+		}
+	})
+
+	if (grouped.hook) {
+		const hookMap: { [key: string]: string } = {
+			insert: 'onVnodeMounted',
+			prepatch: 'onVnodeBeforeUpdate',
+			postpatch: 'onVnodeUpdated',
+			destroy: 'onVnodeUnmounted'
+		}
+		Object.keys(grouped.hook).forEach(hookName => {
+			const vue3Hook = hookMap[hookName] || `onVnode${hookName[0].toUpperCase()}${hookName.slice(1)}`
+			attrsOut[vue3Hook] = grouped.hook[hookName]
+		})
+	}
+
+	if (grouped.directives) {
+		attrsOut.directives = grouped.directives
+	}
+
+	return attrsOut
+}
+
+const groupAttr = (attrsIn: { [key: string]: any }): { [key: string]: any } | undefined => {
+	if (!attrsIn) {
+		return undefined
+	}
+
+	handleVModel(attrsIn)
+	return flattenForVue3(groupBubleAttrs(attrsIn))
 }

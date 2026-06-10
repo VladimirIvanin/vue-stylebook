@@ -71,7 +71,9 @@ computed:{
 	}
 }}
 </script>`)
-		expect(evalFunction(sut).render.toString()).toMatch(/const h = this\.\$createElement/)
+		const render = evalFunction(sut).render.toString()
+		expect(render).not.toMatch(/const h = this\.\$createElement/)
+		expect(render).toMatch(/return h\(Button\)/)
 	})
 
   it('compiles script setup', () => {
