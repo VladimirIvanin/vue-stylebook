@@ -1,6 +1,10 @@
 import { SpyInstance } from 'vitest'
 import adaptCreateElement, { CreateElementFunction } from './adaptCreateElement'
 
+vi.mock('vue-inbrowser-compiler-demi', () => ({
+	isVue3: false
+}))
+
 describe('adaptCreateElement', () => {
 	let h: SpyInstance<Parameters<CreateElementFunction>, ReturnType<CreateElementFunction>>
 	let pragma: CreateElementFunction

@@ -103,8 +103,8 @@ describe('utils', () => {
 			const requires = resolveRequiresFromTag(tags, MD_FILE_PATH)
 			expect(requires).toMatchInlineSnapshot(`
 				[
-				  "test/file/file1",
-				  "test/file/file2",
+				  "test\\file\\file1",
+				  "test\\file\\file2",
 				]
 			`)
 		})
@@ -114,8 +114,8 @@ describe('utils', () => {
 			const requires = resolveRequiresFromTag(tags, MD_FILE_PATH)
 			expect(requires).toMatchInlineSnapshot(`
 				[
-				  "test/file/file1",
-				  "test/file/file2",
+				  "test\\file\\file1",
+				  "test\\file\\file2",
 				]
 			`)
 		})
@@ -125,8 +125,8 @@ describe('utils', () => {
 			const requires = resolveRequiresFromTag(tags, MD_FILE_PATH)
 			expect(requires).toMatchInlineSnapshot(`
 				[
-				  "test/file/file1",
-				  "test/file/file2",
+				  "test\\file\\file1",
+				  "test\\file\\file2",
 				]
 			`)
 		})
@@ -136,8 +136,8 @@ describe('utils', () => {
 			const requires = resolveRequiresFromTag(tags, MD_FILE_PATH)
 			expect(requires).toMatchInlineSnapshot(`
 				[
-				  "test/file/file1",
-				  "test/file/file2",
+				  "test\\file\\file1",
+				  "test\\file\\file2",
 				]
 			`)
 		})
@@ -147,8 +147,8 @@ describe('utils', () => {
 			const requires = resolveRequiresFromTag(tags, MD_FILE_PATH)
 			expect(requires).toMatchInlineSnapshot(`
 				[
-				  "test/file/file1",
-				  "test/file/file2",
+				  "test\\file\\file1",
+				  "test\\file\\file2",
 				]
 			`)
 		})

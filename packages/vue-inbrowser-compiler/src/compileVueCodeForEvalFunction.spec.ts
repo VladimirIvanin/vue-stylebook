@@ -1,6 +1,15 @@
 /* eslint-disable no-new-func */
 import compileVueCodeForEvalFunction from './compileVueCodeForEvalFunction'
 
+function createFunction(code: string, execute = true) {
+	const fun = new Function('require', code)
+	if (!execute) return fun
+	const requireMock = function (module: string) {
+		return { default: { module } }
+	}
+	return fun(requireMock)
+}
+
 describe('compileVueCodeForEvalFunction', () => {
 	it('bake template into a new Vue', () => {
 		const sut = compileVueCodeForEvalFunction(`
@@ -13,7 +22,7 @@ export default {
 	param
 }
 </script>`)
-		const dummySet = new Function(sut.script)()
+		const dummySet = createFunction(sut.script)
 		expect(dummySet).toMatchObject({ param: 'Foo' })
 	})
 
@@ -23,7 +32,7 @@ let param = 'Bar';
 new Vue({
 	param
 });`)
-		const dummySet = new Function(sut.script)()
+		const dummySet = createFunction(sut.script)
 		expect(dummySet).toMatchObject({ param: 'Bar' })
 	})
 
@@ -34,7 +43,7 @@ new Vue({
 			<button> {{param}} </button>
 		</div>
 		`)
-		const dummySet = new Function(sut.script)()
+		const dummySet = createFunction(sut.script)
 		expect(dummySet.data()).toMatchObject({ param: 'BazBaz' })
 	})
 
@@ -152,7 +161,7 @@ new Vue({
 		`).script
 		).toMatchInlineSnapshot(`
 			"
-
+			const Vue = require("vue");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
 			const __sfc__ = (function() {
 					
 			return {
@@ -164,7 +173,14 @@ new Vue({
 					}
 
 					})()
-			  __sfc__.render = function() {with(this){return _c('div')}}
+			  __sfc__.render = function() {const { openBlock: _openBlock, createElementBlock: _createElementBlock } = Vue
+
+			return function render(_ctx, _cache, $props, $setup, $data, $options) {
+			  return (_openBlock(), _createElementBlock("div"))
+			}}
+
+
+			__sfc__.render = __sfc__.render()
 
 			return __sfc__"
 		`)
@@ -184,7 +200,7 @@ export default {
 	}
 }
 </script>`)
-		expect(() => new Function(sut.script)()).not.toThrow()
+		expect(() => createFunction(sut.script)).not.toThrow()
 	})
 
 	it('should handle 2 script tags', () => {
@@ -204,6 +220,6 @@ import { ref } from 'vue'
 
 const value = ref(foo())
 </script>`)
-		expect(() => new Function(sut.script)()).not.toThrow()
+		expect(() => createFunction(sut.script)).not.toThrow()
 	})
 })

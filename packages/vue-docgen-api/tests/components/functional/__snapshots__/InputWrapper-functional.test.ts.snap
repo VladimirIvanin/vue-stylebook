@@ -131,7 +131,7 @@ exports[`tests button functional > should match the snapshot 1`] = `
     },
   ],
   "sourceFiles": [
-    /packages/vue-docgen-api/tests/components/functional/InputWrapper.vue,
+    \\packages\\vue-docgen-api\\tests\\components\\functional\\InputWrapper.vue,
   ],
   "tags": {},
 }

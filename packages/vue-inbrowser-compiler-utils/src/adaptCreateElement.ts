@@ -96,6 +96,10 @@ export const concatenate = (
 }
 
 const groupAttr = (attrsIn: { [key: string]: any }): { [key: string]: any } | undefined => {
+	if (!attrsIn) {
+		return undefined
+	}
+
 	if (isVue3) {
 		Object.keys(attrsIn)
 			.filter(key => key.startsWith('vModel') || key.startsWith('v-model'))
@@ -111,10 +115,6 @@ const groupAttr = (attrsIn: { [key: string]: any }): { [key: string]: any } | un
 				delete attrsIn[key]
 			})
 		return attrsIn
-	}
-
-	if (!attrsIn) {
-		return undefined
 	}
 
 	const attrsOut: { [key: string]: any } = {}

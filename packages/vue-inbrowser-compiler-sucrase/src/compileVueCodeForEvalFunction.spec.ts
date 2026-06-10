@@ -161,7 +161,7 @@ new Vue({
 		`).script
 		).toMatchInlineSnapshot(`
 			"
-
+			const Vue = require("vue");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
 			const __sfc__ = (function() {"use strict";
 					;return {
 						data(){
@@ -170,7 +170,14 @@ new Vue({
 							}
 						}
 					}})()
-			  __sfc__.render = function() {with(this){return _c('div')}}
+			  __sfc__.render = function() {const { openBlock: _openBlock, createElementBlock: _createElementBlock } = Vue
+
+			return function render(_ctx, _cache, $props, $setup, $data, $options) {
+			  return (_openBlock(), _createElementBlock("div"))
+			}}
+
+
+			__sfc__.render = __sfc__.render()
 
 			return __sfc__"
 		`)
@@ -211,7 +218,7 @@ const MyButton = () => h('button')
 </template>`)
 		expect(sut.script).toMatchInlineSnapshot(`
 			"
-
+			const Vue = require("vue");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
 			const __sfc__ = (function() {"use strict";;return {setup(){
 
 			var _vuefeathericons = require('vue-feather-icons');
@@ -225,7 +232,18 @@ const MyButton = () => h('button')
 			function defineEmits(){ return function emit() {}}
 			function defineExpose(){}
 			}}})()
-			  __sfc__.render = function() {with(this){return _c('div',[_v(_s(value))])}}
+			  __sfc__.render = function() {const { toDisplayString: _toDisplayString, createElementVNode: _createElementVNode, createVNode: _createVNode, Fragment: _Fragment, openBlock: _openBlock, createElementBlock: _createElementBlock } = Vue
+
+			return function render(_ctx, _cache, $props, $setup, $data, $options) {
+			  return (_openBlock(), _createElementBlock(_Fragment, null, [
+			    _createElementVNode("div", null, _toDisplayString($setup.value)),
+			    _createVNode($setup["MyButton"]),
+			    _createVNode($setup["IconSkullAndBones"])
+			  ], 64 /* STABLE_FRAGMENT */))
+			}}
+
+
+			__sfc__.render = __sfc__.render()
 
 			return __sfc__"
 		`)

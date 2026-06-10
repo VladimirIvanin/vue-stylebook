@@ -112,8 +112,8 @@ exports[`tests button > should match the snapshot 1`] = `
     },
   ],
   "sourceFiles": [
-    /packages/vue-docgen-api/tests/components/button-external-alias-array/Button.vue,
-    /packages/vue-docgen-api/tests/components/button-external-alias-array/script.ts,
+    \\packages\\vue-docgen-api\\tests\\components\\button-external-alias-array\\Button.vue,
+    \\packages\\vue-docgen-api\\tests\\components\\button-external-alias-array\\script.ts,
   ],
   "tags": {
     "author": [
