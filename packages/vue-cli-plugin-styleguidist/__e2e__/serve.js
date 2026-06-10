@@ -12,7 +12,12 @@ beforeAll(() => {
 const serve = require('@vue/cli-test-utils/serveWithPuppeteer')
 
 async function createAndInstall(name) {
-	const project = await create(name, { plugins: { 'vue-cli-plugin-styleguidist': {} } }, cwd, false)
+	const project = await create(
+		name,
+		{ vueVersion: '3', plugins: { 'vue-cli-plugin-styleguidist': {} } },
+		cwd,
+		false
+	)
 	// mock install
 	const pkg = JSON.parse(await project.read('package.json'))
 	pkg.devDependencies['vue-cli-plugin-styleguidist'] = '*'

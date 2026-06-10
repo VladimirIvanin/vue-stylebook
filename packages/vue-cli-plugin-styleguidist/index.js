@@ -174,19 +174,40 @@ function getConfig(api) {
 }
 
 /**
- * Resolve vue$ alias against the project's vue package.
- * Without this, webpack can pick up a nested vue@3 copy (e.g. from
- * vue-inbrowser-compiler-demi) while vue-cli still aliases to vue 2 paths.
+ * Resolve vue/vue$ aliases against the project's vue package.
+ * Without this, webpack can pick up a nested vue copy (e.g. from
+ * vue-inbrowser-compiler-demi) that does not match vue-cli alias paths.
  * @param {import('webpack').Configuration} webpackConfig
  * @param {string} projectRoot
  */
 function fixVueAlias(webpackConfig, projectRoot) {
-	if (!webpackConfig.resolve || !webpackConfig.resolve.alias) {
+	if (!webpackConfig.resolve) {
 		return
 	}
 
 	const alias = webpackConfig.resolve.alias
-	const vueAlias = alias['vue$'] || alias.vue
+	if (!alias) {
+		return
+	}
+
+	const setVueAlias = (vueAlias, target) => {
+		if (Array.isArray(alias)) {
+			const entry = alias.find(item => item.name === 'vue$' || item.name === 'vue')
+			if (entry) {
+				entry.alias = target
+			} else {
+				alias.push({ name: 'vue$', alias: target, onlyModule: true })
+			}
+		} else {
+			alias['vue$'] = target
+			alias.vue = target
+		}
+	}
+
+	const vueAlias = Array.isArray(alias)
+		? (alias.find(item => item.name === 'vue$') || alias.find(item => item.name === 'vue'))?.alias
+		: alias['vue$'] || alias.vue
+
 	if (!vueAlias || path.isAbsolute(vueAlias)) {
 		return
 	}
@@ -198,7 +219,7 @@ function fixVueAlias(webpackConfig, projectRoot) {
 		const absolutePath = path.join(vueDir, relativePath)
 
 		if (fs.existsSync(absolutePath)) {
-			alias['vue$'] = absolutePath
+			setVueAlias(vueAlias, absolutePath)
 		}
 	} catch (err) {
 		// keep vue-cli defaults when the project has no vue dependency yet

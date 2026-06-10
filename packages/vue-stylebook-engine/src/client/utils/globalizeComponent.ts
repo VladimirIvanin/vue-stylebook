@@ -1,9 +1,9 @@
-import { VueConstructor } from 'vue'
+import type { Component as VueComponent } from 'vue'
 import { cleanName } from 'vue-inbrowser-compiler-utils'
 import { Component } from '../../types/Component'
 import { addGlobalComponentToRegistration } from './globalComponents'
 
-const isEs6Export = (module: any): module is { default: VueConstructor } => !!module.default
+const isEs6Export = (module: any): module is { default: VueComponent } => !!module.default
 
 /**
  * Expose component as global variables.

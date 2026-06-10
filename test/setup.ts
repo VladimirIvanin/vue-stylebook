@@ -1,9 +1,3 @@
-/* eslint-disable import/first */
-import Vue from 'vue'
-
-Vue.config.productionTip = false
-Vue.config.devtools = false
-
 const rootFolder = process.cwd()
 
 expect.addSnapshotSerializer({
@@ -15,4 +9,3 @@ expect.addSnapshotSerializer({
 		return typeof val === 'string' && val.includes(rootFolder)
 	}
 })
-

@@ -1,6 +1,6 @@
 import 'react-styleguidist/lib/typings/dependencies/react-docgen'
 
-import { VueConstructor } from 'vue'
+import type { Component as VueComponent } from 'vue'
 import {
 	PropDescriptor,
 	MethodDescriptor,
@@ -44,6 +44,6 @@ export interface ComponentProps extends BaseComponentProps {
 
 export interface Component extends Omit<Rsg.Component, 'props' | 'module'> {
 	props: ComponentProps
-	module: { default: VueConstructor } | VueConstructor
+	module: { default: VueComponent } | VueComponent
 	subComponents?: Component[]
 }

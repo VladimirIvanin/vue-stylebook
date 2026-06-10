@@ -20,7 +20,7 @@ async function createAndInstall(name, options) {
 		jsDelivr: 'dist/YourLib.umd.min.js',
 		files: ['dist', 'src'],
 		peerDependencies: {
-			vue: '^2.6.0'
+			vue: '^3.0.0'
 		}
 	}
 	// mock install
@@ -30,7 +30,7 @@ async function createAndInstall(name, options) {
 }
 
 test('invoke should create a config file', async () => {
-	const project = await createAndInstall(`files-invoke-lib`, { plugins: {} })
+	const project = await createAndInstall(`files-invoke-lib`, { vueVersion: '3', plugins: {} })
 	await project.run(`${require.resolve('@vue/cli/bin/vue')} invoke vue-cli-plugin-styleguidist`)
 	const pkg = JSON.parse(await project.read('package.json'))
 	expect(pkg.main).toBe('dist/YourLib.umd.js')
@@ -38,6 +38,7 @@ test('invoke should create a config file', async () => {
 
 test('create should create a config file', async () => {
 	const project = await createAndInstall(`files-create-lib`, {
+		vueVersion: '3',
 		plugins: { 'vue-cli-plugin-styleguidist': {} }
 	})
 	const pkg = JSON.parse(await project.read('package.json'))

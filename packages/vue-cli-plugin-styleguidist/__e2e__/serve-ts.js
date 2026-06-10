@@ -1,4 +1,3 @@
-const invoke = require('@vue/cli/lib/invoke')
 const create = require('@vue/cli-test-utils/createTestProject')
 const path = require('path')
 
@@ -13,17 +12,26 @@ beforeAll(() => {
 const serve = require('@vue/cli-test-utils/serveWithPuppeteer')
 
 async function createAndInstall(name, isClass) {
-	const project = await create(name, { plugins: { 'vue-cli-plugin-styleguidist': {} } }, cwd, false)
+	const project = await create(
+		name,
+		{
+			vueVersion: '3',
+			plugins: {
+				'vue-cli-plugin-styleguidist': {},
+				'@vue/cli-plugin-typescript': { classComponent: isClass }
+			}
+		},
+		cwd,
+		false
+	)
 	// mock install
 	const pkg = JSON.parse(await project.read('package.json'))
 	pkg.devDependencies['vue-cli-plugin-styleguidist'] = '*'
-	pkg.devDependencies['@vue/cli-plugin-typescript'] = '*'
 	await project.write('package.json', JSON.stringify(pkg, null, 2))
 	const setupCode = await fs.promises.readFile(
 		path.resolve(__dirname, '../__samples__/setupEnv.js'),
 		'utf8'
 	)
-	await invoke('typescript', { classComponent: isClass }, project.dir)
 	await project.write('setupEnv.js', setupCode)
 	const styleguideConfig = await project.read('styleguide.config.js')
 	await project.write('styleguide.config.js', `require('./setupEnv')\n${styleguideConfig}`)

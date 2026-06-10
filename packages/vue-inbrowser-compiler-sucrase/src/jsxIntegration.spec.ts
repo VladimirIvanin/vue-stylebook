@@ -1,5 +1,6 @@
 /* eslint-disable no-new-func */
-import Vue from 'vue'
+import { vi } from 'vitest'
+import { h } from 'vue'
 import { transform } from 'sucrase'
 import { adaptCreateElement, concatenate } from 'vue-inbrowser-compiler-utils'
 import { shallowMount, mount } from '@vue/test-utils'
@@ -18,16 +19,17 @@ describe('integration', () => {
 			const getValue = new Function(
 				'__pragma__',
 				'concatenate',
+				'h',
 				...Object.keys(params),
 				compiledCode + ';return __sut__;'
 			)
-			return getValue(adaptCreateElement, concatenate, ...Object.values(params))
+			return getValue(adaptCreateElement, concatenate, h, ...Object.values(params))
 		}
 
 		test('Contains text', () => {
 			const wrapper = shallowMount(
 				getComponent(`{
-				render(h) {
+				render() {
 				  return <div>test</div>
 				},
 			  }`)
@@ -42,7 +44,7 @@ describe('integration', () => {
 			const wrapper = shallowMount(
 				getComponent(
 					`{
-					render(h) {
+					render() {
 						return <div>{text}</div>
 					}
 				}`,
@@ -57,7 +59,7 @@ describe('integration', () => {
 		test('Extracts attrs', () => {
 			const wrapper = shallowMount(
 				getComponent(`{
-					render(h) {
+					render() {
 					  return <div id="hi" dir="ltr" />
 					},
 				  }`)
@@ -72,7 +74,7 @@ describe('integration', () => {
 			const wrapper = shallowMount(
 				getComponent(
 					`{
-					render(h) {
+					render() {
 					  return <div id={hi} />
 					},
 				  }`,
@@ -84,84 +86,76 @@ describe('integration', () => {
 		})
 
 		test('Omits attrs if possible', () => {
-			const wrapper: any = shallowMount(
+			const wrapper = shallowMount(
 				getComponent(`{
-        render(h) {
-          return <div>test</div>
-        },
-      }`)
+					render() {
+					  return <div>test</div>
+					},
+				  }`)
 			)
 
-			expect(wrapper.vnode.data).toBeUndefined()
+			expect(wrapper.element.getAttribute('id')).toBeNull()
 		})
 
 		test('Omits children if possible', () => {
-			const wrapper: any = shallowMount(
+			const wrapper = shallowMount(
 				getComponent(`{
-				render(h) {
+				render() {
 				  return <div/>
 				}
 			  }`)
 			)
 
-			expect(wrapper.vnode.children).toBeUndefined()
+			expect(wrapper.element.childNodes.length).toBe(0)
 		})
 
 		test('Handles top-level special attrs', () => {
-			const wrapper: any = shallowMount(
+			const wrapper = shallowMount(
 				getComponent(`{
-					render(h) {
-						return <div class="foo" style="bar" key="key" ref="ref" refInFor slot="slot" />
+					render() {
+						return <div class="foo" style="color: red" />
 					}
 				  }`)
 			)
-			expect(wrapper.vnode.data.class).toBe('foo')
-			expect(wrapper.vnode.data.style).toBe('bar')
-			expect(wrapper.vnode.data.key).toBe('key')
-			expect(wrapper.vnode.data.ref).toBe('ref')
-			expect(wrapper.vnode.data.refInFor).toBeTruthy()
-			expect(wrapper.vnode.data.slot).toBe('slot')
+			expect(wrapper.classes()).toContain('foo')
+			expect((wrapper.element as HTMLElement).style.color).toBe('red')
 		})
 
 		test('Handles nested properties (camelCase)', () => {
 			const noop = (_: any) => _
-			const wrapper: any = shallowMount(
+			const wrapper = shallowMount(
 				getComponent(
 					`{
-			  render(h) {
+			  render() {
 				return (
-				  <div propsOnSuccess={noop} onClick={noop} onCamelCase={noop} domPropsInnerHTML="<p>hi</p>" hookInsert={noop} />
+				  <div domPropsInnerHTML="<p>hi</p>" onClick={noop} />
 				)
 			  },
 			}`,
 					{ noop }
 				)
 			)
-			expect(wrapper.vnode.data.props.onSuccess).toBe(noop)
-			expect(wrapper.vnode.data.on.click.fns).toBe(noop)
-			expect(wrapper.vnode.data.on.camelCase.fns).toBe(noop)
-			expect(wrapper.vnode.data.domProps.innerHTML).toBe('<p>hi</p>')
-			expect(wrapper.vnode.data.hook.insert).toBe(noop)
+			expect(wrapper.html()).toContain('<p>hi</p>')
 		})
 
 		test('Supports data attribute', () => {
-			const wrapper: any = shallowMount(
+			const wrapper = shallowMount(
 				getComponent(`{
-			  render(h) {
+			  render() {
 				return <div data-id="1" />
 			  },
 			}`)
 			)
 
-			expect(wrapper.vnode.data.attrs['data-id']).toBe('1')
+			expect(wrapper.attributes('data-id')).toBe('1')
 		})
 
 		test('Handles identifier tag name as components', () => {
 			const Test = { render: () => null }
-			const wrapper: any = shallowMount(
+			const wrapper = shallowMount(
 				getComponent(
 					`{
-			  render(h) {
+			  render() {
 				return <Test />
 			  },
 			}`,
@@ -169,19 +163,19 @@ describe('integration', () => {
 				)
 			)
 
-			expect(wrapper.vnode.tag).toMatch(/^vue-component/)
+			expect(wrapper.html()).toContain('test-stub')
 		})
 
 		test('Works for components with children', () => {
 			const Test = {
-				render(h: (b: string) => any) {
-					h('div')
+				render() {
+					return <div><slot /></div>
 				}
 			}
-			const wrapper: any = shallowMount(
+			const wrapper = mount(
 				getComponent(
 					`{
-				render(h) {
+				render() {
 					return (
 						<Test>
 							<div>hi</div>
@@ -192,21 +186,20 @@ describe('integration', () => {
 					{ Test }
 				)
 			)
-			const children = wrapper.vnode.componentOptions.children
-			expect(children[0].tag).toBe('div')
+			expect(wrapper.text()).toBe('hi')
 		})
 
 		test('Binds things in thunk with correct this context', () => {
 			const Test = getComponent(`{
-				render(h) {
-					return <div>{this.$slots.default}</div>
+				render() {
+					return <div><slot /></div>
 				}
 			}`)
-			const wrapper: any = mount(
+			const wrapper = mount(
 				getComponent(
 					`{
 			  data: () => ({ test: 'foo' }),
-			  render(h) {
+			  render() {
 				return <Test>{this.test}</Test>
 			  },
 			}`,
@@ -221,10 +214,10 @@ describe('integration', () => {
 			const props = {
 				hello: 2
 			}
-			const wrapper: any = shallowMount(
+			const wrapper = shallowMount(
 				getComponent(
 					`{
-			  render(h) {
+			  render() {
 				return <div {... { props } } />
 			  },
 			}`,
@@ -232,7 +225,7 @@ describe('integration', () => {
 				)
 			)
 
-			expect(wrapper.vnode.data.props).toMatchObject(props)
+			expect(wrapper.attributes('hello')).toBe('2')
 		})
 
 		test('Spread (mixed)', () => {
@@ -256,111 +249,103 @@ describe('integration', () => {
 				},
 				class: ['a', 'b']
 			}
-			const wrapper: any = shallowMount(
+			const wrapper = shallowMount(
 				getComponent(
 					`{
-			  render(h) {
-          return (
-            <div
-              href="huhu"
-              {...data}
-              class={{ c: true }}
-              on-click={() => calls.push(4)}
-              hook-insert={() => calls.push(2)}
-            />
-          )
+			  render() {
+				return (
+				  <div
+					href="huhu"
+					{...data}
+					class={{ c: true }}
+					on-click={() => calls.push(4)}
+					hook-insert={() => calls.push(2)}
+				  />
+				)
 			  },
 			}`,
 					{ data, calls }
 				)
 			)
 
-			expect(wrapper.vnode.data.attrs).toMatchObject({ id: 'hehe', href: 'huhu' })
-			expect(wrapper.vnode.data.props.innerHTML).toBe(2)
-			// FIXME: broken when we migrated to sucrase
-			// expect(wrapper.vnode.data.class).toEqual(['a', 'b', { c: true }])
-			// expect(calls).toEqual([1, 2])
-			wrapper.vnode.data.on.click()
+			expect(wrapper.attributes('id')).toBe('hehe')
+			expect(wrapper.attributes('href')).toBe('huhu')
+			expect(wrapper.classes()).toEqual(expect.arrayContaining(['a', 'b', 'c']))
+			expect(calls).toEqual([1, 2])
+			wrapper.trigger('click')
 			expect(calls).toEqual([1, 2, 3, 4])
 		})
 
 		test('Custom directives', () => {
-			const directive = {
-				inserted() {}
-			}
-			Vue.directive('test', directive)
-			Vue.directive('other', directive)
+			const mounted = vi.fn()
+			const directive = { mounted }
 
-			const wrapper: any = shallowMount(
+			shallowMount(
 				getComponent(
 					`{
-				render(h) {
+				render() {
 					return <div v-test={123} vOther={234} />
 				}
 			}`
-				)
+				),
+				{
+					global: {
+						directives: {
+							test: directive,
+							other: directive
+						}
+					}
+				}
 			)
 
-			expect(wrapper.vnode.data.directives.length).toBe(2)
-			expect(wrapper.vnode.data.directives[0]).toEqual({
-				def: directive,
-				modifiers: {},
-				name: 'test',
-				value: 123
-			})
-			expect(wrapper.vnode.data.directives[1]).toEqual({
-				def: directive,
-				modifiers: {},
-				name: 'other',
-				value: 234
-			})
+			expect(mounted).toHaveBeenCalledTimes(2)
 		})
 
 		test('xlink:href', () => {
-			const wrapper: any = shallowMount(
+			const wrapper = shallowMount(
 				getComponent(
 					`{
-			  render(h) {
+			  render() {
 				return <use xlinkHref={'#name'} />
 			  },
 			}`
 				)
 			)
 
-			expect(wrapper.vnode.data.attrs['xlink:href']).toBe('#name')
+			expect(wrapper.element.getAttributeNS('http://www.w3.org/1999/xlink', 'href')).toBe(
+				'#name'
+			)
 		})
+		test('Merge class', () => {
+			const wrapper = shallowMount(
+				getComponent(
+					`{
+				render() {
+					return <div class="a" {...{ class: 'b' }} />
+				}
+			}`
+				)
+			)
 
-		// FIXME: Broken when we migrated to sucrase
-		// test('Merge class', () => {
-		// 	const wrapper: any = shallowMount(
-		// 		getComponent(
-		// 			`{
-		// 		render(h) {
-		// 			return <div class="a" {...{ class: 'b' }} />
-		// 		}
-		// 	}`
-		// 		)
-		// 	)
-
-		// 	expect(wrapper.vnode.data.class).toEqual(['a', 'b'])
-		// })
+			expect(wrapper.classes()).toEqual(expect.arrayContaining(['a', 'b']))
+		})
 
 		test('JSXMemberExpression', () => {
 			const a = {
 				b: {
 					cmp: getComponent(
 						`{
-						render(h) {
+						render() {
 							return <div />
 						}
 					}`
 					)
 				}
 			}
-			const wrapper: any = mount(
+			const wrapper = mount(
 				getComponent(
 					`{
-			  render(h) {
+			  render() {
 				return <a.b.cmp />
 			  },
 			}`,
