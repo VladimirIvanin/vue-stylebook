@@ -10,7 +10,7 @@ const dirname = path.resolve(__dirname, '../../../../../')
  */
 export default function cleanFilePathSnapshot(snapshot: any): any {
   if(typeof snapshot === 'string'){
-    return snapshot.replaceAll(dirname, '~')
+    return snapshot.replaceAll(dirname, '~').replaceAll('\\', '/')
   } else if(Array.isArray(snapshot)){
     return snapshot.map(cleanFilePathSnapshot)
   } else if(typeof snapshot === 'object'){
