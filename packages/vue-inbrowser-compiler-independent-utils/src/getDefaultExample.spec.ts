@@ -59,7 +59,7 @@ describe('getDefaultExample', () => {
 					}
 				]
 			})
-		).toMatchInlineSnapshot('"<my-component string=\\"Default Example Usage\\"  :number=\\"42\\"  :boolean=\\"true\\"  :array=\\"[1, 2, 3]\\"  :object=\\"{}\\"  :date=\\"new Date(\'2012-12-12\')\\"  :function=\\"() => void\\"  :symbol=\\"Default Example Usage\\" />"')
+		).toMatchInlineSnapshot(`"<my-component string="Default Example Usage"  :number="42"  :boolean="true"  :array="[1, 2, 3]"  :object="{}"  :date="new Date('2012-12-12')"  :function="() => void"  :symbol="Default Example Usage" />"`)
 	})
 
 	it('should use the default slot if provided', () => {

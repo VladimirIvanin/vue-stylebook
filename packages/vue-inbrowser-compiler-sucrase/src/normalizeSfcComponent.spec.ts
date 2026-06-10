@@ -123,15 +123,15 @@ describe('parseScriptCode', () => {
     }`)
 
 		expect(ret).toMatchInlineSnapshot(`
-      {
-        "component": "render: () => {
-            return <div {...Object.assign({class:\\"b\\"},{class: 'a', style:{color:'blue'}})} >Hello</div>
-          }",
-        "postprocessing": "",
-        "preprocessing": "
-          ",
-      }
-    `)
+			{
+			  "component": "render: () => {
+			      return <div {...Object.assign({class:"b"},{class: 'a', style:{color:'blue'}})} >Hello</div>
+			    }",
+			  "postprocessing": "",
+			  "preprocessing": "
+			    ",
+			}
+		`)
 	})
 
 	it('should replace spreads by concatenate on self closing tags', () => {
@@ -141,15 +141,15 @@ describe('parseScriptCode', () => {
     }`)
 
 		expect(ret).toMatchInlineSnapshot(`
-      {
-        "component": "render: () => {
-            return <CouCou {...Object.assign({class:\\"b\\"},{class: 'a', style:{color:'blue'}})} />
-          }",
-        "postprocessing": "",
-        "preprocessing": "
-          ",
-      }
-    `)
+			{
+			  "component": "render: () => {
+			      return <CouCou {...Object.assign({class:"b"},{class: 'a', style:{color:'blue'}})} />
+			    }",
+			  "postprocessing": "",
+			  "preprocessing": "
+			    ",
+			}
+		`)
 	})
 
 	it('should return a full function', () => {
@@ -159,15 +159,15 @@ describe('parseScriptCode', () => {
     }`)
 
 		expect(ret).toMatchInlineSnapshot(`
-      {
-        "component": "render: function (){
-            return <CouCou {...Object.assign({class:\\"b\\"},{style:{background:\\"gray\\"}},{class: 'a', style:{color:'blue'}})} />
-          }",
-        "postprocessing": "",
-        "preprocessing": "
-          ",
-      }
-    `)
+			{
+			  "component": "render: function (){
+			      return <CouCou {...Object.assign({class:"b"},{style:{background:"gray"}},{class: 'a', style:{color:'blue'}})} />
+			    }",
+			  "postprocessing": "",
+			  "preprocessing": "
+			    ",
+			}
+		`)
 	})
 
   it('compiles script setup', () => {

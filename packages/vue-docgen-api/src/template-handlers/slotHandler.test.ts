@@ -144,7 +144,9 @@ describe('slotHandler', () => {
 			}
 		])
 
-    it('should not fail on slots', () => {
+	})
+
+	it('should not fail on slots', () => {
 			const ast = parse(
 				[
 					'<div>', //
@@ -156,9 +158,9 @@ describe('slotHandler', () => {
 			traverse(ast.children[0], doc, [slotHandler], ast.children, { functional: false })
 			const slots = doc.toObject().slots || []
 			expect(slots.length).toBe(1)
-		})
+	})
 
-    it('should not fail on non-commented slots', () => {
+	it('should not fail on non-commented slots', () => {
 			const ast = parse(
 				[
 					'<div>', //
@@ -169,9 +171,9 @@ describe('slotHandler', () => {
 			traverse(ast.children[0], doc, [slotHandler], ast.children, { functional: false })
 			const slots = doc.toObject().slots || []
 			expect(slots.length).toBe(1)
-		})
+	})
 
-		it('should extract tags from a slot', () => {
+	it('should extract tags from a slot', () => {
 			const ast = parse(
 				[
 					'<div>', //
@@ -195,7 +197,6 @@ describe('slotHandler', () => {
 				  ],
 				}
 			`)
-		})
 	})
 
 	describe('bindings', () => {

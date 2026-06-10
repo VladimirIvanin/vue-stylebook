@@ -34,7 +34,7 @@ function isImport(req: any): req is { importPath: string; path: string } {
 
 export default function (this: StyleguidistContext, source: string) {
 	const callback = this.async()
-	const cb = callback ? callback : () => null
+	const cb = callback ?? (() => undefined)
 	examplesLoader.call(this, source).then(res => cb(undefined, res))
 }
 
@@ -53,11 +53,16 @@ export async function examplesLoader(this: StyleguidistContext, src: string): Pr
 	const compiler: { compile: typeof compile; getImports: typeof getImports } =
 		config.compilerPackage ? require(config.compilerPackage) : { compile, getImports }
 
-	const options = loaderUtils.getOptions(this) || {}
+	const options = (loaderUtils.getOptions(this as any) || {}) as {
+		file?: string
+		displayName?: string
+		shouldShowDefaultExample?: boolean
+		customLangs?: string
+	}
 	const { file, displayName, shouldShowDefaultExample, customLangs } = options
 
 	// Replace placeholders (__COMPONENT__) with the passed-in component name
-	if (shouldShowDefaultExample && source) {
+	if (shouldShowDefaultExample && source && file) {
 		const fullFilePath = path.join(path.dirname(filePath), file)
 		const propsParser = getParser(config)
 		try {
@@ -91,7 +96,9 @@ export async function examplesLoader(this: StyleguidistContext, src: string): Pr
 	}
 
 	// Load examples
-	const examples = source ? chunkify(source, updateExample, customLangs) : []
+	const examples = source
+		? chunkify(source, updateExample, customLangs ? customLangs.split('|') : undefined)
+		: []
 
 	const getExampleLiveImports = (liveExampleScript: string) =>
 		compiler.getImports(getScript(liveExampleScript, config.jsxInExamples))
@@ -122,7 +129,7 @@ export async function examplesLoader(this: StyleguidistContext, src: string): Pr
 		...config.context,
 		// Append the current component module to make it accessible in examples
 		// without an explicit import
-		...(displayName && config.jsxInExamples ? { [displayName]: file } : {})
+		...(displayName && file && config.jsxInExamples ? { [displayName]: file } : {})
 	}
 
 	// All required or imported modules

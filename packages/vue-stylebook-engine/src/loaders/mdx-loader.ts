@@ -1,4 +1,4 @@
-import { loader } from 'webpack'
+import type { LoaderContext } from 'webpack'
 import loaderUtils from 'loader-utils'
 import { compile } from '@mdx-js/mdx'
 import remarkGfm from 'remark-gfm'
@@ -11,10 +11,10 @@ type MdxCompileOptions = {
 	providerImportSource?: string
 }
 
-export default async function (this: loader.LoaderContext, source: string | Buffer) {
+export default async function (this: LoaderContext<unknown>, source: string | Buffer) {
 	const callback = this.async()
-	const cb = callback ? callback : () => null
-	const options = (loaderUtils.getOptions(this) || {}) as {
+	const cb = callback ?? (() => undefined)
+	const options = (loaderUtils.getOptions(this as any) || {}) as {
 		mdxCompileOptions?: MdxCompileOptions
 	}
 	const styleguidist = (this as any)._styleguidist || {}

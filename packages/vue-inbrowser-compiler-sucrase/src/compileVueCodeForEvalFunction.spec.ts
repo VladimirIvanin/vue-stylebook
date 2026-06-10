@@ -108,7 +108,7 @@ new Vue({
 		`)
 
 		expect(sut.script).toMatchInlineSnapshot(`
-			"\\"use strict\\"; function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+			""use strict"; function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 			var _dognames = require('../RandomButton/dog-names'); var _dognames2 = _interopRequireDefault(_dognames);
 
@@ -119,7 +119,7 @@ new Vue({
 						opt: _dognames2.default.map(a => ({ text: a, value: i++ }))
 					}
 				},
-				template: '<Radio :options=\\"opt\\" />'
+				template: '<Radio :options="opt" />'
 			}"
 		`)
 	})
@@ -141,7 +141,7 @@ new Vue({
 		}
 		</script>
 		`)
-		).toThrowErrorMatchingInlineSnapshot('"Missing semicolon. (2:11)"')
+		).toThrowErrorMatchingInlineSnapshot(`[SyntaxError: Missing semicolon. (2:11)]`)
 	})
 
 	it('should try to run the with the same lines', () => {
@@ -162,7 +162,7 @@ new Vue({
 		).toMatchInlineSnapshot(`
 			"
 
-			const __sfc__ = (function() {\\"use strict\\";
+			const __sfc__ = (function() {"use strict";
 					;return {
 						data(){
 							return {
@@ -212,7 +212,7 @@ const MyButton = () => h('button')
 		expect(sut.script).toMatchInlineSnapshot(`
 			"
 
-			const __sfc__ = (function() {\\"use strict\\";;return {setup(){
+			const __sfc__ = (function() {"use strict";;return {setup(){
 
 			var _vuefeathericons = require('vue-feather-icons');
 			var _vue = require('vue');

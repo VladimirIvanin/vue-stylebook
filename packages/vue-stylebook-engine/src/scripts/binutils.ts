@@ -88,8 +88,14 @@ export function commandBuild(config: SanitizedStyleguidistConfig): Compiler {
 
 	// Custom error reporting
 	compiler.hooks.done.tap('vsrDoneBuilding', function (stats: Stats) {
-		const messages = formatWebpackMessages(stats.toJson({}, true))
-		const hasErrors = printAllErrorsAndWarnings(messages, stats.compilation)
+		const messages = formatWebpackMessages(
+			stats.toJson({
+				all: false,
+				errors: true,
+				warnings: true
+			}) as any
+		)
+		const hasErrors = printAllErrorsAndWarnings(messages, stats.compilation as any)
 		if (bar) {
 			bar.stop()
 			moveCursor(process.stdout, 0, -1)
@@ -127,7 +133,11 @@ export function commandServer(config: SanitizedStyleguidistConfig, open?: boolea
 		if (err) {
 			console.error(err)
 		} else {
-			const isHttps = compiler.options.devServer && compiler.options.devServer.https
+			const devServerOptions = compiler.options.devServer as
+				| { server?: { type?: string }; https?: boolean }
+				| undefined
+			const isHttps =
+				devServerOptions?.server?.type === 'https' || devServerOptions?.https === true
 			const urls = webpackDevServerUtils.prepareUrls(
 				isHttps ? 'https' : 'http',
 				config.serverHost,
@@ -139,8 +149,12 @@ export function commandServer(config: SanitizedStyleguidistConfig, open?: boolea
 			} else {
 				printServerInstructions(
 					urls,
-					compiler.options.devServer && compiler.options.devServer.publicPath
-						? compiler.options.devServer.publicPath.replace(/^\//, '')
+					compiler.options.devServer &&
+						(compiler.options.devServer as { publicPath?: string }).publicPath
+						? (compiler.options.devServer as { publicPath: string }).publicPath.replace(
+								/^\//,
+								''
+						  )
 						: ''
 				)
 			}
@@ -165,19 +179,25 @@ export function commandServer(config: SanitizedStyleguidistConfig, open?: boolea
 			clearLine(process.stdout, 0)
 		}
 
-		const messages = formatWebpackMessages(stats.toJson({}, true))
+		const messages = formatWebpackMessages(
+			stats.toJson({
+				all: false,
+				errors: true,
+				warnings: true
+			}) as any
+		)
 
 		if (!messages.errors.length && !messages.warnings.length) {
 			printStatus('Compiled successfully!', 'success')
 		}
 
-		printAllErrorsAndWarnings(messages, stats.compilation)
+		printAllErrorsAndWarnings(messages, stats.compilation as any)
 	})
 
 	// kill ghosted threads on exit
 	;(['SIGINT', 'SIGTERM'] as const).forEach(signal => {
 		process.on(signal, () => {
-			app.close(() => {
+			app.stopCallback(() => {
 				process.exit(0)
 			})
 		})

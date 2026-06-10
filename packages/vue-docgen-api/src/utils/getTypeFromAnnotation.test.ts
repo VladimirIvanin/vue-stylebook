@@ -76,7 +76,7 @@ describe('getTypeFromAnnotation', () => {
 			{
 			  "elements": [
 			    {
-			      "name": "\\"string literal\\"",
+			      "name": ""string literal"",
 			    },
 			    {
 			      "name": "3",
@@ -131,7 +131,7 @@ describe('getTypeFromAnnotation', () => {
 			{
 			  "elements": [
 			    {
-			      "name": "\\"string literal\\"",
+			      "name": ""string literal"",
 			    },
 			    {
 			      "name": "3",

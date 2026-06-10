@@ -62,7 +62,7 @@ const bar = "foo"
 export default {}
 </script>`)
 		const dummySet = sut.script
-		expect(dummySet).toContain('const bar')
+		expect(dummySet).toContain('var bar')
 		expect(dummySet).not.toContain('export default')
 	})
 
@@ -100,17 +100,17 @@ new Vue({
 
 		expect(sut.script).toMatchInlineSnapshot(`
 			"
-			const vue$0 = require('vue');const Vue = vue$0.default || vue$0;
-			const dog_names$43 = require('../RandomButton/dog-names');const three = dog_names$43.default || dog_names$43;
+			var vue$0 = require('vue');var Vue = vue$0.default || vue$0;
+			var dog_names$43 = require('../RandomButton/dog-names');var three = dog_names$43.default || dog_names$43;
 
 			;return {
-				data() {
-					let i = 0
+				data: function data() {
+					var i = 0
 					return {
-						opt: three.map(a => ({ text: a, value: i++ }))
+						opt: three.map(function (a) { return ({ text: a, value: i++ }); })
 					}
 				},
-				template: '<Radio :options=\\"opt\\" />'
+				template: '<Radio :options="opt" />'
 			}"
 		`)
 	})
@@ -132,7 +132,7 @@ new Vue({
 		}
 		</script>
 		`)
-		).toThrowErrorMatchingInlineSnapshot('"Unexpected token (2:11)"')
+		).toThrowErrorMatchingInlineSnapshot(`[SyntaxError: Unexpected token (2:11)]`)
 	})
 
 	it('should try to run the with the same lines', () => {
@@ -156,7 +156,7 @@ new Vue({
 			const __sfc__ = (function() {
 					
 			return {
-						data(){
+						data: function data(){
 							return {
 								param: 'BazBaz'
 							}

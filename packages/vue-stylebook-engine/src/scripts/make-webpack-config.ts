@@ -8,18 +8,16 @@ import { MiniHtmlWebpackPlugin } from 'mini-html-webpack-plugin'
 // @ts-ignore
 import FilterWarningsPlugin from 'webpack-filter-warnings-plugin'
 import MiniHtmlWebpackTemplate from '@vxna/mini-html-webpack-template'
-import mergeRaw from 'webpack-merge'
+import merge from 'webpack-merge'
 import forEach from 'lodash/forEach'
 import isFunction from 'lodash/isFunction'
 import makeWebpackConfig from 'react-styleguidist/lib/scripts/make-webpack-config'
-import StyleguidistOptionsPlugin from 'react-styleguidist/lib/scripts/utils/StyleguidistOptionsPlugin'
+import StyleguidistOptionsPlugin from './utils/StyleguidistOptionsPlugin'
 import { SanitizedStyleguidistConfig } from '../types/StyleGuide'
 import mergeWebpackConfig from './utils/mergeWebpackConfig'
 import resolveVueRuntimeForSandbox from './utils/resolveVueRuntimeForSandbox'
 
 const RENDERER_REGEXP = /Renderer$/
-const merge: any = mergeRaw as any
-
 const sourceDir = path.resolve(__dirname, '../client')
 
 export default function (
@@ -150,7 +148,7 @@ export default function (
 							__VUE_PROD_DEVTOOLS__: true
 					  })
 			})
-		]
+		] as any
 	})
 
 	// To have the hot-reload work on vue-styleguide
@@ -162,7 +160,6 @@ export default function (
 					minimizer: [
 						new TerserPlugin({
 							parallel: true,
-							cache: true,
 							terserOptions: {
 								ie8: false,
 								ecma: 5,
@@ -199,15 +196,17 @@ export default function (
 				// only add plugin if assetsDir is specified
 				...(config.assetsDir
 					? [
-							new CopyWebpackPlugin([
-								{
-									from: config.assetsDir
-								}
-							])
+							new CopyWebpackPlugin({
+								patterns: [
+									{
+										from: config.assetsDir
+									}
+								]
+							})
 					  ]
 					: [])
-			],
-			optimization
+			] as any,
+			optimization: optimization as any
 		})
 	} else {
 		webpackConfig = merge(
@@ -216,13 +215,11 @@ export default function (
 					publicPath: config.styleguidePublicPath
 				},
 				devServer: {
-					publicPath: config.styleguidePublicPath,
-					// Use 'ws' instead of 'sockjs-node' on server since we're using native
-					// websockets in `webpackHotDevClient`.
-					transportMode: 'ws',
-					// Prevent a WS client from getting injected as we're already including
-					// `webpackHotDevClient`.
-					injectClient: false
+					devMiddleware: {
+						publicPath: config.styleguidePublicPath
+					},
+					webSocketServer: 'ws',
+					client: false
 				},
 				plugins: [
 					new webpack.HotModuleReplacementPlugin(),
@@ -231,9 +228,9 @@ export default function (
 						// https://webpack.js.org/migrate/5/#run-a-single-build-and-follow-advice
 						process: 'process/browser'
 					})
-				],
+				] as any,
 				entry: [require.resolve('react-dev-utils/webpackHotDevClient')]
-			},
+			} as any,
 			webpackConfig as any
 		)
 	}

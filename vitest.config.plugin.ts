@@ -6,7 +6,7 @@ export default defineConfig({
 		include: ['**/__e2e__/**/*.js'],
 		exclude: ['**/node_modules/**'],
 		testTimeout: 80000,
-		threads: false,
+		fileParallelism: false,
 		setupFiles: './test/setup.plugin.js'
 	}
 })

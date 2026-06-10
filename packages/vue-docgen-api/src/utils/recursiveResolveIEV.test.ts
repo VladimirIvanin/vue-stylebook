@@ -53,8 +53,7 @@ describe('IEV', () => {
 				  "test": {
 				    "exportName": "exportName",
 				    "filePath": [
-				      "absolute/path/to/another/mixin",
-				      "absolute/path/to/one/another/mixin",
+				      "component/local/path",
 				    ],
 				  },
 				  "testBis": {

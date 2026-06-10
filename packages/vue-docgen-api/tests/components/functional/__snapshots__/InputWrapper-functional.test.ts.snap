@@ -5,7 +5,7 @@ exports[`tests button functional > should match the snapshot 1`] = `
   "description": "Wrapper for input elements",
   "displayName": "InputWrapper",
   "docsBlocks": [
-    "\`\` \`jsx <input-wrapper label=\\"Label\\" value=\\"–\\" id=\\"sdf\\"> … </input-wrapper>  \`\` \`",
+    "\`\` \`jsx <input-wrapper label="Label" value="–" id="sdf"> … </input-wrapper>  \`\` \`",
   ],
   "events": undefined,
   "exportName": "default",
@@ -68,7 +68,7 @@ exports[`tests button functional > should match the snapshot 1`] = `
         "func": false,
         "value": "false",
       },
-      "description": "True if input label should always be \\"up there\\"",
+      "description": "True if input label should always be "up there"",
       "name": "labelAlwaysFloating",
       "type": {
         "name": "boolean",

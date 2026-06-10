@@ -1,8 +1,13 @@
+import { createRequire } from 'module'
+import { fileURLToPath } from 'url'
 import * as path from 'path'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
-import pkg from './package.json'
+
+const require = createRequire(import.meta.url)
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const pkg = require('./package.json')
 
 const resolve = _path => path.resolve(__dirname, _path)
 export default {
@@ -11,7 +16,7 @@ export default {
 		{
 			file: pkg.main,
 			format: 'umd',
-      name: 'VueInbrowserCompilerIndependentUtils',
+			name: 'VueInbrowserCompilerIndependentUtils'
 		},
 		{
 			file: pkg.module,

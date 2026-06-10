@@ -316,7 +316,7 @@ describe('propHandler', () => {
 				{
 				  "func": true,
 				  "value": "function() {
-				    return [\\"normal\\"];
+				    return ["normal"];
 				}",
 				}
 			`)

@@ -7,6 +7,13 @@ export default defineConfig({
 		globals: true,
 		setupFiles: './test/setup.ts',
 		exclude: ['**/node_modules/**', '**/lib/**', '**/dist/**'],
+		deps: {
+			optimizer: {
+				web: {
+					enabled: true
+				}
+			}
+		},
 		coverage: {
 			reporter: ['lcov'],
 			include: ['packages/**/*'],
@@ -17,6 +24,11 @@ export default defineConfig({
 				'**/*.{test,spec}.{ts,js,tsx,jsx}',
 				'packages/vue-inbrowser-compiler-demi/**/*'
 			]
+		}
+	},
+	resolve: {
+		alias: {
+			util: 'node:util'
 		}
 	},
 	plugins: [
