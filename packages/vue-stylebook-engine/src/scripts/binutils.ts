@@ -186,15 +186,20 @@ export function commandServer(config: SanitizedStyleguidistConfig, open?: boolea
 
 		const hasErrors = printAllErrorsAndWarnings(messages, stats.compilation as any)
 
-		if (!hasErrors) {
-			if (isFirstCompile) {
-				isFirstCompile = false
-				printServerInstructionsAfterCompile()
+		if (hasErrors) {
+			if (isFirstCompile && process.env.VUE_CLI_TEST) {
+				process.exit(1)
 			}
+			return
+		}
 
-			if (!messages.errors.length && !messages.warnings.length) {
-				printStatus('Compiled successfully!', 'success')
-			}
+		if (isFirstCompile) {
+			isFirstCompile = false
+			printServerInstructionsAfterCompile()
+		}
+
+		if (!messages.errors.length && !messages.warnings.length) {
+			printStatus('Compiled successfully!', 'success')
 		}
 	})
 

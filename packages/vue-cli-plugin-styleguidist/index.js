@@ -1,5 +1,7 @@
 const vsg = require('@ivaninvladimir/vue-stylebook-engine')
 const merge = require('webpack-merge')
+const path = require('path')
+const fs = require('fs')
 const configSchemaImport = require('@ivaninvladimir/vue-stylebook-engine/lib/scripts/schemas/config')
 
 const configSchema = configSchemaImport.default || configSchemaImport
@@ -167,5 +169,38 @@ function getConfig(api) {
 	webpackConfig.plugins = webpackConfig.plugins.filter(
 		plugin => plugin.constructor.name !== 'HtmlWebpackPlugin'
 	)
+	fixVueAlias(webpackConfig, api.context)
 	return webpackConfig
+}
+
+/**
+ * Resolve vue$ alias against the project's vue package.
+ * Without this, webpack can pick up a nested vue@3 copy (e.g. from
+ * vue-inbrowser-compiler-demi) while vue-cli still aliases to vue 2 paths.
+ * @param {import('webpack').Configuration} webpackConfig
+ * @param {string} projectRoot
+ */
+function fixVueAlias(webpackConfig, projectRoot) {
+	if (!webpackConfig.resolve || !webpackConfig.resolve.alias) {
+		return
+	}
+
+	const alias = webpackConfig.resolve.alias
+	const vueAlias = alias['vue$'] || alias.vue
+	if (!vueAlias || path.isAbsolute(vueAlias)) {
+		return
+	}
+
+	try {
+		const vuePackageJson = require.resolve('vue/package.json', { paths: [projectRoot] })
+		const vueDir = path.dirname(vuePackageJson)
+		const relativePath = vueAlias.replace(/^vue[/\\]/, '')
+		const absolutePath = path.join(vueDir, relativePath)
+
+		if (fs.existsSync(absolutePath)) {
+			alias['vue$'] = absolutePath
+		}
+	} catch (err) {
+		// keep vue-cli defaults when the project has no vue dependency yet
+	}
 }
