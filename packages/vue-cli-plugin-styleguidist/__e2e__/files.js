@@ -13,6 +13,10 @@ beforeAll(() => {
 
 async function createAndInstall(name, options) {
 	const project = await create(name, options, cwd, false)
+	const pkg = JSON.parse(await project.read('package.json'))
+	pkg.devDependencies = pkg.devDependencies || {}
+	pkg.devDependencies['vue-cli-plugin-styleguidist'] = '*'
+	await project.write('package.json', JSON.stringify(pkg, null, 2))
 	await installWorkspacePlugin(project)
 	return project
 }

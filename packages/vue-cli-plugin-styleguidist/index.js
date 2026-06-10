@@ -1,5 +1,6 @@
 const vsg = require('@ivaninvladimir/vue-stylebook-engine')
-const merge = require('webpack-merge')
+const webpackMergeImport = require('webpack-merge')
+const merge = webpackMergeImport.merge || webpackMergeImport
 const path = require('path')
 const fs = require('fs')
 const configSchemaImport = require('@ivaninvladimir/vue-stylebook-engine/lib/scripts/schemas/config')
@@ -115,7 +116,7 @@ function getStyleguidist(args, api, options) {
 	const cliWebpackConfig = getConfig(api)
 	return styleguidist(
 		sgConf,
-		config => (config.webpackConfig = merge(cliWebpackConfig, userWebpackConfig))
+		config => (config.webpackConfig = merge(cliWebpackConfig, userWebpackConfig || {}))
 	)
 }
 
