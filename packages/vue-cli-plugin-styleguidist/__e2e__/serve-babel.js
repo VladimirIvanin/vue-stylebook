@@ -1,5 +1,6 @@
 const create = require('@vue/cli-test-utils/createTestProject')
 const path = require('path')
+const { installWorkspacePlugin, setupStyleguideEnv } = require('./helpers')
 
 const cwd = path.resolve(__dirname, '../../../test/cli-packages')
 const fs = require('fs')
@@ -18,9 +19,7 @@ async function createAndInstall(name) {
 		cwd,
 		false
 	)
-	// mock install
 	const pkg = JSON.parse(await project.read('package.json'))
-	pkg.devDependencies['vue-cli-plugin-styleguidist'] = '*'
 	pkg.devDependencies['@vue/cli-plugin-babel'] = '*'
 	pkg.devDependencies['@vue/cli-plugin-eslint'] = '*'
 	pkg.devDependencies['babel-eslint'] = '*'
@@ -43,13 +42,8 @@ async function createAndInstall(name) {
 		'babel.config.js',
 		['module.exports = {', "	presets: ['@vue/app']", '}'].join('\n')
 	)
-	const setupCode = await fs.promises.readFile(
-		path.resolve(__dirname, '../__samples__/setupEnv.js'),
-		'utf8'
-	)
-	await project.write('setupEnv.js', setupCode)
-	const styleguideConfig = await project.read('styleguide.config.js')
-	await project.write('styleguide.config.js', `require('./setupEnv')\n${styleguideConfig}`)
+	await installWorkspacePlugin(project)
+	await setupStyleguideEnv(project)
 	return project
 }
 

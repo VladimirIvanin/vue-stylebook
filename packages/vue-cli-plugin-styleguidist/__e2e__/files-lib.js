@@ -1,5 +1,6 @@
 const create = require('@vue/cli-test-utils/createTestProject')
 const path = require('path')
+const { installWorkspacePlugin } = require('./helpers')
 
 const cwd = path.resolve(__dirname, '../../../test/cli-packages')
 const fs = require('fs')
@@ -23,9 +24,8 @@ async function createAndInstall(name, options) {
 			vue: '^3.0.0'
 		}
 	}
-	// mock install
-	updatedPkges.devDependencies['vue-cli-plugin-styleguidist'] = '*'
 	await project.write('package.json', JSON.stringify(updatedPkges, null, 2))
+	await installWorkspacePlugin(project)
 	return project
 }
 

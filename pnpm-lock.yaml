@@ -5,6 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  js-yaml@>=4.0.0: 3.14.2
   react-styleguidist>webpack: ^5.95.0
   highlight.js@>=9.0.0 <10.4.1: '>=10.4.1'
   node-forge@<1.0.0: '>=1.0.0'
@@ -6866,6 +6867,9 @@ packages:
   arg@5.0.2:
     resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
 
+  argparse@1.0.10:
+    resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
+
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
@@ -11272,6 +11276,10 @@ packages:
   js-tokens@9.0.1:
     resolution: {integrity: sha512-mxa9E9ITFOt0ban3j6L5MpjwegGz6lBQmM1IJkWeBZGcMxto50+eWdjC/52xDbS2vy0k7vIMK0Fe2wfL9OQSpQ==}
 
+  js-yaml@3.14.2:
+    resolution: {integrity: sha512-PMSmkqxr106Xa156c2M265Z+FTrPl+oxd/rgOQy2tijQeK5TxQ43psO1ZCwhVOSdnn+RzkzlRz/eY4BgJBYVpg==}
+    hasBin: true
+
   js-yaml@4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
     hasBin: true
@@ -14799,6 +14807,9 @@ packages:
 
   split@0.3.3:
     resolution: {integrity: sha512-wD2AeVmxXRBoX44wAycgjVpMhvbwdI2aZjCkvfNcH1YqHQvJVa1duWc73OyVGJUc05fhFaTZeQ/PYsrmyH0JVA==}
+
+  sprintf-js@1.0.3:
+    resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
   sshpk@1.16.1:
     resolution: {integrity: sha512-HXXqVUq7+pcKeLqqZj6mHFUMvXtOJt1uoUx09pFW6011inTMxqI8BA8PM95myrIyyKwdnzjdFjLiE6KBPVtJIg==}
@@ -19395,7 +19406,7 @@ snapshots:
   '@changesets/parse@0.3.16':
     dependencies:
       '@changesets/types': 5.2.1
-      js-yaml: 4.1.0
+      js-yaml: 4.2.0
 
   '@changesets/pre@1.0.14':
     dependencies:
@@ -19660,7 +19671,7 @@ snapshots:
       globals: 13.19.0
       ignore: 5.2.0
       import-fresh: 3.3.0
-      js-yaml: 4.2.0
+      js-yaml: 3.14.2
       minimatch: 9.0.5
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
@@ -19674,7 +19685,7 @@ snapshots:
       globals: 13.19.0
       ignore: 5.2.0
       import-fresh: 3.3.1
-      js-yaml: 4.2.0
+      js-yaml: 3.14.2
       minimatch: 10.2.5
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
@@ -19688,7 +19699,7 @@ snapshots:
       globals: 14.0.0
       ignore: 5.2.0
       import-fresh: 3.3.0
-      js-yaml: 4.2.0
+      js-yaml: 3.14.2
       minimatch: 9.0.5
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
@@ -22818,7 +22829,7 @@ snapshots:
       graphql-tag: 2.11.0(graphql@15.8.0)
       graphql-type-json: 0.3.2(graphql@15.8.0)
       javascript-stringify: 2.0.1
-      js-yaml: 4.2.0
+      js-yaml: 3.14.2
       lodash.merge: 4.6.2
       lowdb: 1.0.0
       lru-cache: 6.0.0
@@ -22858,7 +22869,7 @@ snapshots:
       inquirer: 8.2.4
       isbinaryfile: 4.0.6
       javascript-stringify: 2.0.1
-      js-yaml: 4.2.0
+      js-yaml: 3.14.2
       leven: 3.1.0
       lodash.clonedeep: 4.5.0
       lru-cache: 6.0.0
@@ -23391,7 +23402,7 @@ snapshots:
       css-loader: 2.1.1(webpack@4.46.0)
       esbuild: 0.28.0
       file-loader: 3.0.1(webpack@4.46.0)
-      js-yaml: 4.1.0
+      js-yaml: 4.2.0
       lru-cache: 5.1.1
       mini-css-extract-plugin: 0.6.0(webpack@4.46.0)
       optimize-css-assets-webpack-plugin: 5.0.4(webpack@4.46.0)
@@ -24303,6 +24314,10 @@ snapshots:
       file-type: 4.4.0
 
   arg@5.0.2: {}
+
+  argparse@1.0.10:
+    dependencies:
+      sprintf-js: 1.0.3
 
   argparse@2.0.1: {}
 
@@ -25868,7 +25883,7 @@ snapshots:
     dependencies:
       import-fresh: 2.0.0
       is-directory: 0.3.1
-      js-yaml: 4.2.0
+      js-yaml: 3.14.2
       parse-json: 4.0.0
 
   cosmiconfig@6.0.0:
@@ -25891,7 +25906,7 @@ snapshots:
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
-      js-yaml: 4.2.0
+      js-yaml: 3.14.2
       parse-json: 5.2.0
     optionalDependencies:
       typescript: 4.9.5
@@ -27360,7 +27375,7 @@ snapshots:
       import-fresh: 3.3.0
       imurmurhash: 0.1.4
       is-glob: 4.0.3
-      js-yaml: 4.2.0
+      js-yaml: 3.14.2
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.4.1
       lodash.merge: 4.6.2
@@ -27406,7 +27421,7 @@ snapshots:
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       is-path-inside: 3.0.3
-      js-yaml: 4.2.0
+      js-yaml: 3.14.2
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.4.1
       lodash.merge: 4.6.2
@@ -28558,7 +28573,7 @@ snapshots:
 
   gray-matter@4.0.2:
     dependencies:
-      js-yaml: 4.1.0
+      js-yaml: 4.2.0
       kind-of: 6.0.3
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
@@ -29659,6 +29674,11 @@ snapshots:
 
   js-tokens@9.0.1: {}
 
+  js-yaml@3.14.2:
+    dependencies:
+      argparse: 1.0.10
+      esprima: 4.0.1
+
   js-yaml@4.1.0:
     dependencies:
       argparse: 2.0.1
@@ -30043,7 +30063,7 @@ snapshots:
   load-yaml-file@0.2.0:
     dependencies:
       graceful-fs: 4.2.10
-      js-yaml: 4.1.0
+      js-yaml: 4.2.0
       pify: 4.0.1
       strip-bom: 3.0.0
 
@@ -33561,7 +33581,7 @@ snapshots:
   read-yaml-file@1.1.0:
     dependencies:
       graceful-fs: 4.2.10
-      js-yaml: 4.1.0
+      js-yaml: 4.2.0
       pify: 4.0.1
       strip-bom: 3.0.0
 
@@ -34595,6 +34615,8 @@ snapshots:
     dependencies:
       through: 2.3.8
 
+  sprintf-js@1.0.3: {}
+
   sshpk@1.16.1:
     dependencies:
       asn1: 0.2.4
@@ -34965,7 +34987,7 @@ snapshots:
       css-select-base-adapter: 0.1.1
       css-tree: 1.0.0-alpha.37
       csso: 4.2.0
-      js-yaml: 4.1.0
+      js-yaml: 4.2.0
       mkdirp: 0.5.5
       object.values: 1.1.6
       sax: 1.2.4
