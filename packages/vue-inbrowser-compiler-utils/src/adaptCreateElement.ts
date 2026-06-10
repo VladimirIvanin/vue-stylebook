@@ -102,7 +102,7 @@ const handleVModel = (attrsIn: { [key: string]: any }): void => {
 	Object.keys(attrsIn)
 		.filter(key => key.startsWith('vModel') || key.startsWith('v-model'))
 		.forEach(key => {
-			const valueRef = attrsIn[key]
+			let valueRef = attrsIn[key]
 			const rootKey = key.startsWith('vModel:')
 				? key.slice(7)
 				: key.startsWith('v-model')
