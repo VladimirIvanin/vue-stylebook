@@ -1,5 +1,6 @@
 const vsg = require('@ivaninvladimir/vue-stylebook-engine')
 const webpackMergeImport = require('webpack-merge')
+
 const merge = webpackMergeImport.merge || webpackMergeImport
 const path = require('path')
 const fs = require('fs')
