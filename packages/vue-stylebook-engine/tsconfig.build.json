@@ -1,4 +1,15 @@
 {
 	"extends": "./tsconfig.json",
-	"exclude": ["**/*.spec.*", "**/*.cy.*", "**/node_modules/**", "**/test.vue3.ts"]
+	"compilerOptions": {
+		"types": [],
+		"composite": false,
+		"rootDir": "src"
+	},
+	"include": [
+		"src/scripts/**/*.ts",
+		"src/loaders/**/*.ts",
+		"src/types/**/*.ts",
+		"../../@types/**/*"
+	],
+	"exclude": ["**/*.spec.*", "**/*.cy.*", "**/test.vue3.ts"]
 }
