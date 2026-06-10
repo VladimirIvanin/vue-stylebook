@@ -89,6 +89,16 @@ export default function createServer(
 		delete webpackDevServerConfig.publicPath
 	}
 
+	// sockPath (WDS 3) → webSocketServer (WDS 5)
+	if (webpackDevServerConfig.sockPath !== undefined) {
+		const sockPath = webpackDevServerConfig.sockPath
+		delete webpackDevServerConfig.sockPath
+		webpackDevServerConfig.webSocketServer = {
+			type: 'ws',
+			options: { path: sockPath.startsWith('/') ? sockPath : `/${sockPath}` }
+		}
+	}
+
 	// styleguidist uses react-dev-utils/webpackHotDevClient instead of the built-in client
 	if (webpackConfig.devServer?.client === false) {
 		webpackDevServerConfig.client = false

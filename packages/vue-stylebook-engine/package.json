@@ -1,13 +1,15 @@
 {
   "name": "@ivaninvladimir/vue-stylebook-engine",
   "description": "Vue Stylebook — движок living style guide (на базе vue-styleguidist)",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "homepage": "https://github.com/VladimirIvanin/vue-stylebook",
   "scripts": {
     "compile": "pnpm run compile:babel && pnpm run typings",
     "compile:babel": "babel --delete-dir-on-start src/ --ignore **/__tests__,**/*.spec.* -d lib/ --extensions .js,.ts,.tsx,.jsx",
     "compile:watch": "concurrently \"pnpm compile:babel --watch\" \"pnpm typings --watch\"",
-    "typings": "tsc --emitDeclarationOnly -p ./tsconfig.build.json"
+    "typings": "tsc --emitDeclarationOnly -p ./tsconfig.build.json",
+    "verify:pack": "node ./scripts/verify-pack.js",
+    "prepack": "pnpm run compile && pnpm run verify:pack"
   },
   "repository": {
     "type": "git",
@@ -30,7 +32,8 @@
     "./lib/scripts/schemas/config": {
       "require": "./lib/scripts/schemas/config.js",
       "types": "./lib/scripts/schemas/config.d.ts"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "main": "lib/scripts/index.js",
   "typings": "lib/scripts/index.d.ts",
