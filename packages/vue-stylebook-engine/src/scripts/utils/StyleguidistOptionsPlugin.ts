@@ -3,13 +3,13 @@ import type { Compiler, Compilation, NormalModule } from 'webpack'
 type StyleguidistOptions = Record<string, unknown>
 
 export default class StyleguidistOptionsPlugin {
-	options: StyleguidistOptions
+	public options: StyleguidistOptions
 
-	constructor(options: StyleguidistOptions) {
+	public constructor(options: StyleguidistOptions) {
 		this.options = options
 	}
 
-	apply(compiler: Compiler) {
+	public apply(compiler: Compiler) {
 		const pluginFunc = (context: any, module: NormalModule) => {
 			if (!module.resource) {
 				return

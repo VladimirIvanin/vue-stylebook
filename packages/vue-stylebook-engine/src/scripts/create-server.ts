@@ -28,7 +28,9 @@ export default function createServer(
 					ignored: /node_modules/
 				}
 			},
-			stats: webpackConfig.stats || false,
+			devMiddleware: {
+				stats: webpackConfig.stats || false
+			},
 			setupMiddlewares: (middlewares, devServer) => {
 				if (!devServer.app) {
 					return middlewares
@@ -71,6 +73,15 @@ export default function createServer(
 			  } as any)
 			: {}
 	) as any
+
+	// webpack-dev-server 5 moved stats under devMiddleware
+	if (webpackDevServerConfig.stats !== undefined) {
+		webpackDevServerConfig.devMiddleware = {
+			...webpackDevServerConfig.devMiddleware,
+			stats: webpackDevServerConfig.stats
+		}
+		delete webpackDevServerConfig.stats
+	}
 
 	const webpack: typeof webpackNormal = process.env.VSG_WEBPACK_PATH
 		? require(process.env.VSG_WEBPACK_PATH)

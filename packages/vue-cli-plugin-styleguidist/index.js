@@ -150,16 +150,22 @@ function getConfig(api) {
 	conf.plugins.delete('hmr')
 
 	// styleguidist provides its own html plugin that outputs index.html
-	// this avoid conflicts with the html-webpack-plugin on webpack 5
-  const webpackVersion = require('webpack').version
-	if (webpackVersion.startsWith('5.')) {
-		conf.plugins.delete('html')
-	} else if (webpackVersion.startsWith('4.')){
-    conf.plugins.delete('preload')
-    conf.plugins.delete('prefetch')
-  }
+	// always remove vue-cli's html-webpack-plugin to avoid conflicts
+	conf.plugins.delete('html')
+
+	const webpackPath = process.env.VSG_WEBPACK_PATH || require.resolve('webpack')
+	const webpackVersion = require(webpackPath).version
+	if (webpackVersion.startsWith('4.')) {
+		conf.plugins.delete('preload')
+		conf.plugins.delete('prefetch')
+	}
 
 	// remove the double compiled successfully message
 	conf.plugins.delete('friendly-errors')
-	return api.resolveWebpackConfig(conf)
+	const webpackConfig = api.resolveWebpackConfig(conf)
+	// safety net: vue-cli html plugin must not coexist with MiniHtmlWebpackPlugin
+	webpackConfig.plugins = webpackConfig.plugins.filter(
+		plugin => plugin.constructor.name !== 'HtmlWebpackPlugin'
+	)
+	return webpackConfig
 }
