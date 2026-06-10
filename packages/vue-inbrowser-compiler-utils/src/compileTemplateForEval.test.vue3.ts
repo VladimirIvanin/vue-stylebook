@@ -12,12 +12,12 @@ describe('compileTemplateForEval', () => {
 		compileTemplateForEval(compiledComponent)
 		expect(compiledComponent.script).toMatchInlineSnapshot(`
 			"
-			const Vue = require(\\"vue\\");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
+			const Vue = require("vue");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
 			const __sfc__ = (function() {return { data: 1 }})()
 			  __sfc__.render = function() {const { resolveComponent: _resolveComponent, openBlock: _openBlock, createBlock: _createBlock } = Vue
 
 			return function render(_ctx, _cache, $props, $setup, $data, $options) {
-			  const _component_MyButton = _resolveComponent(\\"MyButton\\")
+			  const _component_MyButton = _resolveComponent("MyButton")
 
 			  return (_openBlock(), _createBlock(_component_MyButton))
 			}}
@@ -40,15 +40,15 @@ describe('compileTemplateForEval', () => {
 		compileTemplateForEval(compiledComponent)
 		expect(compiledComponent.script).toMatchInlineSnapshot(`
 			"
-			const Vue = require(\\"vue\\");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
+			const Vue = require("vue");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
 			const __sfc__ = (function() {return { data: 1 }})()
 			  __sfc__.render = function() {const { createElementVNode: _createElementVNode, Fragment: _Fragment, openBlock: _openBlock, createElementBlock: _createElementBlock } = Vue
 
-			const _hoisted_1 = /*#__PURE__*/_createElementVNode(\\"svg\\", null, [
-			  /*#__PURE__*/_createElementVNode(\\"path\\")
+			const _hoisted_1 = /*#__PURE__*/_createElementVNode("svg", null, [
+			  /*#__PURE__*/_createElementVNode("path")
 			], -1 /* HOISTED */)
-			const _hoisted_2 = /*#__PURE__*/_createElementVNode(\\"div\\", { class: \\"test\\" }, \\"T\\", -1 /* HOISTED */)
-			const _hoisted_3 = /*#__PURE__*/_createElementVNode(\\"div\\", { class: \\"test2\\" }, \\"T2\\", -1 /* HOISTED */)
+			const _hoisted_2 = /*#__PURE__*/_createElementVNode("div", { class: "test" }, "T", -1 /* HOISTED */)
+			const _hoisted_3 = /*#__PURE__*/_createElementVNode("div", { class: "test2" }, "T2", -1 /* HOISTED */)
 
 			return function render(_ctx, _cache, $props, $setup, $data, $options) {
 			  return (_openBlock(), _createElementBlock(_Fragment, null, [
@@ -58,7 +58,7 @@ describe('compileTemplateForEval', () => {
 			  ], 64 /* STABLE_FRAGMENT */))
 			}}
 
-			_pushScopeId(\\"data-v-123456\\")
+			_pushScopeId("data-v-123456")
 			__sfc__.render = __sfc__.render()
 			_popScopeId()
 			return __sfc__"
@@ -81,12 +81,12 @@ describe('compileTemplateForEvalSetup', () => {
 		</template>`)
 		expect(compiledComponent.script).toMatchInlineSnapshot(`
 			"
-			const Vue = require(\\"vue\\");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
+			const Vue = require("vue");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
 			const __sfc__ = (function() {return { data: 1 }})()
 			  __sfc__.render = function() {const { openBlock: _openBlock, createBlock: _createBlock } = Vue
 
 			return function render(_ctx, _cache, $props, $setup, $data, $options) {
-			  return (_openBlock(), _createBlock($setup[\\"MyButton\\"]))
+			  return (_openBlock(), _createBlock($setup["MyButton"]))
 			}}
 
 
@@ -116,12 +116,12 @@ describe('compileTemplateForEvalSetup', () => {
     </style>`)
 		expect(compiledComponent.script).toMatchInlineSnapshot(`
 			"
-			const Vue = require(\\"vue\\");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
+			const Vue = require("vue");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
 			const __sfc__ = (function() {return { data: 1 }})()
 			  __sfc__.render = function() {const { createElementVNode: _createElementVNode, Fragment: _Fragment, openBlock: _openBlock, createElementBlock: _createElementBlock } = Vue
 
-			const _hoisted_1 = /*#__PURE__*/_createElementVNode(\\"div\\", { class: \\"test\\" }, \\"T\\", -1 /* HOISTED */)
-			const _hoisted_2 = /*#__PURE__*/_createElementVNode(\\"div\\", { class: \\"test2\\" }, \\"T2\\", -1 /* HOISTED */)
+			const _hoisted_1 = /*#__PURE__*/_createElementVNode("div", { class: "test" }, "T", -1 /* HOISTED */)
+			const _hoisted_2 = /*#__PURE__*/_createElementVNode("div", { class: "test2" }, "T2", -1 /* HOISTED */)
 
 			return function render(_ctx, _cache, $props, $setup, $data, $options) {
 			  return (_openBlock(), _createElementBlock(_Fragment, null, [
@@ -130,7 +130,7 @@ describe('compileTemplateForEvalSetup', () => {
 			  ], 64 /* STABLE_FRAGMENT */))
 			}}
 
-			_pushScopeId(\\"data-v-123456\\")
+			_pushScopeId("data-v-123456")
 			__sfc__.render = __sfc__.render()
 			_popScopeId()
 			return __sfc__"

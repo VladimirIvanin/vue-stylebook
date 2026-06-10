@@ -20,9 +20,6 @@ export default function createServer(
 			hot: true,
 			host: config.serverHost,
 			port: config.serverPort,
-			client: {
-				logging: 'none'
-			},
 			watchFiles: {
 				options: {
 					ignored: /node_modules/
@@ -81,6 +78,20 @@ export default function createServer(
 			stats: webpackDevServerConfig.stats
 		}
 		delete webpackDevServerConfig.stats
+	}
+
+	// webpack-dev-server 5 moved publicPath under devMiddleware
+	if (webpackDevServerConfig.publicPath !== undefined) {
+		webpackDevServerConfig.devMiddleware = {
+			...webpackDevServerConfig.devMiddleware,
+			publicPath: webpackDevServerConfig.publicPath
+		}
+		delete webpackDevServerConfig.publicPath
+	}
+
+	// styleguidist uses react-dev-utils/webpackHotDevClient instead of the built-in client
+	if (webpackConfig.devServer?.client === false) {
+		webpackDevServerConfig.client = false
 	}
 
 	const webpack: typeof webpackNormal = process.env.VSG_WEBPACK_PATH

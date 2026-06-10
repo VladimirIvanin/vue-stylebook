@@ -113,6 +113,7 @@ export function commandBuild(config: SanitizedStyleguidistConfig): Compiler {
 
 export function commandServer(config: SanitizedStyleguidistConfig, open?: boolean): ServerInfo {
 	let bar: ProgressBar | undefined
+	let isFirstCompile = true
 
 	const ProgressPlugin: typeof ProgressPluginNormal = process.env.VSG_WEBPACK_PATH
 		? // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -132,46 +133,42 @@ export function commandServer(config: SanitizedStyleguidistConfig, open?: boolea
 	const { app, compiler } = server(config, (err: Error) => {
 		if (err) {
 			console.error(err)
-		} else {
-			const devServerOptions = compiler.options.devServer as
-				| { server?: { type?: string }; https?: boolean }
-				| undefined
-			const isHttps =
-				devServerOptions?.server?.type === 'https' || devServerOptions?.https === true
-			const urls = webpackDevServerUtils.prepareUrls(
-				isHttps ? 'https' : 'http',
-				config.serverHost,
-				config.serverPort
-			)
-
-			if (config.printServerInstructions) {
-				config.printServerInstructions(config, { isHttps: !!isHttps })
-			} else {
-				printServerInstructions(
-					urls,
-					compiler.options.devServer &&
-						(compiler.options.devServer as { publicPath?: string }).publicPath
-						? (compiler.options.devServer as { publicPath: string }).publicPath.replace(
-								/^\//,
-								''
-						  )
-						: ''
-				)
-			}
-
-			if (bar) {
-				bar.start(1, 0)
-			}
-
-			if (open) {
-				openBrowser(urls.localUrlForBrowser)
-			}
+		} else if (bar) {
+			bar.start(1, 0)
 		}
 	})
 
 	verbose('Webpack config:', compiler.options)
 
-	// Custom error reporting
+	const printServerInstructionsAfterCompile = () => {
+		const devServerOptions = compiler.options.devServer as
+			| {
+					server?: { type?: string }
+					https?: boolean
+					publicPath?: string
+					devMiddleware?: { publicPath?: string }
+			  }
+			| undefined
+		const isHttps =
+			devServerOptions?.server?.type === 'https' || devServerOptions?.https === true
+		const urls = webpackDevServerUtils.prepareUrls(
+			isHttps ? 'https' : 'http',
+			config.serverHost,
+			config.serverPort
+		)
+
+		if (config.printServerInstructions) {
+			config.printServerInstructions(config, { isHttps: !!isHttps })
+		} else {
+			printServerInstructions(urls, getDevServerPublicPathSuffix(devServerOptions))
+		}
+
+		if (open) {
+			openBrowser(urls.localUrlForBrowser)
+		}
+	}
+
+	// Custom error reporting and server instructions after the first successful compile
 	compiler.hooks.done.tap('vsgErrorDone', function (stats: Stats) {
 		if (bar) {
 			bar.stop()
@@ -187,11 +184,18 @@ export function commandServer(config: SanitizedStyleguidistConfig, open?: boolea
 			}) as any
 		)
 
-		if (!messages.errors.length && !messages.warnings.length) {
-			printStatus('Compiled successfully!', 'success')
-		}
+		const hasErrors = printAllErrorsAndWarnings(messages, stats.compilation as any)
 
-		printAllErrorsAndWarnings(messages, stats.compilation as any)
+		if (!hasErrors) {
+			if (isFirstCompile) {
+				isFirstCompile = false
+				printServerInstructionsAfterCompile()
+			}
+
+			if (!messages.errors.length && !messages.warnings.length) {
+				printStatus('Compiled successfully!', 'success')
+			}
+		}
 	})
 
 	// kill ghosted threads on exit
@@ -233,6 +237,18 @@ export function commandHelp() {
 			'    ' + kleur.yellow('--verbose') + '       Print debug information'
 		].join('\n')
 	)
+}
+
+function getDevServerPublicPathSuffix(
+	devServer?: { publicPath?: string; devMiddleware?: { publicPath?: string } }
+): string {
+	const publicPath = devServer?.devMiddleware?.publicPath ?? devServer?.publicPath ?? '/'
+
+	if (typeof publicPath !== 'string' || publicPath === '/') {
+		return ''
+	}
+
+	return publicPath.replace(/^\//, '')
 }
 
 /**
