@@ -1,6 +1,6 @@
 {
   "name": "@ivaninvladimir/vue-stylebook",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "CLI vue-stylebook: обёртка над движком документации компонентов (npx / npm exec)",
   "private": false,
   "license": "MIT",
