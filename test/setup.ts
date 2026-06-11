@@ -1,11 +1,10 @@
-const rootFolder = process.cwd()
+const rootFolder = process.cwd().replace(/\\/g, '/')
 
 expect.addSnapshotSerializer({
 	serialize(val) {
-		// `printer` is a function that serializes a value using existing plugins.
-		return val.replaceAll(rootFolder, '')
+		return val.replace(/\\/g, '/').replaceAll(rootFolder, '')
 	},
 	test(val) {
-		return typeof val === 'string' && val.includes(rootFolder)
+		return typeof val === 'string' && val.replace(/\\/g, '/').includes(rootFolder)
 	}
 })

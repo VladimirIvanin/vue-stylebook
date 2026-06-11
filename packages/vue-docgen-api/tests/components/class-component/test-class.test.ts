@@ -27,7 +27,7 @@ describe('tests button', () => {
 			      "description": "Some property which should be shown on a doc page",
 			      "mixin": {
 			        "name": "MyMixin",
-			        "path": "..\\..\\mixins\\ts.ts",
+			        "path": "../../mixins/ts.ts",
 			      },
 			      "name": "someProp",
 			      "tags": {},
@@ -38,8 +38,8 @@ describe('tests button', () => {
 			  ],
 			  "slots": undefined,
 			  "sourceFiles": [
-			    \\packages\\vue-docgen-api\\tests\\components\\class-component\\Test.vue,
-			    \\packages\\vue-docgen-api\\tests\\mixins\\ts.ts,
+			    /packages/vue-docgen-api/tests/components/class-component/Test.vue,
+			    /packages/vue-docgen-api/tests/mixins/ts.ts,
 			  ],
 			  "tags": {},
 			}

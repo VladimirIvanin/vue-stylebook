@@ -210,7 +210,7 @@ exports[`test a vuetify component > should match the snapshot 1`] = `
   ],
   "slots": undefined,
   "sourceFiles": [
-    \\packages\\vue-docgen-api\\tests\\components\\vuetify\\VTextField.js,
+    /packages/vue-docgen-api/tests/components/vuetify/VTextField.js,
   ],
   "tags": {},
 }

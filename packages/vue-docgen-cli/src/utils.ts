@@ -5,6 +5,10 @@ import prettier from 'prettier'
 
 const mkdirp = promisify(fs.mkdir)
 
+function toPosixPath(p: string): string {
+	return p.replace(/\\/g, '/')
+}
+
 /**
  * Prettify then save a markdown content
  * If the needed directory does not exist, create it
@@ -49,7 +53,7 @@ export function getDocMap(
 		const docFilePath = normalizePaths(getDocFileName(path.join(root, f)))
 
 		docFilePath.forEach(doc => {
-			docMap[path.relative(root, doc)] = f
+			docMap[toPosixPath(path.relative(root, doc))] = f
 		})
 	})
 	return docMap
@@ -82,7 +86,7 @@ export function resolveRequiresFromTag(requires: any[] | undefined, compDirName:
 				p.split(',').map((pMin: string) => {
 					const pMinTrimmed = pMin.trim().replace(/^['"]/, '').replace(/['"]$/, '')
 					if (pMinTrimmed.length === 0) return
-					acc.push(path.join(compDirName, pMinTrimmed))
+					acc.push(toPosixPath(path.join(compDirName, pMinTrimmed)))
 				})
 			})
 

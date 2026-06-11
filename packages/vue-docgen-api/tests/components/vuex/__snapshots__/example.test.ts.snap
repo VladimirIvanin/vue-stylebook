@@ -72,7 +72,7 @@ exports[`test example vuex > should match the snapshot 1`] = `
   "props": undefined,
   "slots": undefined,
   "sourceFiles": [
-    \\packages\\vue-docgen-api\\tests\\components\\vuex\\example.vue,
+    /packages/vue-docgen-api/tests/components/vuex/example.vue,
   ],
   "tags": {},
 }

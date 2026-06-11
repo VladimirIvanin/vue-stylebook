@@ -104,7 +104,9 @@ async function enrichDocumentation(
 						const originVar = {
 							[originObject]: {
 								name: '-',
-								path: path.relative(path.dirname(documentation.componentFullfilePath), fullFilePath)
+								path: path
+									.relative(path.dirname(documentation.componentFullfilePath), fullFilePath)
+									.replace(/\\/g, '/')
 							}
 						}
 

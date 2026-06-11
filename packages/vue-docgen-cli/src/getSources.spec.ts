@@ -64,10 +64,10 @@ describe('getSources', () => {
 		const { docMap } = await getSources(COMPONENTS_GLOB, [], 'here', getDocFileName, mockParse)
 		expect(docMap).toMatchInlineSnapshot(`
 			{
-			  "..\\path\\to\\Readme.md+here\\src\\components\\Button\\Button.vue": "src/components/Button/Button.vue",
-			  "..\\path\\to\\Readme.md+here\\src\\components\\CounterButton\\CounterButton.vue": "src/components/CounterButton/CounterButton.vue",
-			  "..\\path\\to\\Readme.md+here\\src\\components\\Input\\Input.vue": "src/components/Input/Input.vue",
-			  "..\\path\\to\\Readme.md+here\\src\\components\\PushButton\\PushButton.vue": "src/components/PushButton/PushButton.vue",
+			  "../path/to/Readme.md+here/src/components/Button/Button.vue": "src/components/Button/Button.vue",
+			  "../path/to/Readme.md+here/src/components/CounterButton/CounterButton.vue": "src/components/CounterButton/CounterButton.vue",
+			  "../path/to/Readme.md+here/src/components/Input/Input.vue": "src/components/Input/Input.vue",
+			  "../path/to/Readme.md+here/src/components/PushButton/PushButton.vue": "src/components/PushButton/PushButton.vue",
 			}
 		`)
 	})

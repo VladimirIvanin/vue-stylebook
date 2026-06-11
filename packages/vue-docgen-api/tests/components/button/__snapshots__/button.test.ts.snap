@@ -112,7 +112,7 @@ exports[`tests button > should match the snapshot 1`] = `
     {
       "mixin": {
         "name": "multiMixin",
-        "path": "..\\..\\mixins\\multiMixin.js",
+        "path": "../../mixins/multiMixin.js",
       },
       "name": "shouldBe",
       "type": {
@@ -156,7 +156,7 @@ exports[`tests button > should match the snapshot 1`] = `
       "description": "Example prop",
       "mixin": {
         "name": "another",
-        "path": "..\\..\\mixins\\another\\index.js",
+        "path": "../../mixins/another/index.js",
       },
       "name": "propsAnother",
       "type": {
@@ -302,12 +302,12 @@ a factory function",
     },
   ],
   "sourceFiles": [
-    \\packages\\vue-docgen-api\\tests\\components\\button\\Button.vue,
-    \\packages\\vue-docgen-api\\tests\\components\\button\\colorMixin.js,
-    \\packages\\vue-docgen-api\\tests\\components\\button\\genericMixin.js,
-    \\packages\\vue-docgen-api\\tests\\components\\button\\namedMixin.js,
-    \\packages\\vue-docgen-api\\tests\\mixins\\another\\index.js,
-    \\packages\\vue-docgen-api\\tests\\mixins\\multiMixin.js,
+    /packages/vue-docgen-api/tests/components/button/Button.vue,
+    /packages/vue-docgen-api/tests/components/button/colorMixin.js,
+    /packages/vue-docgen-api/tests/components/button/genericMixin.js,
+    /packages/vue-docgen-api/tests/components/button/namedMixin.js,
+    /packages/vue-docgen-api/tests/mixins/another/index.js,
+    /packages/vue-docgen-api/tests/mixins/multiMixin.js,
   ],
   "tags": {
     "author": [
