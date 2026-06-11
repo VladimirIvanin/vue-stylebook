@@ -132,8 +132,8 @@ exports[`tests button > should match the snapshot 1`] = `
       "type": {
         "func": true,
         "name": "PropTypes.shape({
-  color: PropTypes.string,
-  fontSize: PropTypes.number
+    color: PropTypes.string,
+    fontSize: PropTypes.number
 })",
       },
     },
@@ -234,7 +234,7 @@ a factory function",
       "defaultValue": {
         "func": true,
         "value": "() => {
-  return 'foo'
+    return 'foo'
 }",
       },
       "description": "Function default",

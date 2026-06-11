@@ -245,8 +245,8 @@ describe('tests button', () => {
 		it('parses shapes', () => {
 			expect(getTestDescriptor(docButton.props, 'shape').type).toMatchObject({
 				name: `PropTypes.shape({
-  color: PropTypes.string,
-  fontSize: PropTypes.number
+    color: PropTypes.string,
+    fontSize: PropTypes.number
 })`,
 				func: true
 			})
