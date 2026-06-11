@@ -2,7 +2,11 @@
 import type { LoaderContext } from 'webpack'
 import { RawSourceMap } from 'source-map'
 
-export default function (this: LoaderContext<unknown>, source: string | Buffer, map?: RawSourceMap) {
+export default function (
+	this: LoaderContext<unknown>,
+	source: string | Buffer,
+	map?: RawSourceMap
+) {
 	const cb = this.async()
 	if (cb) {
 		cb(

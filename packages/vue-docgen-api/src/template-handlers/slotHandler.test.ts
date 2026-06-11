@@ -143,51 +143,50 @@ describe('slotHandler', () => {
 				description: 'a slot named woof'
 			}
 		])
-
 	})
 
 	it('should not fail on slots', () => {
-			const ast = parse(
-				[
-					'<div>', //
-					'  <!-- test -->', //
-					'  <slot />',
-					'</div>'
-				].join('\n')
-			)
-			traverse(ast.children[0], doc, [slotHandler], ast.children, { functional: false })
-			const slots = doc.toObject().slots || []
-			expect(slots.length).toBe(1)
+		const ast = parse(
+			[
+				'<div>', //
+				'  <!-- test -->', //
+				'  <slot />',
+				'</div>'
+			].join('\n')
+		)
+		traverse(ast.children[0], doc, [slotHandler], ast.children, { functional: false })
+		const slots = doc.toObject().slots || []
+		expect(slots.length).toBe(1)
 	})
 
 	it('should not fail on non-commented slots', () => {
-			const ast = parse(
-				[
-					'<div>', //
-					'  <slot />',
-					'</div>'
-				].join('\n')
-			)
-			traverse(ast.children[0], doc, [slotHandler], ast.children, { functional: false })
-			const slots = doc.toObject().slots || []
-			expect(slots.length).toBe(1)
+		const ast = parse(
+			[
+				'<div>', //
+				'  <slot />',
+				'</div>'
+			].join('\n')
+		)
+		traverse(ast.children[0], doc, [slotHandler], ast.children, { functional: false })
+		const slots = doc.toObject().slots || []
+		expect(slots.length).toBe(1)
 	})
 
 	it('should extract tags from a slot', () => {
-			const ast = parse(
-				[
-					'<div>', //
-					'	<!--',
-					'		@slot',
-					'		@ignore',
-					'    -->', //
-					'  <slot />',
-					'</div>'
-				].join('\n')
-			)
-			traverse(ast.children[0], doc, [slotHandler], ast.children, { functional: false })
-			const slots = doc.toObject().slots || []
-			expect(slots[0].tags).toMatchInlineSnapshot(`
+		const ast = parse(
+			[
+				'<div>', //
+				'	<!--',
+				'		@slot',
+				'		@ignore',
+				'    -->', //
+				'  <slot />',
+				'</div>'
+			].join('\n')
+		)
+		traverse(ast.children[0], doc, [slotHandler], ast.children, { functional: false })
+		const slots = doc.toObject().slots || []
+		expect(slots[0].tags).toMatchInlineSnapshot(`
 				{
 				  "ignore": [
 				    {
@@ -289,7 +288,7 @@ describe('slotHandler', () => {
 			])
 		})
 
-    it('should show documented bindings even if they are not explicit', () => {
+		it('should show documented bindings even if they are not explicit', () => {
 			const ast = parse(
 				[
 					'<div title="a list of item with a scope" >',

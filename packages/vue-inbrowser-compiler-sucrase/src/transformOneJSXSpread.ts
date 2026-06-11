@@ -1,8 +1,13 @@
-export default function transformOneJSXSpread(node: any, code: string, offset: number, config: { objectAssign?: string } ) {
+export default function transformOneJSXSpread(
+	node: any,
+	code: string,
+	offset: number,
+	config: { objectAssign?: string }
+) {
 	const start = node.start + offset
 	const end = node.end + offset
 
-  const objectAssign = config.objectAssign || 'Object.assign'
+	const objectAssign = config.objectAssign || 'Object.assign'
 
 	const statement = code.substring(start, end)
 	const transpiledStatement = `<${node.name.name} {...${objectAssign}(${node.attributes
@@ -13,7 +18,10 @@ export default function transformOneJSXSpread(node: any, code: string, offset: n
 				return `{${attrNode.name.name}:${
 					attrNode.value.type.endsWith('Literal')
 						? JSON.stringify(attrNode.value.value)
-						: code.substring(attrNode.value.expression.start + offset, attrNode.value.expression.end + offset)
+						: code.substring(
+								attrNode.value.expression.start + offset,
+								attrNode.value.expression.end + offset
+						  )
 				}}`
 			}
 		})

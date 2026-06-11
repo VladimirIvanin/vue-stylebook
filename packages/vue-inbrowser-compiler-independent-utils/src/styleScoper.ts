@@ -29,17 +29,21 @@ export default function scoper(css: string, suffix: string) {
 			})
 		}
 
-		selector = selector.split(/\s+/).filter(part => !!part).map(part => {
-			// combinators
-			if (/^[>~+]$/.test(part)) {
-				return part
-			}
+		selector = selector
+			.split(/\s+/)
+			.filter(part => !!part)
+			.map(part => {
+				// combinators
+				if (/^[>~+]$/.test(part)) {
+					return part
+				}
 
-			// deal with other pseudo selectors
-			const [main, ...rest] = part.split(/:{1,2}/)
-			let pseudo = rest.map(piece => `:${piece}`).join('')
-			return main + suffix + pseudo
-		}).join(' ')
+				// deal with other pseudo selectors
+				const [main, ...rest] = part.split(/:{1,2}/)
+				let pseudo = rest.map(piece => `:${piece}`).join('')
+				return main + suffix + pseudo
+			})
+			.join(' ')
 
 		return selector + ' ' + after
 	})

@@ -50,9 +50,7 @@ export default async function (errorSquigglesClassPrefix?: string) {
 				const templateCode = code.slice(scriptCode.length)
 				const templateHighlighted = prismHighlight(templateCode, languages['html'], lang)
 
-				return (
-					renderLines(scriptCodeHighlighted + templateHighlighted)
-				)
+				return renderLines(scriptCodeHighlighted + templateHighlighted)
 			}
 		} else if (['html', 'vue-sfc'].includes(lang)) {
 			// render vue SFC component format
@@ -69,7 +67,7 @@ export default async function (errorSquigglesClassPrefix?: string) {
 
 				const highlightedScript = comp.script
 					? htmlHighlighted.replace(
-            getReplacedTokenRE(comp.script),
+							getReplacedTokenRE(comp.script),
 							prismHighlight(
 								comp.script.content,
 								languages[comp.script.lang || 'ts'],
@@ -80,9 +78,7 @@ export default async function (errorSquigglesClassPrefix?: string) {
 
 				const highlightedScriptSetup = comp.scriptSetup
 					? highlightedScript.replace(
-							
-								getReplacedTokenRE(comp.scriptSetup)
-							,
+							getReplacedTokenRE(comp.scriptSetup),
 							prismHighlight(comp.scriptSetup.content, languages.ts, 'ts')
 					  )
 					: highlightedScript
@@ -98,13 +94,14 @@ export default async function (errorSquigglesClassPrefix?: string) {
 		}
 	}
 
-  function addSquigglesManagement(highlight: (code:string) => string) {
-    return (code:string, errorLoc?: VueAllPrismError) => getSquiggles(errorLoc, errorSquigglesClassPrefix) + highlight(code)
-  }
+	function addSquigglesManagement(highlight: (code: string) => string) {
+		return (code: string, errorLoc?: VueAllPrismError) =>
+			getSquiggles(errorLoc, errorSquigglesClassPrefix) + highlight(code)
+	}
 
-  return (...args:Parameters<typeof getHighlighter>) => addSquigglesManagement(getHighlighter(...args))
+	return (...args: Parameters<typeof getHighlighter>) =>
+		addSquigglesManagement(getHighlighter(...args))
 }
-
 
 function renderLines(code: string) {
 	return `<span class="line">${code.replace(/\n/g, "</span>\n<span class='line'>")}</span>`
@@ -122,10 +119,7 @@ export interface VuePrismError {
 
 export type VueAllPrismError = VuePrismError | VuePrismLocation
 
-function getSquiggles(
-	errorLoc?: VueAllPrismError,
-	errorSquigglesClassPrefix?: string,
-) {
+function getSquiggles(errorLoc?: VueAllPrismError, errorSquigglesClassPrefix?: string) {
 	if (!errorLoc) return ''
 	const errorWidth = 'end' in errorLoc ? errorLoc.end.column - errorLoc.start.column + 1 : 2
 	let { line, column } = 'start' in errorLoc ? errorLoc.start : errorLoc
@@ -202,6 +196,10 @@ function getSpacer(s: any) {
 	return s.setup ? 'setup' : ' '
 }
 
-function getReplacedTokenRE(s: any){
-  return new RegExp(`<span class="token script"><span class="token language-javascript">${getSpacer(s)}</span></span>`)
+function getReplacedTokenRE(s: any) {
+	return new RegExp(
+		`<span class="token script"><span class="token language-javascript">${getSpacer(
+			s
+		)}</span></span>`
+	)
 }

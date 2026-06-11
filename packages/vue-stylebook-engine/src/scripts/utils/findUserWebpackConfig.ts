@@ -15,7 +15,7 @@ export default function findUserWebpackConfig({ rootDir }: { rootDir: string }):
 	// Check in the root folder
 	for (const configFile of USER_WEBPACK_CONFIG_NAMES) {
 		try {
-			return require.resolve(configFile, {paths: [rootDir, process.cwd()]})
+			return require.resolve(configFile, { paths: [rootDir, process.cwd()] })
 		} catch (e) {
 			// if file not found, eat the error
 		}

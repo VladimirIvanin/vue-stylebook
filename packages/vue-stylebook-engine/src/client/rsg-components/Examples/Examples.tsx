@@ -10,12 +10,14 @@ interface MdxExample {
 	component: any
 }
 
-type Example = {
-	type: 'code' | 'markdown'
-	content?: any
-	evalInContext?: any
-	settings?: any
-} | MdxExample
+type Example =
+	| {
+			type: 'code' | 'markdown'
+			content?: any
+			evalInContext?: any
+			settings?: any
+	  }
+	| MdxExample
 
 export default function Examples({
 	examples,
@@ -58,7 +60,7 @@ export default function Examples({
 	)
 }
 
-(Examples as any).propTypes = {
+;(Examples as any).propTypes = {
 	examples: PropTypes.array.isRequired,
 	name: PropTypes.string.isRequired,
 	exampleMode: PropTypes.string.isRequired

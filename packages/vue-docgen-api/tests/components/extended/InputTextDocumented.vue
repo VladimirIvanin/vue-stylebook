@@ -13,7 +13,7 @@ import { deep } from '../../mixins'
  * Description InputTextDocumented
  */
 export default {
-  extends: BaseIgnored,
+	extends: BaseIgnored,
 	mixins: [multi, other, deep],
 	props: {
 		placeholder: {

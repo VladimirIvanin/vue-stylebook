@@ -9,6 +9,6 @@ module.exports.Vue2 = function () {}
 module.exports.compileTemplate = compileTemplate
 module.exports.compileScript = compileScript
 module.exports.parseComponent = (source, opts) => {
-  const { descriptor } = parse(source, opts)
-  return descriptor
+	const { descriptor } = parse(source, opts)
+	return descriptor
 }

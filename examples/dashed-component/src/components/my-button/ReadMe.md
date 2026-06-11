@@ -4,9 +4,7 @@ By default it will take the dashed notation
 
 ```vue
 <template>
-  <my-button>
-    Push Me
-  </my-button>
+  <my-button> Push Me </my-button>
 </template>
 
 <script>

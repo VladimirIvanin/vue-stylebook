@@ -11,7 +11,7 @@ describe('VueInbrowserPrismjsHighlighter', () => {
 		highlight = await getHighlighter('error-squiggles')
 	})
 
-  it('highlights examples with both a script and a script setup', () => {
+	it('highlights examples with both a script and a script setup', () => {
 		const code = dedent`<script lang="ts">
                         interface A {
                           a: number

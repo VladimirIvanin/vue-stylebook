@@ -16,7 +16,7 @@ describe('displayNameHandler', () => {
 
 	beforeEach(() => {
 		documentation = new Documentation('dummy/path')
-    vi.spyOn(documentation, 'set')
+		vi.spyOn(documentation, 'set')
 	})
 
 	it('should return the right component name', () => {

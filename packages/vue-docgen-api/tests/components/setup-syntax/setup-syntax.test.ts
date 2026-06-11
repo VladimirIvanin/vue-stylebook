@@ -98,13 +98,13 @@ describe('setup syntactic sugar', () => {
 			})
 		})
 
-    describe('expose', () => {
-      it('should return a doc object containing expose', () => {
-        expect(doc.expose).toHaveLength(1)
-      })
+		describe('expose', () => {
+			it('should return a doc object containing expose', () => {
+				expect(doc.expose).toHaveLength(1)
+			})
 
-      it('should match the snapshot', () => {
-        expect(doc.expose).toMatchInlineSnapshot(`
+			it('should match the snapshot', () => {
+				expect(doc.expose).toMatchInlineSnapshot(`
           [
             {
               "description": "position of the dash offset",
@@ -112,7 +112,7 @@ describe('setup syntactic sugar', () => {
             },
           ]
         `)
-      })
-    })
+			})
+		})
 	})
 })

@@ -12,9 +12,9 @@ import { typed } from '@mixins/index'
 export default {
 	mixins: [typed],
 	props: {
-    a: {
-      default: 'xxx'
-    }
-  }
+		a: {
+			default: 'xxx'
+		}
+	}
 }
 </script>

@@ -6,15 +6,14 @@
 </template>
 
 <script lang="ts">
-
 interface Blob {
-  tot: string
-  foo: string
+	tot: string
+	foo: string
 }
 
 const bob = {
-  tot: 'tot',
-  foo: 'foo'
+	tot: 'tot',
+	foo: 'foo'
 } satisfies Blob
 
 import { defineComponent } from 'vue'

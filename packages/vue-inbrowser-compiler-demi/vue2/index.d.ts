@@ -36,16 +36,18 @@ export declare const compileTemplate: (options?: {
 	source: string
 	filename: string
 	id: string
-  scoped?: boolean,
+	scoped?: boolean
 	compilerOptions?: {
 		mode?: 'module' | 'function'
 		bindingMetadata?: BindingMetadata
 		prefixIdentifiers?: boolean
-    scopeId?: string
+		scopeId?: string
 	}
-}) => { code: string, staticRenderFns: string[] }
+}) => { code: string; staticRenderFns: string[] }
 
-export declare function parseComponent(...args:Parameters<typeof parse>): ReturnType<typeof parse> & {scriptSetup?:SFCScriptBlock}
+export declare function parseComponent(
+	...args: Parameters<typeof parse>
+): ReturnType<typeof parse> & { scriptSetup?: SFCScriptBlock }
 
 export declare function compileScript(
 	sfc: {

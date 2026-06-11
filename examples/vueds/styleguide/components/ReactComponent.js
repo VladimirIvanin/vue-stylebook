@@ -1,34 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Pathline from 'rsg-components/Pathline';
-import Styled from 'rsg-components/Styled';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Pathline from 'rsg-components/Pathline'
+import Styled from 'rsg-components/Styled'
 
 const styles = ({ color, fontSize, space }) => ({
 	root: {
-		marginBottom: space[6],
+		marginBottom: space[6]
 	},
 	header: {
 		marginBottom: space[3],
 		background: '#e9f3fd',
 		margin: '-16px -32px 48px -64px',
-		padding: '64px 64px',
+		padding: '64px 64px'
 	},
 	tabs: {
-		marginBottom: space[3],
+		marginBottom: space[3]
 	},
 	tabButtons: {
-		marginBottom: space[1],
+		marginBottom: space[1]
 	},
 	tabBody: {
 		overflowX: 'auto',
 		maxWidth: '100%',
-		WebkitOverflowScrolling: 'touch',
+		WebkitOverflowScrolling: 'touch'
 	},
 	docs: {
 		color: color.base,
-		fontSize: fontSize.text,
-	},
-});
+		fontSize: fontSize.text
+	}
+})
 
 export function ReactComponentRenderer({
 	classes,
@@ -39,7 +39,7 @@ export function ReactComponentRenderer({
 	docs,
 	examples,
 	tabButtons,
-	tabBody,
+	tabBody
 }) {
 	return (
 		<div className={classes.root} data-testid={`${name}-container`}>
@@ -47,20 +47,20 @@ export function ReactComponentRenderer({
 				{heading}
 				{pathLine && <Pathline>{pathLine}</Pathline>}
 			</header>
-            {(description || docs) && (
+			{(description || docs) && (
 				<div className={classes.docs}>
 					{description}
 					{docs}
 				</div>
 			)}
-            {examples}
+			{examples}
 			{tabButtons && (
 				<div className={classes.tabs}>
 					<div className={classes.tabBody}>{tabBody}</div>
 				</div>
 			)}
 		</div>
-	);
+	)
 }
 
 ReactComponentRenderer.propTypes = {
@@ -74,7 +74,7 @@ ReactComponentRenderer.propTypes = {
 	description: PropTypes.node,
 	docs: PropTypes.node,
 	examples: PropTypes.node,
-	isolated: PropTypes.bool,
-};
+	isolated: PropTypes.bool
+}
 
-export default Styled(styles)(ReactComponentRenderer);
+export default Styled(styles)(ReactComponentRenderer)

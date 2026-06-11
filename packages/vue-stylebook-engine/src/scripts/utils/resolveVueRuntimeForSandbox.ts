@@ -14,8 +14,12 @@ function getLatestStorybookCacheDir(cacheRoot: string): string | null {
 
 	let latest: { path: string; mtime: number } | null = null
 	for (const dirent of fs.readdirSync(cacheRoot, { withFileTypes: true })) {
-		if (!dirent.isDirectory()) {continue}
-		if (dirent.name === 'default') {continue}
+		if (!dirent.isDirectory()) {
+			continue
+		}
+		if (dirent.name === 'default') {
+			continue
+		}
 
 		const fullPath = path.join(cacheRoot, dirent.name)
 		const stats = fs.statSync(fullPath)
@@ -51,9 +55,10 @@ export default function resolveVueRuntimeForSandbox(rootDir: string): ResolvedVu
 		'server-renderer.esm-browser.js'
 	)
 
-	const runtimeDevPath = storybookRuntime && fs.existsSync(storybookRuntime)
-		? storybookRuntime
-		: fs.existsSync(nodeModulesRuntime)
+	const runtimeDevPath =
+		storybookRuntime && fs.existsSync(storybookRuntime)
+			? storybookRuntime
+			: fs.existsSync(nodeModulesRuntime)
 			? nodeModulesRuntime
 			: null
 	const serverRendererPath = fs.existsSync(nodeModulesServerRenderer)

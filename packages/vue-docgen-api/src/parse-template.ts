@@ -23,7 +23,7 @@ export default function parseTemplate(
 						doctype: 'html',
 						...pugOptions,
 						filename: filePath
-					})
+				  })
 				: tpl.content
 
 		const ast: RootNode = cacher(() => parse(source, { comments: true }), source)

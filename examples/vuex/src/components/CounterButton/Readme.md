@@ -2,7 +2,7 @@
 
 ```vue
 <template>
-    <CounterButton/>
+  <CounterButton />
 </template>
 <script>
 export default {

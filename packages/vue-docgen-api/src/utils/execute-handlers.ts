@@ -2,16 +2,21 @@ import * as bt from '@babel/types'
 import { NodePath } from 'ast-types/lib/node-path'
 import Map from 'ts-map'
 import Documentation from '../Documentation'
-import type { HandlerExecutorsFunction, ParseFileFunction, ParseOptions, ScriptHandler } from '../types'
+import type {
+	HandlerExecutorsFunction,
+	ParseFileFunction,
+	ParseOptions,
+	ScriptHandler
+} from '../types'
 import defaultScriptHandlers, { preHandlers } from '../script-handlers'
 
 export const addDefaultAndExecuteHandlers: HandlerExecutorsFunction = (
 	componentDefinitions,
 	ast,
 	options,
-  deps: {
-    parseFile: ParseFileFunction,
-  },
+	deps: {
+		parseFile: ParseFileFunction
+	},
 	documentation,
 	forceSingleExport = false
 ) => {
@@ -27,7 +32,7 @@ export const addDefaultAndExecuteHandlers: HandlerExecutorsFunction = (
 		ast,
 		options,
 		forceSingleExport,
-    deps,
+		deps,
 		documentation
 	)
 }
@@ -39,10 +44,10 @@ async function executeHandlers(
 	ast: bt.File,
 	opt: ParseOptions,
 	forceSingleExport: boolean,
-  deps: {
-    parseFile: ParseFileFunction,
-  },
-	documentation?: Documentation,
+	deps: {
+		parseFile: ParseFileFunction
+	},
+	documentation?: Documentation
 ): Promise<Documentation[] | undefined> {
 	const compDefs = componentDefinitions
 		.keys()
@@ -68,10 +73,21 @@ async function executeHandlers(
 			await preHandlers.reduce(async (_, handler) => {
 				await _
 				if (typeof handler === 'function') {
-					return await handler(doc, compDef, ast, opt, {parseFile:deps.parseFile, addDefaultAndExecuteHandlers})
+					return await handler(doc, compDef, ast, opt, {
+						parseFile: deps.parseFile,
+						addDefaultAndExecuteHandlers
+					})
 				}
 			}, Promise.resolve())
-			await Promise.all(localHandlers.map(async handler => await handler(doc, compDef, ast, opt, {parseFile:deps.parseFile, addDefaultAndExecuteHandlers})))
+			await Promise.all(
+				localHandlers.map(
+					async handler =>
+						await handler(doc, compDef, ast, opt, {
+							parseFile: deps.parseFile,
+							addDefaultAndExecuteHandlers
+						})
+				)
+			)
 			// end with setting of exportname
 			// to avoid dependencies names bleeding on the main components,
 			// do this step at the end of the function

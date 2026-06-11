@@ -1,7 +1,7 @@
 const lightBlue = '#e9f3fd'
 const borderStyle = '1px solid #e2e6ea'
 
-module.exports = function(theme) {
+module.exports = function (theme) {
 	return {
 		StyleGuide: {
 			logo: {

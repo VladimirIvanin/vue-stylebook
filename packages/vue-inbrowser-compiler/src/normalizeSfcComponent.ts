@@ -1,5 +1,10 @@
 import walkes from 'walkes'
-import { parseComponent, isVue3, transformOneImport, EvaluableComponent } from 'vue-inbrowser-compiler-utils'
+import {
+	parseComponent,
+	isVue3,
+	transformOneImport,
+	EvaluableComponent
+} from 'vue-inbrowser-compiler-utils'
 import getAst from './getAst'
 
 const buildStyles = function (styles: string[] | undefined): string | undefined {
@@ -107,32 +112,32 @@ export function insertCreateElementFunction(before: string, after: string): stri
 }
 
 export function parseScriptSetupCode(code: string): string {
-  const varNames:string[] = []
-  let offset = 0
+	const varNames: string[] = []
+	let offset = 0
 	walkes(getAst(code), {
-    VariableDeclaration(node: any) {
-      node.declarations.forEach((declaration: any) => {
-        if (declaration.id.name) {
-          // simple variable declaration
-          varNames.push(declaration.id.name)
-        } else if (declaration.id.properties) {
-          // spread variable declaration
-          // const { all:names } = {all: 'foo'}
-          declaration.id.properties.forEach((p: any) => {
-            varNames.push(p.value.name)
-          })
-        }
-      })
-    },
-    FunctionDeclaration(node: any) {
-      varNames.push(node.id.name)
-    },
-    ImportDeclaration(node: any) {
+		VariableDeclaration(node: any) {
+			node.declarations.forEach((declaration: any) => {
+				if (declaration.id.name) {
+					// simple variable declaration
+					varNames.push(declaration.id.name)
+				} else if (declaration.id.properties) {
+					// spread variable declaration
+					// const { all:names } = {all: 'foo'}
+					declaration.id.properties.forEach((p: any) => {
+						varNames.push(p.value.name)
+					})
+				}
+			})
+		},
+		FunctionDeclaration(node: any) {
+			varNames.push(node.id.name)
+		},
+		ImportDeclaration(node: any) {
 			const ret = transformOneImport(node, code, offset)
 			offset = ret.offset
 			code = ret.code
 		}
-  })
+	})
 
 	return `setup(){
 ${code}
@@ -148,7 +153,10 @@ function defineExpose(){}
  * it should as well have been stripped of exports and all imports should have been
  * transformed into requires
  */
-export default function normalizeSfcComponent(code: string, _parseComponent = parseComponent): EvaluableComponent {
+export default function normalizeSfcComponent(
+	code: string,
+	_parseComponent = parseComponent
+): EvaluableComponent {
 	const { script, scriptSetup, template, styles } = _parseComponent(code)
 
 	const {
@@ -157,9 +165,9 @@ export default function normalizeSfcComponent(code: string, _parseComponent = pa
 		postprocessing = ''
 	} = scriptSetup
 		? {
-      preprocessing: script?.content || '',  
-      component: parseScriptSetupCode(scriptSetup.content)
-    }
+				preprocessing: script?.content || '',
+				component: parseScriptSetupCode(scriptSetup.content)
+		  }
 		: script
 		? parseScriptCode(script.content)
 		: {}

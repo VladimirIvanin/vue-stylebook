@@ -1,12 +1,10 @@
 # Начало работы
 
-> В этой документации описана вилка `vue-styleguidist/vue-styleguidist`,
-> которая поддерживается в этом репозитории и публикуется на GitHub Pages.
+> В этой документации описана вилка `vue-styleguidist/vue-styleguidist`, которая поддерживается в этом репозитории и публикуется на GitHub Pages.
 
 ## 1. Установка
 
-Установите Webpack, если он еще не установлен.
-Styleguidist будет использовать вашу версию Webpack.
+Установите Webpack, если он еще не установлен. Styleguidist будет использовать вашу версию Webpack.
 
 ```bash
 pnpm add -D webpack
@@ -18,32 +16,24 @@ pnpm add -D webpack
 pnpm add -D @ivaninvladimir/vue-stylebook
 ```
 
-Если вы используете Vue CLI 3 ([`@vue/cli`](https://cli.vuejs.org/)),
-рекомендуется установить плагин:
+Если вы используете Vue CLI 3 ([`@vue/cli`](https://cli.vuejs.org/)), рекомендуется установить плагин:
 
 ```sh
 vue add styleguidist
 ```
 
-Для этого форка команда `vue add styleguidist` устанавливает плагин и пакет
-из upstream-версии `vue-styleguidist`, а не `@ivaninvladimir/vue-stylebook`.
-Если вам важны изменения именно этого форка, настройте подключение вручную через
-`styleguide.config.js` и npm-скрипты ниже.
+Для этого форка команда `vue add styleguidist` устанавливает плагин и пакет из upstream-версии `vue-styleguidist`, а не `@ivaninvladimir/vue-stylebook`. Если вам важны изменения именно этого форка, настройте подключение вручную через `styleguide.config.js` и npm-скрипты ниже.
 
 Подробности смотрите в [документации для Vue CLI](/VueCLI3doc.md).
 
 ## 2. Настройка стайлгайда
 
-Создайте файл `styleguide.config.js` в той же директории, где находится
-`package.json`. Это основной файл конфигурации. В нем можно:
+Создайте файл `styleguide.config.js` в той же директории, где находится `package.json`. Это основной файл конфигурации. В нем можно:
 
 - [Указать Styleguidist, где оставить Vue-компоненты](Components.md)
 - [Настроить загрузку вашего кода](Webpack.md)
 
-Если вы используете [Vue-CLI 3](https://github.com/vuejs/vue-cli),
-шаг с веб-пакетом можно пропустить. После установки
-[vue-cli-plugin-styleguidist](/VueCLI3doc.md) нужные настройки
-подхвачены из CLI. Остается путь к компонентам.
+Если вы используете [Vue-CLI 3](https://github.com/vuejs/vue-cli), шаг с веб-пакетом можно пропустить. После установки [vue-cli-plugin-styleguidist](/VueCLI3doc.md) нужные настройки подхвачены из CLI. Остается путь к компонентам.
 
 ## 3. Добавьте удобные скрипты
 
@@ -69,8 +59,7 @@ vue add styleguidist
 }
 ```
 
-> ПРИМЕЧАНИЕ: при выполнении `vue add styleguidist` скрипты
-> автоматически добавляются в `package.json`.
+> ПРИМЕЧАНИЕ: при выполнении `vue add styleguidist` скрипты автоматически добавляются в `package.json`.
 
 ## 4. Запуск стайлгайда
 

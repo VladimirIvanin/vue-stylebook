@@ -3,9 +3,9 @@ import compileVueCodeForEvalFunction from './compileVueCodeForEvalFunction'
 
 function createFunction(code: string, execute = true) {
 	const fun = new Function('require', code)
-	if(!execute) return fun
-	const requireMock = function(module:string){
-		return {default: {module}}
+	if (!execute) return fun
+	const requireMock = function (module: string) {
+		return { default: { module } }
 	}
 	return fun(requireMock)
 }
@@ -58,7 +58,10 @@ new Vue({
 			<MyButton> {{param}} </MyButton>
 		</div>
 		`)
-		const dummySet = createFunction(sut.script, false)(() => ({
+		const dummySet = createFunction(
+			sut.script,
+			false
+		)(() => ({
 			default: { component: vi.fn() }
 		}))
 		expect(dummySet.data()).toMatchObject({ param: 'BazFoo' })

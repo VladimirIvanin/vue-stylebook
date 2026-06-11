@@ -31,12 +31,18 @@ CLI.command('[componentsGlob] [outFile]', 'generate documentation')
 	.option('-w, --watch', 'turn on watch mode', { default: false })
 	.option('--cwd', 'where to look for the config file')
 	.option('--logLevel <logLevel>', 'level of verbosity the CLI will be', {
-    default: [],
+		default: [],
 		type: ['trace', 'debug', 'info', 'warn', 'error']
 	})
 	.option('-v, --verbose', 'equivalent to --logLevel=debug', { default: false })
 	.action(async (componentsGlob, outFile, options) => {
-		const { configFile, watch, cwd, logLevel:[logLevel], verbose } = options
+		const {
+			configFile,
+			watch,
+			cwd,
+			logLevel: [logLevel],
+			verbose
+		} = options
 		const conf = await extractConfig(
 			cwd || process.cwd(),
 			watch,
@@ -53,8 +59,8 @@ CLI.command('[componentsGlob] [outFile]', 'generate documentation')
 		run(conf)
 	})
 
-  CLI.help()
+CLI.help()
 
-  CLI.parse()
+CLI.parse()
 
-  CLI.version(require('../package.json').version)
+CLI.version(require('../package.json').version)

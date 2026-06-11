@@ -1,29 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'clsx';
-import Styled from 'rsg-components/Styled';
+import React from 'react'
+import PropTypes from 'prop-types'
+import cx from 'clsx'
+import Styled from 'rsg-components/Styled'
 
 export const styles = ({ space, color, borderRadius }) => ({
 	root: {
-		marginBottom: space[4],
+		marginBottom: space[4]
 	},
 	preview: {
 		padding: space[2],
 		border: [[1, color.border, 'solid']],
 		borderRadius,
-		borderBottomLeftRadius:0,
-		borderBottomRightRadius:0,
+		borderBottomLeftRadius: 0,
+		borderBottomRightRadius: 0,
 		// the next 2 lines are required to contain floated components
 		width: '100%',
-		display: 'inline-block',
+		display: 'inline-block'
 	},
 	controls: {
 		display: 'flex',
 		alignItems: 'center',
-		marginBottom: space[1],
+		marginBottom: space[1]
 	},
 	toolbar: {
-		marginLeft: 'auto',
+		marginLeft: 'auto'
 	},
 	tab: {}, // expose className to allow using it in 'styles' settings
 	padded: {
@@ -35,11 +35,11 @@ export const styles = ({ space, color, borderRadius }) => ({
 			'& > *': {
 				isolate: false,
 				marginRight: space[1],
-				marginLeft: space[1],
-			},
-		},
-	},
-});
+				marginLeft: space[1]
+			}
+		}
+	}
+})
 
 export function PlaygroundRenderer({
 	classes,
@@ -47,10 +47,10 @@ export function PlaygroundRenderer({
 	name,
 	preview,
 	previewProps,
-	tabBody,
+	tabBody
 }) {
-	const { className, ...props } = previewProps;
-	const previewClasses = cx(classes.preview, className );
+	const { className, ...props } = previewProps
+	const previewClasses = cx(classes.preview, className)
 	return (
 		<div className={classes.root} data-testid={`${name}-example-${exampleIndex}`}>
 			<div className={previewClasses} {...props} data-preview={name} data-testid="preview-wrapper">
@@ -58,7 +58,7 @@ export function PlaygroundRenderer({
 			</div>
 			<div className={classes.tab}>{tabBody}</div>
 		</div>
-	);
+	)
 }
 
 PlaygroundRenderer.propTypes = {
@@ -69,7 +69,7 @@ PlaygroundRenderer.propTypes = {
 	previewProps: PropTypes.object.isRequired,
 	tabButtons: PropTypes.node.isRequired,
 	tabBody: PropTypes.node.isRequired,
-	toolbar: PropTypes.node.isRequired,
-};
+	toolbar: PropTypes.node.isRequired
+}
 
-export default Styled(styles)(PlaygroundRenderer);
+export default Styled(styles)(PlaygroundRenderer)

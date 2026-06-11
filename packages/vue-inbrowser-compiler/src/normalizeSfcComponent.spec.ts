@@ -76,8 +76,9 @@ computed:{
 		expect(render).toMatch(/return h\(Button\)/)
 	})
 
-  it('compiles script setup', () => {
-		const sut = normalizeSfcComponent(`
+	it('compiles script setup', () => {
+		const sut = normalizeSfcComponent(
+			`
 <script setup>
 import { ref } from 'vue'
 
@@ -89,10 +90,12 @@ const { all:names } = {all: 'foo'}
 function hello() {
 }
 const STATUS_OK = 200
-</script>`, (( source: string, opts: any ) => {
-  const { descriptor } = parse(source, opts)
-  return descriptor
-}) as any)
+</script>`,
+			((source: string, opts: any) => {
+				const { descriptor } = parse(source, opts)
+				return descriptor
+			}) as any
+		)
 		expect(evalFunction(sut).setup.toString()).toMatchInlineSnapshot(`
 			"setup(){
 
@@ -116,13 +119,16 @@ const STATUS_OK = 200
 	})
 
 	it('exposes imported values in script setup', () => {
-		const sut = normalizeSfcComponent(`
+		const sut = normalizeSfcComponent(
+			`
 <script setup>
 import { Icon } from 'vue-icon'
-</script>`, (( source: string, opts: any ) => {
-  const { descriptor } = parse(source, opts)
-  return descriptor
-}) as any)
+</script>`,
+			((source: string, opts: any) => {
+				const { descriptor } = parse(source, opts)
+				return descriptor
+			}) as any
+		)
 		expect(evalFunction(sut).setup.toString()).toMatchInlineSnapshot(`
 			"setup(){
 
@@ -134,5 +140,5 @@ import { Icon } from 'vue-icon'
 			function defineExpose(){}
 			}"
 		`)
-})
+	})
 })

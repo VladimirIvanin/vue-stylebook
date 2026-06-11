@@ -29,7 +29,7 @@ describe('getSources', () => {
 	let fakeOn: SpyInstance
 	let mockGlobby: SpyInstance
 	let fakeWatcher: any
-  const mockParse = vi.fn(() => ([] as any))
+	const mockParse = vi.fn(() => [] as any)
 
 	beforeEach(() => {
 		fakeOn = vi.fn((item, cb) => {
@@ -49,7 +49,13 @@ describe('getSources', () => {
 	})
 
 	it('should return component files from chokidar', async () => {
-		const { componentFiles } = await getSources(COMPONENTS_GLOB, [], 'here', getDocFileName, mockParse)
+		const { componentFiles } = await getSources(
+			COMPONENTS_GLOB,
+			[],
+			'here',
+			getDocFileName,
+			mockParse
+		)
 		expect(componentFiles).toMatchInlineSnapshot(`
 			[
 			  "src/components/Button/Button.vue",

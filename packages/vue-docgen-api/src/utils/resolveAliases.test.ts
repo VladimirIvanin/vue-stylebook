@@ -3,8 +3,9 @@ import resolveAliases from './resolveAliases'
 
 vi.mock('fs', () => {
 	return {
-		existsSync: vi.fn((filePath: string) =>
-			filePath === path.resolve('/replacementPath/src/mixins', 'somethingNice/mixinFile.js')
+		existsSync: vi.fn(
+			(filePath: string) =>
+				filePath === path.resolve('/replacementPath/src/mixins', 'somethingNice/mixinFile.js')
 		)
 	}
 })
@@ -27,32 +28,35 @@ describe('resolveAliases', () => {
 
 	it('should resolve an alias from an array', () => {
 		expect(
-			resolveAliases('myPath/somethingNice/mixinFile.js', {
-				myPath: [
-					'./replacementPath/src/mixins',
-					'./replacementPath2/src/mixins'
-				]
-			}, '/')
+			resolveAliases(
+				'myPath/somethingNice/mixinFile.js',
+				{
+					myPath: ['./replacementPath/src/mixins', './replacementPath2/src/mixins']
+				},
+				'/'
+			)
 		).toEqual(path.resolve('/replacementPath/src/mixins', 'somethingNice/mixinFile.js'))
 	})
 
 	it('should not resolve an alias from an array', () => {
-		const aliasedPath = resolveAliases('@myPath/somethingNice/mixinFile.js', {
-			'@': [
-				'./replacementPath/src/mixins',
-				'./replacementPath2/src/mixins'
-			]
-		}, '/')
+		const aliasedPath = resolveAliases(
+			'@myPath/somethingNice/mixinFile.js',
+			{
+				'@': ['./replacementPath/src/mixins', './replacementPath2/src/mixins']
+			},
+			'/'
+		)
 		expect(aliasedPath).not.toContain('replacementPath')
 	})
 
 	it('should not resolve an alias from an non-existing file', () => {
-		const aliasedPath = resolveAliases('myPath/somethingNice/nonExistingMixinFile.js', {
-			myPath: [
-				'./replacementPath/src/mixins',
-				'./replacementPath2/src/mixins'
-			]
-		}, '/')
+		const aliasedPath = resolveAliases(
+			'myPath/somethingNice/nonExistingMixinFile.js',
+			{
+				myPath: ['./replacementPath/src/mixins', './replacementPath2/src/mixins']
+			},
+			'/'
+		)
 		expect(aliasedPath).not.toContain('replacementPath')
 	})
 })

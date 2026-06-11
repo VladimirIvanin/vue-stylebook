@@ -40,7 +40,7 @@ describe('setupExposedHandler', () => {
 		return mockExposeDescriptor
 	}
 
-  it('should resolve Exposed in setup script as an array of strings', async () => {
+	it('should resolve Exposed in setup script as an array of strings', async () => {
 		const src = `
         const testProps = 0
         defineExpose([
@@ -50,9 +50,9 @@ describe('setupExposedHandler', () => {
           "testProps"
         ])
         `
-    const exposed = await parserTest(src)
+		const exposed = await parserTest(src)
 		expect(documentation.getExposeDescriptor).toHaveBeenCalledWith('testProps')
-    expect(exposed).toMatchInlineSnapshot(`
+		expect(exposed).toMatchInlineSnapshot(`
 			{
 			  "description": "Exposed test props",
 			  "name": "mockExposed",

@@ -20,7 +20,7 @@ describe('eventHandler', () => {
 	beforeEach(() => {
 		mockEventDescriptor = { name: 'success' }
 		documentation = new Documentation('dummy/path')
-    vi.spyOn(documentation, 'getEventDescriptor')
+		vi.spyOn(documentation, 'getEventDescriptor')
 		const mockGetEventDescriptor = documentation.getEventDescriptor as any as SpyInstance
 		mockGetEventDescriptor.mockReturnValue(mockEventDescriptor)
 	})

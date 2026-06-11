@@ -5,7 +5,7 @@ import makeWebpackConfig from './src/scripts/make-webpack-config'
 
 const { resolve } = makeWebpackConfig(
 	{
-    require: [],
+		require: [],
 		simpleEditor: true
 	} as any,
 	'development'
@@ -54,9 +54,9 @@ export default defineConfig({
 	videosFolder: '../../test/cypress/videos',
 
 	component: {
-		specPattern: path.resolve(__dirname,'src/client/**/*.cy.{js,jsx,ts,tsx}'),
-		supportFile: path.resolve(__dirname,'../../test/cypress/support/component.tsx'),
-		indexHtmlFile: path.resolve(__dirname,'../../test/cypress/support/component-index.html'),
+		specPattern: path.resolve(__dirname, 'src/client/**/*.cy.{js,jsx,ts,tsx}'),
+		supportFile: path.resolve(__dirname, '../../test/cypress/support/component.tsx'),
+		indexHtmlFile: path.resolve(__dirname, '../../test/cypress/support/component-index.html'),
 		devServer: {
 			framework: 'react',
 			bundler: 'webpack',

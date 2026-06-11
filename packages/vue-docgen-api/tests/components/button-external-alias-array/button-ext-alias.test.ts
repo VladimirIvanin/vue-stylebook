@@ -9,9 +9,7 @@ describe('tests button', () => {
 	beforeAll(async () => {
 		docButton = await parse(button, {
 			alias: {
-				'@src': [
-					__dirname
-				]
+				'@src': [__dirname]
 			}
 		})
 	})

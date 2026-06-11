@@ -4,16 +4,16 @@ export {
 	compileScript,
 	createApp,
 	h,
-  parseComponent,
+	parseComponent,
 	compileTemplate,
-  App
+	App
 } from 'vue-inbrowser-compiler-demi'
 export {
-  cleanName,
-  addScopedStyle,
-  getDefaultExample,
-  EvaluableComponent,
-  transformOneImport,
+	cleanName,
+	addScopedStyle,
+	getDefaultExample,
+	EvaluableComponent,
+	transformOneImport
 } from 'vue-inbrowser-compiler-independent-utils'
 export { default as adaptCreateElement, concatenate } from './adaptCreateElement'
 export { default as isCodeVueSfc } from './isCodeVueSfc'

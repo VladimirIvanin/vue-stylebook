@@ -7,10 +7,10 @@ module.exports.createApp = () => {}
 module.exports.isVue3 = false
 module.exports.Vue2 = Vue
 module.exports.compileTemplate = ({ source: template }) => {
-  const compiled = VueTemplateCompiler.compile(template)
+	const compiled = VueTemplateCompiler.compile(template)
 	return {
 		code: compiled.render,
-    staticRenderFns: compiled.staticRenderFns
+		staticRenderFns: compiled.staticRenderFns
 	}
 }
 module.exports.parseComponent = VueTemplateCompiler.parseComponent

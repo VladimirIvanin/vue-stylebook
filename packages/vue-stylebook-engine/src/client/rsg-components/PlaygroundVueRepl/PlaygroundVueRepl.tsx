@@ -72,7 +72,9 @@ class PlaygroundVueReplInner extends Component<
 	}
 
 	private mountRepl = async () => {
-		if (!this.mountNode) {return}
+		if (!this.mountNode) {
+			return
+		}
 
 		this.unmountRepl()
 		this.setState({ error: null })
@@ -106,9 +108,7 @@ class PlaygroundVueReplInner extends Component<
 							mergeImportMap(store.getImportMap(), {
 								imports: {
 									vue: runtimeDev,
-									...(runtimeServerRenderer
-										? { 'vue/server-renderer': runtimeServerRenderer }
-										: {})
+									...(runtimeServerRenderer ? { 'vue/server-renderer': runtimeServerRenderer } : {})
 								}
 							})
 						)
@@ -139,8 +139,7 @@ class PlaygroundVueReplInner extends Component<
 		} catch (err: any) {
 			this.setState({
 				error:
-					err?.message ||
-					'Failed to initialize Vue REPL. Install Vue 3 and @vue/repl dependencies.'
+					err?.message || 'Failed to initialize Vue REPL. Install Vue 3 and @vue/repl dependencies.'
 			})
 		}
 	}

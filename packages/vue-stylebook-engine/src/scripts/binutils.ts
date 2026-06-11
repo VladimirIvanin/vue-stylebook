@@ -149,8 +149,7 @@ export function commandServer(config: SanitizedStyleguidistConfig, open?: boolea
 					devMiddleware?: { publicPath?: string }
 			  }
 			| undefined
-		const isHttps =
-			devServerOptions?.server?.type === 'https' || devServerOptions?.https === true
+		const isHttps = devServerOptions?.server?.type === 'https' || devServerOptions?.https === true
 		const urls = webpackDevServerUtils.prepareUrls(
 			isHttps ? 'https' : 'http',
 			config.serverHost,
@@ -244,9 +243,10 @@ export function commandHelp() {
 	)
 }
 
-function getDevServerPublicPathSuffix(
-	devServer?: { publicPath?: string; devMiddleware?: { publicPath?: string } }
-): string {
+function getDevServerPublicPathSuffix(devServer?: {
+	publicPath?: string
+	devMiddleware?: { publicPath?: string }
+}): string {
 	const publicPath = devServer?.devMiddleware?.publicPath ?? devServer?.publicPath ?? '/'
 
 	if (typeof publicPath !== 'string' || publicPath === '/') {

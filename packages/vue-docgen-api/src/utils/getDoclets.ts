@@ -84,40 +84,39 @@ const PREFIX_TAG_TITLES = ['slot', 'ignore']
  * - `description` whatever is left once the tags are removed
  */
 export default function getDocblockTags(str: string): DocBlockTags {
-  const DOCLET_PATTERN = /^(?:\s+)?@(\w+) ?(.+)?/
+	const DOCLET_PATTERN = /^(?:\s+)?@(\w+) ?(.+)?/
 	const tags: BlockTag[] = []
-  const lines = str.split('\n').reverse()
-  let accNonTagLines = ''
-  lines.forEach(line => {
-    let [, title, tagContents] = DOCLET_PATTERN.exec(line) || []
+	const lines = str.split('\n').reverse()
+	let accNonTagLines = ''
+	lines.forEach(line => {
+		let [, title, tagContents] = DOCLET_PATTERN.exec(line) || []
 
+		if (!title) {
+			accNonTagLines = line + '\n' + accNonTagLines
+			return
+		}
 
-    if(!title) {
-      accNonTagLines = line + '\n' + accNonTagLines
-      return
-    }
+		if (TYPED_TAG_TITLES.includes(title)) {
+			tags.push({ title, ...getParamInfo(tagContents, !UNNAMED_TAG_TITLES.includes(title)) })
+		} else if (ACCESS_TAG_TITLES.indexOf(title) > -1) {
+			tags.push({ title: 'access', content: title })
+			return
+		} else if (PREFIX_TAG_TITLES.indexOf(title) > -1) {
+			tags.push({ title, content: tagContents ?? true })
+			return
+		} else {
+			const content = tagContents
+				? (tagContents + '\n' + accNonTagLines).trim()
+				: accNonTagLines
+				? accNonTagLines.trim()
+				: true
+			tags.push({ title, content })
+		}
 
-    if (TYPED_TAG_TITLES.includes(title)) {
-      tags.push({ title, ...getParamInfo(tagContents, !UNNAMED_TAG_TITLES.includes(title)) })
-    } else if (ACCESS_TAG_TITLES.indexOf(title) > -1) {
-      tags.push({ title: 'access', content: title })
-      return
-    } else if (PREFIX_TAG_TITLES.indexOf(title) > -1) {
-      tags.push({ title, content: tagContents ?? true })
-      return
-    } else {
-      const content = tagContents 
-        ? (tagContents + '\n' + accNonTagLines).trim()
-        : accNonTagLines 
-          ? accNonTagLines.trim()
-          : true
-      tags.push({ title, content })
-    }
+		accNonTagLines = ''
+	})
 
-    accNonTagLines = ''
-  })
-
-	const description = accNonTagLines.trim().length ? accNonTagLines.trim() : undefined 
+	const description = accNonTagLines.trim().length ? accNonTagLines.trim() : undefined
 
 	return { description, tags: tags.reverse() }
 }

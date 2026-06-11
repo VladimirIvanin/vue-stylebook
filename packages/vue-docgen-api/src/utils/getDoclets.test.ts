@@ -21,28 +21,30 @@ describe('getDoclets', () => {
 		])
 	})
 
-  it('should extract param name if it contains a - or numbers', () => {
+	it('should extract param name if it contains a - or numbers', () => {
 		const src = `@param {string} h2llo-wo_rld the param itself`
 		expect(getDocLets(src).tags).toMatchObject([
-			{ 
-        title: 'param', 
-        name: 'h2llo-wo_rld', 
-        type: { 
-          name: 'string' 
-        }, 
-        description: 'the param itself' 
-      }
+			{
+				title: 'param',
+				name: 'h2llo-wo_rld',
+				type: {
+					name: 'string'
+				},
+				description: 'the param itself'
+			}
 		])
 	})
 
 	it('should extract params types only when alone', () => {
 		const src = `@param {string}`
-		expect(getDocLets(src).tags).toEqual([{ 
-      title: 'param', 
-      type: { 
-        name: 'string' 
-      } 
-    }])
+		expect(getDocLets(src).tags).toEqual([
+			{
+				title: 'param',
+				type: {
+					name: 'string'
+				}
+			}
+		])
 	})
 
 	it('should extract params description if no dash', () => {
@@ -88,13 +90,15 @@ describe('getDoclets', () => {
       
         @public
       `
-		expect(getDocLets(src).tags).toEqual([{ 
-      content: 'public', 
-      title: 'access'
-    }])
+		expect(getDocLets(src).tags).toEqual([
+			{
+				content: 'public',
+				title: 'access'
+			}
+		])
 	})
 
-  it('should extract multiline examples into one example', () => {
+	it('should extract multiline examples into one example', () => {
 		const src = dedent`
         a prop with examples
       
@@ -103,12 +107,15 @@ describe('getDoclets', () => {
         console.log('hello')
         \`\`\`
       `
-		expect(getDocLets(src).tags).toEqual([{ 
-      title: 'example', 
-      content: dedent`
+		expect(getDocLets(src).tags).toEqual([
+			{
+				title: 'example',
+				content: dedent`
         \`\`\`js
         console.log('hello')
         \`\`\`
-      ` }])
+      `
+			}
+		])
 	})
 })

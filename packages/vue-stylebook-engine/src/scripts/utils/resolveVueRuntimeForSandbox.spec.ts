@@ -40,9 +40,7 @@ describe('resolveVueRuntimeForSandbox', () => {
 				serverRendererPath
 			].includes(String(target))
 		})
-		vi.mocked(fs.readdirSync).mockReturnValue([
-			{ isDirectory: () => true, name: 'v1' }
-		] as any)
+		vi.mocked(fs.readdirSync).mockReturnValue([{ isDirectory: () => true, name: 'v1' }] as any)
 		vi.mocked(fs.statSync).mockReturnValue({
 			mtime: new Date('2026-03-20T00:00:00.000Z')
 		} as fs.Stats)

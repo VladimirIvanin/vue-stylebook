@@ -14,7 +14,7 @@ import setupHandlers from './script-setup-handlers'
 const read = promisify(readFile)
 
 export default async function parseSFC(
-  parseFile: ParseFileFunction,
+	parseFile: ParseFileFunction,
 	initialDoc: Documentation | undefined,
 	source: string,
 	opt: ParseOptions
@@ -69,7 +69,7 @@ export default async function parseSFC(
 
 	if (parts.scriptSetup) {
 		docs = await parseScriptTag(
-      parseFile,
+			parseFile,
 			parts.scriptSetup,
 			pathResolver,
 			opt,
@@ -80,7 +80,7 @@ export default async function parseSFC(
 		)
 	} else if (parts.script) {
 		docs = await parseScriptTag(
-      parseFile,
+			parseFile,
 			parts.script,
 			pathResolver,
 			opt,
@@ -101,7 +101,7 @@ export default async function parseSFC(
 }
 
 async function parseScriptTag(
-  parseFile: ParseFileFunction,
+	parseFile: ParseFileFunction,
 	scriptTag: SFCScriptBlock,
 	pathResolver: (filePath: string, overrideRoot?: string) => string | null,
 	opt: ParseOptions,
@@ -129,7 +129,7 @@ async function parseScriptTag(
 				/\.tsx?$/i.test(extSrc)
 					? 'ts'
 					: 'js'
-					
+
 			if (extSrcAbs) {
 				documentation?.sourceFiles.add(extSrcAbs)
 			}
@@ -146,7 +146,7 @@ async function parseScriptTag(
 
 	const docs: Documentation[] = scriptSource
 		? (await parseScript(
-        parseFile,
+				parseFile,
 				isSetupScriptOtherScript + '\n' + scriptSource,
 				opt,
 				documentation,

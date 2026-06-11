@@ -13,7 +13,7 @@ const extendsHandler: ScriptHandler = async (
 	componentDefinition,
 	astPath,
 	opt,
-  deps
+	deps
 ) => {
 	const extendsVariableName = getExtendsVariableName(componentDefinition)
 
@@ -32,7 +32,7 @@ const extendsHandler: ScriptHandler = async (
 				...opt,
 				nameFilter: [extendsVariableName]
 			},
-      deps,
+			deps,
 			documentation
 		)
 	} else {

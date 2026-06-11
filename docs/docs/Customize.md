@@ -8,10 +8,7 @@
 
 ## Предварительные условия
 
-- [Установите vue-styleguidist](GettingStarted#install) и проверь его работу. Заблокируйте вашу версию в зависимости от vue-styleguidist. Нет никаких гарантий, что ваши настройки будут работать при каждом незначительном обновлении. Для этого заголовка `package.json` и удалите `^` перед областью vue-styleguidist.
-Изучите основы ReactJs. vue-styleguidist отображает руководство по стилю с помощью [react-styleguidist](https://react-styleguidist.js.org/). Вся видимая часть сделана на ReactJs. поскольку мы будем переписывать компоненты React, чем больше вы будете знать, тем больше вы сможете сделать. Установите расширение React Dev Tools в свой браузер. [Для Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-[Для Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
-[Для Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
+- [Установите vue-styleguidist](GettingStarted#install) и проверь его работу. Заблокируйте вашу версию в зависимости от vue-styleguidist. Нет никаких гарантий, что ваши настройки будут работать при каждом незначительном обновлении. Для этого заголовка `package.json` и удалите `^` перед областью vue-styleguidist. Изучите основы ReactJs. vue-styleguidist отображает руководство по стилю с помощью [react-styleguidist](https://react-styleguidist.js.org/). Вся видимая часть сделана на ReactJs. поскольку мы будем переписывать компоненты React, чем больше вы будете знать, тем больше вы сможете сделать. Установите расширение React Dev Tools в свой браузер. [Для Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) [Для Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) [Для Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
 
 ## Определить компонент
 

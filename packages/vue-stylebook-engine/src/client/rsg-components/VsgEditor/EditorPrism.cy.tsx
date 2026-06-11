@@ -4,12 +4,16 @@ import Context from 'rsg-components/Context/Context'
 import EditorPrism from './EditorPrism'
 
 type ProviderProps = {
-  children?: React.ReactNode
-  jssThemedEditor?: boolean
-  jsxInExamples?: boolean
-};
+	children?: React.ReactNode
+	jssThemedEditor?: boolean
+	jsxInExamples?: boolean
+}
 
-const Provider: React.FC<ProviderProps> = ({ children, jssThemedEditor = true, jsxInExamples = false }) => (
+const Provider: React.FC<ProviderProps> = ({
+	children,
+	jssThemedEditor = true,
+	jsxInExamples = false
+}) => (
 	<Context.Provider
 		value={
 			{
@@ -39,7 +43,7 @@ foo()
 			</Provider>
 		)
 
-    cy.contains('.token.function', 'foo').should('be.visible')
+		cy.contains('.token.function', 'foo').should('be.visible')
 	})
 
 	it('renders tsx', () => {
@@ -56,9 +60,9 @@ foo()
 			</Provider>
 		)
 
-    cy.contains('.token.tag', 'Foo').should('be.visible')
+		cy.contains('.token.tag', 'Foo').should('be.visible')
 
-    cy.get('pre').should('have.text', code)
+		cy.get('pre').should('have.text', code)
 	})
 
 	it('renders vue SFC with Typescript', () => {
@@ -79,12 +83,12 @@ function foo(param: Vue) : { one: number, two: boolean } {
 			</Provider>
 		)
 
-    cy.contains('.token.tag', 'Accordion').should('be.visible')
+		cy.contains('.token.tag', 'Accordion').should('be.visible')
 
-    cy.get('pre').should('have.text', code)
+		cy.get('pre').should('have.text', code)
 	})
 
-  it('renders vue SFC with Self-closing tag', () => {
+	it('renders vue SFC with Self-closing tag', () => {
 		const code = `
 <template>
   <Checkbox />
@@ -103,12 +107,12 @@ function foo(param: Vue) : { one: number, two: boolean } {
 			</Provider>
 		)
 
-    cy.contains('.token.tag', 'Checkbox').should('be.visible')
+		cy.contains('.token.tag', 'Checkbox').should('be.visible')
 
-    cy.get('pre').should('have.text', code)
+		cy.get('pre').should('have.text', code)
 	})
 
-  it('renders vue SFC with style scoped tag', () => {
+	it('renders vue SFC with style scoped tag', () => {
 		const code = `
 <template>
   <Checkbox />
@@ -125,8 +129,8 @@ function foo(param: Vue) : { one: number, two: boolean } {
 			</Provider>
 		)
 
-    cy.contains('.token.tag', 'Checkbox').should('be.visible')
+		cy.contains('.token.tag', 'Checkbox').should('be.visible')
 
-    cy.get('pre').should('have.text', code)
+		cy.get('pre').should('have.text', code)
 	})
 })

@@ -23,6 +23,7 @@
 Тип: `String`, опционально
 
 Путь или имя модуля, который экспортирует функции `compile` и `getImports`. Этот модуль используется для компиляции live examples. Внутри vue-styleguidist вызывается `require(config.compilerPackage)`, чтобы получить `compile`.
+
 - Реализацию на стороне Node можно посмотреть в [examples-loader.ts](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-stylebook-engine/src/loaders/examples-loader.ts).
 - Использование на frontend можно посмотреть в [Preview.js](https://github.com/vue-styleguidist/vue-styleguidist/blob/dev/packages/vue-stylebook-engine/src/client/rsg-components/Preview/Preview.js).
 
@@ -247,11 +248,11 @@ export default {
 ```js
 // styleguide/preview.js
 import { defineEnhanceApp } from 'vue-styleguidist/helpers'
-import focusDirective from '../src/directives/v-focus';
+import focusDirective from '../src/directives/v-focus'
 
 // Здесь export ОБЯЗАТЕЛЬНО должен быть default или module.export
 // Именно это импортирует styleguide
-export default defineEnhanceApp((app) => {
+export default defineEnhanceApp(app => {
   app.directive('focus', focusDirective)
 })
 ```
@@ -548,8 +549,7 @@ module.exports = {
 - `legacy`: текущий playground на базе `vue-inbrowser-compiler`;
 - `vueRepl`: playground для Vue 3 на базе `@vue/repl`.
 
-Режим `vueRepl` работает без дополнительных отдельных серверов.
-Он использует внутренние endpoint-ы Styleguidist для runtime-файлов Vue и не влияет на legacy-поведение, пока вы явно его не включите.
+Режим `vueRepl` работает без дополнительных отдельных серверов. Он использует внутренние endpoint-ы Styleguidist для runtime-файлов Vue и не влияет на legacy-поведение, пока вы явно его не включите.
 
 ```js
 module.exports = {
@@ -882,6 +882,7 @@ module.exports = {
 
 ````md
 ```js { "file": "./some/file.js" }
+
 ```
 ````
 

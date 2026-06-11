@@ -28,19 +28,19 @@ const Provider = ({ children, jssThemedEditor = true, jsxInExamples = false }) =
 	)
 }
 
-describe('ReactComponent', {viewportHeight: 680}, () => {
+describe('ReactComponent', { viewportHeight: 680 }, () => {
 	it('renders a Vue Component with props/slots/methods/exposed', () => {
 		mount(
-      <div style={{padding:'24px'}}>
-			<Provider>
-				<ReactComponent
-					depth={1}
-					usageMode="expand"
-					exampleMode="expand"
-					component={Fixture as any}
-				/>
-			</Provider>
-      </div>
+			<div style={{ padding: '24px' }}>
+				<Provider>
+					<ReactComponent
+						depth={1}
+						usageMode="expand"
+						exampleMode="expand"
+						component={Fixture as any}
+					/>
+				</Provider>
+			</div>
 		)
 	})
 })

@@ -1,9 +1,5 @@
 import { h } from 'vue'
-import {
-	cleanName,
-	compileTemplateForEval,
-	EvaluableComponent
-} from 'vue-inbrowser-compiler-utils'
+import { cleanName, compileTemplateForEval, EvaluableComponent } from 'vue-inbrowser-compiler-utils'
 import { getVueAppFactory } from './getVueApp'
 
 const getVueApp = getVueAppFactory()

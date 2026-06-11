@@ -6,7 +6,7 @@ const babelParserOptions: ParserOptions = {
 	strictMode: false,
 	tokens: true,
 	plugins: [
-    'jsx',
+		'jsx',
 		'decorators-legacy',
 		'doExpressions',
 		'objectRestSpread',
@@ -26,7 +26,7 @@ const babelParserOptions: ParserOptions = {
 		'optionalCatchBinding',
 		'throwExpressions',
 		'nullishCoalescingOperator',
-    'typescript'
+		'typescript'
 	]
 }
 
@@ -35,7 +35,7 @@ export default function buildParse(options: ParserOptions = {}): {
 } {
 	options = {
 		...babelParserOptions,
-		...options,
+		...options
 	}
 	return {
 		parse(src: string): bt.File {

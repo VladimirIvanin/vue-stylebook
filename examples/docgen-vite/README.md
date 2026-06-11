@@ -2,11 +2,9 @@
 
 This template should help get you started developing with docgen and VitePress.
 
-It contains an example of a light integration with vue-live in [docs/.vitepress/theme](./docs/.vitepress/theme).
-Using a [markdown-it plugin](./docs/.vitepress/vue-live-md-it.mjs), we will render each example with the suffix `live` into a vue-live component.
+It contains an example of a light integration with vue-live in [docs/.vitepress/theme](./docs/.vitepress/theme). Using a [markdown-it plugin](./docs/.vitepress/vue-live-md-it.mjs), we will render each example with the suffix `live` into a vue-live component.
 
-It also uses `vue-component-meta` instead of `vue-docgen-api` to parse vue components for props and events.
-The integration is done here: [docgen.config.js](./docgen.config.js)
+It also uses `vue-component-meta` instead of `vue-docgen-api` to parse vue components for props and events. The integration is done here: [docgen.config.js](./docgen.config.js)
 
 ### Run both vitepress & docgen at the same time
 

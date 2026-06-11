@@ -1,11 +1,8 @@
 # MDX
 
-Vue Styleguidist поддерживает файлы `.mdx` как для разделов контента, так и
-для примеров компонентов. Это позволяет использовать обычную документацию в
-Markdown и более гибкие MDX-документы с JSX/ESM.
+Vue Styleguidist поддерживает файлы `.mdx` как для разделов контента, так и для примеров компонентов. Это позволяет использовать обычную документацию в Markdown и более гибкие MDX-документы с JSX/ESM.
 
-> Поддержка MDX является дополнительной: существующие `.md` файлы продолжают
-> работать как раньше.
+> Поддержка MDX является дополнительной: существующие `.md` файлы продолжают работать как раньше.
 
 <!-- toc -->
 
@@ -59,18 +56,20 @@ Markdown и более гибкие MDX-документы с JSX/ESM.
 Рекомендуемый импорт для проектов на Vue Styleguidist:
 
 ```mdx
-import { Meta, Canvas, Source } from '@vue-styleguidist/blocks'
+import { Meta, Canvas, Source } from '@vue-styleguidist/blocks
+
+'
 ```
 
 Также поддерживается импорт в стиле Storybook:
 
 ```mdx
-import { Meta, Canvas, Source } from '@storybook/blocks'
+import { Meta, Canvas, Source } from '@storybook/blocks
+
+'
 ```
 
-`Meta` в Vue Styleguidist работает как контейнер метаданных (без отдельного
-рендеринга). `Canvas` и `Story` отображают совместимые контейнеры контента.
-`Source` рендерит блоки кода.
+`Meta` в Vue Styleguidist работает как контейнер метаданных (без отдельного рендеринга). `Canvas` и `Story` отображают совместимые контейнеры контента. `Source` рендерит блоки кода.
 
 ## Конфигурация
 
@@ -78,9 +77,7 @@ import { Meta, Canvas, Source } from '@storybook/blocks'
 
 Тип: `Object`, по умолчанию: `{}`
 
-Дополнительные параметры компиляции в MDX-пайплайне. Можно использовать для
-добавления своих `remark`/`rehype` плагинов или переопределения
-`providerImportSource`.
+Дополнительные параметры компиляции в MDX-пайплайне. Можно использовать для добавления своих `remark`/`rehype` плагинов или переопределения `providerImportSource`.
 
 ```js
 module.exports = {
@@ -97,8 +94,7 @@ module.exports = {
 
 Тип: `Boolean`, по умолчанию: `true`
 
-Включает встроенные алиасы `@vue-styleguidist/blocks` и `@storybook/blocks` на слой совместимости.
-Установите `false`, если хотите настроить алиасы вручную через конфигурацию Webpack.
+Включает встроенные алиасы `@vue-styleguidist/blocks` и `@storybook/blocks` на слой совместимости. Установите `false`, если хотите настроить алиасы вручную через конфигурацию Webpack.
 
 ```js
 module.exports = {
@@ -166,10 +162,13 @@ import { Meta, Source } from '@vue-styleguidist/blocks'
 
 Описание раздела в markdown.
 
-<Source language="bash" code={`
+<Source
+  language="bash"
+  code={`
 pnpm install
 pnpm styleguide
-`} />
+`}
+/>
 ```
 
 ### 2) Canvas с namespace-импортом (паттерн Storybook)
@@ -239,6 +238,7 @@ import * as Stories from './Button.stories'
 # Button
 
 Краткое описание компонента.
+
 <Canvas of={Stories.Base} />
 ```
 
@@ -259,13 +259,17 @@ export default {
 ### 8) Импорт в стиле Storybook (совместимость)
 
 ```mdx
-import { Meta, Canvas, Story, Source } from '@storybook/blocks'
+import { Meta, Canvas, Story, Source } from '@storybook/blocks
+
+'
 ```
 
 Для новых проектов рекомендуется:
 
 ```mdx
-import { Meta, Canvas, Story, Source } from '@vue-styleguidist/blocks'
+import { Meta, Canvas, Story, Source } from '@vue-styleguidist/blocks
+
+'
 ```
 
 ### 9) Section-конфиг с `.mdx`
@@ -311,13 +315,11 @@ module.exports = {
 
 ### MDX компилируется, но рендеринг выглядит некорректно.
 
-Проверьте пользовательские плагины в `mdxCompileOptions`. Временно отключите их
-и включайте обратно по одному.
+Проверьте пользовательские плагины в `mdxCompileOptions`. Временно отключите их и включайте обратно по одному.
 
 ### Файл `.mdx` не подхватывается как пример компонента
 
-Проверьте результат `getExampleFilename` и корректность путей. Помните, что
-порядок поиска по умолчанию начинается с `Readme.mdx` / `Readme.md`.
+Проверьте результат `getExampleFilename` и корректность путей. Помните, что порядок поиска по умолчанию начинается с `Readme.mdx` / `Readme.md`.
 
 ### Сборка падает в старом режиме Node/webpack4
 

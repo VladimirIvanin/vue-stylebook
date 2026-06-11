@@ -24,11 +24,11 @@ You can also use the Single File Component Format
 
 ```vue
 <template>
-    <div class="wrapper">
-        <Button @click.native="pushButton">Push Me</Button>
-        <hr />
-        <p class="text-name">Next Dog Name: {{ dogName }}</p>
-    </div>
+  <div class="wrapper">
+    <Button @click.native="pushButton">Push Me</Button>
+    <hr />
+    <p class="text-name">Next Dog Name: {{ dogName }}</p>
+  </div>
 </template>
 <script>
 const dogNames = require('dog-names').all

@@ -17,7 +17,7 @@ const mixinHandler: ScriptHandler = async (
 	componentDefinition,
 	astPath,
 	opt,
-  deps
+	deps
 ) => {
 	// filter only mixins
 	const mixinVariableNames = getMixinsVariableNames(componentDefinition)
@@ -41,7 +41,7 @@ const mixinHandler: ScriptHandler = async (
 					...opt,
 					nameFilter: [varName]
 				},
-        deps,
+				deps,
 				documentation
 			)
 		} else {

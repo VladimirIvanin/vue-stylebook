@@ -6,12 +6,12 @@ import examplesLoader from './examples-loader'
 vi.mock('vue-inbrowser-compiler-utils', () => {
 	return {
 		isCodeVueSfc: (code: string) => /<script/.test(code),
-    parseComponent: () => ({
-      script: {
-        content: `import _ from 'lodash';
+		parseComponent: () => ({
+			script: {
+				content: `import _ from 'lodash';
       import FooComponent from '../foo.js';`
-      }
-    })
+			}
+		})
 	}
 })
 
@@ -72,7 +72,9 @@ it('should replace all occurrences of __COMPONENT__ with provided query.displayN
 	const callback = (err: string, result: string) => {
 		expect(result).not.toMatch(/__COMPONENT__/)
 		const mth = result.match(/<div>(.*?)<\/div>/)
-		expect(mth && mth[0]).toMatchInlineSnapshot(`"<div>\\n\\t<foo.vue>\\n\\t\\t<span>text</span>\\n\\t\\t<span>Name of component: foo.vue</span>\\n\\t</foo.vue>\\n\\tdefault example\\n</div>"`)
+		expect(mth && mth[0]).toMatchInlineSnapshot(
+			`"<div>\\n\\t<foo.vue>\\n\\t\\t<span>text</span>\\n\\t\\t<span>Name of component: foo.vue</span>\\n\\t</foo.vue>\\n\\tdefault example\\n</div>"`
+		)
 	}
 
 	examplesLoader.call(

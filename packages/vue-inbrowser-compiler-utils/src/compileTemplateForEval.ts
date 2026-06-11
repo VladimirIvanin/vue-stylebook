@@ -28,12 +28,12 @@ export function compileTemplateForEval(compiledComponent: EvaluableComponent): v
 			source: compiledComponent.template,
 			filename: EXAMPLE_FILENAME,
 			id: '-',
-      scoped: !!compiledComponent.scopeId,
+			scoped: !!compiledComponent.scopeId,
 			compilerOptions: {
 				bindingMetadata: bindings,
 				prefixIdentifiers: true,
 				mode: 'function',
-        scopeId: compiledComponent.scopeId
+				scopeId: compiledComponent.scopeId
 			}
 		})
 		setFinalRender(compiledComponent, renderObject)
@@ -55,7 +55,7 @@ export function compileTemplateForEvalSetup(
 				bindingMetadata: bindings,
 				prefixIdentifiers: true,
 				mode: 'function',
-        scopeId: compiledComponent.scopeId
+				scopeId: compiledComponent.scopeId
 			}
 		})
 		setFinalRender(compiledComponent, renderObject)
@@ -64,22 +64,30 @@ export function compileTemplateForEvalSetup(
 
 function setFinalRender(sfc: EvaluableComponent, renderObject: any): void {
 	sfc.script = `
-${isVue3 ? 'const Vue = require("vue");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue' : ''}
+${
+	isVue3
+		? 'const Vue = require("vue");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue'
+		: ''
+}
 const __sfc__ = (function() {${sfc.script}})()${
 		renderObject.staticRenderFns?.length
 			? `
       __sfc__.staticRenderFns = [${renderObject.staticRenderFns
-					?.map((fn: string) => {
-						return `function(){${fn}}`
-					})
-					.join(',')}]`
+				?.map((fn: string) => {
+					return `function(){${fn}}`
+				})
+				.join(',')}]`
 			: ''
 	}
   __sfc__.render = function() {${renderObject.code}}
-${isVue3 ? `
+${
+	isVue3
+		? `
 ${sfc.scopeId ? `_pushScopeId("${sfc.scopeId}")` : ''}
 __sfc__.render = __sfc__.render()
-${sfc.scopeId ? `_popScopeId()`: ''}` : ''}
+${sfc.scopeId ? `_popScopeId()` : ''}`
+		: ''
+}
 return __sfc__`
 	delete sfc.template
 }

@@ -12,20 +12,20 @@ import exposeStyles from '../../utils/propStyles'
 const getRowKey = (row: ExposeDescriptor) => row.name
 
 function renderMethodName({ name, tags = [] }: ExposeDescriptor) {
-  const tagsObject = tags.reduce((acc, tag: ParamTag) => {
-    acc[tag.title] = tag.description
-    return acc
-  }, {} as Record<string, string | boolean | undefined>)
-  
+	const tagsObject = tags.reduce((acc, tag: ParamTag) => {
+		acc[tag.title] = tag.description
+		return acc
+	}, {} as Record<string, string | boolean | undefined>)
+
 	return <Name deprecated={!!tagsObject.deprecated}>{name}</Name>
 }
 
 function renderDescription(myClasses: Record<string, string>) {
 	return function renderDesc({ description, tags = [] }: ExposeDescriptor) {
-    const tagsObject = tags.reduce((acc, tag: ParamTag) => {
-      acc[tag.title] = tag.description
-      return acc
-    }, {} as Record<string, string | boolean | undefined>)
+		const tagsObject = tags.reduce((acc, tag: ParamTag) => {
+			acc[tag.title] = tag.description
+			return acc
+		}, {} as Record<string, string | boolean | undefined>)
 
 		return (
 			<>

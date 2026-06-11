@@ -54,6 +54,10 @@ export function Source(props: { code?: string; language?: string; children?: Rea
 	return React.createElement(
 		'pre',
 		{ 'data-vsg-mdx-source': true },
-		React.createElement('code', { className: props.language ? `language-${props.language}` : '' }, code)
+		React.createElement(
+			'code',
+			{ className: props.language ? `language-${props.language}` : '' },
+			code
+		)
 	)
 }

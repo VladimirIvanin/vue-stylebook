@@ -9,12 +9,12 @@ export default defineConfig({
 	videosFolder: '../../test/cypress/videos',
 
 	component: {
-		specPattern: path.resolve(__dirname,'src/**/*.cy.ts'),
-		indexHtmlFile: path.resolve(__dirname,'../../test/cypress/support/component-index.html'),
-    supportFile: false,
+		specPattern: path.resolve(__dirname, 'src/**/*.cy.ts'),
+		indexHtmlFile: path.resolve(__dirname, '../../test/cypress/support/component-index.html'),
+		supportFile: false,
 		devServer: {
 			framework: 'vue',
-			bundler: 'vite',
+			bundler: 'vite'
 		}
 	}
 })

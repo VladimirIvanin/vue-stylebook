@@ -324,10 +324,7 @@ describe('integration', () => {
 				}).code + '; return ___;'
 			)(adaptCreateElement, concatenate, hSpy).render()
 
-			expect(hSpy).toHaveBeenCalledWith(
-				'use',
-				expect.objectContaining({ xlinkHref: '#name' })
-			)
+			expect(hSpy).toHaveBeenCalledWith('use', expect.objectContaining({ xlinkHref: '#name' }))
 		})
 		test('Merge class', () => {
 			const wrapper = shallowMount(

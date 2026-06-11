@@ -5,9 +5,7 @@ const fs = require('fs')
 const path = require('path')
 
 const titleShare = `${title} docs`
-const repoName = process.env.GITHUB_REPOSITORY
-	? process.env.GITHUB_REPOSITORY.split('/')[1]
-	: ''
+const repoName = process.env.GITHUB_REPOSITORY ? process.env.GITHUB_REPOSITORY.split('/')[1] : ''
 const base = repoName ? `/${repoName}/` : '/'
 
 module.exports = () => {

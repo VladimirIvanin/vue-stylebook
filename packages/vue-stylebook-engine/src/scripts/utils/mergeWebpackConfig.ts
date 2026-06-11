@@ -39,9 +39,7 @@ const merge = mergeWithCustomize({
 })
 
 //make it a typeguard
-function isFunc(
-	conf: any | ((env: string) => any)
-): conf is (env: string) => any {
+function isFunc(conf: any | ((env: string) => any)): conf is (env: string) => any {
 	return isFunction(conf)
 }
 

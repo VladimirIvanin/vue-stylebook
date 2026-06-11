@@ -57,11 +57,11 @@ export class UnconfiguredEditor extends Component<UnconfiguredEditorProps> {
 		editorPadding: PropTypes.number
 	}
 
-	public state = { 
-    code: this.props.code, 
-    prevCode: this.props.code, 
-    highlight: (() => (code:string) => code) as Awaited<ReturnType<typeof getHighlight>>
-  }
+	public state = {
+		code: this.props.code,
+		prevCode: this.props.code,
+		highlight: (() => (code: string) => code) as Awaited<ReturnType<typeof getHighlight>>
+	}
 
 	public static getDerivedStateFromProps(
 		nextProps: UnconfiguredEditorProps,
@@ -77,9 +77,9 @@ export class UnconfiguredEditor extends Component<UnconfiguredEditorProps> {
 		return null
 	}
 
-  public componentDidMount() {
-    this.loadHighlightCode().then(() => this.forceUpdate())
-  }
+	public componentDidMount() {
+		this.loadHighlightCode().then(() => this.forceUpdate())
+	}
 
 	public shouldComponentUpdate(
 		nextProps: UnconfiguredEditorProps,
@@ -88,10 +88,10 @@ export class UnconfiguredEditor extends Component<UnconfiguredEditorProps> {
 		return nextState.code !== this.state.code
 	}
 
-  private loadHighlightCode = async () => {
-    const highlight = await getHighlight()
-    this.setState({ highlight})
-  }
+	private loadHighlightCode = async () => {
+		const highlight = await getHighlight()
+		this.setState({ highlight })
+	}
 
 	public handleChange = (code: string) => {
 		this.setState({ code })

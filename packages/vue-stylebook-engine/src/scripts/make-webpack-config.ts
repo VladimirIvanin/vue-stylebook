@@ -61,12 +61,12 @@ export default function (
 				'rsg-codemirror-theme.css': `codemirror/theme/${
 					config.editorConfig?.theme?.split(' ')[0] ?? 'default'
 				}.css`,
-				...(config as any).storybookBlocks === false
+				...((config as any).storybookBlocks === false
 					? {}
 					: {
 							'@storybook/blocks': path.resolve(sourceDir, 'rsg-components/StorybookBlocks'),
 							'@vue-styleguidist/blocks': path.resolve(sourceDir, 'rsg-components/StorybookBlocks')
-					  }
+					  })
 			}
 		},
 		module: {

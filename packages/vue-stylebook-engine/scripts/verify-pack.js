@@ -21,6 +21,8 @@ const output = execSync('npm pack --dry-run --ignore-scripts 2>&1', {
 })
 
 if (!output.includes('lib/bin/styleguidist.js')) {
-	console.error('npm pack is missing lib/bin/styleguidist.js — check the "files" field in package.json.')
+	console.error(
+		'npm pack is missing lib/bin/styleguidist.js — check the "files" field in package.json.'
+	)
 	process.exit(1)
 }

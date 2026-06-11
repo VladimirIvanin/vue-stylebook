@@ -7,13 +7,9 @@ Basic button:
 Big pink button and small blue button:
 
 ```html
-<BestButton size="large" color="deeppink">
-  Click Me
-</BestButton>
+<BestButton size="large" color="deeppink"> Click Me </BestButton>
 <br />
-<BestButton size="small" color="blue">
-  Second button
-</BestButton>
+<BestButton size="small" color="blue"> Second button </BestButton>
 ```
 
 And you _can_ **use** `any` [Markdown](http://daringfireball.net/projects/markdown/) here.
@@ -28,12 +24,14 @@ You can also use the Single File Component Format
 
 ```vue
 <template>
-    <div class="wrapper">
-        <BestButton @click.native="pushButton">Push Me</BestButton>
-        <hr />
-        <p class="text-name">Next Dog Name: {{ dogName }}</p>
-        <button @click="testTypescript('Medor')">Set <b>medor</b> tag name</button>
-    </div>
+  <div class="wrapper">
+    <BestButton @click.native="pushButton">Push Me</BestButton>
+    <hr />
+    <p class="text-name">Next Dog Name: {{ dogName }}</p>
+    <button @click="testTypescript('Medor')">
+      Set <b>medor</b> tag name
+    </button>
+  </div>
 </template>
 <script lang="ts">
 import { all as dogNames } from 'dog-names'
@@ -41,9 +39,10 @@ import { all as dogNames } from 'dog-names'
 // You can also use 'exports.default = {}' style module exports.
 export default {
   data() {
-    return { 
-      numClicks: 0, 
-      dogName: dogNames[0] }
+    return {
+      numClicks: 0,
+      dogName: dogNames[0]
+    }
   },
   methods: {
     pushButton() {

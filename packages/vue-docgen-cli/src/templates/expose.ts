@@ -10,10 +10,16 @@ const tmpl = function (expose: ExposeDescriptor[], subComponent: boolean) {
 		ret += `
 ${subComponent ? '#' : ''}### ${exp.name ? exp.name : ''}
 
-  > ${exp.description || ''} ${mdclean(renderTags(exp.tags?.reduce((acc, tag) => {
-    acc[tag.title] = [tag]
-    return acc
-  }, {} as { [tag: string]: (Tag | ParamTag)[] }))) || ''}
+  > ${exp.description || ''} ${
+			mdclean(
+				renderTags(
+					exp.tags?.reduce((acc, tag) => {
+						acc[tag.title] = [tag]
+						return acc
+					}, {} as { [tag: string]: (Tag | ParamTag)[] })
+				)
+			) || ''
+		}
 
  `
 	})

@@ -73,7 +73,10 @@ module.exports = {
 				'@mixins': path.resolve(__dirname, './src/mixins'),
 				// Make sure the example uses the local version of react-styleguidist
 				// This is only for the examples in this repo, you won't need it for your own project
-				'@ivaninvladimir/vue-stylebook-engine': path.join(__dirname, '../../packages/vue-stylebook-engine')
+				'@ivaninvladimir/vue-stylebook-engine': path.join(
+					__dirname,
+					'../../packages/vue-stylebook-engine'
+				)
 			}
 		}
 	},

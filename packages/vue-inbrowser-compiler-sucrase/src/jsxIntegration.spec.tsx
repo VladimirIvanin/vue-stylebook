@@ -304,21 +304,21 @@ describe('integration', () => {
 
 		test('xlink:href', () => {
 			const hSpy = vi.fn(h)
-			const compiledCode = transform('const __sut__ = { render() { return <use xlinkHref={"#name"} /> } }', {
-				transforms: ['jsx'],
-				jsxPragma: '__pragma__(h)',
-				production: true
-			}).code
+			const compiledCode = transform(
+				'const __sut__ = { render() { return <use xlinkHref={"#name"} /> } }',
+				{
+					transforms: ['jsx'],
+					jsxPragma: '__pragma__(h)',
+					production: true
+				}
+			).code
 			new Function('__pragma__', 'concatenate', 'h', compiledCode + '; return __sut__;')(
 				adaptCreateElement,
 				concatenate,
 				hSpy
 			).render()
 
-			expect(hSpy).toHaveBeenCalledWith(
-				'use',
-				expect.objectContaining({ xlinkHref: '#name' })
-			)
+			expect(hSpy).toHaveBeenCalledWith('use', expect.objectContaining({ xlinkHref: '#name' }))
 		})
 		test('Merge class', () => {
 			const wrapper = shallowMount(

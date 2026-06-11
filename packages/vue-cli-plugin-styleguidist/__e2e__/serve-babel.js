@@ -44,10 +44,7 @@ async function createAndInstall(name) {
 	}
 	pkg['browserslist'] = ['Chrome 70']
 	await project.write('package.json', JSON.stringify(pkg, null, 2))
-	await project.write(
-		'vue.config.js',
-		'module.exports = { transpileDependencies: true }\n'
-	)
+	await project.write('vue.config.js', 'module.exports = { transpileDependencies: true }\n')
 	await installWorkspacePlugin(project)
 	await setupStyleguideEnv(project)
 	return project

@@ -20,9 +20,7 @@ export default function processSections(
 ): ProcessedSection[] {
 	return sections.map(section => {
 		const useHashIdForSection = section.sectionDepth === 0
-		const useHashIdForComponents = section.componentPagePerSection
-			? false
-			: useHashIdForSection
+		const useHashIdForComponents = section.componentPagePerSection ? false : useHashIdForSection
 		const options = {
 			useRouterLinks: Boolean(useRouterLinks && section.name),
 			useHashId: useHashIdForSection,

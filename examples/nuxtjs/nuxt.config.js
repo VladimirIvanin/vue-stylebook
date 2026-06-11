@@ -15,7 +15,7 @@ module.exports = {
 	build: {
 		babel: {
 			babelrc: true,
-      exclude: /(node_modules|packages)/,
+			exclude: /(node_modules|packages)/
 		}
 	},
 	/*

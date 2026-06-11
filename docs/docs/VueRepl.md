@@ -2,8 +2,7 @@
 
 `vue-styleguidist` поддерживает движок playground для Vue 3 на базе `@vue/repl`.
 
-Этот движок включается явно (opt-in) и не требует отдельного standalone server.
-Он работает внутри того же процесса dev server, что и Styleguidist.
+Этот движок включается явно (opt-in) и не требует отдельного standalone server. Он работает внутри того же процесса dev server, что и Styleguidist.
 
 ## Быстрый старт
 
@@ -35,8 +34,7 @@ Runtime для sandbox выбирается в таком порядке:
 2. Локальный runtime из `node_modules/@vue/runtime-dom/dist/runtime-dom.esm-browser.js`
 3. Fallback в состояние unresolved с явным предупреждением в playground
 
-Цель — избежать несовпадения runtime между локальным приложением, Storybook cache
-и iframe Vue REPL.
+Цель — избежать несовпадения runtime между локальным приложением, Storybook cache и iframe Vue REPL.
 
 Путь к server renderer определяется из:
 
@@ -51,11 +49,9 @@ Styleguidist раздает его через внутренние endpoint-ы:
 
 ## Автоматическая реинициализация и HMR
 
-Когда Styleguidist обнаруживает hot update данных индекса docs/components, он
-отправляет событие `vsg:dist-rebuilt` в клиентском runtime.
+Когда Styleguidist обнаруживает hot update данных индекса docs/components, он отправляет событие `vsg:dist-rebuilt` в клиентском runtime.
 
-В режиме `vueRepl` playground слушает это событие и перемонтирует sandbox, поэтому
-при редактировании SFC-файлов компонента preview надежно переинициализируется.
+В режиме `vueRepl` playground слушает это событие и перемонтирует sandbox, поэтому при редактировании SFC-файлов компонента preview надежно переинициализируется.
 
 ## Область поддержки Vue 3
 

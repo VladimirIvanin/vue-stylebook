@@ -7,7 +7,7 @@ describe('compileTemplateForEval', () => {
 			template: '<MyButton/>',
 			script: 'return { data: 1 }',
 			style: '',
-			setup:false
+			setup: false
 		}
 		compileTemplateForEval(compiledComponent)
 		expect(compiledComponent.script).toMatchInlineSnapshot(`
@@ -35,7 +35,7 @@ describe('compileTemplateForEval', () => {
 			script: 'return { data: 1 }',
 			style: '.test { color: red; } .test2 { color: blue; }',
 			setup: false,
-      scopeId: 'data-v-123456'
+			scopeId: 'data-v-123456'
 		}
 		compileTemplateForEval(compiledComponent)
 		expect(compiledComponent.script).toMatchInlineSnapshot(`
@@ -73,12 +73,15 @@ describe('compileTemplateForEvalSetup', () => {
 			script: 'return { data: 1 }',
 			setup: true
 		}
-		compileTemplateForEvalSetup(compiledComponent, `<script setup>
+		compileTemplateForEvalSetup(
+			compiledComponent,
+			`<script setup>
 		import MyButton from './MyButton.vue'
 		</script>
 		<template>
 			<MyButton/>
-		</template>`)
+		</template>`
+		)
 		expect(compiledComponent.script).toMatchInlineSnapshot(`
 			"
 			const Vue = require("vue");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue
@@ -96,15 +99,17 @@ describe('compileTemplateForEvalSetup', () => {
 		`)
 	})
 
-  test('double header style should scope each block', () => {
+	test('double header style should scope each block', () => {
 		const compiledComponent = {
 			template: '<div class="test">T</div><div class="test2">T2</div>',
 			script: 'return { data: 1 }',
 			style: '.test { color: red; } .test2 { color: blue; }',
 			setup: true,
-      scopeId: 'data-v-123456'
+			scopeId: 'data-v-123456'
 		}
-		compileTemplateForEvalSetup(compiledComponent, `<script setup>
+		compileTemplateForEvalSetup(
+			compiledComponent,
+			`<script setup>
 		import MyButton from './MyButton.vue'
 		</script>
 		<template>
@@ -113,7 +118,8 @@ describe('compileTemplateForEvalSetup', () => {
     <style scoped>
     .test { color: red; } 
     .test2 { color: blue; }
-    </style>`)
+    </style>`
+		)
 		expect(compiledComponent.script).toMatchInlineSnapshot(`
 			"
 			const Vue = require("vue");const {pushScopeId: _pushScopeId, popScopeId: _popScopeId} = Vue

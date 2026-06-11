@@ -50,7 +50,7 @@ Should vue-docgen output more information?
 
 ```sh
 yarn vue-docgen -v
-```	
+```
 
 same as `--logLevel debug`
 
@@ -60,9 +60,9 @@ Specify the log level. Can be `error`, `warn`, `info`, `debug`, `trace`.
 
 ```sh
 yarn vue-docgen --logLevel debug
-```	
+```
 
-default is `error`	
+default is `error`
 
 ### Config File
 

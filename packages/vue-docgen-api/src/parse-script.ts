@@ -11,7 +11,7 @@ import { addDefaultAndExecuteHandlers } from './utils/execute-handlers'
 const ERROR_MISSING_DEFINITION = 'No suitable component definition found'
 
 export default async function parseScript(
-  parseFile: ParseFileFunction,
+	parseFile: ParseFileFunction,
 	source: string,
 	options: ParseOptions,
 	documentation?: Documentation,
@@ -37,7 +37,13 @@ export default async function parseScript(
 	if (componentDefinitions.size === 0) {
 		// if there is any immediately exported variable
 		// resolve their documentations
-		const docs = await documentRequiredComponents(parseFile, documentation, ievSet, undefined, options)
+		const docs = await documentRequiredComponents(
+			parseFile,
+			documentation,
+			ievSet,
+			undefined,
+			options
+		)
 
 		// if we do not find any components, throw
 		if (!docs.length) {
@@ -51,9 +57,9 @@ export default async function parseScript(
 		componentDefinitions,
 		ast,
 		options,
-    {
-      parseFile,
-    },
+		{
+			parseFile
+		},
 		documentation,
 		forceSingleExport
 	)

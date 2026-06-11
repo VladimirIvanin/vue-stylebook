@@ -13,10 +13,10 @@ export default {
 	name: 'DropDown',
 	props: {
 		/**
-		  * Provides a two-way data binding interface to the component
- 			* @model
-			* @tttt
-			* @see https://vuejs.org/v2/guide/components-custom-events.html#sync-Modifier
+		 * Provides a two-way data binding interface to the component
+		 * @model
+		 * @tttt
+		 * @see https://vuejs.org/v2/guide/components-custom-events.html#sync-Modifier
 		 */
 		modelValue: {
 			type: String,

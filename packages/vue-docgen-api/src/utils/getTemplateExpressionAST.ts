@@ -9,7 +9,7 @@ export default function getTemplateExpressionAST(expression: string) {
 	} catch (e: any) {
 		throw Error(
 			`Could not parse template expression:\n` + //
-			`${expression}\n` + //
+				`${expression}\n` + //
 				`Err: ${e.message}`
 		)
 	}

@@ -1,12 +1,17 @@
 import { transform, Options as TransformOptions } from 'sucrase'
 import walkes from 'walkes'
-import { isCodeVueSfc, isVue3, compileTemplateForEval, compileTemplateForEvalSetup, EvaluableComponent } from 'vue-inbrowser-compiler-utils'
+import {
+	isCodeVueSfc,
+	isVue3,
+	compileTemplateForEval,
+	compileTemplateForEvalSetup,
+	EvaluableComponent
+} from 'vue-inbrowser-compiler-utils'
 import normalizeSfcComponent, {
 	parseScriptCode,
 	getRenderFunctionStart,
 	insertCreateElementFunction,
-	JSX_ADDON_LENGTH,
-	
+	JSX_ADDON_LENGTH
 } from './normalizeSfcComponent'
 import getAst from './getAst'
 
@@ -31,7 +36,7 @@ export function compileVue3Template(template: string, component: any): () => any
 export default function compileVueCodeForEvalFunction(
 	code: string,
 	config: Omit<TransformOptions, 'transforms'> & { objectAssign?: string } = {},
-  scopeId?: string
+	scopeId?: string
 ): EvaluableComponentWithSource {
 	const nonCompiledComponent = prepareVueCodeForEvalFunction(code, config)
 	const configWithTransforms: TransformOptions = {
@@ -43,11 +48,11 @@ export default function compileVueCodeForEvalFunction(
 
 	const compiledComponent = {
 		...nonCompiledComponent,
-    scopeId,
+		scopeId,
 		script: transform(nonCompiledComponent.script, configWithTransforms).code
 	}
 
-	if(nonCompiledComponent.setup && isVue3) {
+	if (nonCompiledComponent.setup && isVue3) {
 		compileTemplateForEvalSetup(compiledComponent, code)
 	} else {
 		compileTemplateForEval(compiledComponent)
@@ -96,7 +101,7 @@ function prepareVueCodeForEvalFunction(
 		code = limitScript > -1 ? code.slice(0, limitScript) : code
 		vsgMode = true
 	}
-  
+
 	const ast = getAst(code)
 	let offset = 0
 	const varNames: string[] = []

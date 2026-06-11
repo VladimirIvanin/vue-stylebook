@@ -1,5 +1,6 @@
 const UNNAMED = /import\s*['"]([^'"]+)['"];?/gi
-const NAMED = /import\s*(\*\s*as)?\s*(\w*?)\s*,?\s*(?:\{([\s\S]*?)\})?\s*from\s*['"]([^'"]+)['"];?/gi
+const NAMED =
+	/import\s*(\*\s*as)?\s*(\w*?)\s*,?\s*(?:\{([\s\S]*?)\})?\s*from\s*['"]([^'"]+)['"];?/gi
 
 function alias(previousKey: string) {
 	let key = previousKey.trim()

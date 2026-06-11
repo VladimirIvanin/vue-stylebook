@@ -14,34 +14,33 @@ vi.mock('../utils/resolveRequired')
 vi.mock('../utils/resolvePathFrom')
 
 describe('extendsHandler', () => {
-  let deps: undefined | {
-    parseFile: ParseFileFunction
-    addDefaultAndExecuteHandlers: HandlerExecutorsFunction
-  }
+	let deps:
+		| undefined
+		| {
+				parseFile: ParseFileFunction
+				addDefaultAndExecuteHandlers: HandlerExecutorsFunction
+		  }
 	let resolveRequiredMock: SpyInstance<
-    [ast: bt.File, varNameFilter?: string[]],
-    { [key: string]: { filePath: string[], exportName: string } }
-  >
-	let mockResolvePathFrom: SpyInstance<
-    [path: string, from: string],
-     string
-  >
+		[ast: bt.File, varNameFilter?: string[]],
+		{ [key: string]: { filePath: string[]; exportName: string } }
+	>
+	let mockResolvePathFrom: SpyInstance<[path: string, from: string], string>
 	let mockParse: SpyInstance
 	const doc = new Documentation('dummy/path')
 	beforeEach(() => {
-		resolveRequiredMock = (resolveRequired as any)
+		resolveRequiredMock = resolveRequired as any
 		resolveRequiredMock.mockReturnValue({
 			testComponent: { filePath: ['./componentPath'], exportName: 'default' }
 		})
 
-		mockResolvePathFrom = (resolvePathFrom as any)
+		mockResolvePathFrom = resolvePathFrom as any
 		mockResolvePathFrom.mockReturnValue('./component/full/path')
 
 		mockParse = vi.spyOn(parse, 'parseFile')
-    deps = {
-      parseFile: parse.parseFile,
-      addDefaultAndExecuteHandlers: vi.fn()
-    }
+		deps = {
+			parseFile: parse.parseFile,
+			addDefaultAndExecuteHandlers: vi.fn()
+		}
 		mockParse.mockReturnValue({ component: 'documentation' })
 	})
 
@@ -49,13 +48,16 @@ describe('extendsHandler', () => {
 		const ast = babylon().parse(src)
 		const path = resolveExportedComponent(ast)[0].get('default')
 		if (path && deps) {
-      
-
-        await extendsHandler(doc, path, ast, {
-          filePath: '',
-          validExtends: (fullFilePath: string) => !/[\\/]node_modules[\\/]/.test(fullFilePath)
-        }, deps)
-      
+			await extendsHandler(
+				doc,
+				path,
+				ast,
+				{
+					filePath: '',
+					validExtends: (fullFilePath: string) => !/[\\/]node_modules[\\/]/.test(fullFilePath)
+				},
+				deps
+			)
 		}
 	}
 

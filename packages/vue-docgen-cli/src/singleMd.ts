@@ -41,7 +41,7 @@ export default async function (
 
 	if (config.watch) {
 		watcher
-			.on('add', (filePath) => {
+			.on('add', filePath => {
 				files.push(filePath)
 				compileSingleDocWithConfig('add', filePath)
 			})
@@ -103,10 +103,7 @@ export async function compile(
 			await cacheMarkDownContent(changedFilePath)
 		} catch (e) {
 			if (config.watch) {
-				log.error(
-					'\x1b[31m%s\x1b[0m',
-					`[vue-docgen-cli] Error compiling file ${config.outFile}:`
-				)
+				log.error('\x1b[31m%s\x1b[0m', `[vue-docgen-cli] Error compiling file ${config.outFile}:`)
 				log.error(e)
 			} else {
 				const err = e as Error
@@ -121,9 +118,7 @@ export async function compile(
 			await Promise.all(files.map(cacheMarkDownContent))
 		} catch (e) {
 			if (config.watch) {
-				log.error(
-					`[vue-docgen-cli] Error compiling file ${config.outFile}:`
-				)
+				log.error(`[vue-docgen-cli] Error compiling file ${config.outFile}:`)
 				log.error(e)
 			} else {
 				const err = e as Error

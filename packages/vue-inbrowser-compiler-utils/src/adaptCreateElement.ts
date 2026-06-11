@@ -168,13 +168,11 @@ const flattenForVue3 = (grouped: { [key: string]: any }): { [key: string]: any }
 			attrsOut[key] = grouped[key]
 		}
 	})
-
 	;['attrs', 'domProps', 'props'].forEach(key => {
 		if (grouped[key]) {
 			Object.assign(attrsOut, grouped[key])
 		}
 	})
-
 	;['on', 'nativeOn'].forEach(prefix => {
 		if (grouped[prefix]) {
 			Object.keys(grouped[prefix]).forEach(eventName => {
@@ -191,7 +189,8 @@ const flattenForVue3 = (grouped: { [key: string]: any }): { [key: string]: any }
 			destroy: 'onVnodeUnmounted'
 		}
 		Object.keys(grouped.hook).forEach(hookName => {
-			const vue3Hook = hookMap[hookName] || `onVnode${hookName[0].toUpperCase()}${hookName.slice(1)}`
+			const vue3Hook =
+				hookMap[hookName] || `onVnode${hookName[0].toUpperCase()}${hookName.slice(1)}`
 			attrsOut[vue3Hook] = grouped.hook[hookName]
 		})
 	}

@@ -104,5 +104,3 @@ function exportBuildUtils(config: SanitizedStyleguidistConfig): StyleGuideUtils 
 		}
 	}
 }
-
-

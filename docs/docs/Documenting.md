@@ -425,66 +425,68 @@ Vue Styleguidist будет искать любые файлы `Readme.md` ил�
 
 1. Создать новый экземпляр Vue
 
-    ```js
-    const names = require('dog-names').all;
+   ```js
+   const names = require('dog-names').all
 
-    new Vue({
-      data(){
-        return {
-          list: names
-        }
-      },
-      template: `
-        <div>
-          <RandomButton :variants="list" />
-        </div>
-      `
-    })
-    ```
+   new Vue({
+     data() {
+       return {
+         list: names
+       }
+     },
+     template: `
+       <div>
+         <RandomButton :variants="list" />
+       </div>
+     `
+   })
+   ```
 
 2. Однофайловые компоненты с языковым тегом vue (поддерживает <style sced>)
 
-    ```vue
-      <template>
-        <div class="wrapper">
-          <Button id="dog-name-button" @click.native="pushButton">Push Me</Button>
-          <hr />
-          <p class="text-name">Next Dog Name: {{ dogName }}</p>
-        </div>
-      </template>
+   ```vue
+   <template>
+     <div class="wrapper">
+       <Button id="dog-name-button" @click.native="pushButton"
+         >Push Me</Button
+       >
+       <hr />
+       <p class="text-name">Next Dog Name: {{ dogName }}</p>
+     </div>
+   </template>
 
-      <script>
-        const dogNames = require('dog-names').all;
+   <script>
+   const dogNames = require('dog-names').all
 
-        // You can also use 'exports.default = {}' style module exports.
-        export default {
-          data() {
-            return { numClicks: 0, dogName: dogNames[0] };
-          },
-          methods: {
-            pushButton() {
-              this.numClicks += 1;
-              this.dogName = dogNames[this.numClicks];
-            }
-          }
-        }
-      </script>
+   // You can also use 'exports.default = {}' style module exports.
+   export default {
+     data() {
+       return { numClicks: 0, dogName: dogNames[0] }
+     },
+     methods: {
+       pushButton() {
+         this.numClicks += 1
+         this.dogName = dogNames[this.numClicks]
+       }
+     }
+   }
+   </script>
 
-      <style scoped>
-        .wrapper {
-          background: blue;
-        }
-        .text-name {
-          color: red;
-        }
-      </style>
-    ```
+   <style scoped>
+   .wrapper {
+     background: blue;
+   }
+   .text-name {
+     color: red;
+   }
+   </style>
+   ```
 
-    Примеры на всех других языках отображаются только как выделенный исходный код, а не как реальный компонент:
+   Примеры на всех других языках отображаются только как выделенный исходный код, а не как реальный компонент:
 
-    ```html
-    <Button size="large">Push Me</Button>
-    ```
+   ```html
+   <button size="large">Push Me</button>
+   ```
 
 Любой [Markdown](http://daringfireball.net/projects/markdown/) **разрешён** _здесь_.
 
@@ -538,7 +540,7 @@ export default {
 
 ## Публичные методы
 
-По умолчанию любые методы ваших компонентов, включая частные, не публикуются. Порекомендуйте свои общедоступные методы тегом JSDoc [__IC_0__](http://jsdoc.app/tags-public.html), чтобы опубликовать их в документации:
+По умолчанию любые методы ваших компонентов, включая частные, не публикуются. Порекомендуйте свои общедоступные методы тегом JSDoc [**IC_0**](http://jsdoc.app/tags-public.html), чтобы опубликовать их в документации:
 
 ```javascript
 /**
@@ -554,7 +556,7 @@ insertAtCursor(text) {
 
 ## Игнорирование пропсов
 
-По умолчанию все свойства ваших компонентов считаются общедоступными и публикуются. В некоторых случаях вы можете удалить свойство из документации, сохранив его в коде. Для этого из примера объектного тега JSDoc [__IC_0__](http://jsdoc.app/tags-ignore.html) удалите его из документации:
+По умолчанию все свойства ваших компонентов считаются общедоступными и публикуются. В некоторых случаях вы можете удалить свойство из документации, сохранив его в коде. Для этого из примера объектного тега JSDoc [**IC_0**](http://jsdoc.app/tags-ignore.html) удалите его из документации:
 
 ```javascript
   props: {
@@ -907,7 +909,8 @@ const mockData = require('./mocks');
 ```
 
 > **Примечание.** Если вам нужна более сложная демонстрация, определите ее в отдельном файле JavaScript и `import` в Markdown. Если файл компонента находится рядом с Markdown-документацией, используйте `import { myExample as exam } from './myExample';`. Затем этот импорт можно использовать в примерах. Обратите внимание, что код инициализации не будет включен в документацию. >
-```jsx
+
+`````jsx
 > import { myExample as Button } from './myExample'
 > ;<div>
 >   <Button />
@@ -938,11 +941,13 @@ const mockData = require('./mocks');
 ````markdown
 ```[import](./myExample.vue)
 Набранный здесь текст будет полностью проигнорирован. Вы можете использовать его для описания примера, импортированного для целей обслуживания.
+`````
+
 ```
-````
 
 > **Примечание** Эта опция НЕ заменяет автоматически примеры кода в `vue-docgen-cli`. Поскольку механизм рендеринга просто копирует содержимое Markdown, CLI не может определить, какие примеры нужно заменять.
 
 > **Примечание** Не нужно указывать язык, поскольку он будет указан из названия файла.
 
 > **Примечание** Все флаги, описанные [here](#usage-examples-and-readme-files), по-прежнему можно использовать.
+```

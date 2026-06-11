@@ -1,15 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'clsx';
-import Heading from 'rsg-components/Heading';
-import Styled from 'rsg-components/Styled';
-import RsgSectionHeadingRenderer from 'rsg-components-default/SectionHeading/SectionHeadingRenderer';
+import React from 'react'
+import PropTypes from 'prop-types'
+import cx from 'clsx'
+import Heading from 'rsg-components/Heading'
+import Styled from 'rsg-components/Styled'
+import RsgSectionHeadingRenderer from 'rsg-components-default/SectionHeading/SectionHeadingRenderer'
 
-function SectionHeadingRenderer({ classes, children, toolbar, id, href, depth, deprecated, functional }) {
-	const headingLevel = Math.min(6, depth);
+function SectionHeadingRenderer({
+	classes,
+	children,
+	toolbar,
+	id,
+	href,
+	depth,
+	deprecated,
+	functional
+}) {
+	const headingLevel = Math.min(6, depth)
 	const sectionNameClasses = cx(classes.sectionName, {
-		[classes.isDeprecated]: deprecated,
-	});
+		[classes.isDeprecated]: deprecated
+	})
 
 	return (
 		<div className={classes.wrapper}>
@@ -20,7 +29,7 @@ function SectionHeadingRenderer({ classes, children, toolbar, id, href, depth, d
 			</Heading>
 			<div className={classes.toolbar}>{toolbar}</div>
 		</div>
-	);
+	)
 }
 
 const styles = ({ color, space }) => ({
@@ -28,33 +37,33 @@ const styles = ({ color, space }) => ({
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
-		marginBottom: space[1],
+		marginBottom: space[1]
 	},
 	toolbar: {
-		marginLeft: 'auto',
+		marginLeft: 'auto'
 	},
 	sectionName: {
 		'&:hover, &:active': {
 			isolate: false,
 			textDecoration: 'underline',
-			cursor: 'pointer',
-		},
+			cursor: 'pointer'
+		}
 	},
 	isDeprecated: {
 		color: color.light,
 		'&, &:hover': {
-			textDecoration: 'line-through',
-		},
+			textDecoration: 'line-through'
+		}
 	},
-	functional:{
+	functional: {
 		// to make functional components blue
-		color: "#00F"
+		color: '#00F'
 	}
-});
+})
 
 SectionHeadingRenderer.propTypes = {
-    ...RsgSectionHeadingRenderer.propTypes,
-    functional: PropTypes.bool
-};
+	...RsgSectionHeadingRenderer.propTypes,
+	functional: PropTypes.bool
+}
 
-export default Styled(styles)(SectionHeadingRenderer);
+export default Styled(styles)(SectionHeadingRenderer)

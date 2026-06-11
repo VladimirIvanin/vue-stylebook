@@ -25,7 +25,7 @@ function createPage(overrides = {}) {
 				render: () => ({
 					html: '<h1>Заголовок</h1><h2>Введение</h2><p>Résumé Поиск по MD</p>'
 				}),
-				renderInline: (value) => value
+				renderInline: value => value
 			}
 		},
 		...overrides

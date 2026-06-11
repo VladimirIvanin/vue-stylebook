@@ -27,7 +27,10 @@ export default function resolveLocal(ast: bt.File, variableNames: string[]): Map
 			pathVariable.get('declarations').each((declaration: NodePath) => {
 				if (bt.isVariableDeclarator(declaration.node) && bt.isIdentifier(declaration.node.id)) {
 					const varName: string = declaration.node.id.name
-					if (variableNames.includes(varName) && declaration.get('init', 'callee', 'name').value !== 'require') {
+					if (
+						variableNames.includes(varName) &&
+						declaration.get('init', 'callee', 'name').value !== 'require'
+					) {
 						variablesMap.set(varName, declaration.get('init'))
 					}
 				}

@@ -1,4 +1,4 @@
-import type { Tag, ParamTag } from "vue-docgen-api"
+import type { Tag, ParamTag } from 'vue-docgen-api'
 
 function isTag(v: Tag | ParamTag): v is Tag {
 	return !!(v as any).content
@@ -10,7 +10,7 @@ export const renderTags = (tags?: { [tag: string]: (Tag | ParamTag)[] }): string
 	}
 	return Object.entries(tags)
 		.map(([tag, values]) => {
-      if(tag === 'type') return ''
+			if (tag === 'type') return ''
 			return values.map(v => `\n\`@${tag}\` ${isTag(v) ? v.content : v.description}`).join('')
 		})
 		.join('')

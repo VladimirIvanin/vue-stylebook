@@ -7,7 +7,7 @@ vi.mock('@mdx-js/mdx', () => ({
 
 describe('mdx-loader', () => {
 	it('compiles MDX and exports mdx example module shape', async () => {
-		(compile as any).mockResolvedValue(
+		;(compile as any).mockResolvedValue(
 			'export default function MDXContent(){return null}\nexport default MDXContent'
 		)
 
@@ -25,7 +25,7 @@ describe('mdx-loader', () => {
 	})
 
 	it('merges mdxCompileOptions and uses defaults', async () => {
-		(compile as any).mockResolvedValue('export default function MDXContent(){return null}')
+		;(compile as any).mockResolvedValue('export default function MDXContent(){return null}')
 
 		const callback = vi.fn()
 		const context = {

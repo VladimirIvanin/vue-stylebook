@@ -21,8 +21,7 @@ async function installWorkspacePlugin(project) {
 		}
 	})
 
-	const wmVersion =
-		require(path.join(pluginDir, 'package.json')).dependencies['webpack-merge']
+	const wmVersion = require(path.join(pluginDir, 'package.json')).dependencies['webpack-merge']
 	const pluginNodeModules = path.join(pluginDest, 'node_modules')
 	const tempDir = path.join(pluginDest, '.webpack-merge-install')
 

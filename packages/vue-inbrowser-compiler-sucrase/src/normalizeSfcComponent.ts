@@ -133,7 +133,7 @@ export function insertCreateElementFunction(before: string, after: string): stri
 }
 
 export function parseScriptSetupCode(code: string): string {
-  const varNames:string[] = []
+	const varNames: string[] = []
 	walkes(getAst(code), {
 		ImportDeclaration(node: any) {
 			if (node.specifiers.length === 0) {
@@ -150,24 +150,24 @@ export function parseScriptSetupCode(code: string): string {
 				})
 			}
 		},
-    VariableDeclaration(node: any) {
-      node.declarations.forEach((declaration: any) => {
-        if (declaration.id.name) {
-          // simple variable declaration
-          varNames.push(declaration.id.name)
-        } else if (declaration.id.properties) {
-          // spread variable declaration
-          // const { all:names } = {all: 'foo'}
-          declaration.id.properties.forEach((p: any) => {
-            varNames.push(p.value.name)
-          })
-        }
-      })
-    },
-    FunctionDeclaration(node: any) {
-      varNames.push(node.id.name)
-    }
-  })
+		VariableDeclaration(node: any) {
+			node.declarations.forEach((declaration: any) => {
+				if (declaration.id.name) {
+					// simple variable declaration
+					varNames.push(declaration.id.name)
+				} else if (declaration.id.properties) {
+					// spread variable declaration
+					// const { all:names } = {all: 'foo'}
+					declaration.id.properties.forEach((p: any) => {
+						varNames.push(p.value.name)
+					})
+				}
+			})
+		},
+		FunctionDeclaration(node: any) {
+			varNames.push(node.id.name)
+		}
+	})
 
 	return `setup(){
 ${code}
@@ -187,15 +187,12 @@ export default function normalizeSfcComponent(
 	code: string,
 	config: { objectAssign?: string } = {}
 ): EvaluableComponent {
-  const { script, scriptSetup, template, styles } = parseComponent(code)
-	const {
-		preprocessing = '',
-		component = '',
-	} = scriptSetup
+	const { script, scriptSetup, template, styles } = parseComponent(code)
+	const { preprocessing = '', component = '' } = scriptSetup
 		? {
-      preprocessing: script?.content, 
-      component: parseScriptSetupCode(scriptSetup.content)
-    }
+				preprocessing: script?.content,
+				component: parseScriptSetupCode(scriptSetup.content)
+		  }
 		: script
 		? parseScriptCode(script.content)
 		: {}

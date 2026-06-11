@@ -13,7 +13,7 @@ export default function Usage({ props: { props, methods, events, slots, expose }
 			{methods && methods.length > 0 ? <Methods methods={methods} /> : undefined}
 			{events && Object.keys(events).length > 0 ? <Events props={events} /> : undefined}
 			{slots && Object.keys(slots).length > 0 ? <SlotsTable props={slots} /> : undefined}
-      {expose ? <Expose expose={expose} /> : undefined}
+			{expose ? <Expose expose={expose} /> : undefined}
 		</div>
 	)
 }

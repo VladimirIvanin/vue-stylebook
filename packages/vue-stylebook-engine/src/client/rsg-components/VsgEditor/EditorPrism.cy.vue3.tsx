@@ -35,7 +35,7 @@ const msg:string = test()
 			</Provider>
 		)
 
-    cy.get('pre').should('have.text', code)
+		cy.get('pre').should('have.text', code)
 	})
 
 	it('renders vue SFC with all the features', () => {

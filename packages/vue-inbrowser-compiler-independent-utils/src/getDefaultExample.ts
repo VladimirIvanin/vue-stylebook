@@ -22,7 +22,7 @@ function getDefaultFunction(): string {
 }
 
 function getDefaultDate(): string {
-	return 'new Date(\'2012-12-12\')'
+	return "new Date('2012-12-12')"
 }
 
 function getDefaultObject(): string {
