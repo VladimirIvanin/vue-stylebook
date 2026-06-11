@@ -1,6 +1,6 @@
 /// @ts-check
 const path = require('path')
-const { defineConfig } = require('vue-styleguidist')
+const { defineConfig } = require('@ivaninvladimir/vue-stylebook-engine')
 
 const docSiteUrl = process.env.DEPLOY_PRIME_URL || 'https://vue-styleguidist.github.io'
 
@@ -18,12 +18,10 @@ module.exports = defineConfig({
 			]
 		}
 	},
-	require: [
-		path.join(__dirname, 'config/global.requires.js'),
-		path.join(__dirname, 'config/global.styles.scss')
-	],
+	require: [path.join(__dirname, 'config/global.styles.scss')],
+	enhancePreviewApp: path.join(__dirname, 'config/enhancePreviewApp.js'),
 	renderRootJsx: path.join(__dirname, 'config/styleguide.root.js'),
-	validExtends: fullFilePath => !/(?=node_modules)(?!node_modules\/vuetify)/.test(fullFilePath),
+	validExtends: fullFilePath => !/(?=node_modules)(?!node_modules[\\/]vuetify)/.test(fullFilePath),
 	usageMode: 'collapse',
 	exampleMode: 'expand',
 	styleguideDir: 'dist',

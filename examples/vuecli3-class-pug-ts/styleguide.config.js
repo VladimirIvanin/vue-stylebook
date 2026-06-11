@@ -7,7 +7,7 @@ console.log(path.dirname(cliPath))
 const webpackPath = require.resolve('webpack', { paths: [path.dirname(cliPath)] })
 process.env.VSG_WEBPACK_PATH = webpackPath
 
-/** @type import("vue-styleguidist").Config */
+/** @type import("@ivaninvladimir/vue-stylebook-engine").Config */
 module.exports = {
 	// set your styleguidist configuration here
 	title: 'Default Style Guide',

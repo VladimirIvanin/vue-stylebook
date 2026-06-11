@@ -1,11 +1,12 @@
+const path = require('path')
 const vueLoader = require('vue-loader')
 
 const docSiteUrl = process.env.DEPLOY_PRIME_URL || 'https://vue-styleguidist.github.io'
 
-/** @type import("vue-styleguidist").Config */
+/** @type import("@ivaninvladimir/vue-stylebook-engine").Config */
 module.exports = {
 	components: 'src/components/**/[A-Z]*.vue',
-	require: ['./router-mock.js'],
+	enhancePreviewApp: path.join(__dirname, 'router-mock.js'),
 	ribbon: {
 		text: 'Back to examples',
 		url: `${docSiteUrl}/Examples.html`

@@ -7,7 +7,7 @@ console.log(path.dirname(cliPath))
 const webpackPath = require.resolve('webpack', { paths: [path.dirname(cliPath)] })
 process.env.VSG_WEBPACK_PATH = webpackPath
 
-/** @type import("vue-styleguidist").Config */
+/** @type import("@ivaninvladimir/vue-stylebook-engine").Config */
 module.exports = {
 	title: 'IE - Vuetlfy Styleguide',
 	components: 'src/components/**/[A-Z]*.vue',
@@ -22,14 +22,11 @@ module.exports = {
 			]
 		}
 	},
-	require: [path.join(__dirname, 'config/global.requires.js')],
+	enhancePreviewApp: path.join(__dirname, 'config/enhancePreviewApp.js'),
 	renderRootJsx: path.join(__dirname, 'config/styleguide.root.js'),
 	usageMode: 'expand',
 	exampleMode: 'expand',
 	styleguideDir: 'dist',
-	compilerConfig: {
-		target: { ie: 11 }
-	},
 	ribbon: {
 		text: 'Back to examples',
 		url: `${docSiteUrl}/Examples.html`

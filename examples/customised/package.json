@@ -23,8 +23,8 @@
     "dog-names": "^1.0.2"
   },
   "scripts": {
-    "styleguide": "vue-styleguidist server",
-    "styleguide:build": "vue-styleguidist build",
+    "styleguide": "vue-stylebook server",
+    "styleguide:build": "vue-stylebook build",
     "docs": "concurrently \"vue-docgen --watch\" \"vuepress dev docs\"",
     "docs:build": "vue-docgen && vuepress build docs"
   },
@@ -45,11 +45,12 @@
     "sass-loader": "^13.3.3",
     "style-loader": "^3.3.4",
     "url-loader": "^1.1.2",
-    "vue": "2.7.8",
+    "vue": "^3.4.0",
     "vue-docgen-cli": "^4.45.0",
-    "vue-loader": "^15.11.1",
-    "vue-styleguidist": "^4",
+    "vue-loader": "^17.4.0",
     "webpack": "^5.95.0",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "webpack-bundle-analyzer": "^4.10.2",
+    "@ivaninvladimir/vue-stylebook": "workspace:*",
+    "@vue/compiler-sfc": "^3.4.0"
   }
 }

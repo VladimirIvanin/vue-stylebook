@@ -3,7 +3,7 @@ const vueLoader = require('vue-loader')
 
 const docSiteUrl = process.env.DEPLOY_PRIME_URL || 'https://vue-styleguidist.github.io'
 
-/** @type import("vue-styleguidist").Config */
+/** @type import("@ivaninvladimir/vue-stylebook-engine").Config */
 module.exports = {
 	components: 'src/components/**/[A-Z]*.vue',
 	simpleEditor: true,
@@ -31,7 +31,7 @@ module.exports = {
 		},
 		plugins: [new vueLoader.VueLoaderPlugin()]
 	},
-	renderRootJsx: path.join(__dirname, 'config/styleguide.root.js'),
+	enhancePreviewApp: path.join(__dirname, 'config/enhancePreviewApp.js'),
 	usageMode: 'expand',
 	styleguideDir: 'dist',
 	ribbon: {

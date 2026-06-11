@@ -1,5 +1,5 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const { defineConfig } = require('vue-styleguidist')
+const { defineConfig } = require('@ivaninvladimir/vue-stylebook-engine')
 
 const docSiteUrl = process.env.DEPLOY_PRIME_URL || 'https://vue-styleguidist.github.io'
 

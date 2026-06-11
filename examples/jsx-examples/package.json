@@ -26,23 +26,23 @@
     "vue-types": "^1.7.0"
   },
   "scripts": {
-    "styleguide": "vue-styleguidist server",
-    "styleguide:build": "vue-styleguidist build"
+    "styleguide": "vue-stylebook server",
+    "styleguide:build": "vue-stylebook build"
   },
   "devDependencies": {
     "@babel/core": "7.24.7",
     "@babel/plugin-transform-runtime": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
-    "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^8.2.2",
-    "babel-plugin-transform-vue-jsx": "4.0.1",
     "css-loader": "^6.11.0",
     "sass": "^1.34.0",
     "sass-loader": "^13.3.3",
     "style-loader": "^3.3.4",
-    "vue": "^2.7.14",
-    "vue-styleguidist": "^4",
+    "vue": "^3.4.0",
     "webpack": "^5.95.0",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "webpack-bundle-analyzer": "^4.10.2",
+    "@ivaninvladimir/vue-stylebook": "workspace:*",
+    "@vue/compiler-sfc": "^3.4.0",
+    "@vue/babel-plugin-jsx": "^1.2.5"
   }
 }

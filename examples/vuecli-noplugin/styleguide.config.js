@@ -1,5 +1,5 @@
 const docSiteUrl = process.env.DEPLOY_PRIME_URL || 'https://vue-styleguidist.github.io'
-const { defineConfig } = require('vue-styleguidist')
+const { defineConfig } = require('@ivaninvladimir/vue-stylebook-engine')
 
 const path = require('path')
 
@@ -8,7 +8,7 @@ console.log(path.dirname(cliPath))
 const webpackPath = require.resolve('webpack', { paths: [path.dirname(cliPath)] })
 process.env.VSG_WEBPACK_PATH = webpackPath
 
-/** @type import("vue-styleguidist").Config */
+/** @type import("@ivaninvladimir/vue-stylebook-engine").Config */
 module.exports = defineConfig({
 	// set your styleguidist configuration here
 	title: 'Default Style Guide',

@@ -2,7 +2,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 const docSiteUrl = process.env.DEPLOY_PRIME_URL || 'https://vue-styleguidist.github.io'
 
-/** @type import("vue-styleguidist").Config */
+/** @type import("@ivaninvladimir/vue-stylebook-engine").Config */
 module.exports = {
 	jsxInExamples: true,
 	simpleEditor: true,
@@ -24,7 +24,7 @@ module.exports = {
 						loader: 'babel-loader',
 						options: {
 							presets: ['@babel/preset-env'],
-							plugins: ['transform-vue-jsx']
+							plugins: ['@vue/babel-plugin-jsx']
 						}
 					}
 				},

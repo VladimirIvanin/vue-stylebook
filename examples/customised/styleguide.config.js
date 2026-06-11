@@ -4,7 +4,7 @@ const vueLoader = require('vue-loader')
 
 const docSiteUrl = process.env.DEPLOY_PRIME_URL || 'https://vue-styleguidist.github.io'
 
-/** @type import("vue-styleguidist").Config */
+/** @type import("@ivaninvladimir/vue-stylebook-engine").Config */
 module.exports = {
 	title: 'Style guide example',
 	components: 'src/components/**/[A-Z]*.{vue,jsx}',
@@ -73,7 +73,7 @@ module.exports = {
 				'@mixins': path.resolve(__dirname, './src/mixins'),
 				// Make sure the example uses the local version of react-styleguidist
 				// This is only for the examples in this repo, you won't need it for your own project
-				'vue-styleguidist': path.join(__dirname, '../../')
+				'@ivaninvladimir/vue-stylebook-engine': path.join(__dirname, '../../packages/vue-stylebook-engine')
 			}
 		}
 	},

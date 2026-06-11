@@ -1,5 +1,5 @@
 <script>
-import { VBtn } from 'vuetify/lib'
+import { VBtn } from 'vuetify/components'
 import loggerMixin from '../../mixins/loggerMixin'
 
 /**

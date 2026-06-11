@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "dog-names": "^1.0.2",
-    "vue": "^2.7.14"
+    "vue": "^3.4.0",
+    "@vue/compiler-sfc": "^3.4.0"
   },
   "devDependencies": {
     "@babel/core": "7.24.7",
@@ -32,8 +33,7 @@
     "autoprefixer": "^9.8.6",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
-    "vue-cli-plugin-styleguidist": "^4",
-    "vue-template-compiler": "^2.7.14"
+    "vue-cli-plugin-styleguidist": "workspace:*"
   },
   "eslintConfig": {
     "root": true,

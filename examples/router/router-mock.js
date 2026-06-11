@@ -1,24 +1,24 @@
-import Vue from 'vue'
+import { h } from 'vue'
 
-Vue.component('RouterLink', {
-	props: {
-		tag: { type: String, default: 'a' }
-	},
-	render(createElement) {
-		const href = this.$attrs.to
-		return createElement(
-			this.tag,
-			{
-				attrs: { href },
-				on: {
-					click(e) {
+export default app => {
+	app.component('RouterLink', {
+		props: {
+			tag: { type: String, default: 'a' }
+		},
+		render() {
+			const href = this.$attrs.to
+			return h(
+				this.tag,
+				{
+					href,
+					onClick(e) {
 						// eslint-disable-next-line no-console
 						console.log('Navigated to: ', href)
 						e.preventDefault()
 					}
-				}
-			},
-			this.$slots.default
-		)
-	}
-})
+				},
+				this.$slots.default?.()
+			)
+		}
+	})
+}

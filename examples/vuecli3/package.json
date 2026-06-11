@@ -11,14 +11,14 @@
     "styleguide:build": "cross-env NODE_ENV=production vue-cli-service styleguidist:build"
   },
   "dependencies": {
-    "vue": "^2.7.14"
+    "vue": "^3.4.0",
+    "@vue/compiler-sfc": "^3.4.0"
   },
   "devDependencies": {
     "@vue/babel-preset-app": "5.0.8",
     "@vue/cli-plugin-babel": "5.0.8",
     "@vue/cli-service": "5.0.8",
-    "vue-cli-plugin-styleguidist": "^4",
-    "vue-template-compiler": "^2.7.14",
+    "vue-cli-plugin-styleguidist": "workspace:*",
     "webpack-bundle-analyzer": "^4.10.2",
     "cross-env": "^7.0.3"
   },

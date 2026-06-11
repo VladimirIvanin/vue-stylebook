@@ -2,7 +2,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const vueLoader = require('vue-loader')
 const path = require('path')
 
-const { defineConfig } = require('vue-styleguidist')
+const { defineConfig } = require('@ivaninvladimir/vue-stylebook-engine')
 
 const transpileDependencies = [
 	'regexpu-core',
@@ -19,7 +19,7 @@ const transpileDependencies = [
 
 const docSiteUrl = process.env.DEPLOY_PRIME_URL || 'https://vue-styleguidist.github.io'
 
-/** @type import("vue-styleguidist").Config */
+/** @type import("@ivaninvladimir/vue-stylebook-engine").Config */
 module.exports = defineConfig({
 	title: 'Vue Styleguidist basic',
 	components: 'src/components/**/[A-Z]*.vue',
@@ -54,7 +54,7 @@ module.exports = defineConfig({
 					test: /\.js$/,
 					exclude: modulePath =>
 						(/node_modules/.test(modulePath) ||
-							/packages[\\/]vue-styleguidist[\\/]lib/.test(modulePath)) &&
+							/packages[\\/]vue-stylebook-engine[\\/]lib/.test(modulePath)) &&
 						!transpileDependencies.some(mod =>
 							new RegExp(`node_modules[\\\\/]${mod}[\\\\/]`).test(modulePath)
 						),
@@ -67,10 +67,7 @@ module.exports = defineConfig({
 									'@babel/preset-env',
 									{
 										useBuiltIns: 'usage',
-										corejs: 3,
-										targets: {
-											ie: '11'
-										}
+										corejs: 3
 									}
 								]
 							],
