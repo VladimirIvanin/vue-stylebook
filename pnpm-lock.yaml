@@ -1726,7 +1726,7 @@ importers:
   packages/vue-cli-plugin-styleguidist:
     dependencies:
       '@ivaninvladimir/vue-stylebook-engine':
-        specifier: ^0.8.0
+        specifier: ^0.8.1
         version: link:../vue-stylebook-engine
       webpack-merge:
         specifier: ^6.0.1

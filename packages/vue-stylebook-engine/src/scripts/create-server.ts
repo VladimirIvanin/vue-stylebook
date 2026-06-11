@@ -51,8 +51,8 @@ export default function createServer(
 					})
 				}
 
-				if (config.configureServer) {
-					config.configureServer(devServer as WebpackDevServer, env)
+				if (config.configureServer && devServer.app) {
+					config.configureServer(devServer.app, env)
 				}
 
 				return middlewares

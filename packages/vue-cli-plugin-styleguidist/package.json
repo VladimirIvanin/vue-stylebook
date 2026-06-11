@@ -17,7 +17,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@ivaninvladimir/vue-stylebook-engine": "^0.8.0",
+    "@ivaninvladimir/vue-stylebook-engine": "^0.8.1",
     "webpack-merge": "^6.0.1"
   },
   "peerDependencies": {

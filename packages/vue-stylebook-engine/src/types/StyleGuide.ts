@@ -6,7 +6,6 @@
  * Config Data: packages/vue-stylebook-engine/src/scripts/schemas/config.ts
  */
 import React from 'react'
-import WebpackDevServer from 'webpack-dev-server'
 import { ComponentDoc, PropDescriptor } from 'vue-docgen-api'
 import { compile } from 'vue-inbrowser-compiler'
 import { Styles } from 'jss'
@@ -53,7 +52,6 @@ export interface BaseStyleguidistConfig
 	configDir: string
 	context: Record<string, any>
 	contextDependencies: string[]
-	configureServer: (server: WebpackDevServer, env: string) => string
 	/**
 	 * Add a button on the top right of the code sections to copy to clipboard the current contents of the editor
 	 * @default false

@@ -86,7 +86,7 @@ export default {
 		type: 'array'
 	},
 	configureServer: {
-		tstype: '(server: WebpackDevServer, env: string) => string',
+		inherit: true,
 		type: 'function'
 	},
 	copyCodeButton: {

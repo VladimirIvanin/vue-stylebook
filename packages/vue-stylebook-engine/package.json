@@ -1,7 +1,7 @@
 {
   "name": "@ivaninvladimir/vue-stylebook-engine",
   "description": "Vue Stylebook — движок living style guide (на базе vue-styleguidist)",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "homepage": "https://github.com/VladimirIvanin/vue-stylebook",
   "scripts": {
     "compile": "pnpm run compile:babel && pnpm run typings",
